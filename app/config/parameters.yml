@@ -2,9 +2,9 @@ parameters:
     database_driver:   pdo_mysql
     database_host:     localhost
     database_port:     ~
-    database_name:     symfony
-    database_user:     root
-    database_password: ~
+    database_name:     testonline
+    database_user:     david
+    database_password: camper
 
     mailer_transport:  smtp
     mailer_host:       localhost
@@ -12,4 +12,4 @@ parameters:
     mailer_password:   ~
 
     locale:            en
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret:            2f0e3e9b1e46ac672b2cde170bcfd64faf15e219
