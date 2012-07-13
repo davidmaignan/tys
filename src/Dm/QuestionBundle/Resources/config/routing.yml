@@ -1,0 +1,3 @@
+DmQuestionBundle_homepage:
+    pattern:  /
+    defaults: { _controller: DmQuestionBundle:Default:index }
