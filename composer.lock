@@ -1,5 +1,5 @@
 {
-    "hash": "30846efe796c16e42eab7d1406cda9ab",
+    "hash": "86a012a9508dd04e190e0294ec11f753",
     "packages": [
         {
             "package": "doctrine/common",
@@ -50,6 +50,16 @@
             "version": "1.1.0"
         },
         {
+            "package": "knplabs/knp-menu",
+            "version": "1.1.x-dev",
+            "source-reference": "v1.1.2",
+            "commit-date": "1339345240"
+        },
+        {
+            "package": "knplabs/knp-menu-bundle",
+            "version": "v1.1.0"
+        },
+        {
             "package": "kriswallsmith/assetic",
             "version": "dev-master",
             "alias-pretty-version": "1.1.x-dev",
@@ -74,14 +84,43 @@
         {
             "package": "sensio/framework-extra-bundle",
             "version": "dev-master",
-            "source-reference": "4f54e5d5fb3b54fb107892684018f3704934c48d",
-            "commit-date": "1341126219"
+            "source-reference": "4f54e5d5fb3b54fb107892684018f3704934c48d"
         },
         {
             "package": "sensio/generator-bundle",
             "version": "dev-master",
             "source-reference": "43ed45c48db18e4a0e48aec0c098f42e56e22d36",
             "commit-date": "1340138445"
+        },
+        {
+            "package": "sonata-project/admin-bundle",
+            "version": "dev-master",
+            "source-reference": "8ebc06ce4bfd632acd11022093a90225e10534a1",
+            "commit-date": "1342045725"
+        },
+        {
+            "package": "sonata-project/block-bundle",
+            "version": "dev-master",
+            "source-reference": "40b435dab9db1f6bf1f311af1635712924a0f361",
+            "commit-date": "1340007353"
+        },
+        {
+            "package": "sonata-project/cache-bundle",
+            "version": "dev-master",
+            "source-reference": "5b966e7350636750df7e45920acb30946415ba6d",
+            "commit-date": "1335863548"
+        },
+        {
+            "package": "sonata-project/exporter",
+            "version": "dev-master",
+            "source-reference": "bcdfd50bc3118173d914e790921701ab26fb6b14",
+            "commit-date": "1338844924"
+        },
+        {
+            "package": "sonata-project/jquery-bundle",
+            "version": "dev-master",
+            "source-reference": "785870afce016cc387fadb361ad52c3d4a2e7fe6",
+            "commit-date": "1339857469"
         },
         {
             "package": "swiftmailer/swiftmailer",
@@ -104,8 +143,7 @@
         {
             "package": "symfony/monolog-bundle",
             "version": "dev-master",
-            "source-reference": "v2.1.0-BETA2",
-            "commit-date": "1341078487"
+            "source-reference": "v2.1.0-BETA2"
         },
         {
             "package": "symfony/swiftmailer-bundle",
@@ -128,8 +166,7 @@
         {
             "package": "twig/extensions",
             "version": "dev-master",
-            "source-reference": "feb6d3f10c411e2631997c0a905aa581c80305c1",
-            "commit-date": "1337599699"
+            "source-reference": "feb6d3f10c411e2631997c0a905aa581c80305c1"
         },
         {
             "package": "twig/twig",
@@ -157,6 +194,7 @@
         "symfony/monolog-bundle": 20,
         "sensio/distribution-bundle": 20,
         "sensio/framework-extra-bundle": 20,
-        "sensio/generator-bundle": 20
+        "sensio/generator-bundle": 20,
+        "sonata-project/admin-bundle": 20
     }
 }

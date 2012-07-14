@@ -22,6 +22,9 @@ class AppKernel extends Kernel
             new Dm\QuestionBundle\DmQuestionBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Dm\UserBundle\DmUserBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\CacheBundle\SonataCacheBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -64,3 +64,15 @@ fos_user:
     db_driver: orm 
     firewall_name: main
     user_class: Dm\QuestionBundle\Entity\User
+    
+    
+#Sonata Configuration
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
+        sonata.block.service.text:
+        sonata.block.service.action:
+        sonata.block.service.rss:
