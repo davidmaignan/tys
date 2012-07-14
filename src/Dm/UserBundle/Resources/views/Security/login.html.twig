@@ -1,9 +1,14 @@
 
 
 {% block fos_user_content %}
-{% if error %}
-    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
-{% endif %}
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+    <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+{% else %}
+    
+    
 
 <form action="{{ path("fos_user_security_check") }}" method="post" class="form-inline" style="margin-bottom: 0;">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -19,4 +24,7 @@
 
     <input type="submit" class="btn" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
 </form>
+    
+{% endif %}
+    
 {% endblock fos_user_content %}
