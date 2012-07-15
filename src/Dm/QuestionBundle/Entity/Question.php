@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Dm\QuestionBundle\Entity\QuestionRepository")
  */
-class Question
-{
+class Question {
+
     /**
      * @var integer $id
      *
@@ -63,14 +63,12 @@ class Question
      */
     private $type;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -80,8 +78,7 @@ class Question
      * @param text $title
      * @return Question
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
         return $this;
     }
@@ -91,8 +88,7 @@ class Question
      *
      * @return text 
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
@@ -102,8 +98,7 @@ class Question
      * @param text $code
      * @return Question
      */
-    public function setCode($code)
-    {
+    public function setCode($code) {
         $this->code = $code;
         return $this;
     }
@@ -113,8 +108,7 @@ class Question
      *
      * @return text 
      */
-    public function getCode()
-    {
+    public function getCode() {
         return $this->code;
     }
 
@@ -124,8 +118,7 @@ class Question
      * @param text $note
      * @return Question
      */
-    public function setNote($note)
-    {
+    public function setNote($note) {
         $this->note = $note;
         return $this;
     }
@@ -135,8 +128,7 @@ class Question
      *
      * @return text 
      */
-    public function getNote()
-    {
+    public function getNote() {
         return $this->note;
     }
 
@@ -146,8 +138,7 @@ class Question
      * @param integer $section
      * @return Question
      */
-    public function setSection($section)
-    {
+    public function setSection($section) {
         $this->section = $section;
         return $this;
     }
@@ -157,8 +148,7 @@ class Question
      *
      * @return integer 
      */
-    public function getSection()
-    {
+    public function getSection() {
         return $this->section;
     }
 
@@ -168,8 +158,7 @@ class Question
      * @param integer $level
      * @return Question
      */
-    public function setLevel($level)
-    {
+    public function setLevel($level) {
         $this->level = $level;
         return $this;
     }
@@ -179,8 +168,7 @@ class Question
      *
      * @return integer 
      */
-    public function getLevel()
-    {
+    public function getLevel() {
         return $this->level;
     }
 
@@ -190,8 +178,7 @@ class Question
      * @param integer $type
      * @return Question
      */
-    public function setType($type)
-    {
+    public function setType($type) {
         $this->type = $type;
         return $this;
     }
@@ -201,8 +188,13 @@ class Question
      *
      * @return integer 
      */
-    public function getType()
-    {
+    public function getType() {
         return $this->type;
     }
+    
+
+    public function __toString() {
+        return $this->getTitle();
+    }
+
 }
