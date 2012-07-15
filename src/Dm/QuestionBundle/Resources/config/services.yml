@@ -7,8 +7,20 @@ services:
 #        arguments: [@service_id, "plain_value", %parameter%]
 
 services:
-    dbla.testapp.admin.product:
+    dm.questionbundle.admin.product:
         class: Dm\QuestionBundle\Admin\QuestionAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: TestYourSkills, label: question }
         arguments: [null, Dm\QuestionBundle\Entity\Question, SonataAdminBundle:CRUD]
+        
+    dm.questionbundle.admin.section:
+        class: Dm\QuestionBundle\Admin\SectionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: TestYourSkills, label: section }
+        arguments: [null, Dm\QuestionBundle\Entity\Section, SonataAdminBundle:CRUD]
+        
+    dm.questionbundle.admin.level:
+        class: Dm\QuestionBundle\Admin\LevelAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: TestYourSkills, label: level }
+        arguments: [null, Dm\QuestionBundle\Entity\Level, SonataAdminBundle:CRUD]
