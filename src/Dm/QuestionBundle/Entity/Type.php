@@ -7,13 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Dm\QuestionBundle\Entity\Question;
 
 /**
- * Dm\QuestionBundle\Entity\Level
+ * Dm\QuestionBundle\Entity\Type
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dm\QuestionBundle\Entity\LevelRepository")
+ * @ORM\Entity(repositoryClass="Dm\QuestionBundle\Entity\TypeRepository")
  */
-class Level {
-
+class Type
+{
     /**
      * @var integer $id
      *
@@ -29,7 +29,8 @@ class Level {
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-
+    
+    
     /**
      * @ORM\OneToMany(targetEntity="Question", mappedBy="Level")
      */
@@ -40,7 +41,8 @@ class Level {
      *
      * @return integer 
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -48,9 +50,10 @@ class Level {
      * Set name
      *
      * @param string $name
-     * @return Level
+     * @return Type
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
         return $this;
     }
@@ -60,26 +63,24 @@ class Level {
      *
      * @return string 
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
-
-    public function __construct() {
+    
+    
+    public function __construct()
+    {
         $this->questions = new ArrayCollection();
     }
-
-    public function __toString() {
-        return $this->getName();
-    }
-
-
+    
     /**
      * Add questions
      *
      * @param Dm\QuestionBundle\Entity\Question $questions
-     * @return Level
+     * @return Type
      */
-    public function addQuestion(\Dm\QuestionBundle\Entity\Question $questions)
+    public function addQuestion(Question $questions)
     {
         $this->questions[] = $questions;
         return $this;
@@ -90,7 +91,7 @@ class Level {
      *
      * @param <variableType$questions
      */
-    public function removeQuestion(\Dm\QuestionBundle\Entity\Question $questions)
+    public function removeQuestion(Question $questions)
     {
         $this->questions->removeElement($questions);
     }
@@ -103,5 +104,10 @@ class Level {
     public function getQuestions()
     {
         return $this->questions;
+    }
+    
+    public function __toString()
+    {
+        return $this->name;
     }
 }

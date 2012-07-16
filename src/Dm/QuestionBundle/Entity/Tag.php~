@@ -4,15 +4,16 @@ namespace Dm\QuestionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+
 use Dm\QuestionBundle\Entity\Question;
 
 /**
- * Dm\QuestionBundle\Entity\Level
+ * Dm\QuestionBundle\Entity\Tag
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dm\QuestionBundle\Entity\LevelRepository")
+ * @ORM\Entity(repositoryClass="Dm\QuestionBundle\Entity\TagRepository")
  */
-class Level {
+class Tag {
 
     /**
      * @var integer $id
@@ -31,9 +32,18 @@ class Level {
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Question", mappedBy="Level")
+     * @ORM\ManyToMany(targetEntity="Question", mappedBy="tags")
      */
-    protected $questions;
+    private $questions;
+
+    public function __construct() {
+        $this->questions = new ArrayCollection();
+    }
+    
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * Get id
@@ -48,7 +58,7 @@ class Level {
      * Set name
      *
      * @param string $name
-     * @return Level
+     * @return Tag
      */
     public function setName($name) {
         $this->name = $name;
@@ -64,22 +74,14 @@ class Level {
         return $this->name;
     }
 
-    public function __construct() {
-        $this->questions = new ArrayCollection();
-    }
-
-    public function __toString() {
-        return $this->getName();
-    }
-
 
     /**
      * Add questions
      *
      * @param Dm\QuestionBundle\Entity\Question $questions
-     * @return Level
+     * @return Tag
      */
-    public function addQuestion(\Dm\QuestionBundle\Entity\Question $questions)
+    public function addQuestion(Question $questions)
     {
         $this->questions[] = $questions;
         return $this;
@@ -90,7 +92,7 @@ class Level {
      *
      * @param <variableType$questions
      */
-    public function removeQuestion(\Dm\QuestionBundle\Entity\Question $questions)
+    public function removeQuestion(Question $questions)
     {
         $this->questions->removeElement($questions);
     }

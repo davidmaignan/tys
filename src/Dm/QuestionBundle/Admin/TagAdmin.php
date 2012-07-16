@@ -7,7 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class LevelAdmin extends Admin
+class TagAdmin extends Admin
 {
   protected function configureFormFields(FormMapper $formMapper)
   {
@@ -24,13 +24,14 @@ class LevelAdmin extends Admin
   }
    * 
    */
+  
 
   protected function configureListFields(ListMapper $listMapper)
   {
     $listMapper
       ->add('id')
       ->addIdentifier('name')
-      ->add('level')     
+      ->add('tag')     
     ;
   }
 

@@ -24,3 +24,15 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: TestYourSkills, label: level }
         arguments: [null, Dm\QuestionBundle\Entity\Level, SonataAdminBundle:CRUD]
+        
+    dm.questionbundle.admin.tag:
+        class: Dm\QuestionBundle\Admin\TagAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: TestYourSkills, label: tag }
+        arguments: [null, Dm\QuestionBundle\Entity\Tag, SonataAdminBundle:CRUD]
+        
+    dm.questionbundle.admin.type:
+        class: Dm\QuestionBundle\Admin\TypeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: TestYourSkills, label: type }
+        arguments: [null, Dm\QuestionBundle\Entity\Type, SonataAdminBundle:CRUD]

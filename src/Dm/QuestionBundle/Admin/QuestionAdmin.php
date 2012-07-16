@@ -18,17 +18,30 @@ class QuestionAdmin extends Admin
       ->add('section', null, array('required' => false))
       ->add('level', null, array('required' => false))
       ->add('type', null, array('required' => false))
+      ->add('points', null, array('required' => false))
     ;
+    
+    $formMapper->add('tags', 'sonata_type_model', array('expanded' => true, 'multiple' => true));
+    
+    //$formMapper->add('tags', 'collection', array('type' => new \Dm\QuestionBundle\Form\TagType()));
+    
+    
+    //$formMapper->add('tags', 'collection', array(
+    //    'type' => new \Dm\QuestionBundle\Form\TagType(),
+    //    'allow_add' => true,
+    //   'allow_delete' => true,
+    //   'by_reference' => false,
+    //));
+
   }
-  /*
+  
   protected function configureDatagridFilters(DatagridMapper $datagridMapper)
   {
-    $datagridMapper
-      ->add('title')
-    ;
+    //$datagridMapper
+    //  ->add('title')
+    //;
   }
-   * 
-   */
+
 
   protected function configureListFields(ListMapper $listMapper)
   {
@@ -37,7 +50,9 @@ class QuestionAdmin extends Admin
       ->addIdentifier('title')
       ->add('section')
       ->add('level')
-      ->add('type')      
+      ->add('type')
+      ->add('points')
+      ->add('tags')
     ;
   }
 

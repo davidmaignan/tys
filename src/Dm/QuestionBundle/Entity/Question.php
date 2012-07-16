@@ -2,7 +2,10 @@
 
 namespace Dm\QuestionBundle\Entity;
 
+use Dm\QuestionBundle\Entity\Tag;
+
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Dm\QuestionBundle\Entity\Question
@@ -42,7 +45,6 @@ class Question {
      */
     private $note;
 
-    
     /**
      * @ORM\ManyToOne(targetEntity="Section", inversedBy="questions")
      * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
@@ -56,11 +58,23 @@ class Question {
     private $level;
 
     /**
-     * @var integer $type
-     *
-     * @ORM\Column(name="type", type="integer")
+     * @ORM\ManyToOne(targetEntity="Type", inversedBy="questions")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
     private $type;
+
+    /**
+     * @var integer $points
+     *
+     * @ORM\Column(name="points", type="integer")
+     */
+    private $points;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="Questions")
+     * @ORM\JoinTable(name="question_tags")
+     */
+    private $tags;
 
     /**
      * Get id
@@ -190,10 +204,65 @@ class Question {
     public function getType() {
         return $this->type;
     }
-    
+
+    public function __construct() {
+        $this->tags = new ArrayCollection();
+    }
 
     public function __toString() {
         return $this->getTitle();
     }
 
+    /**
+     * Set points
+     *
+     * @param integer $points
+     * @return Question
+     */
+    public function setPoints($points) {
+        $this->points = $points;
+        return $this;
+    }
+
+    /**
+     * Get points
+     *
+     * @return integer 
+     */
+    public function getPoints() {
+        return $this->points;
+    }
+
+
+    /**
+     * Add tags
+     *
+     * @param Dm\QuestionBundle\Entity\Tag $tags
+     * @return Question
+     */
+    public function addTag(Tag $tags)
+    {
+        $this->tags[] = $tags;
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param <variableType$tags
+     */
+    public function removeTag(Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
 }
