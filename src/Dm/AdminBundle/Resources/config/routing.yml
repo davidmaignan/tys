@@ -1,0 +1,3 @@
+DmAdminBundle_homepage:
+    pattern:  /question
+    defaults: { _controller: DmAdminBundle:Question:index }

@@ -1,0 +1,42 @@
+{% extends 'DmAdminBundle::layout.html.twig' %}
+
+{% block body %}
+
+<div class="page-header">
+    <a href="#" class="btn btn-primary" style="float: right;">Add new</a>
+<h2>Questions</h2>
+
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>title</th>
+      <th>section</th>
+      <th>level</th>
+      <th>points</th>
+      <th>tags</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for question in questions %}
+    <tr>
+      <td>{{ question.id }}</td>
+      <td>{{ question.title }}</td>
+      <td>{{ question.section }}</td>
+      <td>{{ question.level }}</td>
+      <td>{{ question.points }}</td>
+      <td>
+          {% for tag in question.tags %}
+              {{ tag.name }}
+          {% endfor %}
+      
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

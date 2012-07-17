@@ -1,3 +1,7 @@
+DmAdminBundle:
+    resource: "@DmAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 DmUserBundle:
     resource: "@DmUserBundle/Resources/config/routing.yml"
     prefix:   /
