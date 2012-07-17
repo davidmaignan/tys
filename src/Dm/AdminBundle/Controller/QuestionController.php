@@ -36,8 +36,9 @@ class QuestionController extends Controller {
 
             if ($form->isValid()) {
                 
-                echo 'form valid';
-                exit;
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($question);
+                $em->flush();
                 
                 
                 return $this->redirect($this->generateUrl('DmAdminBundle_homepage'));
