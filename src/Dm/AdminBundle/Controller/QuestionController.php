@@ -4,6 +4,10 @@ namespace Dm\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Dm\QuestionBundle\Entity\Question;
+use Dm\QuestionBundle\Form\QuestionType;
+
+
 class QuestionController extends Controller
 {
     public function indexAction()
@@ -18,5 +22,13 @@ class QuestionController extends Controller
                         ->getResult();
         
         return $this->render('DmAdminBundle:Question:index.html.twig', array('questions'=>$questions));
+    }
+    
+    public function createAction(){
+        
+        $question = new Question();
+        $form = $this->createForm(new QuestionType(), $question);
+        
+        return $this->render('DmAdminBundle:Question:create.html.twig', array('form'=>$form->createView()));
     }
 }

@@ -1,3 +1,7 @@
+DmAdminBundle_question_create:
+    pattern:  /question/create
+    defaults: { _controller: DmAdminBundle:Question:create }
+
 DmAdminBundle_homepage:
     pattern:  /question
     defaults: { _controller: DmAdminBundle:Question:index }

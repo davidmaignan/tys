@@ -1,0 +1,101 @@
+{% extends 'DmAdminBundle::layout.html.twig' %}
+
+{% block body %}
+
+<div class="page-header">
+    <a href="{{ path('DmAdminBundle_homepage') }}" class="btn" style="float: right;">Cancel</a>
+    <h2>Create a new question</h2>
+
+</div>
+
+<form class="form-vertical">
+
+    <div class="row-fluid">
+
+        <div class="span8">
+
+            <div class="control-group">
+
+                
+                {{ form_label(form.title) }}
+                {{ form_widget(form.title) }}
+                <span class="help-inline">{{ form_errors(form.title) }}</span>
+                
+
+            </div>
+            
+            <div class="control-group">
+
+                
+                {{ form_label(form.code) }}
+                {{ form_widget(form.code) }}
+                <span class="help-inline">{{ form_errors(form.code) }}</span>
+                
+
+            </div>
+            
+            <div class="control-group">
+
+                
+                {{ form_label(form.note) }}
+                {{ form_widget(form.note) }}
+                <span class="help-inline">{{ form_errors(form.note) }}</span>
+                
+
+            </div>
+
+       </div>
+
+
+    <div class="span4">
+
+        <div class="control-group">
+            {{ form_label(form.section) }}
+            {{ form_widget(form.section) }}
+            <span class="help-inline">{{ form_errors(form.section) }}</span>        
+        </div>
+        
+        <div class="control-group">
+            {{ form_label(form.level) }}
+            {{ form_widget(form.level) }}
+            <span class="help-inline">{{ form_errors(form.level) }}</span>        
+        </div>
+        
+        <div class="control-group">
+            {{ form_label(form.type) }}
+            {{ form_widget(form.type) }}
+            <span class="help-inline">{{ form_errors(form.type) }}</span>        
+        </div>
+        
+        <div class="control-group">
+            {{ form_label(form.points) }}
+            {{ form_widget(form.points) }}
+            <span class="help-inline">{{ form_errors(form.points) }}</span>        
+        </div>
+        
+        <div class="control-group">
+            {{ form_label(form.tags) }}
+            {{ form_widget(form.tags) }}
+            <span class="help-inline">{{ form_errors(form.tags) }}</span>        
+        </div>
+
+    </div>
+
+    </div>
+    
+    <div class="page-header">
+        <h2>Answers</h2>
+    </div>
+    
+    <div class="well">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button class="btn">Cancel</button>
+    </div>
+    
+    
+
+</form>
+
+{% endblock %}
+
+
