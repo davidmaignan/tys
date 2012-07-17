@@ -8,7 +8,8 @@
 
 </div>
 
-<form class="form-vertical">
+<form action="{{ path('DmAdminBundle_question_create') }}" 
+      method="post" {{ form_enctype(form) }} class="form-vertical" novalidate="novalidate">
 
     <div class="row-fluid">
 
@@ -19,7 +20,7 @@
                 
                 {{ form_label(form.title) }}
                 {{ form_widget(form.title) }}
-                <span class="help-inline">{{ form_errors(form.title) }}</span>
+                {{ form_errors(form.title) }}
                 
 
             </div>
@@ -29,7 +30,7 @@
                 
                 {{ form_label(form.code) }}
                 {{ form_widget(form.code) }}
-                <span class="help-inline">{{ form_errors(form.code) }}</span>
+                {{ form_errors(form.code) }}
                 
 
             </div>
@@ -39,7 +40,7 @@
                 
                 {{ form_label(form.note) }}
                 {{ form_widget(form.note) }}
-                <span class="help-inline">{{ form_errors(form.note) }}</span>
+                {{ form_errors(form.note) }}
                 
 
             </div>
@@ -52,31 +53,31 @@
         <div class="control-group">
             {{ form_label(form.section) }}
             {{ form_widget(form.section) }}
-            <span class="help-inline">{{ form_errors(form.section) }}</span>        
+            {{ form_errors(form.section) }}       
         </div>
         
         <div class="control-group">
             {{ form_label(form.level) }}
             {{ form_widget(form.level) }}
-            <span class="help-inline">{{ form_errors(form.level) }}</span>        
+            {{ form_errors(form.level) }}        
         </div>
         
         <div class="control-group">
             {{ form_label(form.type) }}
             {{ form_widget(form.type) }}
-            <span class="help-inline">{{ form_errors(form.type) }}</span>        
+            {{ form_errors(form.type) }}
         </div>
         
         <div class="control-group">
             {{ form_label(form.points) }}
             {{ form_widget(form.points) }}
-            <span class="help-inline">{{ form_errors(form.points) }}</span>        
+            {{ form_errors(form.points) }}    
         </div>
         
         <div class="control-group">
             {{ form_label(form.tags) }}
             {{ form_widget(form.tags) }}
-            <span class="help-inline">{{ form_errors(form.tags) }}</span>        
+            {{ form_errors(form.tags) }}      
         </div>
 
     </div>
@@ -92,7 +93,7 @@
             <button class="btn">Cancel</button>
     </div>
     
-    
+    {{ form_rest(form) }}
 
 </form>
 
