@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class QuestionType extends AbstractType
+class AnswerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -14,25 +14,20 @@ class QuestionType extends AbstractType
             ->add('title')
             ->add('code')
             ->add('note')
-            ->add('points')
-            ->add('section')
-            ->add('level')
-            ->add('type')
-            ->add('tags')
+            ->add('correct')
+            //->add('question')
         ;
-        
-        $builder->add('answers', 'collection', array('type' => new AnswerType(),'by_reference' => true));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Dm\QuestionBundle\Entity\Question'
+            'data_class' => 'Dm\QuestionBundle\Entity\Answer'
         ));
     }
 
     public function getName()
     {
-        return 'dm_questionbundle_questiontype';
+        return 'dm_questionbundle_answertype';
     }
 }

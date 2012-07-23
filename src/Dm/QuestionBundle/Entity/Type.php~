@@ -3,6 +3,8 @@
 namespace Dm\QuestionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Dm\QuestionBundle\Entity\Question;
 
 /**
  * Dm\QuestionBundle\Entity\Type
@@ -62,6 +64,49 @@ class Type
      * @return string 
      */
     public function getName()
+    {
+        return $this->name;
+    }
+    
+    
+    public function __construct()
+    {
+        $this->questions = new ArrayCollection();
+    }
+    
+    /**
+     * Add questions
+     *
+     * @param Dm\QuestionBundle\Entity\Question $questions
+     * @return Type
+     */
+    public function addQuestion(Question $questions)
+    {
+        $this->questions[] = $questions;
+        return $this;
+    }
+
+    /**
+     * Remove questions
+     *
+     * @param <variableType$questions
+     */
+    public function removeQuestion(Question $questions)
+    {
+        $this->questions->removeElement($questions);
+    }
+
+    /**
+     * Get questions
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+    
+    public function __toString()
     {
         return $this->name;
     }
