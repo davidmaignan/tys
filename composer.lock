@@ -1,5 +1,5 @@
 {
-    "hash": "30846efe796c16e42eab7d1406cda9ab",
+    "hash": "33444fe2ee399c841f1c8673c0f8a7fb",
     "packages": [
         {
             "package": "doctrine/common",
@@ -26,8 +26,8 @@
         {
             "package": "friendsofsymfony/user-bundle",
             "version": "dev-master",
-            "source-reference": "9f0294ebe2f13dbb41c3ac5d19eb0655680a29c6",
-            "commit-date": "1341994043"
+            "source-reference": "492d19c3942910c4176067ad80b87df899fe71ba",
+            "commit-date": "1342274388"
         },
         {
             "package": "jms/aop-bundle",
@@ -50,6 +50,16 @@
             "version": "1.1.0"
         },
         {
+            "package": "knplabs/knp-menu",
+            "version": "1.1.x-dev",
+            "source-reference": "v1.1.2",
+            "commit-date": "1339345240"
+        },
+        {
+            "package": "knplabs/knp-menu-bundle",
+            "version": "v1.1.0"
+        },
+        {
             "package": "kriswallsmith/assetic",
             "version": "dev-master",
             "alias-pretty-version": "1.1.x-dev",
@@ -68,20 +78,68 @@
         {
             "package": "sensio/distribution-bundle",
             "version": "dev-master",
-            "source-reference": "b2b18d749d0ed24b48d1932b21f3e8b1e8d9c1f2",
-            "commit-date": "1341919005"
+            "source-reference": "77323c97860fc2f73d988b2020ae414faebed153",
+            "commit-date": "1342159333"
         },
         {
             "package": "sensio/framework-extra-bundle",
             "version": "dev-master",
-            "source-reference": "4f54e5d5fb3b54fb107892684018f3704934c48d",
-            "commit-date": "1341126219"
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "sensio/framework-extra-bundle",
+            "version": "dev-master",
+            "source-reference": "e9ac8f1a911ed29e30296c7f1549f53d4c94eddf",
+            "commit-date": "1342084432"
         },
         {
             "package": "sensio/generator-bundle",
             "version": "dev-master",
-            "source-reference": "43ed45c48db18e4a0e48aec0c098f42e56e22d36",
-            "commit-date": "1340138445"
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "sensio/generator-bundle",
+            "version": "dev-master",
+            "source-reference": "c17dbddefe517e3adfcbeaa1ab7cef3e572d29c6",
+            "commit-date": "1342195488"
+        },
+        {
+            "package": "sonata-project/admin-bundle",
+            "version": "dev-master",
+            "source-reference": "8ebc06ce4bfd632acd11022093a90225e10534a1",
+            "commit-date": "1342045725"
+        },
+        {
+            "package": "sonata-project/block-bundle",
+            "version": "dev-master",
+            "source-reference": "40b435dab9db1f6bf1f311af1635712924a0f361",
+            "commit-date": "1340007353"
+        },
+        {
+            "package": "sonata-project/cache-bundle",
+            "version": "dev-master",
+            "source-reference": "5b966e7350636750df7e45920acb30946415ba6d",
+            "commit-date": "1335863548"
+        },
+        {
+            "package": "sonata-project/doctrine-orm-admin-bundle",
+            "version": "dev-master",
+            "source-reference": "e196f0ef78235aa969a767690fb17f24ede4970e",
+            "commit-date": "1341785038"
+        },
+        {
+            "package": "sonata-project/exporter",
+            "version": "dev-master",
+            "source-reference": "bcdfd50bc3118173d914e790921701ab26fb6b14",
+            "commit-date": "1338844924"
+        },
+        {
+            "package": "sonata-project/jquery-bundle",
+            "version": "dev-master",
+            "source-reference": "785870afce016cc387fadb361ad52c3d4a2e7fe6",
+            "commit-date": "1339857469"
         },
         {
             "package": "swiftmailer/swiftmailer",
@@ -92,14 +150,20 @@
         {
             "package": "swiftmailer/swiftmailer",
             "version": "dev-master",
-            "source-reference": "f51b5f33c83b48faea75f1285f99a2e8f1c66f75",
-            "commit-date": "1341746460"
+            "source-reference": "8b2aa953f87da228ba413e8fb1372e49c1374050",
+            "commit-date": "1342198037"
         },
         {
             "package": "symfony/assetic-bundle",
             "version": "dev-master",
-            "source-reference": "8fe7b898b08103c1d6fce64c3e279a7afd61adfc",
-            "commit-date": "1340234971"
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/assetic-bundle",
+            "version": "dev-master",
+            "source-reference": "ed933dcfa45f00b6bc6d7727007403f3ff429e5a",
+            "commit-date": "1342126277"
         },
         {
             "package": "symfony/monolog-bundle",
@@ -122,8 +186,8 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "source-reference": "5487a1f0767f96264823b4a128ad9e68d4b0220b",
-            "commit-date": "1341915525"
+            "source-reference": "36d12dde5b050363d9bf0548b98c44cd622669d3",
+            "commit-date": "1342282240"
         },
         {
             "package": "twig/extensions",
@@ -140,8 +204,8 @@
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "source-reference": "26eb0a2653eade50dffdd31b11ca454232dea8cf",
-            "commit-date": "1341423205"
+            "source-reference": "17e2c36a58c4b17a58a3befa783d16ac19776df5",
+            "commit-date": "1342275003"
         }
     ],
     "packages-dev": null,
@@ -157,6 +221,8 @@
         "symfony/monolog-bundle": 20,
         "sensio/distribution-bundle": 20,
         "sensio/framework-extra-bundle": 20,
-        "sensio/generator-bundle": 20
+        "sensio/generator-bundle": 20,
+        "sonata-project/admin-bundle": 20,
+        "sonata-project/doctrine-orm-admin-bundle": 20
     }
 }

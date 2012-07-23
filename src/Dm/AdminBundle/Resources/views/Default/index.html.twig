@@ -1,0 +1,57 @@
+{% extends 'DmAdminBundle::layout.html.twig' %}
+
+{% block body %}
+
+
+<div class="page-header">
+    
+<h2>Dashboard</h2>
+
+</div>
+
+<div class="row-fluid">
+
+<div class="span4">
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Test your skills</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+     
+    <tr>
+      <td>Questions</td>
+      <td><a href="{{ path('DmAdminBundle_question_list') }}" title="">List</a></td>
+      <td><a href="{{ path('DmAdminBundle_question_create') }}" title="">Add new</a></td>
+    </tr>
+    <tr>
+      <td>Section</td>
+      <td><a href="{{ path('DmAdminBundle_question_create') }}" title="">List</a></td>
+      <td><a href="{{ path('DmAdminBundle_question_list') }}" title="">Add new</a></td>
+    </tr>
+    <tr>
+      <td>Level</td>
+      <td><a href="{{ path('DmAdminBundle_question_create') }}" title="">List</a></td>
+      <td><a href="{{ path('DmAdminBundle_question_list') }}" title="">Add new</a></td>
+    </tr>
+    <tr>
+      <td>Type</td>
+      <td><a href="{{ path('DmAdminBundle_question_create') }}" title="">List</a></td>
+      <td><a href="{{ path('DmAdminBundle_question_list') }}" title="">Add new</a></td>
+    </tr>
+    <tr>
+      <td>Tags</td>
+      <td><a href="{{ path('DmAdminBundle_question_create') }}" title="">List</a></td>
+      <td><a href="{{ path('DmAdminBundle_question_list') }}" title="">Add new</a></td>
+    </tr>    
+  </tbody>
+</table>
+
+</div>
+    
+    </div>
+{% endblock %}
