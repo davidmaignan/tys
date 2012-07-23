@@ -8,7 +8,7 @@
 
 </div>
 
-<form action="{{ path('DmAdminBundle_question_create') }}" 
+<form action="{{ path('DmAdminBundle_question_edit', {'id': id}) }}" 
       method="post" {{ form_enctype(form) }} class="form-vertical" novalidate="novalidate">
 
     <div class="row-fluid">

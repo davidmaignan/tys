@@ -9,7 +9,7 @@ use Dm\QuestionBundle\Entity\Question;
 /**
  * Dm\QuestionBundle\Entity\Level
  *
- * @ORM\Table()
+ * @ORM\Table(name="level")
  * @ORM\Entity(repositoryClass="Dm\QuestionBundle\Entity\LevelRepository")
  */
 class Level {

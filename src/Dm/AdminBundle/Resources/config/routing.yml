@@ -1,3 +1,9 @@
+DmAdminBundle_question_edit:
+    pattern:  /question/edit/{id}
+    defaults: { _controller: DmAdminBundle:Question:edit }
+    requirements:
+        id:  \d+
+
 DmAdminBundle_question_create:
     pattern:  /question/create
     defaults: { _controller: DmAdminBundle:Question:create }

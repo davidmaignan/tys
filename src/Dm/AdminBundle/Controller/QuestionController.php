@@ -70,5 +70,76 @@ class QuestionController extends Controller {
 
         return $this->render('DmAdminBundle:Question:create.html.twig', array('form' => $form->createView()));
     }
+    
+    
+    public function editAction($id, Request $request)
+    {
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $question = $em->getRepository('DmQuestionBundle:Question')->find($id);
+        
+        //$question = new Question();
+        
+        if (!$question) {
+            throw $this->createNotFoundException('No question found for is '.$id);
+        }
+        
+        // Create an array of the current Tag objects in the database
+        foreach ($question->getTags() as $tag){
+            $originalTags[] = $tag;
+        }
+       
+        
+        $editForm = $this->createForm(new QuestionType(), $question);
+        
+        if('POST' === $request->getMethod()){
+            
+            $editForm->bindRequest($this->getRequest());
+            
+            if($editForm->isValid()){
+                
+                foreach ($question->getTags() as $tag) {
+                    foreach ($originalTags as $key => $toDel) {
+                        if ($toDel->getId() === $tag->getId()) {
+                            unset($originalTags[$key]);
+                        }
+                    }
+                }
+                
+                
+                // remove the relationship between the tag and the Task
+                foreach ($originalTags as $tag) {
+                    // remove the Task from the Tag
+                    $tag->getTasks()->removeElement($task);
+
+                    // if it were a ManyToOne relationship, remove the relationship like this
+                    // $tag->setTask(null);
+
+                    $em->persist($tag);
+
+                    // if you wanted to delete the Tag entirely, you can also do that
+                    // $em->remove($tag);
+                }
+
+                
+                $em->persist($question);
+                $em->flush();
+                
+                
+            }
+            
+            return $this->redirect($this->generateUrl('DmAdminBundle_question_edit', array('id' => $id)));
+            
+        }
+        
+        
+        
+        
+        return $this->render('DmAdminBundle:Question:edit.html.twig', array('form' => $editForm->createView(), 'id'=>$id));
+        
+    }
+    
+    
 
 }

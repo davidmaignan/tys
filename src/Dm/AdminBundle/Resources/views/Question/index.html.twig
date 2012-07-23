@@ -11,25 +11,31 @@
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
+      <th></th>
       <th>id</th>
       <th>title</th>
       <th>section</th>
       <th>level</th>
       <th>points</th>
       <th>tags</th>
+      <th>createdAt</th>
     </tr>
   </thead>
   <tbody>
       {% for question in questions %}
     <tr>
+        <td><input type="checkbox" value="{{question.id}}" name="{{ question.id }}"/></td>
       <td>{{ question.id }}</td>
-      <td>{{ question.title }}</td>
+      <td><a href="{{ path('DmAdminBundle_question_edit', {'id': question.id}) }}" title="">{{ question.title }}</a></td>
       <td>{{ question.section }}</td>
       <td>{{ question.level }}</td>
       <td>{{ question.points }}</td>
       <td>
+          <time datetime="{{ question.createdAt|date('c') }}">{{ question.createdAt|date('Y-m-d') }}</time>
+      </td>
+      <td>
           {% for tag in question.tags %}
-              {{ tag.name }}
+              {{ tag.name }}, 
           {% endfor %}
       
       </td>
