@@ -3,7 +3,6 @@
 namespace Dm\QuestionBundle\Entity;
 
 use Dm\QuestionBundle\Entity\Tag;
-
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -75,6 +74,20 @@ class Question {
      * @ORM\JoinTable(name="question_tags")
      */
     private $tags;
+
+    /**
+     * @ORM\OneToMany(targetEntity="answer", mappedBy="question", cascade={"persist, remove"},  orphanRemoval=false)
+     */
+    public $answers;
+
+    public function __construct() {
+        $this->tags = new ArrayCollection();
+        $this->answers = new ArrayCollection();
+    }
+
+    public function __toString() {
+        return $this->getTitle();
+    }
 
     /**
      * Get id
@@ -205,14 +218,6 @@ class Question {
         return $this->type;
     }
 
-    public function __construct() {
-        $this->tags = new ArrayCollection();
-    }
-
-    public function __toString() {
-        return $this->getTitle();
-    }
-
     /**
      * Set points
      *
@@ -233,15 +238,13 @@ class Question {
         return $this->points;
     }
 
-
     /**
      * Add tags
      *
      * @param Dm\QuestionBundle\Entity\Tag $tags
      * @return Question
      */
-    public function addTag(Tag $tags)
-    {
+    public function addTag(Tag $tags) {
         $this->tags[] = $tags;
         return $this;
     }
@@ -251,8 +254,7 @@ class Question {
      *
      * @param <variableType$tags
      */
-    public function removeTag(Tag $tags)
-    {
+    public function removeTag(Tag $tags) {
         $this->tags->removeElement($tags);
     }
 
@@ -261,8 +263,40 @@ class Question {
      *
      * @return Doctrine\Common\Collections\Collection 
      */
-    public function getTags()
-    {
+    public function getTags() {
         return $this->tags;
+    }
+
+
+    /**
+     * Add answers
+     *
+     * @param Dm\QuestionBundle\Entity\answer $answers
+     * @return Question
+     */
+    public function addAnswer(\Dm\QuestionBundle\Entity\answer $answers)
+    {
+        $this->answers[] = $answers;
+        return $this;
+    }
+
+    /**
+     * Remove answers
+     *
+     * @param <variableType$answers
+     */
+    public function removeAnswer(\Dm\QuestionBundle\Entity\answer $answers)
+    {
+        $this->answers->removeElement($answers);
+    }
+
+    /**
+     * Get answers
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
     }
 }
