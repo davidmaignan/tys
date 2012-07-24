@@ -269,6 +269,237 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
             $manager->persist($answer);
         }
         
+        $question6 = new Question();
+        $question6->setTitle('What does the use of the final keyword in a method declaration prevent?');
+        $question6->setPoints(1);
+        $question6->setSection($manager->merge($this->getReference('section-1')));
+        $question6->setLevel($manager->merge($this->getReference('level-1')));
+        $question6->getTags()->add($manager->merge($this->getReference('tag-21')));
+        $manager->persist($question6);
+        
+        $answers6 = array("Child classes from overriding the method.", "Objects from being modified.", 
+            "All of these", "Specific properties within a class from being modified.");
+        
+        $correct = 0;
+        
+        foreach($answers6 as $key=>$value){
+            $answer = new Answer();
+            $answer->setTitle($value);
+            $question5->getAnswers()->add($answer);
+            $answer->setQuestion($question6);
+            $answer->setCorrect(($correct === $key));
+            $manager->persist($answer);
+        }
+        
+        $question6 = new Question();
+        $question6->setTitle('Which character is used to separate namespaces in PHP?');
+        $question6->setPoints(1);
+        $question6->setSection($manager->merge($this->getReference('section-1')));
+        $question6->setLevel($manager->merge($this->getReference('level-1')));
+        $question6->getTags()->add($manager->merge($this->getReference('tag-21')));
+        $manager->persist($question6);
+        
+        $answers6 = array("Period(.)", "Backslash (\)", 
+            "Double colon (::)", "Arrow(->)");
+        
+        $correct = 1;
+        
+        foreach($answers6 as $key=>$value){
+            $answer = new Answer();
+            $answer->setTitle($value);
+            $question5->getAnswers()->add($answer);
+            $answer->setQuestion($question6);
+            $answer->setCorrect(($correct === $key));
+            $manager->persist($answer);
+        }
+        
+        $question6 = new Question();
+        $question6->setTitle('Which PHP function checks a month, day, and year number to determine if they form a valid Gregorian date?');
+        $question6->setPoints(1);
+        $question6->setSection($manager->merge($this->getReference('section-1')));
+        $question6->setLevel($manager->merge($this->getReference('level-1')));
+        $question6->getTags()->add($manager->merge($this->getReference('tag-21')));
+        $manager->persist($question6);
+        
+        $answers6 = array("verify_date()", "verifydate()", "check_date()", "checkdate()");
+        
+        $correct = 3;
+        
+        foreach($answers6 as $key=>$value){
+            $answer = new Answer();
+            $answer->setTitle($value);
+            $question5->getAnswers()->add($answer);
+            $answer->setQuestion($question6);
+            $answer->setCorrect(($correct === $key));
+            $manager->persist($answer);
+        }
+        
+        $question6 = new Question();
+        $question6->setTitle('What does mt_srand( [int $a] ); do?');
+        $question6->setPoints(1);
+        $question6->setSection($manager->merge($this->getReference('section-1')));
+        $question6->setLevel($manager->merge($this->getReference('level-1')));
+        $question6->getTags()->add($manager->merge($this->getReference('tag-21')));
+        $manager->persist($question6);
+        
+        $answers6 = array("Subtracts a random integer from the passed argument and returns the result", 
+            "Returns a random integer", "Initializes a random number generator",
+            "Returns a random string of the length specified by the first argument",
+            "This function does not exist");
+        
+        $correct = 2;
+        
+        foreach($answers6 as $key=>$value){
+            $answer = new Answer();
+            $answer->setTitle($value);
+            $question5->getAnswers()->add($answer);
+            $answer->setQuestion($question6);
+            $answer->setCorrect(($correct === $key));
+            $manager->persist($answer);
+        }
+        
+        $question6 = new Question();
+        $question6->setTitle('Choose the correct output of:');
+        $question6->setCode('<?php $email=\'admin@psexam.com\'; $new=strstr($email, \'@\'); print $new; ?>');
+        $question6->setPoints(1);
+        $question6->setSection($manager->merge($this->getReference('section-1')));
+        $question6->setLevel($manager->merge($this->getReference('level-1')));
+        $question6->getTags()->add($manager->merge($this->getReference('tag-21')));
+        $manager->persist($question6);
+        
+        $answers6 = array("admin@psexam", "admin", "@psexam.com", "psexam.com");
+        
+        $correct = 2;
+        
+        foreach($answers6 as $key=>$value){
+            $answer = new Answer();
+            $answer->setTitle($value);
+            $question5->getAnswers()->add($answer);
+            $answer->setQuestion($question6);
+            $answer->setCorrect(($correct === $key));
+            $manager->persist($answer);
+        }
+        
+        $question6 = new Question();
+        $question6->setTitle('What does the glob() function return?');
+        $question6->setPoints(1);
+        $question6->setSection($manager->merge($this->getReference('section-1')));
+        $question6->setLevel($manager->merge($this->getReference('level-1')));
+        $question6->getTags()->add($manager->merge($this->getReference('tag-21')));
+        $manager->persist($question6);
+        
+        $answers6 = array("An array of filenames / directories matching a specified pattern", 
+            "All system global variables", 
+            "An array of all global variables into the user defined function");
+        
+        $correct = 2;
+        
+        foreach($answers6 as $key=>$value){
+            $answer = new Answer();
+            $answer->setTitle($value);
+            $question5->getAnswers()->add($answer);
+            $answer->setQuestion($question6);
+            $answer->setCorrect(($correct === $key));
+            $manager->persist($answer);
+        }
+        
+        $question6 = new Question();
+        $question6->setTitle('Value of $i ?');
+        $question6->setCode('<?php
+                                function increment(&$in) {
+                                    $in++;
+                                }
+                                $i = 1;
+                                increment(--$i);
+                                ?>');
+        $question6->setPoints(1);
+        $question6->setSection($manager->merge($this->getReference('section-1')));
+        $question6->setLevel($manager->merge($this->getReference('level-1')));
+        $question6->getTags()->add($manager->merge($this->getReference('tag-21')));
+        $manager->persist($question6);
+        
+        $answers6 = array("1", "3", "Syntax error","0", "2");
+        
+        $correct = 3;
+        
+        foreach($answers6 as $key=>$value){
+            $answer = new Answer();
+            $answer->setTitle($value);
+            $question5->getAnswers()->add($answer);
+            $answer->setQuestion($question6);
+            $answer->setCorrect(($correct === $key));
+            $manager->persist($answer);
+        }
+        
+        $question6 = new Question();
+        $question6->setTitle('To determine if the file pointer is at the end of a successfully opened file, use the...');
+        $question6->setPoints(1);
+        $question6->setSection($manager->merge($this->getReference('section-1')));
+        $question6->setLevel($manager->merge($this->getReference('level-1')));
+        $question6->getTags()->add($manager->merge($this->getReference('tag-21')));
+        $manager->persist($question6);
+        
+        $answers6 = array("eof() function.", "feof() function.", "\$file_end variable.","\$end variable.");
+        
+        $correct = 2;
+        
+        foreach($answers6 as $key=>$value){
+            $answer = new Answer();
+            $answer->setTitle($value);
+            $question5->getAnswers()->add($answer);
+            $answer->setQuestion($question6);
+            $answer->setCorrect(($correct === $key));
+            $manager->persist($answer);
+        }
+        
+        $question6 = new Question();
+        $question6->setTitle('Choose the resulting output of: ');
+        $question6->setCode('$x = array(1,3,2,3,7,8,9,7,3);        
+                             $y = array_count_values($x);
+                             echo $y[8];');
+        $question6->setPoints(1);
+        $question6->setSection($manager->merge($this->getReference('section-1')));
+        $question6->setLevel($manager->merge($this->getReference('level-1')));
+        $question6->getTags()->add($manager->merge($this->getReference('tag-21')));
+        $manager->persist($question6);
+        
+        $answers6 = array("43", "1", "3","7");
+        
+        $correct = 1;
+        
+        foreach($answers6 as $key=>$value){
+            $answer = new Answer();
+            $answer->setTitle($value);
+            $question5->getAnswers()->add($answer);
+            $answer->setQuestion($question6);
+            $answer->setCorrect(($correct === $key));
+            $manager->persist($answer);
+        }
+        
+        
+        $question6 = new Question();
+        $question6->setTitle('What is T_PAAMAYIM_NEKUDOTAYIM?');
+        $question6->setPoints(1);
+        $question6->setSection($manager->merge($this->getReference('section-1')));
+        $question6->setLevel($manager->merge($this->getReference('level-1')));
+        $question6->getTags()->add($manager->merge($this->getReference('tag-21')));
+        $manager->persist($question6);
+        
+        $answers6 = array("The scope resolution token ::", "The xor equal operator ^=",
+            "The goto token","The object operator ->", "The $ before a variable name");
+        
+        $correct = 0;
+        
+        foreach($answers6 as $key=>$value){
+            $answer = new Answer();
+            $answer->setTitle($value);
+            $question5->getAnswers()->add($answer);
+            $answer->setQuestion($question6);
+            $answer->setCorrect(($correct === $key));
+            $manager->persist($answer);
+        }
+        
+        
         $manager->flush();
     }
     

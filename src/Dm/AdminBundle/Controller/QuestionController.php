@@ -25,6 +25,7 @@ class QuestionController extends Controller {
             10
         );
         
+
         ///var_dump($this->container->getParameter('knp_paginator'));
         //exit;
 
