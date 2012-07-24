@@ -10,20 +10,39 @@ use Dm\QuestionBundle\Form\QuestionType;
 
 class QuestionController extends Controller {
 
-    public function indexAction($page = 0) {
+    public function indexAction($page) {
 
         $em = $this->getDoctrine()->getEntityManager();
+        
+        
+        $dql = "SELECT a FROM DmQuestionBundle:Question a";
+        $query = $em->createQuery($dql);
 
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', $page ),
+            10
+        );
+        
+        ///var_dump($this->container->getParameter('knp_paginator'));
+        //exit;
+
+        // parameters to template
+        //return compact('pagination');
+        /*
         $questions = $em->createQueryBuilder()
                 ->select('b')
                 ->from('DmQuestionBundle:Question', 'b')
                 ->getQuery()
                 ->getResult();
         
+         * 
+         */
         
         
 
-        return $this->render('DmAdminBundle:Question:index.html.twig', array('questions' => $questions));
+        return $this->render('DmAdminBundle:Question:index.html.twig', array('pagination'=>$pagination));
     }
 
     public function createAction() {

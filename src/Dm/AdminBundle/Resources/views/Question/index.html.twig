@@ -12,8 +12,8 @@
   <thead>
     <tr>
       <th></th>
-      <th>id</th>
-      <th>title</th>
+      <th>{{ pagination.sortable('Id', 'a.id')|raw }}</th>
+      <th>{{ pagination.sortable('Title', 'a.title')|raw }}</th>
       <th>section</th>
       <th>level</th>
       <th>points</th>
@@ -22,9 +22,9 @@
     </tr>
   </thead>
   <tbody>
-      {% for question in questions %}
+      {% for question in pagination %}
     <tr>
-        <td><input type="checkbox" value="{{question.id}}" name="{{ question.id }}"/></td>
+      <td><input type="checkbox" value="{{question.id}}" name="{{ question.id }}"/></td>
       <td>{{ question.id }}</td>
       <td><a href="{{ path('DmAdminBundle_question_edit', {'id': question.id}) }}" title="">{{ question.title }}</a></td>
       <td>{{ question.section }}</td>
@@ -43,6 +43,15 @@
     {% endfor %}
   </tbody>
 </table>
+    
+    
+
+{{ pagination.render('DmAdminBundle:Question:pagination.html.twig')|raw }}
+
+
+
+
+
 
 
 {% endblock %}
