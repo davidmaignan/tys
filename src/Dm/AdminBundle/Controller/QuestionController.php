@@ -10,7 +10,7 @@ use Dm\QuestionBundle\Form\QuestionType;
 
 class QuestionController extends Controller {
 
-    public function indexAction() {
+    public function indexAction($page = 0) {
 
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -19,6 +19,9 @@ class QuestionController extends Controller {
                 ->from('DmQuestionBundle:Question', 'b')
                 ->getQuery()
                 ->getResult();
+        
+        
+        
 
         return $this->render('DmAdminBundle:Question:index.html.twig', array('questions' => $questions));
     }

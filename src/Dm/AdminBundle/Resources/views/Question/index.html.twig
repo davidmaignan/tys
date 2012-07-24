@@ -31,13 +31,13 @@
       <td>{{ question.level }}</td>
       <td>{{ question.points }}</td>
       <td>
-          <time datetime="{{ question.createdAt|date('c') }}">{{ question.createdAt|date('Y-m-d') }}</time>
-      </td>
-      <td>
           {% for tag in question.tags %}
               {{ tag.name }}, 
           {% endfor %}
       
+      </td>
+      <td>
+          <time datetime="{{ question.createdAt|date('c') }}">{{ question.createdAt|date('Y-m-d') }}</time>
       </td>
     </tr>
     {% endfor %}

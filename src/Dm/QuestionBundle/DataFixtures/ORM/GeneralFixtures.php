@@ -56,7 +56,7 @@ class GeneralFixtures  extends AbstractFixture implements OrderedFixtureInterfac
         $this->addReference('level-4', $level4);
         
         //Tag
-        $tags = array(1=>'core','variables','type casting/juggling','operators','strings','arrays','object',
+        $tags = array(1=>'core','variables','type casting/juggling','operators','strings','arrays','object/class',
                         'design patterns', 'file system', 'namespace', 'PDO', 'configuration', 'session', 'regex',
                         'predefined variables', 'php.ini', 'output control', 'error handling', 'control structures',
                         'cookie', 'functions');
