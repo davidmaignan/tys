@@ -10,7 +10,7 @@ DmAdminBundle_question_create:
     
 DmAdminBundle_question_list:
     pattern:  /question/{page}
-    defaults: { _controller: DmAdminBundle:Question:index, page = 1 }    
+    defaults: { _controller: DmAdminBundle:Question:index,  page: 1 }    
 
 DmAdminBundle_homepage:
     pattern:  /
