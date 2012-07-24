@@ -8,6 +8,8 @@
 
 </div>
 
+ 
+
 <form action="{{ path('DmAdminBundle_question_create') }}" 
       method="post" {{ form_enctype(form) }} class="form-vertical" novalidate="novalidate">
 
@@ -95,8 +97,12 @@
        {% for answer in form.answers %}
         
         <div class="span4">
-        
-            {{ form_row(answer.title) }}
+            
+            {{ form_label(answer.title) }}
+            {{ form_widget(answer.title) }}
+            {{ form_errors(answer.title) }} 
+            
+            
             {{ form_row(answer.code) }}
             {{ form_row(answer.note) }}
             {{ form_row(answer.correct) }}

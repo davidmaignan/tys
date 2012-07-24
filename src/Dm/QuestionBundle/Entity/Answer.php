@@ -5,6 +5,12 @@ namespace Dm\QuestionBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\MinLength;
+use Symfony\Component\Validator\Constraints\MaxLength;
+
 /**
  * @ORM\Entity 
  * @ORM\Table(name="answer")
@@ -21,9 +27,9 @@ class Answer
     private $id;
     
     /**
-     *  @var text $value
+     *  @var text $title
      * 
-     *  @ORM\Column(name="value", type="text") 
+     *  @ORM\Column(name="title", type="text") 
      */
     private $title;
     
@@ -178,4 +184,5 @@ class Answer
     {
         return $this->correct;
     }
+
 }

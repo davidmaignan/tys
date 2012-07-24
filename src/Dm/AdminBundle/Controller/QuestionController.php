@@ -50,6 +50,9 @@ class QuestionController extends Controller {
         
         $question = new Question(); 
         
+        //$validator = $this->get('validator');
+        //$errors = $validator->validate($question);
+        
         $answer1 = new Answer();
         $answer1->setQuestion($question);
         
@@ -149,15 +152,12 @@ class QuestionController extends Controller {
                 $em->persist($question);
                 $em->flush();
                 
-                
+                $this->get('session')->setFlash('notice', 'Your changes were saved!');
             }
             
-            return $this->redirect($this->generateUrl('DmAdminBundle_question_edit', array('id' => $id)));
+            //return $this->redirect($this->generateUrl('DmAdminBundle_question_edit', array('id' => $id)));
             
         }
-        
-        
-        
         
         return $this->render('DmAdminBundle:Question:edit.html.twig', array('form' => $editForm->createView(), 'id'=>$id));
         

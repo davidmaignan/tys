@@ -4,9 +4,17 @@
 
 <div class="page-header">
     <a href="{{ path('DmAdminBundle_homepage') }}" class="btn" style="float: right;">Cancel</a>
-    <h2>Create a new question</h2>
+    <h2>Edit</h2>
 
 </div>
+
+
+{% if app.session.hasFlash('notice') %}
+    <div class="alert alert-success">
+        {{ app.session.flash('notice') }}
+    </div>
+{% endif %}
+
 
 <form action="{{ path('DmAdminBundle_question_edit', {'id': id}) }}" 
       method="post" {{ form_enctype(form) }} class="form-vertical" novalidate="novalidate">

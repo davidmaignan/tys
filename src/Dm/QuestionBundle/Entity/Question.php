@@ -6,6 +6,15 @@ use Dm\QuestionBundle\Entity\Tag;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\Collection;
+use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\MinLength;
+
+
 /**
  * Dm\QuestionBundle\Entity\Question
  *
@@ -28,6 +37,8 @@ class Question {
      * @var text $title
      *
      * @ORM\Column(name="title", type="text")
+     * 
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -48,18 +59,21 @@ class Question {
     /**
      * @ORM\ManyToOne(targetEntity="Section", inversedBy="questions")
      * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
+     * @Assert\NotBlank()
      */
     protected $section;
 
     /**
      * @ORM\ManyToOne(targetEntity="Level", inversedBy="questions")
      * @ORM\JoinColumn(name="level_id", referencedColumnName="id")
+     * @Assert\NotBlank()
      */
     private $level;
 
     /**
      * @ORM\ManyToOne(targetEntity="Type", inversedBy="questions")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     * @Assert\NotBlank()
      */
     private $type;
 
@@ -67,6 +81,9 @@ class Question {
      * @var integer $points
      *
      * @ORM\Column(name="points", type="integer")
+     * @Assert\NotBlank()
+     * @Assert\Min(limit = "1", message = "You need to attribute at least 1 point.")
+     * @Assert\Max(limit = 50, message = "You can attribute a maximum of 50 points.")
      */
     private $points;
 
@@ -78,6 +95,7 @@ class Question {
 
     /**
      * @ORM\OneToMany(targetEntity="answer", mappedBy="question", cascade={"persist, remove"},  orphanRemoval=false)
+     * 
      */
     public $answers;
     
@@ -369,4 +387,12 @@ class Question {
     {
         return $this->updatedAt;
     }
+    
+    
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        
+        
+    }
+    
 }

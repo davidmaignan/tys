@@ -23,11 +23,12 @@ class QuestionType extends AbstractType
         
         $builder->add('answers', 'collection', array('type' => new AnswerType(),'by_reference' => true));
     }
-
+    
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Dm\QuestionBundle\Entity\Question'
+            'data_class' => 'Dm\QuestionBundle\Entity\Question',
+            'cascade_validation' => true
         ));
     }
 
