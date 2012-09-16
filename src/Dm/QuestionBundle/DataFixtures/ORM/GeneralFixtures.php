@@ -9,6 +9,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Dm\QuestionBundle\Entity\Section;
 use Dm\QuestionBundle\Entity\Level;
 use Dm\QuestionBundle\Entity\Tag;
+use Dm\QuestionBundle\Entity\Type;
 
 class GeneralFixtures  extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -72,8 +73,10 @@ class GeneralFixtures  extends AbstractFixture implements OrderedFixtureInterfac
         }
         
         
-    
-    
+        $type = new Type();
+        $type->setName('radio');
+        $manager->persist($type);
+        $this->addReference('type', $type);
     
    
         

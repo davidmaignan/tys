@@ -14,9 +14,14 @@ class QuestionController extends Controller {
 
         $em = $this->getDoctrine()->getEntityManager();
         
+        //$levels = $em->getRepository('DmQuestionBundle:Level')->getLevels();
         
-        $dql = "SELECT a FROM DmQuestionBundle:Question a";
-        $query = $em->createQuery($dql);
+        $levelColors = ($this->container->getParameter('level_color'));
+        
+        $query = $em->getRepository('DmQuestionBundle:Question')->getQuestionQueryList();
+        
+        //$dql = "SELECT a FROM DmQuestionBundle:Question a";
+        //$query = $em->createQuery($dql);
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -43,7 +48,7 @@ class QuestionController extends Controller {
         
         
 
-        return $this->render('DmAdminBundle:Question:index.html.twig', array('pagination'=>$pagination));
+        return $this->render('DmAdminBundle:Question:index.html.twig', array('pagination'=>$pagination, 'levelColors'=>$levelColors));
     }
 
     public function createAction() {

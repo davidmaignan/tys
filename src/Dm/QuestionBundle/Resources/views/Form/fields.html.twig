@@ -1,0 +1,105 @@
+{# form_widget #}
+
+{% block form_widget %}
+{% spaceless %}
+    {% if compound %}
+        {{ block('form_widget_compound') }}
+    {% else %}
+        {{ block('form_widget_simple') }}
+    {% endif %}
+{% endspaceless %}
+{% endblock form_widget %}
+
+{# textarea_widget #}
+
+{% block textarea_widget %}
+{% spaceless %}
+<textarea style="width: 100%" rows="4" {{ block('widget_attributes') }}>{{ value }}</textarea>
+{% endspaceless %}
+{% endblock textarea_widget %}
+
+{# form_widget_simple #}
+
+{% block form_widget_simple %}
+{% spaceless %}
+    {% set type = type|default('text') %}
+    <input style="width: 100%;"  type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endspaceless %}
+{% endblock form_widget_simple %}
+
+{# choice_widget_collapsed #}    
+    
+{% block choice_widget_collapsed %}
+{% spaceless %}
+    <select style="width: 100%;" {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+        {% if empty_value is not none %}
+            <option value="">{{ empty_value|trans({}, translation_domain) }}</option>
+        {% endif %}
+        {% if preferred_choices|length > 0 %}
+            {% set options = preferred_choices %}
+            {{ block('choice_widget_options') }}
+            {% if choices|length > 0 and separator is not none %}
+                <option disabled="disabled">{{ separator }}</option>
+            {% endif %}
+        {% endif %}
+        {% set options = choices %}
+        {{ block('choice_widget_options') }}
+    </select>
+{% endspaceless %}
+{% endblock choice_widget_collapsed %}
+
+
+    
+    
+{# Errors #}
+
+{% block field_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+    <div class="alert alert-error">
+            {% for error in errors %}
+                {{ error.messageTemplate|trans(error.messageParameters, 'validators') }}
+            {% endfor %}
+    </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock field_errors %}
+
+{# Labels #}
+
+{% block form_label %}
+{% spaceless %}
+    {% if not compound %}
+        {% set label_attr = label_attr|merge({'for': id}) %}
+    {% endif %}
+    {% if required %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+    {% endif %}
+    {% if label is empty %}
+        {% set label = name|humanize %}
+    {% endif %}
+    <label class="control-label bold" {% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}</label>
+{% endspaceless %}
+{% endblock form_label %}
+    
+{% block repeated_row %}
+{% spaceless %}
+    {#
+No need to render the errors here, as all errors are mapped
+to the first child (see RepeatedTypeValidatorExtension).
+#}
+    {{ block('form_rows') }}
+{% endspaceless %}
+{% endblock repeated_row %}
+
+{% block form_row %}
+{% spaceless %}
+     <div class="control-group {% if errors|length > 0 %} error {% endif %}">
+        {{ form_label(form) }}
+        <div class="controls">
+            {{ form_widget(form) }}
+            {{ form_errors(form) }}
+        </div>        
+    </div>
+{% endspaceless %}
+{% endblock form_row %}    

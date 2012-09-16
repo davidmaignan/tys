@@ -2,7 +2,13 @@
 ---
 parameters:
     blogger_blog.emails.contact_email: contact@email.com
-  
+    
+    level_color:
+        beginner: success
+        intermediate: info
+        advanced: warning
+        expert: important
+ 
     knp_paginator:
         page_range: 5                      # default page range used in pagination control
         default_options:

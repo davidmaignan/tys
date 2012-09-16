@@ -3,7 +3,8 @@
 {% block body %}
 
 <div class="page-header">
-    <a href="{{ path('DmAdminBundle_question_create') }}" class="btn btn-primary" style="float: right;">Add new</a>
+    <a href="{{ path('DmAdminBundle_question_create') }}" class="btn btn-success pull-right">
+        <i class="icon-plus-sign icon-white"></i>Add new</a>
 <h2>Questions</h2>
 
 </div>
@@ -18,7 +19,8 @@
       <th>level</th>
       <th>points</th>
       <th>tags</th>
-      <th>createdAt</th>
+      <th>{{ pagination.sortable('Created At', 'a.createdAt')|raw }}</th>
+      <th class="span3">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -28,16 +30,24 @@
       <td>{{ question.id }}</td>
       <td><a href="{{ path('DmAdminBundle_question_edit', {'id': question.id}) }}" title="">{{ question.title }}</a></td>
       <td>{{ question.section }}</td>
-      <td>{{ question.level }}</td>
+      <td><span class="label label-{{  attribute(levelColors, question.level|lower)  }}">{{ question.level }}</span></td>
       <td>{{ question.points }}</td>
       <td>
           {% for tag in question.tags %}
-              {{ tag.name }}, 
+              {{ tag.name }}
           {% endfor %}
       
       </td>
       <td>
           <time datetime="{{ question.createdAt|date('c') }}">{{ question.createdAt|date('Y-m-d') }}</time>
+      </td>
+      <td>
+          <a href="{{ path('DmAdminBundle_question_edit', {'id': question.id}) }}" title="Edit" class="btn btn-info">
+              <i class="icon-edit icon-white"></i>Edit
+          </a>
+          <a href="{{ path('DmAdminBundle_question_create') }}" title="Remove" class="btn btn-danger">
+              <i class="icon-trash icon-white"></i>Remove
+          </a>
       </td>
     </tr>
     {% endfor %}

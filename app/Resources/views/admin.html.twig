@@ -14,20 +14,39 @@
         {% block stylesheets %}
         <link href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
         <link href="{{ asset('css/bootstrap-responsive.css') }}" type="text/css" rel="stylesheet" />
-        
+        <link href="{{ asset('css/customization.css') }}" type="text/css" rel="stylesheet" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        
-        <style type="text/css">
-        body {
-            padding-top: 60px;
-            padding-bottom: 40px;
-        }
-        .sidebar-nav {
-            padding: 9px 0;
-        }
-    </style>
-        
+        <style>
+                /* Special grid styles
+                -------------------------------------------------- */
+                .show-grid {
+                margin-top: 10px;
+                margin-bottom: 20px;
+                }
+                .show-grid [class*="span"] {
+                background-color: #eee;
+                text-align: center;
+                -webkit-border-radius: 3px;
+                    -moz-border-radius: 3px;
+                        border-radius: 3px;
+                min-height: 30px;
+                line-height: 30px;
+                }
+                .show-grid:hover [class*="span"] {
+                background: #ddd;
+                }
+                .show-grid .show-grid {
+                margin-top: 0;
+                margin-bottom: 0;
+                }
+                .show-grid .show-grid [class*="span"] {
+                background-color: #ccc;
+                }
+                
+                
+
+        </style>
     </head>
     <body>
         

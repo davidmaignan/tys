@@ -12,7 +12,7 @@ class QuestionAdmin extends Admin
   protected function configureFormFields(FormMapper $formMapper)
   {
     $formMapper
-      ->add('title')
+      ->add('title', null)
       ->add('code', null, array('required'=>false))
       ->add('note', null, array('required' => false))
       ->add('section', null, array('required' => false))

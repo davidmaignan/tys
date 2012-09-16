@@ -12,4 +12,26 @@ use Doctrine\ORM\EntityRepository;
  */
 class QuestionRepository extends EntityRepository
 {
+    
+    
+    public function getQuestionQueryList(){
+        
+        $qb = $this->createQueryBuilder('a')
+                   ->select('a, c','d', 'e','f')
+                   ->leftJoin('a.section', 'c')
+                   ->leftJoin('a.level', 'd')
+                   ->leftJoin('a.type', 'e')
+                   ->leftJoin('a.tags', 'f');
+        
+        //var_dump($qb->getQuery());
+        //exit;
+                   
+        return $qb->getQuery();
+        
+    }
+    
+    
+    public function getLevelColor($levels){
+        
+    }
 }
