@@ -1,9 +1,15 @@
 {
-    "hash": "33444fe2ee399c841f1c8673c0f8a7fb",
+    "hash": "075174708226fa9d1c39a502f32c66c2",
     "packages": [
         {
             "package": "doctrine/common",
             "version": "2.2.2"
+        },
+        {
+            "package": "doctrine/data-fixtures",
+            "version": "dev-master",
+            "source-reference": "779c3dfe446b6da893be87b908d6be28345d1e01",
+            "commit-date": "1341780535"
         },
         {
             "package": "doctrine/dbal",
@@ -14,8 +20,20 @@
         {
             "package": "doctrine/doctrine-bundle",
             "version": "dev-master",
+            "alias-pretty-version": "1.0.x-dev",
+            "alias-version": "1.0.9999999.9999999-dev"
+        },
+        {
+            "package": "doctrine/doctrine-bundle",
+            "version": "dev-master",
             "source-reference": "c9ea46d1f0c48bb88bb87b44214fe44e03c0c692",
             "commit-date": "1341405737"
+        },
+        {
+            "package": "doctrine/doctrine-fixtures-bundle",
+            "version": "dev-master",
+            "source-reference": "a5103a71bcd9b2f851ca6c16519a077784a3184a",
+            "commit-date": "1341472847"
         },
         {
             "package": "doctrine/orm",
@@ -50,6 +68,12 @@
             "version": "1.1.0"
         },
         {
+            "package": "knplabs/knp-components",
+            "version": "dev-master",
+            "source-reference": "99ea408dc2a7c3616e688ffe67e3248ece69ff0e",
+            "commit-date": "1339767068"
+        },
+        {
             "package": "knplabs/knp-menu",
             "version": "1.1.x-dev",
             "source-reference": "v1.1.2",
@@ -58,6 +82,12 @@
         {
             "package": "knplabs/knp-menu-bundle",
             "version": "v1.1.0"
+        },
+        {
+            "package": "knplabs/knp-paginator-bundle",
+            "version": "dev-master",
+            "source-reference": "427db8350ae57659645ba35480bbe1194c1c695f",
+            "commit-date": "1339165136"
         },
         {
             "package": "kriswallsmith/assetic",
@@ -204,8 +234,8 @@
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "source-reference": "17e2c36a58c4b17a58a3befa783d16ac19776df5",
-            "commit-date": "1342275003"
+            "source-reference": "657de7bdeb680815e0df95f63da9f81e1533d2ea",
+            "commit-date": "1342953178"
         }
     ],
     "packages-dev": null,
@@ -223,6 +253,8 @@
         "sensio/framework-extra-bundle": 20,
         "sensio/generator-bundle": 20,
         "sonata-project/admin-bundle": 20,
-        "sonata-project/doctrine-orm-admin-bundle": 20
+        "sonata-project/doctrine-orm-admin-bundle": 20,
+        "doctrine/doctrine-fixtures-bundle": 20,
+        "knplabs/knp-paginator-bundle": 20
     }
 }

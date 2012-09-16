@@ -1,0 +1,188 @@
+{% extends 'DmAdminBundle::layout.html.twig' %}
+
+{% form_theme form 'DmQuestionBundle:Form:fields.html.twig' %}
+
+{% block body %}
+
+<div class="page-header">
+    <a href="{{ path('DmAdminBundle_homepage') }}" class="btn pull-right">Cancel</a>
+    <h2>Edit</h2>
+
+</div>
+
+
+{% if app.session.hasFlash('notice') %}
+<div class="alert alert-success">
+        {{ app.session.flash('notice') }}
+    </div>
+{% endif %}
+
+    <form class="form-horizontal" hidden>
+        <fieldset>
+
+            <div class="row-fluid">
+
+                <div class="span7">
+                    <div class="control-group">
+                        <label class="control-label" for="input02"><strong>Title</strong></label>
+                        <div class="controls">
+                            <textarea class="input-xlarge" id="input02" style="width: 100%;" rows="5"></textarea>
+
+                            <div class="alert alert-error">
+                                This field is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="input02"><strong>Code</strong></label>
+                        <div class="controls">
+                            <textarea class="input-xlarge" id="input02" style="width: 100%;" rows="5"></textarea>
+
+                            <div class="alert alert-error">
+                                This field is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="input02"><strong>Note</strong></label>
+                        <div class="controls">
+                            <textarea class="input-xlarge" id="input02" style="width: 100%;" rows="5"></textarea>
+
+                            <div class="alert alert-error">
+                                This field is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="span5">
+                    <div class="control-group">
+                        <label class="control-label" for="select01"><strong>Section</strong></strong></label>
+                        <div class="controls">
+                            <select id="select01" style="width: 100%;">
+                                <option>something</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <div class="alert alert-error">
+                                This field is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="select01"><strong>Level</strong></label>
+                        <div class="controls">
+                            <select id="select01" style="width: 100%;">
+                                <option>something</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <div class="alert alert-error">
+                                This field is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="select01"><strong>Type</strong></label>
+                        <div class="controls">
+                            <select id="select01" style="width: 100%;">
+                                <option>something</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <div class="alert alert-error">
+                                This field is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="appendedInput"><strong>Points</strong></label>
+                        <div class="controls">
+                            <div class="input-append">
+                                <input class="span5" id="appendedInput" size="16" type="text"><span class="add-on">pts</span>
+                            </div>
+                            <div class="alert alert-error">
+                                This field is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>    
+    </form>
+
+
+    <form action="{{ path('DmAdminBundle_question_edit', {'id': id}) }}" 
+          method="post" {{ form_enctype(form) }} class="form-horizontal" 
+          novalidate="novalidate">
+
+        <div class="row-fluid">
+
+        <div class="span7 well">
+            {{ form_row(form.title) }}
+            {{ form_row(form.code) }}
+            {{ form_row(form.note) }}
+       </div>
+
+       <div class="span5">
+            {{ form_row(form.section) }}
+            {{ form_row(form.level) }}
+            {{ form_row(form.type) }}
+            {{ form_row(form.points) }}
+            {{ form_row(form.tags) }}
+        </div>
+
+    </div>
+    
+    <div class="page-header">
+        <h2>Answers</h2>
+    </div>
+    
+    <div class="row-fluid">
+       {% for answer in form.answers %}
+        <div class="span6 well">
+            <h3>Answer {{ loop.index }}</h3>
+            {{ form_row(answer.title) }}
+            {{ form_row(answer.code) }}
+            {{ form_row(answer.note) }}
+            {{ form_row(answer.correct) }}
+        </div>
+            
+        {% if loop.index%2 == 0 %} 
+            </div><div class="row-fluid">
+        {% endif %}
+            
+        {% endfor %}
+    </div>
+    
+    
+    <div class="well pull-right">
+            <a class="btn" href="{{ path('DmAdminBundle_question_list') }}">
+                <i class="icon-minus-sign"></i>Cancel</a>
+            <button type="submit" class="btn btn-success"> 
+                <i class="icon-ok-sign icon-white"></i>Save changes 
+            </button>
+            
+    </div>
+    
+    {{ form_rest(form) }}
+
+</form>
+
+{% endblock %}
+
+
+{% block stylesheets %}
+
+{{ parent() }}
+
+
+
+{% endblock %}

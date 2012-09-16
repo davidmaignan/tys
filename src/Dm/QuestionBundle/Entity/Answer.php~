@@ -134,4 +134,48 @@ class Answer
     {
         return $this->code;
     }
+
+    /**
+     * Set note
+     *
+     * @param text $note
+     * @return Answer
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return text 
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set correct
+     *
+     * @param boolean $correct
+     * @return Answer
+     */
+    public function setCorrect($correct)
+    {
+        $this->correct = $correct;
+        return $this;
+    }
+
+    /**
+     * Get correct
+     *
+     * @return boolean 
+     */
+    public function getCorrect()
+    {
+        return $this->correct;
+    }
 }

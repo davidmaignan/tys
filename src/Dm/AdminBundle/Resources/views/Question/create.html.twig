@@ -1,86 +1,78 @@
 {% extends 'DmAdminBundle::layout.html.twig' %}
 
+{% form_theme form 'DmQuestionBundle:Form:fields.html.twig' %}
+
 {% block body %}
 
 <div class="page-header">
-    <a href="{{ path('DmAdminBundle_homepage') }}" class="btn" style="float: right;">Cancel</a>
+    <a href="{{ path('DmAdminBundle_question_list') }}" class="btn pull-right">
+        <i class="icon-minus-sign"></i>Cancel
+    </a>
     <h2>Create a new question</h2>
 
 </div>
 
 <form action="{{ path('DmAdminBundle_question_create') }}" 
-      method="post" {{ form_enctype(form) }} class="form-vertical" novalidate="novalidate">
+      method="post" {{ form_enctype(form) }} 
+      class="form-horizontal" 
+      novalidate="novalidate">
 
     <div class="row-fluid">
 
-        <div class="span8">
-
-            <div class="control-group">
-
-                
-                {{ form_label(form.title) }}
-                {{ form_widget(form.title) }}
-                {{ form_errors(form.title) }}
-                
-
-            </div>
-            
-            <div class="control-group">
-
-                
-                {{ form_label(form.code) }}
-                {{ form_widget(form.code) }}
-                {{ form_errors(form.code) }}
-                
-
-            </div>
-            
-            <div class="control-group">
-
-                
-                {{ form_label(form.note) }}
-                {{ form_widget(form.note) }}
-                {{ form_errors(form.note) }}
-                
-
-            </div>
-
+        <div class="span7 well">
+            {{ form_row(form.title) }}
+            {{ form_row(form.code) }}
+            {{ form_row(form.note) }}
        </div>
 
+       <div class="span5">
+            {{ form_row(form.section) }}
+            {{ form_row(form.level) }}
+            {{ form_row(form.type) }}
+            {{ form_row(form.points) }}
+            {# form_row(form.tags) #}
+               
+            {% macro select2(name, label, choices, help, value) %}
+            <div class="control-group">
+                <label class="control-label" for="{{ name }}">{{ label }}</label>
+                <div class="controls">
+                    {% for choice in choices %}
+                        {% if value is not empty and value == choice.id %}
+                            <option value="{{ choice.id }}" selected="selected">{{ choice.code }} - {{ choice.name }}</option>
+                        {% else %}
+                            <option value="{{ choice.id }}">{{ choice.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                    <p class="help-block">{{ help }}</p>
+                </div>
+            </div>
+            {% endmacro %}
 
-    <div class="span4">
-
-        <div class="control-group">
-            {{ form_label(form.section) }}
-            {{ form_widget(form.section) }}
-            {{ form_errors(form.section) }}       
+               
+            {% macro select(obj) %}
+            <div class="control-group">
+                <label class="control-label bold" for="{{ obj.name }}">{{ obj.name }}</label>
+                <div class="controls">
+                    {% for choice in obj.vars.choices %}
+                        <span class="label floating">
+                            <i class="icon-plus icon-white"></i>{{choice.label}}
+                        </span>
+                    {% endfor %}
+                </div>
+            </div>    
+            {# dump(obj.name) #}
+            {# dump(obj.vars.id) #}
+            {# dump(obj.vars.choices) #}
+            
+            
+            {# dump(obj) #}
+            
+                
+            
+            {% endmacro %}
+            <p>{{ _self.select(form.tags) }}</p> 
+               
         </div>
-        
-        <div class="control-group">
-            {{ form_label(form.level) }}
-            {{ form_widget(form.level) }}
-            {{ form_errors(form.level) }}        
-        </div>
-        
-        <div class="control-group">
-            {{ form_label(form.type) }}
-            {{ form_widget(form.type) }}
-            {{ form_errors(form.type) }}
-        </div>
-        
-        <div class="control-group">
-            {{ form_label(form.points) }}
-            {{ form_widget(form.points) }}
-            {{ form_errors(form.points) }}    
-        </div>
-        
-        <div class="control-group tags">
-            {{ form_label(form.tags) }}
-            {{ form_widget(form.tags) }}
-            {{ form_errors(form.tags) }}      
-        </div>
-
-    </div>
 
     </div>
     
@@ -89,27 +81,30 @@
     </div>
     
     <div class="row-fluid">
-        
-        
-        
        {% for answer in form.answers %}
-        
-        <div class="span4">
-        
+        <div class="span6 well">
+            <h3>Answer {{ loop.index }}</h3>
             {{ form_row(answer.title) }}
             {{ form_row(answer.code) }}
             {{ form_row(answer.note) }}
             {{ form_row(answer.correct) }}
-            
         </div>
+            
+        {% if loop.index%2 == 0 %} 
+            </div><div class="row-fluid">
+        {% endif %}
+            
         {% endfor %}
-    
     </div>
     
     
-    <div class="well">
-            <button type="submit" class="btn btn-primary">Save changes</button>
-            <button class="btn">Cancel</button>
+    <div class="well pull-right">
+            <a class="btn" href="{{ path('DmAdminBundle_question_list') }}">
+                <i class="icon-minus-sign"></i>Cancel</a>
+            <button type="submit" class="btn btn-success"> 
+                <i class="icon-ok-sign icon-white"></i>Save changes 
+            </button>
+            
     </div>
     
     {{ form_rest(form) }}
@@ -123,13 +118,6 @@
 
 {{ parent() }}
 
-<style>
-.tags input[type="checkbox"]{
-    float: left;
-    padding-right: 10px;
-}
-    
-</style>
 
 
 {% endblock %}

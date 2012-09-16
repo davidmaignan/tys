@@ -1,0 +1,26 @@
+## YAML Template.
+---
+
+Dm\QuestionBundle\Entity\Question:
+    properties:
+        title:
+            - NotBlank: ~
+        section:
+            - NotBlank: ~
+        level:
+            - NotBlank: ~
+        type:
+            - NotBlank: ~ 
+        points:
+            - NotBlank: ~ 
+            - Min: { limit: 0, message: You need to attribute at least 1 point. }
+            - Max: { limit: 50, message: You can attribute a maximum of 50 points. }
+            
+Dm\QuestionBundle\Entity\Answer:
+    properties:
+        title:
+            - NotBlank: ~
+            
+
+
+            

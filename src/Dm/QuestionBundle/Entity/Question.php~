@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="question")
  * @ORM\Entity(repositoryClass="Dm\QuestionBundle\Entity\QuestionRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Question {
 
@@ -79,10 +80,26 @@ class Question {
      * @ORM\OneToMany(targetEntity="answer", mappedBy="question", cascade={"persist, remove"},  orphanRemoval=false)
      */
     public $answers;
+    
+    
+    /**
+     * @var datetime $createdAt
+     * @ORM\Column(name="createdAt", type="datetime") 
+     */
+    private $createdAt;
+    
+    /**
+     * @var datetime $updatedAt
+     * @ORM\Column(name="updatedAt", type="datetime") 
+     */
+    private $updatedAt;
 
     public function __construct() {
         $this->tags = new ArrayCollection();
         $this->answers = new ArrayCollection();
+        
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
     }
 
     public function __toString() {
@@ -298,5 +315,14 @@ class Question {
     public function getAnswers()
     {
         return $this->answers;
+    }
+    
+    
+    /**
+     * @ORM\preUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+       $this->setUpdatedAt(new \DateTime());
     }
 }

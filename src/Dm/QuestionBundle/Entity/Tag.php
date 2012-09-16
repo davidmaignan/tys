@@ -10,7 +10,7 @@ use Dm\QuestionBundle\Entity\Question;
 /**
  * Dm\QuestionBundle\Entity\Tag
  *
- * @ORM\Table()
+ * @ORM\Table(name="tag")
  * @ORM\Entity(repositoryClass="Dm\QuestionBundle\Entity\TagRepository")
  */
 class Tag {

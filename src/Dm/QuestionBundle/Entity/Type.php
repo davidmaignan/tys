@@ -9,7 +9,7 @@ use Dm\QuestionBundle\Entity\Question;
 /**
  * Dm\QuestionBundle\Entity\Type
  *
- * @ORM\Table()
+ * @ORM\Table(name="type")
  * @ORM\Entity(repositoryClass="Dm\QuestionBundle\Entity\TypeRepository")
  */
 class Type

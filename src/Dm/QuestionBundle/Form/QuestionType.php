@@ -11,7 +11,9 @@ class QuestionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
+            ->add('title', 'text', array(
+                  'help' => 'test to translate',
+            ))
             ->add('code')
             ->add('note')
             ->add('points')
@@ -23,11 +25,12 @@ class QuestionType extends AbstractType
         
         $builder->add('answers', 'collection', array('type' => new AnswerType(),'by_reference' => true));
     }
-
+    
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Dm\QuestionBundle\Entity\Question'
+            'data_class' => 'Dm\QuestionBundle\Entity\Question',
+            'cascade_validation' => true
         ));
     }
 

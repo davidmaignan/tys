@@ -1,10 +1,16 @@
+DmAdminBundle_question_edit:
+    pattern:  /question/edit/{id}
+    defaults: { _controller: DmAdminBundle:Question:edit }
+    requirements:
+        id:  \d+
+
 DmAdminBundle_question_create:
-    pattern:  /question/create
+    pattern:  /question/create/
     defaults: { _controller: DmAdminBundle:Question:create }
     
 DmAdminBundle_question_list:
-    pattern:  /question
-    defaults: { _controller: DmAdminBundle:Question:index }    
+    pattern:  /question/{page}
+    defaults: { _controller: DmAdminBundle:Question:index,  page: 1 }    
 
 DmAdminBundle_homepage:
     pattern:  /
