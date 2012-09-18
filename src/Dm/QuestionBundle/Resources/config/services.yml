@@ -38,7 +38,7 @@ services:
         arguments: [null, Dm\QuestionBundle\Entity\Type, SonataAdminBundle:CRUD]
         
         
-    form.type_extension.help_message:
-        class: Dm\QuestionBundle\Form\HelpMessageTypeExtension
-        tags:
-          - { name: "form.type_extension", alias: "field" }
+    #form.type_extension.help_message:
+    #    class: Dm\QuestionBundle\Form\HelpMessageTypeExtension
+    #    tags:
+    #      - { name: "form.type_extension", alias: "field" }
