@@ -94,7 +94,7 @@ class Question {
     private $tags;
 
     /**
-     * @ORM\OneToMany(targetEntity="answer", mappedBy="question", cascade={"persist, remove"},  orphanRemoval=false)
+     * @ORM\OneToMany(targetEntity="answer", mappedBy="question", cascade={"remove"},  orphanRemoval=false)
      * 
      */
     public $answers;
