@@ -20,7 +20,8 @@
         "jms/di-extra-bundle": "1.1.*",
         "friendsofsymfony/user-bundle": "*",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "knplabs/knp-paginator-bundle": "dev-master"
+        "knplabs/knp-paginator-bundle": "dev-master",
+        "behat/symfony2-extension": "*"
     },
     "scripts": {
         "post-install-cmd": [
