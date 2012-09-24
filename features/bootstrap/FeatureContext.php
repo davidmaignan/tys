@@ -7,14 +7,11 @@ use Behat\Behat\Context\ClosuredContextInterface,
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 
-use Acme\DemoBundle\Entity\Product;
-use Acme\DemoBundle\Entity\Category;
-
 //
 // Require 3rd-party libraries here:
 //
-   require_once 'PHPUnit/Autoload.php';
-   require_once 'PHPUnit/Framework/Assert/Functions.php';
+//   require_once 'PHPUnit/Autoload.php';
+//   require_once 'PHPUnit/Framework/Assert/Functions.php';
 //
 
 /**
@@ -31,6 +28,7 @@ class FeatureContext extends BehatContext
     public function __construct(array $parameters)
     {
         // Initialize your context here
+        var_dump($parameters);
     }
 
 //
@@ -44,39 +42,36 @@ class FeatureContext extends BehatContext
 //        doSomethingWith($argument);
 //    }
 //
-    
     /**
-     * @Given /I have a category "([^"]*)"/ 
+     * @Given /^I have a category "([^"]*)"$/
      */
-    public function iHaveACategory($name)
+    public function iHaveACategory($arg1)
     {
-        $category = new \Acme\DemoBundle\Entity\Category();
-        $category->setName($name);
-        $this->getEntityManager()->persist($category);
-        $this->getEntityManager()->flush();
-        
+        throw new PendingException();
     }
-    
+
     /**
-     * @Given /I have a product "([^"]*)"/ 
+     * @Given /^I have a product "([^"]*)"$/
      */
-    public function iHaveAProduct($name)
+    public function iHaveAProduct($arg1)
     {
-        $product = new \Acme\DemoBundle\Entity\Product();
-        $product->setName($name);
-        
-        $this->getEntityManager()->persist($product);
-        $this->getEntityManager()->flush();
+        throw new PendingException();
     }
-    
+
     /**
-     * Returns the Doctrine entity manager
-     * 
-     * @return Doctrine\ORM\EntityManager 
+     * @When /^I add product "([^"]*)" to category "([^"]*)"$/
      */
-    protected function getEntityManager()
+    public function iAddProductToCategory($arg1, $arg2)
     {
-        return $this->getContainer()->get('doctrine')->getEntityManager();
+        throw new PendingException();
     }
-    
+
+    /**
+     * @Then /^I should find product "([^"]*)" in category "([^"]*)"$/
+     */
+    public function iShouldFindProductInCategory($arg1, $arg2)
+    {
+        throw new PendingException();
+    }
+
 }
