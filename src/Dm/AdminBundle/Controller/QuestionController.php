@@ -30,34 +30,13 @@ class QuestionController extends Controller {
             10
         );
         
-
-        ///var_dump($this->container->getParameter('knp_paginator'));
-        //exit;
-
-        // parameters to template
-        //return compact('pagination');
-        /*
-        $questions = $em->createQueryBuilder()
-                ->select('b')
-                ->from('DmQuestionBundle:Question', 'b')
-                ->getQuery()
-                ->getResult();
-        
-         * 
-         */
-        
-        
-
         return $this->render('DmAdminBundle:Question:index.html.twig', array('pagination'=>$pagination, 'levelColors'=>$levelColors));
     }
 
     public function createAction() {
         
         $question = new Question(); 
-        
-        //$validator = $this->get('validator');
-        //$errors = $validator->validate($question);
-        
+
         $answer1 = new Answer();
         $answer1->setQuestion($question);
         

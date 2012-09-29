@@ -25,6 +25,8 @@ class AppKernel extends Kernel
             new Dm\AdminBundle\DmAdminBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Dm\SiteBundle\DmSiteBundle(),
+            new Security\AuthenticateBundle\SecurityAuthenticateBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
