@@ -1,0 +1,7 @@
+parameters:
+#    dm_site.example.class: Dm\SiteBundle\Example
+
+services:
+#    dm_site.example:
+#        class: %dm_site.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

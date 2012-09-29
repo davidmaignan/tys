@@ -1,0 +1,7 @@
+parameters:
+#    security_authenticate.example.class: Security\AuthenticateBundle\Example
+
+services:
+#    security_authenticate.example:
+#        class: %security_authenticate.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

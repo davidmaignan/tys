@@ -1,3 +1,11 @@
+security_authenticate:
+    resource: "@SecurityAuthenticateBundle/Resources/config/routing.yml"
+    prefix:   /
+
+DmSiteBundle:
+    resource: "@DmSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
 DmAdminBundle:
     resource: "@DmAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
@@ -8,7 +16,7 @@ DmUserBundle:
 
 DmQuestionBundle:
     resource: "@DmQuestionBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /question
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
