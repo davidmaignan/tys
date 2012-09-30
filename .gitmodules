@@ -4,3 +4,6 @@
 [submodule "vendor/bundles/WhiteOctober/PagerfantaBundle"]
 	path = vendor/bundles/WhiteOctober/PagerfantaBundle
 	url = http://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
+[submodule "vendor/bundles/Liip/FunctionalTestBundle"]
+	path = vendor/bundles/Liip/FunctionalTestBundle
+	url = git://github.com/liip/LiipFunctionalTestBundle.git
