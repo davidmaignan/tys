@@ -6,7 +6,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Dm\QuestionBundle\Entity\User;
+use Security\AuthenticateBundle\Entity\User;
 
 class UserFixtures implements FixtureInterface, ContainerAwareInterface
 {
