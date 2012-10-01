@@ -29,7 +29,8 @@
         "behat/mink-selenium2-driver":   "*",
         "behat/mink-goutte-driver": "dev-master",
         "behat/mink-sahi-driver": "dev-master",
-        "behat/mink-zombie-driver": "dev-master"
+        "behat/mink-zombie-driver": "dev-master",
+        "liip/functional-test-bundle": "dev-master"
         
     },
     "scripts": {

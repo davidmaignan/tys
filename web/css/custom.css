@@ -1,0 +1,17 @@
+/* 
+    Document   : custom
+    Created on : Sep 30, 2012, 1:41:23 PM
+    Author     : david
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#login-drop-menu > a.dropdown-toggle{
+    color: #999999;
+    float: left;
+    line-height: 19px;
+    padding: 9px 10px 11px;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    display: block;
+}

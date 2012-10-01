@@ -2,12 +2,22 @@
 
 namespace Security\AuthenticateBundle\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+//use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+use Liip\FunctionalTestBundle\Test\WebTestCase;
 
 class LoginControllerTest extends WebTestCase
 {
+    
+    
     public function testAuthenticateLogin_goodLogin() {
         $client = static::createClient();
+        
+         $classes = array(
+             'Security\AuthenticateBundle\DataFixtures\ORM\UserFixtures',
+        );
+
+        $this->loadFixtures($classes);
 
         $client->followRedirects(true);
         $crawler = $client->request('GET', '/');
