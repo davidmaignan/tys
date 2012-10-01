@@ -49,16 +49,3 @@ $input = new ArrayInput(array(
     'command'=>'doctrine:schema:create',
 ));
 $command->run($input, new ConsoleOutput());
-
-function executeCommand($application, $command, Array $options = array()) {
-        $options["-e"] = "test";
-        $options["-q"] = null;
-        $options = array_merge($options, array('command' => $command));
-        
-        var_dump($options);
-        exit;
-        return $application->run(new ArrayInput($options));
-}
-
-executeCommand($application, "doctrine:fixtures:load", 
-        array("--fixtures" => __DIR__ . "/../DataFixtures/ORM/test"));

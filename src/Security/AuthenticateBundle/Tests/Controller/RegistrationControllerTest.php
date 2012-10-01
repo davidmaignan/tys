@@ -2,7 +2,9 @@
 
 namespace Security\AuthenticateBundle\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+//use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+use Liip\FunctionalTestBundle\Test\WebTestCase;
 
 class RegistrationControllerTest extends WebTestCase
 {
@@ -16,8 +18,8 @@ class RegistrationControllerTest extends WebTestCase
         
         $form = $crawler->selectButton('_register')->form();
         
-        $form['fos_user_registration_form[username]'] = 'afadsfasdf';
-        $form['fos_user_registration_form[email]'] = 'teadsfasdfasst@test.com';
+        $form['fos_user_registration_form[username]'] = 'afadsfasdffdgfgd';
+        $form['fos_user_registration_form[email]'] = 'teadsfasdfasstfgd@test.com';
         $form['fos_user_registration_form[plainPassword][first]'] = 'camper';
         $form['fos_user_registration_form[plainPassword][second]'] = 'camper';
 

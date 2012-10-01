@@ -1,6 +1,6 @@
 <?php
 
-namespace Dm\QuestionBundle\DataFixtures\ORM;
+namespace Security\AuthenticateBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\FixtureInterface;

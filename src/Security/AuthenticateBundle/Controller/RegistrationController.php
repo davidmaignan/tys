@@ -53,6 +53,15 @@ class RegistrationController extends ContainerAware
             if ($authUser) {
                 $this->authenticateUser($user, $response);
             }
+            
+            //Send email
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Contact enquiry from symblog')
+                ->setFrom('enquiries@symblog.co.uk')
+                ->setTo('email@email.com')
+                ->setBody($this->container->get('templating')->renderResponse('SecurityAuthenticateBundle:Registration:registration.txt.twig', array('user' => $user)));
+
+            $this->container->get('mailer')->send($message);
 
             return $response;
         }
