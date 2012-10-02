@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Dm\SiteBundle\DmSiteBundle(),
             new Security\AuthenticateBundle\SecurityAuthenticateBundle(),
+            new Mailer\MailBundle\MailerMailBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
