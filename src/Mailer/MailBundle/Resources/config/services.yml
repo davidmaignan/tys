@@ -5,3 +5,6 @@ services:
 #    mailer_mail.example:
 #        class: %mailer_mail.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    my_mailer:
+        class:  Mailer\MailBundle\Entity\Mailer
+        arguments:  [sendmail]

@@ -8,6 +8,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('DmSiteBundle:Default:index.html.twig');
+        $mailer = $this->get('my_mailer');
+        return $this->render('DmSiteBundle:Default:index.html.twig', array('mailer'=>$mailer));
     }
 }
