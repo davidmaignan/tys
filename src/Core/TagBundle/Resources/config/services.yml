@@ -1,0 +1,7 @@
+parameters:
+#    core_tag.example.class: Core\TagBundle\Example
+
+services:
+#    core_tag.example:
+#        class: %core_tag.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

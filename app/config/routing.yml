@@ -1,3 +1,23 @@
+core_type:
+    resource: "@CoreTypeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+core_level:
+    resource: "@CoreLevelBundle/Resources/config/routing.yml"
+    prefix:   /
+
+core_section:
+    resource: "@CoreSectionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+core_tag:
+    resource: "@CoreTagBundle/Resources/config/routing.yml"
+    prefix:   /
+
+core_answer:
+    resource: "@CoreAnswerBundle/Resources/config/routing.yml"
+    prefix:   /
+
 core_question:
     resource: "@CoreQuestionBundle/Resources/config/routing.yml"
     prefix:   /

@@ -30,6 +30,11 @@ class AppKernel extends Kernel
             new Mailer\MailBundle\MailerMailBundle(),
             new Mailer\EmailBundle\MailerEmailBundle(),
             new Core\QuestionBundle\CoreQuestionBundle(),
+            new Core\AnswerBundle\CoreAnswerBundle(),
+            new Core\TagBundle\CoreTagBundle(),
+            new Core\SectionBundle\CoreSectionBundle(),
+            new Core\LevelBundle\CoreLevelBundle(),
+            new Core\TypeBundle\CoreTypeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
