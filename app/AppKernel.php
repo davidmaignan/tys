@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new Security\AuthenticateBundle\SecurityAuthenticateBundle(),
             new Mailer\MailBundle\MailerMailBundle(),
             new Mailer\EmailBundle\MailerEmailBundle(),
+            new Core\QuestionBundle\CoreQuestionBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
