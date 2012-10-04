@@ -57,21 +57,21 @@ class Question {
     private $note;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Section", inversedBy="questions")
+     * @ORM\ManyToOne(targetEntity="Core\SectionBundle\Entity\Section", inversedBy="questions")
      * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
      * @Assert\NotBlank()
      */
     protected $section;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Level", inversedBy="questions")
+     * @ORM\ManyToOne(targetEntity="Core\LevelBundle\Entity\Level", inversedBy="questions")
      * @ORM\JoinColumn(name="level_id", referencedColumnName="id")
      * @Assert\NotBlank()
      */
     private $level;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Type", inversedBy="questions")
+     * @ORM\ManyToOne(targetEntity="Core\TypeBundle\Entity\Type", inversedBy="questions")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      * @Assert\NotBlank()
      */
@@ -88,13 +88,13 @@ class Question {
     private $points;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="Questions")
+     * @ORM\ManyToMany(targetEntity="Core\TagBundle\Entity\Tag", inversedBy="Questions")
      * @ORM\JoinTable(name="question_tags")
      */
     private $tags;
 
     /**
-     * @ORM\OneToMany(targetEntity="answer", mappedBy="question", cascade={"remove"},  orphanRemoval=false)
+     * @ORM\OneToMany(targetEntity="Core\AnswerBundle\Entity\Answer", mappedBy="question", cascade={"remove"},  orphanRemoval=false)
      * 
      */
     public $answers;
@@ -276,7 +276,7 @@ class Question {
     /**
      * Add tags
      *
-     * @param Dm\QuestionBundle\Entity\Tag $tags
+     * @param Core\TagBundle\Entity\Tag $tags
      * @return Question
      */
     public function addTag(Tag $tags) {
@@ -287,7 +287,7 @@ class Question {
     /**
      * Remove tags
      *
-     * @param <variableType$tags
+     * @param $tags
      */
     public function removeTag(Tag $tags) {
         $this->tags->removeElement($tags);
@@ -306,7 +306,7 @@ class Question {
     /**
      * Add answers
      *
-     * @param Dm\QuestionBundle\Entity\answer $answers
+     * @param Core\AnswerBundle\Entity\answer $answers
      * @return Question
      */
     public function addAnswer(\Dm\QuestionBundle\Entity\answer $answers)
@@ -318,7 +318,7 @@ class Question {
     /**
      * Remove answers
      *
-     * @param <variableType$answers
+     * @param $answers
      */
     public function removeAnswer(\Dm\QuestionBundle\Entity\answer $answers)
     {

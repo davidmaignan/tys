@@ -35,7 +35,7 @@ class Answer
     
     
     /**
-    * @ORM\ManyToOne(targetEntity="question", inversedBy="answers", cascade={"persist"})
+    * @ORM\ManyToOne(targetEntity="Core\QuestionBundle\Entity\Question", inversedBy="answers", cascade={"persist"})
     * @ORM\JoinColumn(name="question_id", referencedColumnName="id", onDelete="CASCADE")
     */ 
     private $question;
@@ -100,10 +100,10 @@ class Answer
     /**
      * Set question
      *
-     * @param Dm\QuestionBundle\Entity\question $question
+     * @param Core\QuestionBundle\Entity\Question $question
      * @return Answer
      */
-    public function setQuestion(\Core\QuestionBundle\Entity\question $question = null)
+    public function setQuestion(\Core\QuestionBundle\Entity\Question $question = null)
     {
         $this->question = $question;
         return $this;
@@ -112,7 +112,7 @@ class Answer
     /**
      * Get question
      *
-     * @return Core\QuestionBundle\Entity\question 
+     * @return Core\QuestionBundle\Entity\Question 
      */
     public function getQuestion()
     {
