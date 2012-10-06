@@ -1,6 +1,6 @@
 <?php
 
-namespace Dm\QuestionBundle\Form;
+namespace Core\AnswerBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

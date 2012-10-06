@@ -1,0 +1,7 @@
+parameters:
+#    library_bootstrap.example.class: Library\BootstrapBundle\Example
+
+services:
+#    library_bootstrap.example:
+#        class: %library_bootstrap.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

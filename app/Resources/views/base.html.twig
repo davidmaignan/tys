@@ -12,9 +12,9 @@
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         
-         {% stylesheets output="css/sitebase.css" filter=''
-            '@DmSiteBundle/Resources/public/css/bootstrap.css'
-            '@DmSiteBundle/Resources/public/css/bootstrap-responsive.css'
+        {% stylesheets output="css/sitebase.css" filter=''
+            '@LibraryBootstrapBundle/Resources/public/css/bootstrap.css'
+            '@LibraryBootstrapBundle/Resources/public/css/bootstrap-responsive.css'
         %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
@@ -69,23 +69,19 @@
         <div class="container">     
             {% block body %}{% endblock %}
             </div>    
+        
+        
+        {% javascripts output="js/sitebase.js" filter=''
+            '@LibraryJQueryBundle/Resources/public/js/jquery.js'
+            '@LibraryBootstrapBundle/Resources/public/js/bootstrap.js'
+        %}
+            <script src="{{ asset_url }}" /></script>
+        {% endjavascripts %}
 
+        
+        
         {% block javascripts %}
-            <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-            <script src="{{ asset('js/jquery.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-transition.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-alert.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-modal.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-dropdown.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-scrollspy.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-tab.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-tooltip.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-popover.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-button.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-collapse.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-carousel.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-typehead.js') }}"></script>
-            <script src="{{ asset('js/application.js') }}"></script>
+           
         {% endblock %}
 
         </body>
