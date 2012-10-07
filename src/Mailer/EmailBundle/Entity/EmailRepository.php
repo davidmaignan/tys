@@ -3,6 +3,7 @@
 namespace Mailer\EmailBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Security\RegistrationBundle\Event\UserConfirmationEvent;
 
 /**
  * EmailRepository
@@ -12,4 +13,24 @@ use Doctrine\ORM\EntityRepository;
  */
 class EmailRepository extends EntityRepository
 {
+    
+    public function checkActivation($email, $activationKey, $dispatcher)
+    {
+        
+        $email = $this->findOneBy(array('recipient'=>$email, 'activationkey'=>$activationKey));
+        
+        
+        
+        if($email){
+            
+            $dispatcher->dispatch('user.email.confirmed', new UserConfirmationEvent($email) );
+        }
+        
+        //var_dump($email);
+        
+        exit;
+        
+        
+    }
+    
 }

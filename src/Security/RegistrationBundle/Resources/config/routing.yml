@@ -1,0 +1,3 @@
+security_registration_verify:
+    pattern: /verify-registration/{email}/{activationKey}
+    defaults: { _controller: SecurityRegistrationBundle:Confirmation:index }

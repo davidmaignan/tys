@@ -30,7 +30,6 @@ class User extends BaseUser
     {
         parent::__construct();
         // your own logic
-        $this->setConfirmed(false);
     }
 
     /**
@@ -46,27 +45,4 @@ class User extends BaseUser
     /**
      *  
      */
-
-    /**
-     * Set confirmed
-     *
-     * @param boolean $confirmed
-     * @return User
-     */
-    public function setConfirmed($confirmed)
-    {
-        $this->confirmed = $confirmed;
-    
-        return $this;
-    }
-
-    /**
-     * Get confirmed
-     *
-     * @return boolean 
-     */
-    public function getConfirmed()
-    {
-        return $this->confirmed;
-    }
 }

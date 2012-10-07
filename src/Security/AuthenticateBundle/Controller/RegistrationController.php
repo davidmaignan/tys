@@ -29,6 +29,9 @@ class RegistrationController extends ContainerAware
 {
     public function registerAction()
     {
+        
+        //mail('davidmaignan@gmail.com', 'test', 'test');
+        
         $form = $this->container->get('fos_user.registration.form');
         $formHandler = $this->container->get('fos_user.registration.form.handler');
         $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
@@ -53,18 +56,15 @@ class RegistrationController extends ContainerAware
             if ($authUser) {
                 $this->authenticateUser($user, $response);
             }
-            
+              
             //Send email
-            $message = \Swift_Message::newInstance()
-                ->setSubject('Contact enquiry from symblog')
-                ->setFrom('enquiries@symblog.co.uk')
-                ->setTo('email@email.com')
-                ->setBody($this->container->get('templating')->renderResponse('SecurityAuthenticateBundle:Registration:registration.txt.twig', array('user' => $user)));
-
-            $this->container->get('mailer')->send($message);
+            $mailer = $this->container->get('my_mailer')->sendRegistrationMessage($user);
 
             return $response;
         }
+        
+        //$user = $form->getData();
+        //$mailer = $this->container->get('my_mailer')->sendRegistrationMessage($user);
         
         return $this->container->get('templating')->renderResponse('SecurityAuthenticateBundle:Registration:register.html.'.$this->getEngine(), array(
             'form' => $form->createView(),

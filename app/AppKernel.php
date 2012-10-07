@@ -39,6 +39,8 @@ class AppKernel extends Kernel
             new Library\TwitterBundle\LibraryTwitterBundle(),
             new Library\BootstrapBundle\LibraryBootstrapBundle(),
             new Library\JQueryBundle\LibraryJQueryBundle(),
+            new Component\ComponentBundle\ComponentComponentBundle(),
+            new Security\RegistrationBundle\SecurityRegistrationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

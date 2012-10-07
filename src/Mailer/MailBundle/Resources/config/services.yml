@@ -1,10 +1,20 @@
 parameters:
-#    mailer_mail.example.class: Mailer\MailBundle\Example
+    my_mailer.class: Mailer\MailBundle\Mailer\Mailer
+    email_listener.class: Mailer\MailBundle\Listener\MailerListener
 
 services:
 #    mailer_mail.example:
 #        class: %mailer_mail.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
     my_mailer:
-        class:  Mailer\MailBundle\Entity\Mailer
-        arguments:  [sendmail]
+        class:  %my_mailer.class%
+        arguments:
+            - "@service_container"
+            
+    mailer_bundle.listener.email:
+        class: Mailer\MailBundle\Listener\EmailListener
+        arguments:
+            - "@service_container"
+        tags:
+            - { name: kernel.event_listener, event: email.message.save, method: onSave }
+

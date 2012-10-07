@@ -229,27 +229,4 @@ class Email
     {
         return $this->status;
     }
-
-    /**
-     * Set activationkey
-     *
-     * @param string $activationkey
-     * @return Email
-     */
-    public function setActivationkey($activationkey)
-    {
-        $this->activationkey = $activationkey;
-    
-        return $this;
-    }
-
-    /**
-     * Get activationkey
-     *
-     * @return string 
-     */
-    public function getActivationkey()
-    {
-        return $this->activationkey;
-    }
 }
