@@ -21,11 +21,20 @@ class RegistrationListener
     public function onConfirmed(UserConfirmationEvent $event)
     {
         
-        $email    = $event->getEmail();
-        var_dump($email->getRecipient());
-        //exit;
-        
+        $email    = $event->getEmail()->getRecipient();
+       
         $em = $this->container->get('doctrine')->getEntityManager();
+        
+        $user = $em->getRepository('SecurityAuthenticateBundle:User')->findOneBy(array('email'=>$email));
+        
+        if($user){
+            $user->setConfirmed(true);
+            $em->persist($user);
+            $em->flush();
+            return true;
+        }
+        
+        return false;
         
         
     }

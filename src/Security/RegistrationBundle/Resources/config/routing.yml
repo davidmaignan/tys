@@ -1,3 +1,19 @@
+security_register_done:
+    pattern: /register/completed
+    defaults: { _controller: SecurityRegistrationBundle:Registration:completed }
+
+security_register:
+    pattern:  /register/
+    defaults: { _controller: SecurityRegistrationBundle:Registration:register }
+    
+security_confirmed:
+    pattern: /confirmed/
+    defaults: { _controller: SecurityRegistrationBundle:Registration:confirmed }
+
+security_registration_activated:
+    pattern: /registration-activated
+    defaults: { _controller: SecurityRegistrationBundle:Confirmation:confirmed }
+
 security_registration_verify:
     pattern: /verify-registration/{email}/{activationKey}
     defaults: { _controller: SecurityRegistrationBundle:Confirmation:index }

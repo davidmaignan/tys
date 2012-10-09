@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Security\AuthenticateBundle\Controller;
+namespace Security\RegistrationBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -25,13 +26,11 @@ use FOS\UserBundle\Model\UserInterface;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class RegistrationController extends ContainerAware
+class RegistrationController extends Controller
 {
     public function registerAction()
     {
-        
-        //mail('davidmaignan@gmail.com', 'test', 'test');
-        
+                
         $form = $this->container->get('fos_user.registration.form');
         $formHandler = $this->container->get('fos_user.registration.form.handler');
         $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
@@ -48,7 +47,9 @@ class RegistrationController extends ContainerAware
                 $authUser = true;
                 $route = 'fos_user_registration_confirmed';
             }
-
+            
+            $route = 'security_register_done';
+            
             $this->setFlash('fos_user_success', 'registration.flash.user_created');
             $url = $this->container->get('router')->generate($route);
             $response = new RedirectResponse($url);
@@ -56,19 +57,26 @@ class RegistrationController extends ContainerAware
             if ($authUser) {
                 $this->authenticateUser($user, $response);
             }
-              
+                        
             //Send email
             $mailer = $this->container->get('my_mailer')->sendRegistrationMessage($user);
 
-            return $response;
+            
+            return $this->redirect($url);
         }
         
         //$user = $form->getData();
         //$mailer = $this->container->get('my_mailer')->sendRegistrationMessage($user);
         
-        return $this->container->get('templating')->renderResponse('SecurityAuthenticateBundle:Registration:register.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse('SecurityRegistrationBundle:Registration:register.html.'.$this->getEngine(), array(
             'form' => $form->createView(),
         ));
+    }
+    
+    public function completedAction()
+    {
+        
+        return $this->render('SecurityRegistrationBundle:Registration:completed.html.'.$this->getEngine());
     }
 
     /**
@@ -84,7 +92,7 @@ class RegistrationController extends ContainerAware
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
 
-        return $this->container->get('templating')->renderResponse('SecurityAuthenticateBundle:Registration:checkEmail.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse('SecurityRegistrationBundle:Registration:checkEmail.html.'.$this->getEngine(), array(
             'user' => $user,
         ));
     }
@@ -121,7 +129,7 @@ class RegistrationController extends ContainerAware
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->container->get('templating')->renderResponse('SecurityAuthenticateBundle:Registration:confirmed.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse('SecurityRegistrationBundle:Registration:confirmed.html.'.$this->getEngine(), array(
             'user' => $user,
         ));
     }

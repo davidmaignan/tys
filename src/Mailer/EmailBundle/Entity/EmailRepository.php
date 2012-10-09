@@ -19,16 +19,11 @@ class EmailRepository extends EntityRepository
         
         $email = $this->findOneBy(array('recipient'=>$email, 'activationkey'=>$activationKey));
         
-        
-        
         if($email){
-            
-            $dispatcher->dispatch('user.email.confirmed', new UserConfirmationEvent($email) );
+            $dispatcher->dispatch('user.email.confirmed', new UserConfirmationEvent($email));
         }
         
-        //var_dump($email);
-        
-        exit;
+        //exit;
         
         
     }

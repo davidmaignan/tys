@@ -23,11 +23,15 @@ class Mailer
         $email = $user->getEmail();
         $activationKey = $this->generateActivationKey();
         
-        //var_dump($email);
+        $link = $this->container->get('router')->generate('security_registration_verify', array(
+            'email'=> $email,
+            'activationKey' =>$activationKey
+        ), true);
+
         $body = $this->container->get('templating')->renderResponse(
-                    'SecurityAuthenticateBundle:Registration:registration.txt.twig', array(
+                    'SecurityRegistrationBundle:Registration:registration.txt.twig', array(
                         'user' => $user,
-                        'activationKey' => $activationKey
+                        'link' => $link,
                         )
                 );
         

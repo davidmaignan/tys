@@ -18,5 +18,4 @@ class UserConfirmationEvent extends Event
         return $this->email;
     }
     
-    
 }

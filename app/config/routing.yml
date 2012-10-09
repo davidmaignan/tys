@@ -1,6 +1,6 @@
 security_registration:
     resource: "@SecurityRegistrationBundle/Resources/config/routing.yml"
-    prefix:   /registration
+    prefix:   /
 
 mailer_mail:
     resource: "@MailerMailBundle/Resources/config/routing.yml"

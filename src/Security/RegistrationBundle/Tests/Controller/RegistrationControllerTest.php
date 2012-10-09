@@ -1,12 +1,10 @@
 <?php
 
-namespace Security\AuthenticateBundle\Tests\Controller;
+namespace Security\RegistrationBundle\Tests\Controller;
 
-//use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-use Liip\FunctionalTestBundle\Test\WebTestCase;
-
-class RegistrationControllerTest extends WebTestCase
+class DefaultControllerTest extends WebTestCase
 {
     public function testRegistration_successful () 
     {
@@ -25,7 +23,7 @@ class RegistrationControllerTest extends WebTestCase
 
         $crawler = $client->submit($form);
         
-        $this->assertTrue($crawler->filter('html:contains("Congrats")')->count() > 0, $client->getResponse()->getContent());
+        $this->assertTrue($crawler->filter('html:contains("Congratulations")')->count() > 0, $client->getResponse()->getContent());
     }
     
     public function testRegistration_confirm_password_fail () 
