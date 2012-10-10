@@ -17,11 +17,7 @@ class RegistrationControllerTest extends WebTestCase
     /**
      * @var Symfony\Bundle\FrameworkBundle\Routing\Router;
      */
-    
     private $router;
-    
-    
-    
     
     /**
      * @var Symfony\Component\DependencyInjection\Container 
