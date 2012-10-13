@@ -30,7 +30,9 @@
         "behat/mink-goutte-driver": "dev-master",
         "behat/mink-sahi-driver": "dev-master",
         "behat/mink-zombie-driver": "dev-master",
-        "liip/functional-test-bundle": "dev-master"
+        "liip/functional-test-bundle": "dev-master",
+        "jms/security-extra-bundle": "dev-master",
+        "jms/di-extra-bundle": "dev-master"
         
     },
     "scripts": {
