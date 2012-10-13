@@ -41,6 +41,7 @@ class AppKernel extends Kernel
             new Library\JQueryBundle\LibraryJQueryBundle(),
             new Component\ComponentBundle\ComponentComponentBundle(),
             new Security\RegistrationBundle\SecurityRegistrationBundle(),
+            new Question\CreateBundle\QuestionCreateBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

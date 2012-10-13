@@ -1,0 +1,7 @@
+parameters:
+#    question_create.example.class: Question\CreateBundle\Example
+
+services:
+#    question_create.example:
+#        class: %question_create.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
