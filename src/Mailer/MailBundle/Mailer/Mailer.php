@@ -41,15 +41,49 @@ class Mailer
                         ->setTo($email)
                         ->setBody($body);
         
-        $status = $this->container->get('mailer')->send($message);
+        $status = $this->sendEmailMessage($message);
         
         //Dispatch Event
         $dispatcher = $this->container->get('event_dispatcher');
         $dispatcher->dispatch('email.message.save', new EmailEvent($message, $status, $activationKey));
 
+    }
+    
+    public function sendResettingEmailMessage($user)
+    {
+        $email = $user->getEmail();
+        
+
+        $url = $this->container->get('router')->generate('fos_user_resetting_reset', array('token' => $user->getConfirmationToken()), true);
+        $body = $this->container->get('templating')->render('SecurityAuthenticateBundle:Resetting:email.txt.twig',
+                array(
+            'user' => $user,
+            'confirmationUrl' => $url
+        ));
+        
+        $message = \Swift_Message::newInstance()
+                        ->setSubject('Registration confirmation')
+                        ->setFrom('subscribe@testyourskills.com')
+                        ->setTo($email)
+                        ->setBody($body);
+        
+        //var_dump($message);
+        //exit;
+        
+        $status = $this->sendEmailMessage($message);
+        
+        $dispatcher = $this->container->get('event_dispatcher');
+        $dispatcher->dispatch('email.message.save', new EmailEvent($message, $status));
+
         
     }
     
+    protected function sendEmailMessage($message)
+    {
+        return $this->container->get('mailer')->send($message);
+    }
+
+
     /**
      * 
      * @return integer 

@@ -67,7 +67,7 @@ class Email
     /**
      * @var string activationkey 
      * 
-     * @ORM\Column(name="activationkey", type="string", length=100)
+     * @ORM\Column(name="activationkey", type="string", length=100, nullable=true)
      */
     private $activationkey;
     

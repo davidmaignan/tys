@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+{% for key, message in app.session.getFlashes() %}
+<div class="{{ key }}">{{ message|trans({}, 'FOSUserBundle') }}</div>
+{% endfor %}
+
+{% include "FOSUserBundle:Profile:show_content.html.twig" %}
+{% endblock body %}

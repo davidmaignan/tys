@@ -12,7 +12,7 @@ class EmailEvent extends Event
     protected $activationKey;
 
 
-    public function __construct(\Swift_Message $message, $status, $activationKey)
+    public function __construct(\Swift_Message $message, $status, $activationKey = null)
     {
         $this->message          = $message;
         $this->status           = $status;
