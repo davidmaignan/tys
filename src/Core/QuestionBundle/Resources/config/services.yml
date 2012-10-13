@@ -1,0 +1,7 @@
+parameters:
+#    core_question.example.class: Core\QuestionBundle\Example
+
+services:
+#    core_question.example:
+#        class: %core_question.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

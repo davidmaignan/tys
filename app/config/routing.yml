@@ -1,3 +1,15 @@
+question_create:
+    resource: "@QuestionCreateBundle/Resources/config/routing.yml"
+    prefix:   /
+
+security_registration:
+    resource: "@SecurityRegistrationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+mailer_mail:
+    resource: "@MailerMailBundle/Resources/config/routing.yml"
+    prefix:   /
+
 security_authenticate:
     resource: "@SecurityAuthenticateBundle/Resources/config/routing.yml"
     prefix:   /

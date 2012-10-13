@@ -27,6 +27,21 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Dm\SiteBundle\DmSiteBundle(),
             new Security\AuthenticateBundle\SecurityAuthenticateBundle(),
+            new Mailer\MailBundle\MailerMailBundle(),
+            new Mailer\EmailBundle\MailerEmailBundle(),
+            new Core\QuestionBundle\CoreQuestionBundle(),
+            new Core\AnswerBundle\CoreAnswerBundle(),
+            new Core\TagBundle\CoreTagBundle(),
+            new Core\SectionBundle\CoreSectionBundle(),
+            new Core\LevelBundle\CoreLevelBundle(),
+            new Core\TypeBundle\CoreTypeBundle(),
+            new Extensions\FormBundle\ExtensionsFormBundle(),
+            new Library\TwitterBundle\LibraryTwitterBundle(),
+            new Library\BootstrapBundle\LibraryBootstrapBundle(),
+            new Library\JQueryBundle\LibraryJQueryBundle(),
+            new Component\ComponentBundle\ComponentComponentBundle(),
+            new Security\RegistrationBundle\SecurityRegistrationBundle(),
+            new Question\CreateBundle\QuestionCreateBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

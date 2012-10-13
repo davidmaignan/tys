@@ -1,12 +1,28 @@
+security_resetting_reset:
+    pattern: /resetting/reset/{token}
+    defaults: { _controller: SecurityAuthenticateBundle:Resetting:reset}
+    requirements:
+        _method: GET|POST
+
+security_resetting_check_email:
+    pattern: /resetting/check-email
+    defaults: { _controller: SecurityAuthenticateBundle:Resetting:checkEmail }
+    requirements:
+        _method: GET
+
+security_resetting_send_email:
+    pattern: /resetting/send-email
+    defaults: { _controller: SecurityAuthenticateBundle:Resetting:sendEmail }
+    requirements:
+        _method: POST
+
+security_resetting_request:
+    pattern: /resetting/request
+    defaults: { _controller: SecurityAuthenticateBundle:Resetting:request }
+    requirements:
+        _method: GET
+
 security_login:
     pattern:  /login/
     defaults: { _controller: SecurityAuthenticateBundle:Login:index }
-    
-security_register:
-    pattern:  /register/
-    defaults: { _controller: SecurityAuthenticateBundle:Registration:register }
-    
-security_confirmed:
-    pattern: /confirmed/
-    defaults: { _controller: SecurityAuthenticateBundle:Registration:confirmed }
 

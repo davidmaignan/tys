@@ -1,7 +1,9 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: @DmAdminBundle/Resources/config/config.yml }
+    - { resource: '@DmAdminBundle/Resources/config/config.yml' }
+    - { resource: '@MailerMailBundle/Resources/config/services.yml' }
+    - { resource: '@CoreLevelBundle/Resources/config/services.yml' }
 
 framework:
     #esi:             ~

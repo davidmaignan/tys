@@ -1,0 +1,14 @@
+parameters:
+#    security_bundle.listener.registration_confirmed: Security\RegistrationBundle\Listener\RegistrationListener
+
+services:
+#    security_registration.example:
+#        class: %security_registration.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    security_bundle.listener.registration_confirmed:
+        class: Security\RegistrationBundle\Listener\RegistrationListener
+        arguments:
+            - "@service_container"
+        tags:
+            - { name: kernel.event_listener, event: user.email.confirmed, method: onConfirmed }

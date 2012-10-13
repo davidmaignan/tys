@@ -1,0 +1,14 @@
+parameters:
+#    core_level.example.class: Core\LevelBundle\Example
+
+services:
+#    core_level.example:
+#        class: %core_level.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    core.level.form_handler.index:
+        class: Component\ComponentBundle\Form\Handler\ComponentFormHandler
+        scope: request
+        arguments:
+            -             '@request'
+        

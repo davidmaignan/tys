@@ -1,0 +1,7 @@
+parameters:
+#    core_type.example.class: Core\TypeBundle\Example
+
+services:
+#    core_type.example:
+#        class: %core_type.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

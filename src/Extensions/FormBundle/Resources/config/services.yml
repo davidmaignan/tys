@@ -1,0 +1,12 @@
+parameters:
+#    extensions_form.example.class: Extensions\FormBundle\Example
+
+services:
+#    extensions_form.example:
+#        class: %extensions_form.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    form.type_extension.help_message:
+        class: Extensions\FormBundle\Form\Extension\HelpMessageTypeExtension
+        tags:
+          - { name: "form.type_extension", alias: "field" }
