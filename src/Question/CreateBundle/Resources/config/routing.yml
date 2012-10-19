@@ -1,3 +1,7 @@
+question_create_test:
+    pattern: /test
+    defaults: { _controller: QuestionCreateBundle:Create:test }
+
 question_create_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: QuestionCreateBundle:Default:index }
+    pattern:  /create
+    defaults: { _controller: QuestionCreateBundle:Create:index }

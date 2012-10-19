@@ -1,6 +1,6 @@
 <?php
 
-namespace Dm\QuestionBundle\Entity;
+namespace Core\QuestionBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

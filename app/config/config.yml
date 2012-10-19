@@ -4,6 +4,8 @@ imports:
     - { resource: '@DmAdminBundle/Resources/config/config.yml' }
     - { resource: '@MailerMailBundle/Resources/config/services.yml' }
     - { resource: '@CoreLevelBundle/Resources/config/services.yml' }
+    - { resource: '@QuestionCreateBundle/Resources/config/services.xml' }
+    
 
 framework:
     #esi:             ~
@@ -68,3 +70,32 @@ fos_user:
     firewall_name: main
     user_class: Security\AuthenticateBundle\Entity\User
     
+#JMS security extra
+jms_security_extra:
+    # Whether you want to secure all services (true), or only secure specific
+    # services (false); see also below
+    secure_all_services: false
+
+    # Enabling this setting will add an additional special attribute "IS_IDDQD".
+    # Anybody with this attribute will effectively bypass all security checks.
+    enable_iddqd_attribute: false
+
+    # Enables expression language
+    expressions: false
+
+    # Allows you to disable some, or all built-in voters
+    voters:
+        disable_authenticated: false
+        disable_role:          false
+        disable_acl:           false
+
+    # Allows you to specify access control rules for specific methods, such
+    # as controller actions
+    method_access_control: { }    
+    
+question_create: 
+    #user_class: Security\AuthenticateBundle\Entity\User
+    registration:
+        form:
+            type: test
+            name: test_form

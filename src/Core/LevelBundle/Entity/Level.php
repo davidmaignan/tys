@@ -5,14 +5,22 @@ namespace Core\LevelBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\MinLength;
+use Symfony\Component\Validator\Constraints\MaxLength;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Core\LevelBundle\Entity\Level
  *
  * @ORM\Table(name="level")
+ * @UniqueEntity({"name"})
  * @ORM\Entity(repositoryClass="Core\LevelBundle\Entity\LevelRepository")
  */
-class Level {
+class Level implements LevelInterface {
 
     /**
      * @var integer $id
@@ -26,12 +34,12 @@ class Level {
     /**
      * @var string $name
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique = true)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="Level")
+     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="Question")
      */
     protected $questions;
 
@@ -103,5 +111,11 @@ class Level {
     public function getQuestions()
     {
         return $this->questions;
+    }
+    
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('name', new NotBlank());
+  
     }
 }

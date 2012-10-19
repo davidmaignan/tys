@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+
+<div class="row">
+
+    <div class="span6">
+
+        <h1>Add Test Questions</h1>
+
+        <form action="{{ path('question_create_homepage') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" novalidate="novalidate">
+        {# form_widget(form) #}
+            <div>
+                <input class="btn" type="submit" id="_register" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+            </div>
+        </form>
+    </div>
+    
+     <div class="span6">
+
+        <h1>Add Test Questions</h1>
+        <form action="{{ path('question_create_homepage') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" novalidate="novalidate">
+        {{ form_widget(form2) }}
+            <div>
+                <input class="btn" type="submit" id="_register" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+            </div>
+        </form>
+       
+    </div>
+</div>
+
+{% endblock %}

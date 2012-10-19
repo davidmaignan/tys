@@ -88,7 +88,7 @@ class Question {
     private $points;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Core\TagBundle\Entity\Tag", inversedBy="Questions")
+     * @ORM\ManyToMany(targetEntity="Core\TagBundle\Entity\Tag")
      * @ORM\JoinTable(name="question_tags")
      */
     private $tags;
@@ -97,7 +97,7 @@ class Question {
      * @ORM\OneToMany(targetEntity="Core\AnswerBundle\Entity\Answer", mappedBy="question", cascade={"remove"},  orphanRemoval=false)
      * 
      */
-    public $answers;
+    private $answers;
     
     
     /**
