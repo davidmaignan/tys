@@ -1,7 +1,0 @@
-parameters:
-#    component_component.example.class: Component\ComponentBundle\Example
-
-services:
-#    component_component.example:
-#        class: %component_component.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

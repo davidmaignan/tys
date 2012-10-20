@@ -14,7 +14,7 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
     
     public function load(ObjectManager $manager)
     {
-        /*
+        
         $question1 = new Question();
         $question1->setTitle('What is the result of calling json_encode() on an empty array?');
         $question1->setPoints(1);
@@ -523,8 +523,7 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
         
         
         $manager->flush();
-         * 
-         */
+
     }
     
     public function getOrder()

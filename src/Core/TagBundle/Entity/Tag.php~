@@ -1,19 +1,20 @@
 <?php
 
-namespace Core\TypeBundle\Entity;
+namespace Core\TagBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+
 use Core\QuestionBundle\Entity\Question;
 
 /**
- * Core\TypeBundle\Entity\Type
+ * Core\TagBundle\Entity\Tag
  *
- * @ORM\Table(name="type")
- * @ORM\Entity(repositoryClass="Core\TypeBundle\Entity\TypeRepository")
+ * @ORM\Table(name="tag")
+ * @ORM\Entity(repositoryClass="Core\TagBundle\Entity\TagRepository")
  */
-class Type
-{
+class Tag {
+
     /**
      * @var integer $id
      *
@@ -29,20 +30,27 @@ class Type
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-    
-    
+
     /**
-     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="Type")
+     * @ORM\ManyToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="tags")
      */
-    protected $questions;
+    private $questions;
+
+    public function __construct() {
+        $this->questions = new ArrayCollection();
+    }
+    
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -50,10 +58,9 @@ class Type
      * Set name
      *
      * @param string $name
-     * @return Type
+     * @return Tag
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
         return $this;
     }
@@ -63,22 +70,16 @@ class Type
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
-    
-    
-    public function __construct()
-    {
-        $this->questions = new ArrayCollection();
-    }
-    
+
+
     /**
      * Add questions
      *
      * @param Core\QuestionBundle\Entity\Question $questions
-     * @return Type
+     * @return Tag
      */
     public function addQuestion(Question $questions)
     {
@@ -104,10 +105,5 @@ class Type
     public function getQuestions()
     {
         return $this->questions;
-    }
-    
-    public function __toString()
-    {
-        return $this->name;
     }
 }

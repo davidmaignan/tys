@@ -15,11 +15,15 @@ class CreateController extends Controller
     public function indexAction()
     {
         
-        $form = $this->container->get('fos_user.registration.form');
-        $formHandler = $this->container->get('fos_user.registration.form.handler');
-        $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
+        $form = $this->container->get('question_create.contributor.form');
+        $formHandler = $this->container->get('question_create.contributor.form.handler');
+        
+        $formHandler->process();
+        
+        //$formHandler = $this->container->get('fos_user.registration.form.handler');
+        //$confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
 
-        $process = $formHandler->process($confirmationEnabled);
+        $process = false;
         
         if ($process) {
             $user = $form->getData();
