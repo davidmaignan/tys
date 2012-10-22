@@ -24,8 +24,6 @@ interface QuestionManagerInterface
      */
     public function createQuestion();
     
- 
-    public function addAnswer();
     
 
     /**

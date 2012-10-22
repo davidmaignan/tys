@@ -32,7 +32,7 @@ class User extends BaseUser
     
     
     /**
-     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="Type")
+     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="user")
      */
     protected $questions;
     

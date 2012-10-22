@@ -32,7 +32,7 @@ class Section
     
     
     /**
-     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="Section")
+     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="section")
      */
     protected $questions;
     

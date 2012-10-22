@@ -87,8 +87,6 @@ class QuestionManager extends BaseQuestionManager
      
     public function updateQuestion($question, $andFlush = true)
     {
-        //$this->updateCanonicalFields($user);
-        //$this->updatePassword($user);
 
         $this->objectManager->persist($question);
         if ($andFlush) {

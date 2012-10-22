@@ -11,6 +11,8 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\MinLength;
 use Symfony\Component\Validator\Constraints\MaxLength;
 
+use Core\QuestionBundle\Entity\Question;
+
 /**
  * @ORM\Entity 
  * @ORM\Table(name="answer")
@@ -33,11 +35,12 @@ class Answer
      */
     private $title;
     
-    
+            
     /**
-    * @ORM\ManyToOne(targetEntity="Core\QuestionBundle\Entity\Question", inversedBy="answers", cascade={"remove"})
-    * @ORM\JoinColumn(name="question_id", referencedColumnName="id", onDelete="CASCADE")
-    */ 
+    * @ORM\ManyToOne(targetEntity="Core\QuestionBundle\Entity\Question", inversedBy="answers")
+    * @ORM\JoinColumn(name="question_id", referencedColumnName="id",
+                onDelete="CASCADE")
+    */
     private $question;
     
     
@@ -58,7 +61,7 @@ class Answer
     
     /**
      * @var boolean $correct
-     * @ORM\Column(name="correct", type="boolean") 
+     * @ORM\Column(name="correct", type="boolean", nullable=true) 
      */
     private $correct;
     
@@ -103,7 +106,7 @@ class Answer
      * @param Core\QuestionBundle\Entity\Question $question
      * @return Answer
      */
-    public function setQuestion(\Core\QuestionBundle\Entity\Question $question = null)
+    public function setQuestion(Question $question = null)
     {
         $this->question = $question;
         return $this;
@@ -118,7 +121,7 @@ class Answer
     {
         return $this->question;
     }
-
+    
     /**
      * Set code
      *

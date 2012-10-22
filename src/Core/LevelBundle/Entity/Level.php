@@ -39,7 +39,7 @@ class Level implements LevelInterface {
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="Question")
+     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="level")
      */
     protected $questions;
 

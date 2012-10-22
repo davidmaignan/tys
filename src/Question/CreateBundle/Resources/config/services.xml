@@ -20,6 +20,7 @@
                     <argument type="service" id="question_create.registration.form" />
                     <argument type="service" id="request" />
                     <argument type="service" id="question_create.level_manager.doctrine" />
+                    
         </service>
        
         <service id="question_create.level_manager.doctrine" class="Core\LevelBundle\Doctrine\LevelManager" public="false">
@@ -48,6 +49,7 @@
                     <argument type="service" id="question_create.contributor.form" />
                     <argument type="service" id="request" />
                     <argument type="service" id="question_create.question_manager.doctrine" />
+                    <argument type="service" id="security.context" />
         </service>
         
         <!-- Question create doctrine manager -->

@@ -38,18 +38,9 @@ abstract class QuestionManager implements QuestionManagerInterface
         $class = $this->getClass();
         $question = new $class;
         
-        $answer = new \Core\AnswerBundle\Entity\Answer();
-        $answer->setQuestion($question);
-        $question->getAnswers()->add($answer);
-
         return $question;
     }
     
-    
-    public function addAnswer()
-    {
-        
-    }
 
     /**
      * {@inheritDoc}

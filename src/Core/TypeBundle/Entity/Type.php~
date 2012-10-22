@@ -32,7 +32,7 @@ class Type
     
     
     /**
-     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="Type")
+     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="type")
      */
     protected $questions;
 
