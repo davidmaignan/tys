@@ -7,11 +7,18 @@ use Doctrine\ORM\Mapping\UniqueConstraint as UniqueConstraint;
 
 /**
  * Mailer\EmailBundle\Entity\Email
- *
- * @ORM\Table(name="email", uniqueConstraints={@UniqueConstraint(name="activationkey_idx", columns={"activationkey"})})
- * @ORM\Entity(repositoryClass="Mailer\EmailBundle\Entity\EmailRepository")
+ * This class represents an Email item
+ * It is abstract because we never have an Email entity, it's either an email_user, email_question or any new one
+ * @ORM\Entity
+ * @ORM\Table(name="email")
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap( { "email" = "Email", 
+ *                          "registration" = "RegistrationEmail",
+ *                          "resetting" = "ResettingEmail",
+ *                          "question_submission" = "QuestionSubmissionEmail"} )
  */
-class Email
+abstract class Email 
 {
     /**
      * @var integer $id
@@ -63,14 +70,6 @@ class Email
      * @ORM\Column(name="status", type="integer")
      */
     private $status;
-    
-    /**
-     * @var string activationkey 
-     * 
-     * @ORM\Column(name="activationkey", type="string", length=100, nullable=true)
-     */
-    private $activationkey;
-    
     
     
     /**
@@ -230,26 +229,4 @@ class Email
         return $this->status;
     }
 
-    /**
-     * Set activationkey
-     *
-     * @param string $activationkey
-     * @return Email
-     */
-    public function setActivationkey($activationkey)
-    {
-        $this->activationkey = $activationkey;
-    
-        return $this;
-    }
-
-    /**
-     * Get activationkey
-     *
-     * @return string 
-     */
-    public function getActivationkey()
-    {
-        return $this->activationkey;
-    }
 }

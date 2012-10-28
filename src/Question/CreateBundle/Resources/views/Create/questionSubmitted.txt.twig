@@ -1,0 +1,11 @@
+{% block subject %}
+{% autoescape false %}
+{{ 'question.submission.subject'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'MailerMailBundle') }}
+{% endautoescape %}
+{% endblock %}
+{% block body_text %}
+{% autoescape false %}
+{{ 'question.submission.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'MailerMailBundle') }}
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}{% endblock %}

@@ -26,9 +26,6 @@ class QuestionManager extends BaseQuestionManager
     /**
      * Constructor.
      *
-     * @param EncoderFactoryInterface $encoderFactory
-     * @param CanonicalizerInterface  $usernameCanonicalizer
-     * @param CanonicalizerInterface  $emailCanonicalizer
      * @param ObjectManager           $om
      * @param string                  $class
      */

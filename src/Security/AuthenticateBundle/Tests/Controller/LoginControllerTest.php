@@ -13,7 +13,7 @@ class LoginControllerTest extends WebTestCase
     public function testAuthenticateLogin_goodLogin() {
         $client = static::createClient();
         
-         $classes = array(
+        $classes = array(
              'Security\AuthenticateBundle\DataFixtures\ORM\UserFixtures',
         );
 

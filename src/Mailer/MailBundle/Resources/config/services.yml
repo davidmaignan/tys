@@ -1,6 +1,15 @@
 parameters:
     my_mailer.class: Mailer\MailBundle\Mailer\Mailer
     email_listener.class: Mailer\MailBundle\Listener\MailerListener
+    
+    email_registration_doctrine.class: Mailer\EmailBundle\Doctrine\EmailRegistrationManager
+    email_registration.object: Mailer\EmailBundle\Entity\RegistrationEmail
+    
+    email_resetting_doctrine.class: Mailer\EmailBundle\Doctrine\EmailResettingManager
+    email_resetting.object: Mailer\EmailBundle\Entity\ResettingEmail
+    
+    email_question_submission_doctrine.class: Mailer\EmailBundle\Doctrine\EmailQuestionSubmissionManager
+    email_question_submission_doctrine.object: Mailer\EmailBundle\Entity\QuestionSubmissionEmail
 
 services:
 #    mailer_mail.example:
@@ -17,4 +26,16 @@ services:
             - "@service_container"
         tags:
             - { name: kernel.event_listener, event: email.message.save, method: onSave }
-
+            
+                
+    email_registration_doctrine:
+        class: %email_registration_doctrine.class%
+        arguments:  ["@fos_user.entity_manager", %email_registration.object%]     
+        
+    email_resetting_doctrine:
+        class: %email_resetting_doctrine.class%
+        arguments:  ["@fos_user.entity_manager", %email_resetting.object%]  
+        
+    email_question_submission_doctrine:
+        class: %email_question_submission_doctrine.class%
+        arguments:  ["@fos_user.entity_manager", %email_question_submission_doctrine.object%]  

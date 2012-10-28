@@ -10,6 +10,12 @@ class ResettingControllerTest extends WebTestCase
     public function testSendEmailAction()
     {
         
+        $classes = array(
+             'Security\AuthenticateBundle\DataFixtures\ORM\UserFixtures',
+        );
+
+        $this->loadFixtures($classes);
+        
         $client = static::createClient();
         $client->followRedirects(true);
         

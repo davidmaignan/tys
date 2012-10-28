@@ -3,6 +3,7 @@
 namespace Question\CreateBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 use Core\QuestionBundle\Entity\Question;
 use Core\QuestionBundle\Form\QuestionType;
@@ -18,35 +19,20 @@ class CreateController extends Controller
         $form = $this->container->get('question_create.contributor.form');
         $formHandler = $this->container->get('question_create.contributor.form.handler');
         
-        $formHandler->process();
+        if($formHandler->process(true)){
+            
+            return new RedirectResponse($this->generateUrl('question_create_success'));
+            
+        }
       
         return $this->render('QuestionCreateBundle:Create:index.html.twig', array(
             'form' => $form->createView(),
         ));
     }
     
-    public function testAction()
+    public function successAction()
     {
-        
-        $level = new Level();
-        $form = $this->createForm(new LevelFormType(), $level);
-        
-        //$question = new Question(); 
-        //$form = $this->createForm(new QuestionType(), $question);
-        
-        $request = $this->getRequest();
-
-        if ($request->getMethod() == 'POST') {
-
-            $form->bindRequest($request);
-
-            if ($form->isValid()) {
-                echo 'valid';
-            }
-        }
-
-        
-        return $this->render('QuestionCreateBundle:Create:test.html.twig', array('form' => $form->createView()));
-        
+        return $this->render('QuestionCreateBundle:Create:Success.html.twig');
     }
+    
 }

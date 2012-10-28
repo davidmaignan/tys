@@ -30,6 +30,23 @@ class QuestionRepository extends EntityRepository
         
     }
     
+    public function findOneByTitleJoined($title)
+    {
+        
+        $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT p, c FROM CoreQuestionBundle:Question p
+                JOIN p.answers c
+                WHERE p.title = :title'
+            )->setParameter('title', $title);
+
+        try {
+            return $query->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+
     
     public function getLevelColor($levels){
         

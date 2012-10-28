@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the QuestionCreateBundle package.
+ *
+ * (c) Testyrskills.com <http://www.Testyrskills.com/>
+ *
+ */
+
 namespace Question\CreateBundle\Form\Handler;
 
 //use FOS\UserBundle\Model\UserManagerInterface;
@@ -18,16 +25,19 @@ class QuestionFormHandler
     protected $request;
     protected $form;
     protected $questionManager;
+    protected $mailer;
     
     public function __construct(FormInterface $form, 
                                 Request $request, 
                                 QuestionManagerInterface $questionManager,
-                                SecurityContext $securityContext)
+                                SecurityContext $securityContext,
+                                $mailer)
     {
         $this->form = $form;
         $this->request = $request;
         $this->questionManager = $questionManager;
         $this->securityContext = $securityContext;
+        $this->mailer = $mailer;
     }
     
     public function process($confirmation = false)
@@ -41,7 +51,6 @@ class QuestionFormHandler
             
               $question->setUser($this->securityContext->getToken()->getUser());
         }
-        
         
         $answer = new \Core\AnswerBundle\Entity\Answer();
         $answer->setQuestion($question);
@@ -85,14 +94,16 @@ class QuestionFormHandler
      */
     protected function onSuccess($question, $confirmation)
     {
+        
+        $this->questionManager->updateQuestion($question);
+        
         if ($confirmation) {
             
-            $this->mailer->sendConfirmationEmailMessage($level);
-        } else {
-            //$level->setEnabled(true);
+            if( $this->securityContext->isGranted('IS_AUTHENTICATED_FULLY') || 
+                $this->securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')){
+                $this->mailer->sendQuestionEmailSubmission($question, $this->securityContext->getToken()->getUser());   
+            }   
         }
-
-        $this->questionManager->updateQuestion($question);
     }
     
      /**

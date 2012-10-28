@@ -25,7 +25,7 @@ use Core\AnswerBundle\Entity\Answer;
  * @ORM\Entity(repositoryClass="Core\QuestionBundle\Entity\QuestionRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Question {
+class Question implements QuestionInterface {
 
     /**
      * @var integer $id

@@ -1,6 +1,6 @@
-question_create_test:
-    pattern: /test
-    defaults: { _controller: QuestionCreateBundle:Create:test }
+question_create_success:
+    pattern:  /created
+    defaults: { _controller: QuestionCreateBundle:Create:success }
 
 question_create_homepage:
     pattern:  /create

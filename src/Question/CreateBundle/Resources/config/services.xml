@@ -46,10 +46,11 @@
         <!-- Contributors form handler -->
         <service id="question_create.contributor.form.handler" 
                 class="Question\CreateBundle\Form\Handler\QuestionFormHandler" scope="request">
-                    <argument type="service" id="question_create.contributor.form" />
-                    <argument type="service" id="request" />
-                    <argument type="service" id="question_create.question_manager.doctrine" />
-                    <argument type="service" id="security.context" />
+                <argument type="service" id="question_create.contributor.form" />
+                <argument type="service" id="request" />
+                <argument type="service" id="question_create.question_manager.doctrine" />
+                <argument type="service" id="security.context" />
+                <argument type="service" id="my_mailer" />
         </service>
         
         <!-- Question create doctrine manager -->

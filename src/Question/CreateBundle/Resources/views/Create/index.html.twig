@@ -10,7 +10,6 @@
         <h1>Add Test Questions</h1>
         <h2>Be creative! Add one correct answer and up to four wrong answers. </h2>
         </hgroup>
-            
         <form action="{{ path('question_create_homepage') }}" {{ form_enctype(form) }} 
               method="POST" 
               class="fos_user_registration_register form-horizontal"
@@ -20,8 +19,7 @@
             
                 {{ form_row(form.title)}}
                 
-                {{ form_row(form.code)}}
-                
+                {{ form_row(form.code)}} 
                 
                 <h3>Answers</h3>
                 <div class="answers" data-prototype="{{ form_widget(form.answers.vars.prototype)|escape }}">
@@ -41,7 +39,7 @@
                 <h3>Add Comments</h3>
                  {{ form_row(form.note, {'label' : 'Comments'})}}
                             
-                {{ form_rest(form) }}
+                 {{ form_rest(form) }}
                 
                 <div class="form-actions">
                     <input class="btn btn-primary" type="submit" id="_submit_question" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
@@ -80,7 +78,7 @@
 var collectionHolder = $('div.answers');
 
 // setup an "add a tag" link
-var $addAnswerLink = $('<div style="text-align: right;"><a href="#" class="add_tag_link btn btn-success btn-mini">Add another answer</a></div>');
+var $addAnswerLink = $('<div style="text-align: right;"><a href="#" class="add_answer_link btn btn-success btn-mini">Add another answer</a></div>');
 var $newLinkDiv = $('<div class="answer"></div>').append($addAnswerLink);
 
 jQuery(document).ready(function() {
