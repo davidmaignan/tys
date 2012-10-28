@@ -23,13 +23,13 @@ class QuestionType extends AbstractType
             ->add('tags')
         ;
         
-        $builder->add('answers', 'collection', array('type' => new AnswerType(),'by_reference' => true));
+        //$builder->add('answers', 'collection', array('type' => new AnswerType(),'by_reference' => true));
     }
     
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Dm\QuestionBundle\Entity\Question',
+            'data_class' => 'Core\QuestionBundle\Entity\Question',
             'cascade_validation' => true
         ));
     }

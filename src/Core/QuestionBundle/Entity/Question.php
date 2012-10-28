@@ -2,7 +2,7 @@
 
 namespace Core\QuestionBundle\Entity;
 
-use Dm\QuestionBundle\Entity\Tag;
+use Core\TagBundle\Entity\Tag;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -13,16 +13,19 @@ use Symfony\Component\Validator\Constraints\Collection;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\MinLength;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+use Core\AnswerBundle\Entity\Answer;
 
 /**
  * Dm\QuestionBundle\Entity\Question
  *
  * @ORM\Table(name="question")
+ * @UniqueEntity({"title"})
  * @ORM\Entity(repositoryClass="Core\QuestionBundle\Entity\QuestionRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Question {
+class Question implements QuestionInterface {
 
     /**
      * @var integer $id
@@ -59,46 +62,52 @@ class Question {
     /**
      * @ORM\ManyToOne(targetEntity="Core\SectionBundle\Entity\Section", inversedBy="questions")
      * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Approval"})
      */
     protected $section;
 
     /**
      * @ORM\ManyToOne(targetEntity="Core\LevelBundle\Entity\Level", inversedBy="questions")
      * @ORM\JoinColumn(name="level_id", referencedColumnName="id")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Approval"})
      */
     private $level;
 
     /**
      * @ORM\ManyToOne(targetEntity="Core\TypeBundle\Entity\Type", inversedBy="questions")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Approval"})
      */
     private $type;
 
     /**
      * @var integer $points
      *
-     * @ORM\Column(name="points", type="integer")
-     * @Assert\NotBlank()
+     * @ORM\Column(name="points", type="integer", nullable=true)
+     * @Assert\NotBlank(groups={"Approval"})
      * @Assert\Min(limit = "1", message = "You need to attribute at least 1 point.")
      * @Assert\Max(limit = 50, message = "You can attribute a maximum of 50 points.")
      */
     private $points;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Core\TagBundle\Entity\Tag", inversedBy="Questions")
+     * @ORM\ManyToMany(targetEntity="Core\TagBundle\Entity\Tag", inversedBy="questions")
      * @ORM\JoinTable(name="question_tags")
      */
     private $tags;
 
     /**
-     * @ORM\OneToMany(targetEntity="Core\AnswerBundle\Entity\Answer", mappedBy="question", cascade={"remove"},  orphanRemoval=false)
+     * @ORM\OneToMany(targetEntity="Core\AnswerBundle\Entity\Answer", mappedBy="question", cascade={"persist"} )
      * 
      */
-    public $answers;
+    private $answers;
     
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User", inversedBy="questions")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
     
     /**
      * @var datetime $createdAt
@@ -309,7 +318,7 @@ class Question {
      * @param Core\AnswerBundle\Entity\answer $answers
      * @return Question
      */
-    public function addAnswer(\Dm\QuestionBundle\Entity\answer $answers)
+    public function addAnswer(Answer $answers)
     {
         $this->answers[] = $answers;
         return $this;
@@ -320,7 +329,7 @@ class Question {
      *
      * @param $answers
      */
-    public function removeAnswer(\Dm\QuestionBundle\Entity\answer $answers)
+    public function removeAnswer(Answer $answers)
     {
         $this->answers->removeElement($answers);
     }
@@ -335,6 +344,21 @@ class Question {
         return $this->answers;
     }
     
+    
+    /**
+     * Set Answers and question relation
+     * @param ArrayCollection $answers 
+     */
+    public function setAnswers(ArrayCollection $answers)
+    {
+        foreach ($answers as $answer) {
+            $answer->setQuestion($this);
+        }
+
+        $this->answers = $answers;
+    }
+    
+ 
     
     /**
      * @ORM\preUpdate
@@ -395,4 +419,27 @@ class Question {
         
     }
     
+
+    /**
+     * Set user
+     *
+     * @param Security\AuthenticateBundle\Entity\User $user
+     * @return Question
+     */
+    public function setUser(\Security\AuthenticateBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Security\AuthenticateBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

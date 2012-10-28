@@ -523,6 +523,7 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
         
         
         $manager->flush();
+
     }
     
     public function getOrder()

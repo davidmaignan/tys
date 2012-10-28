@@ -1,6 +1,6 @@
 question_create:
     resource: "@QuestionCreateBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /question
 
 security_registration:
     resource: "@SecurityRegistrationBundle/Resources/config/routing.yml"

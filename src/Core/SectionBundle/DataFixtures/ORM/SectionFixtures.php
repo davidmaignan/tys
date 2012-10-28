@@ -29,6 +29,8 @@ class SectionFixtures extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('section-1', $section1);
         $this->addReference('section-2', $section2);
         $this->addReference('section-3', $section3);
+        
+        $manager->flush();
     }
     
     

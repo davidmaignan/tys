@@ -14,6 +14,7 @@ class LevelFixtures extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         //Level
+        
         $level1 = new Level();
         $level1->setName('Beginner');
         $manager->persist($level1);
@@ -34,6 +35,9 @@ class LevelFixtures extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('level-2', $level2);
         $this->addReference('level-3', $level3);
         $this->addReference('level-4', $level4);
+        
+        $manager->flush();
+
     }
     
     

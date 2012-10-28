@@ -39,7 +39,6 @@ class AppKernel extends Kernel
             new Library\TwitterBundle\LibraryTwitterBundle(),
             new Library\BootstrapBundle\LibraryBootstrapBundle(),
             new Library\JQueryBundle\LibraryJQueryBundle(),
-            new Component\ComponentBundle\ComponentComponentBundle(),
             new Security\RegistrationBundle\SecurityRegistrationBundle(),
             new Question\CreateBundle\QuestionCreateBundle(),
         );

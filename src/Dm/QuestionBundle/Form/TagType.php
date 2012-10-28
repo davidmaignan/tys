@@ -19,7 +19,7 @@ class TagType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Dm\QuestionBundle\Entity\Tag'
+            'data_class' => 'Core\TagBundle\Entity\Tag'
         ));
     }
 

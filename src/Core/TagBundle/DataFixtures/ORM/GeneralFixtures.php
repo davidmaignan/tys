@@ -32,6 +32,8 @@ class GeneralFixtures  extends AbstractFixture implements OrderedFixtureInterfac
             $this->addReference('tag-'.$key, $$tag);
         }
         
+        $manager->flush();
+        
     }
     
     public function getOrder()

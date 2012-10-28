@@ -60,6 +60,8 @@ security:
             logout:       true
             anonymous:    true
             
+            http_basic: true
+            
             remember_me:
                 key:      "%secret%"
                 lifetime: 3600
@@ -70,6 +72,7 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/question, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
 
     role_hierarchy:

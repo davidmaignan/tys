@@ -10,10 +10,14 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\MinLength;
 use Symfony\Component\Validator\Constraints\MaxLength;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+use Core\QuestionBundle\Entity\Question;
 
 /**
  * @ORM\Entity 
  * @ORM\Table(name="answer")
+ * @UniqueEntity({"title"})
  */
 class Answer
 {
@@ -33,11 +37,12 @@ class Answer
      */
     private $title;
     
-    
+            
     /**
-    * @ORM\ManyToOne(targetEntity="Core\QuestionBundle\Entity\Question", inversedBy="answers", cascade={"persist"})
-    * @ORM\JoinColumn(name="question_id", referencedColumnName="id", onDelete="CASCADE")
-    */ 
+    * @ORM\ManyToOne(targetEntity="Core\QuestionBundle\Entity\Question", inversedBy="answers")
+    * @ORM\JoinColumn(name="question_id", referencedColumnName="id",
+                onDelete="CASCADE")
+    */
     private $question;
     
     
@@ -58,7 +63,7 @@ class Answer
     
     /**
      * @var boolean $correct
-     * @ORM\Column(name="correct", type="boolean") 
+     * @ORM\Column(name="correct", type="boolean", nullable=true) 
      */
     private $correct;
     
@@ -103,7 +108,7 @@ class Answer
      * @param Core\QuestionBundle\Entity\Question $question
      * @return Answer
      */
-    public function setQuestion(\Core\QuestionBundle\Entity\Question $question = null)
+    public function setQuestion(Question $question = null)
     {
         $this->question = $question;
         return $this;
@@ -118,7 +123,7 @@ class Answer
     {
         return $this->question;
     }
-
+    
     /**
      * Set code
      *
@@ -183,6 +188,18 @@ class Answer
     public function getCorrect()
     {
         return $this->correct;
+    }
+    
+    public function __toString()
+    {
+        return 'answer';
+    }
+    
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('title', new NotBlank());
+
+        
     }
 
 }

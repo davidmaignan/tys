@@ -1,0 +1,334 @@
+{# Rows #}
+
+{% block form_row %}
+{% spaceless %}
+    <div class="control-group{% if errors|length > 0 %} error{% endif %}">
+        {{ form_label(form) }}
+        <div class="controls">
+            {{ form_widget(form) }}
+            {{ form_errors(form) }}
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block choice_row %}
+{% spaceless %}
+    {% if not expanded %}
+        {{ block('form_row') }}
+    {% else %}
+        <div class="control-group{% if errors|length > 0 %} error{% endif %}">
+            {{ form_label(form) }}
+            <div class="controls">
+                {{ form_errors(form) }}
+                {{ form_widget(form) }}
+            </div>
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock choice_row %}
+
+{% block checkbox_row %}
+{% spaceless %}
+    <div class="control-group{% if errors|length > 0 %} error{% endif %}">
+        <div class="controls">
+            {{ form_label(form) }}
+            {{ form_errors(form) }}
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock checkbox_row %}
+
+{% block radio_row %}
+{% spaceless %}
+    <div class="control-group{% if errors|length > 0 %} error{% endif %}">
+        <div class="controls">
+            {{ form_label(form) }}
+            {{ form_errors(form) }}
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock radio_row %}
+
+
+{# Labels #}
+
+{% block form_label %}
+{% spaceless %}
+    {% set label_attr = label_attr|merge({'class': 'control-label'}) %}
+    {% if not compound %}
+        {% set label_attr = label_attr|merge({'for': id}) %}
+    {% endif %}
+    {% if required %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+    {% endif %}
+    {% if label is empty %}
+        {% set label = name|humanize %}
+    {% endif %}
+    <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}"{% endfor %}>
+        {%- if label_attr.transchoice is defined -%}
+            {{- label|transchoice(label_attr.transchoice, {}, translation_domain) -}}
+        {%- else -%}
+            {{- label|trans({}, translation_domain) -}}
+        {%- endif -%}
+    </label>
+{% endspaceless %}
+{% endblock form_label %}
+
+{% block choice_label %}
+{% spaceless %}
+    {% set label_attr = label_attr|merge({'class': 'control-label'}) %}
+    {% if label is empty %}
+        {% set label = name|humanize %}
+    {% endif %}
+    {% if expanded %}
+        <span{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}"{% endfor %}>
+            {%- if label_attr.transchoice is defined -%}
+                {{- label|transchoice(label_attr.transchoice, {}, translation_domain) -}}
+            {%- else -%}
+                {{- label|trans({}, translation_domain) -}}
+            {%- endif -%}
+        </span>
+        {% if attr.data_original_title is defined and attr.data_original_title is not empty %} {{ block ('form_tooltip') }} {% endif %}
+    {% else %}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}"{% endfor %}>
+            {%- if label_attr.transchoice is defined -%}
+                {{- label|transchoice(label_attr.transchoice, {}, translation_domain) -}}
+            {%- else -%}
+                {{- label|trans({}, translation_domain) -}}
+            {%- endif -%}
+        </label>
+    {% endif %}
+{% endspaceless %}
+{% endblock choice_label %}
+
+{% block checkbox_label %}
+{% spaceless %}
+    {% set label_attr = label_attr|merge({'class': 'checkbox'}) %}
+    {% if not compound %}
+        {% set label_attr = label_attr|merge({'for': id}) %}
+    {% endif %}
+    {% if required %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+    {% endif %}
+    {% if label is empty %}
+        {% set label = name|humanize %}
+    {% endif %}
+    <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}"{% endfor %}>
+        {{ form_widget(form) }}
+
+        {%- if label_attr.transchoice is defined -%}
+            {{- label|transchoice(label_attr.transchoice, {}, translation_domain) -}}
+        {%- else -%}
+            {{- label|trans({}, translation_domain) -}}
+        {%- endif -%}
+    </label>
+{% endspaceless %}
+{% endblock checkbox_label %}
+
+{% block radio_label %}
+{% spaceless %}
+    {% set label_attr = label_attr|merge({'class': 'radio'}) %}
+    {% if not compound %}
+        {% set label_attr = label_attr|merge({'for': id}) %}
+    {% endif %}
+    {% if required %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+    {% endif %}
+    {% if label is empty %}
+        {% set label = name|humanize %}
+    {% endif %}
+    <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}"{% endfor %}>
+        {{ form_widget(form) }}
+
+        {%- if label_attr.transchoice is defined -%}
+            {{- label|transchoice(label_attr.transchoice, {}, translation_domain) -}}
+        {%- else -%}
+            {{- label|trans({}, translation_domain) -}}
+        {%- endif -%}
+    </label>
+{% endspaceless %}
+{% endblock radio_label %}
+
+
+{# Errors #}
+
+{% block form_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+        <span class="help-block">
+            {% for error in errors %}
+                {{
+                    error.messagePluralization is null
+                        ? error.messageTemplate|trans(error.messageParameters, 'validators')
+                        : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
+                }}
+            {% endfor %}
+        </span>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_errors %}
+
+
+{# Tooltip #}
+
+{% block form_tooltip %}
+{% spaceless %}
+    <a class="help-inline" data-placement="right" rel="tooltip" href="#" tabIndex="-1" data-original-title="{{ attr.data_original_title|default('')|trans }}">
+        <i class="icon-question-sign"></i>
+    </a>
+{% endspaceless %}
+{% endblock form_tooltip %}
+
+
+{# Widgets #}
+
+{% block form_widget_simple %}
+{% spaceless %}
+    {% set type = type|default('text') %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {% if type != 'hidden' and attr.data_original_title is defined and attr.data_original_title is not empty %} {{ block ('form_tooltip') }} {% endif %}
+{% endspaceless %}
+{% endblock form_widget_simple %}
+
+{% block textarea_widget %}
+{% spaceless %}
+    <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+    {% if attr.data_original_title is defined and attr.data_original_title is not empty %} {{ block ('form_tooltip') }} {% endif %}
+{% endspaceless %}
+{% endblock textarea_widget %}
+
+{% block choice_widget %}
+{% spaceless %}
+    {% if expanded %}
+        {{ block('choice_widget_expanded') }}
+    {% else %}
+        {{ block('choice_widget_collapsed') }}
+        {% if attr.data_original_title is defined and attr.data_original_title is not empty %} {{ block ('form_tooltip') }} {% endif %}
+    {% endif %}
+{% endspaceless %}
+{% endblock choice_widget %}
+
+{% block choice_widget_expanded %}
+{% spaceless %}
+    <div {{ block('widget_container_attributes') }}>
+    {% for child in form %}
+        {{ form_row(child) }}
+    {% endfor %}
+    </div>
+{% endspaceless %}
+{% endblock choice_widget_expanded %}
+
+{% block datetime_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+        <div class="input-prepend">
+            <span class="add-on"><i class="icon-calendar"></i></span>
+            <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        </div>
+    {% else %}
+        <div {{ block('widget_container_attributes') }}>
+            {{ form_errors(form.date) }}
+            {{ form_errors(form.time) }}
+            {{ form_widget(form.date) }}
+            {{ form_widget(form.time) }}
+        </div>
+    {% endif %}
+    {% if attr.data_original_title is defined and attr.data_original_title is not empty %} {{ block ('form_tooltip') }} {% endif %}
+{% endspaceless %}
+{% endblock datetime_widget %}
+
+{% block date_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+        <div class="input-prepend">
+            <span class="add-on"><i class="icon-calendar"></i></span>
+            <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        </div>
+    {% else %}
+        <div {{ block('widget_container_attributes') }}>
+            {{ date_pattern|replace({
+                '{{ year }}':  form_widget(form.year),
+                '{{ month }}': form_widget(form.month),
+                '{{ day }}':   form_widget(form.day),
+            })|raw }}
+        </div>
+    {% endif %}
+    {% if attr.data_original_title is defined and attr.data_original_title is not empty %} {{ block ('form_tooltip') }} {% endif %}
+{% endspaceless %}
+{% endblock date_widget %}
+
+{% block time_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+        <div class="input-prepend">
+            <span class="add-on"><i class="icon-time"></i></span>
+            <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        </div>
+    {% else %}
+        <div {{ block('widget_container_attributes') }}>
+            {{ form_widget(form.hour, { 'attr': { 'size': '1' } }) }}:{{ form_widget(form.minute, { 'attr': { 'size': '1' } }) }}{% if with_seconds %}:{{ form_widget(form.second, { 'attr': { 'size': '1' } }) }}{% endif %}
+        </div>
+        {% if attr.data_original_title is defined and attr.data_original_title is not empty %} {{ block ('form_tooltip') }} {% endif %}
+    {% endif %}
+{% endspaceless %}
+{% endblock time_widget %}
+
+{% block money_widget %}
+{% spaceless %}
+    <div class="input-prepend">
+        <span class="add-on"><i class="icon-money"></i></span>
+        {{ money_pattern|replace({ '{{ widget }}': block('form_widget_simple') })|raw }}
+    </div>
+{% endspaceless %}
+{% endblock money_widget %}
+
+{% block email_widget %}
+{% spaceless %}
+    {% set type = type|default('email') %}
+    <div class="input-prepend">
+        <span class="add-on"><i class="icon-envelope"></i></span>
+        {{ block('form_widget_simple') }}
+    </div>
+{% endspaceless %}
+{% endblock email_widget %}
+
+{% block password_widget %}
+{% spaceless %}
+    {% set type = type|default('password') %}
+    <div class="input-prepend">
+        <span class="add-on"><i class="icon-key"></i></span>
+        {{ block('form_widget_simple') }}
+    </div>
+{% endspaceless %}
+{% endblock password_widget %}
+
+{% block url_widget %}
+{% spaceless %}
+    {% set type = type|default('url') %}
+    <div class="input-prepend">
+        <span class="add-on"><i class="icon-link"></i></span>
+        {{ block('form_widget_simple') }}
+    </div>
+{% endspaceless %}
+{% endblock url_widget %}
+
+{% block search_widget %}
+{% spaceless %}
+    {% set type = type|default('search') %}
+    <div class="input-append">
+        <span class="add-on"><i class="icon-search"></i></span>
+        {{ block('form_widget_simple') }}
+    </div>
+{% endspaceless %}
+{% endblock search_widget %}
+
+{% block percent_widget %}
+{% spaceless %}
+    {% set type = type|default('text') %}
+    <div class="input-append">
+        <span class="add-on">%</span>
+        {{ block('form_widget_simple') }}
+    </div>
+{% endspaceless %}
+{% endblock percent_widget %}

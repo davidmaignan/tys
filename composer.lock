@@ -31,7 +31,7 @@
                 "behat/yii-extension": "for integration with Yii web framework",
                 "behat/mink-extension": "for integration with Mink testing framework"
             },
-            "time": "2012-09-04 07:59:18",
+            "time": "2012-09-04 11:59:18",
             "bin": [
                 "bin/behat"
             ],
@@ -88,7 +88,7 @@
                 "symfony/translation": "If you want to use Symfony2 translations adapter",
                 "symfony/config": "If you want to use Config component to manage resources"
             },
-            "time": "2012-09-26 03:03:21",
+            "time": "2012-09-26 07:03:21",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -149,7 +149,7 @@
                 "behat/mink-selenium2-driver": "to enable Selenium2 (webdriver support)",
                 "behat/mink-zombie-driver": "to enable Zombie.js support"
             },
-            "time": "2012-05-29 15:50:10",
+            "time": "2012-05-29 19:50:10",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -482,7 +482,7 @@
                 "php": ">=5.3.1",
                 "kriswallsmith/buzz": ">=0.5"
             },
-            "time": "2011-12-21 02:04:09",
+            "time": "2011-12-21 07:04:09",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1063,7 +1063,7 @@
                 "php": ">=5.3.2",
                 "symfony/event-dispatcher": "2.1.*"
             },
-            "time": "2012-09-05 16:30:30",
+            "time": "2012-09-05 20:30:30",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1107,7 +1107,7 @@
                 "guzzle/common": "self.version",
                 "guzzle/parser": "self.version"
             },
-            "time": "2012-09-02 12:01:34",
+            "time": "2012-09-02 16:01:34",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1146,7 +1146,7 @@
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "2012-08-16 22:22:25",
+            "time": "2012-08-17 02:22:25",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1282,7 +1282,7 @@
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2012-01-05 13:40:52",
+            "time": "2012-01-05 18:40:52",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1389,7 +1389,7 @@
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2012-01-05 14:32:49",
+            "time": "2012-01-05 19:32:49",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1706,19 +1706,19 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "44602534db1e2eb6137f95e5d20a59a1c9a0728a"
+                "reference": "e4a45e9b4abc32397b33b8ea5becb9bfb0f6f898"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/liip/LiipFunctionalTestBundle/zipball/44602534db1e2eb6137f95e5d20a59a1c9a0728a",
-                "reference": "44602534db1e2eb6137f95e5d20a59a1c9a0728a",
+                "url": "https://github.com/liip/LiipFunctionalTestBundle/zipball/e4a45e9b4abc32397b33b8ea5becb9bfb0f6f898",
+                "reference": "e4a45e9b4abc32397b33b8ea5becb9bfb0f6f898",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "symfony/framework-bundle": ">=2.0,<2.2-dev"
+                "symfony/framework-bundle": ">=2.0,<2.3-dev"
             },
-            "time": "1348493770",
+            "time": "1350166097",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -1997,12 +1997,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/AsseticBundle",
-                "reference": "bc7cddba9b63ca47d3e1eba725cae1a52ec32897"
+                "reference": "7d7393fc9d01f77a3da254735303d696181048c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/AsseticBundle/zipball/bc7cddba9b63ca47d3e1eba725cae1a52ec32897",
-                "reference": "bc7cddba9b63ca47d3e1eba725cae1a52ec32897",
+                "url": "https://github.com/symfony/AsseticBundle/zipball/7d7393fc9d01f77a3da254735303d696181048c1",
+                "reference": "7d7393fc9d01f77a3da254735303d696181048c1",
                 "shasum": ""
             },
             "require": {
@@ -2022,7 +2022,7 @@
             "suggest": {
                 "symfony/twig-bundle": ">=2.1.0,<2.3-dev"
             },
-            "time": "1349897943",
+            "time": "1350218039",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -2169,12 +2169,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "ee7597576c4244d51d777001e570111ba59d9d72"
+                "reference": "dc519847feda14992aeec9b1b8838103460aaacc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/zipball/ee7597576c4244d51d777001e570111ba59d9d72",
-                "reference": "ee7597576c4244d51d777001e570111ba59d9d72",
+                "url": "https://github.com/symfony/symfony/zipball/dc519847feda14992aeec9b1b8838103460aaacc",
+                "reference": "dc519847feda14992aeec9b1b8838103460aaacc",
                 "shasum": ""
             },
             "require": {
@@ -2223,7 +2223,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "dev-master"
             },
-            "time": "1350123722",
+            "time": "1350206513",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2309,18 +2309,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "e1e9802c562aa4e8f8d5a8d3faaed6f235a38d2f"
+                "reference": "82334f876f06b76b28d60ef547ff0ccee8bc1de8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/zipball/e1e9802c562aa4e8f8d5a8d3faaed6f235a38d2f",
-                "reference": "e1e9802c562aa4e8f8d5a8d3faaed6f235a38d2f",
+                "url": "https://github.com/fabpot/Twig/zipball/82334f876f06b76b28d60ef547ff0ccee8bc1de8",
+                "reference": "82334f876f06b76b28d60ef547ff0ccee8bc1de8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "1350053600",
+            "time": "1350154884",
             "type": "library",
             "extra": {
                 "branch-alias": {

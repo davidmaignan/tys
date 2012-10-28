@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+      
+    <services>
+        <service id="question_create.registration.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+            <argument>core_levelbundle_form</argument>
+            <argument>core_levelbundle_leveltype</argument>
+            <argument>null</argument>
+        </service>
+
+        <service id="question_create.registration.form.type" class="Core\LevelBundle\Form\LevelFormType">
+            <tag name="form.type" alias="core_levelbundle_leveltype" />
+            <argument>Core\LevelBundle\Entity\Level</argument>
+        </service>
+        <service id="question_create.registration.form.handler" 
+                class="Core\LevelBundle\Form\LevelFormHandler" scope="request">
+                    <argument type="service" id="question_create.registration.form" />
+                    <argument type="service" id="request" />
+                    <argument type="service" id="question_create.level_manager.doctrine" />
+                    
+        </service>
+       
+        <service id="question_create.level_manager.doctrine" class="Core\LevelBundle\Doctrine\LevelManager" public="false">
+            <argument type="service" id="fos_user.entity_manager" />
+            <argument>Core\LevelBundle\Entity\Level</argument>
+        </service>
+
+        <service id="question_create.level_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false">
+            <argument>level.model_manager_name</argument>
+        </service>
+        
+         <!-- Contributors form type -->
+        <service id="question_create.contributor.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+            <argument>question_create_contributor_form</argument>
+            <argument>question_create_contributor_type</argument>
+            <argument>null</argument>
+        </service>
+        <service id="question_create.contributor.form.type" class="Question\CreateBundle\Form\Type\QuestionFormType">
+            <tag name="form.type" alias="question_create_contributor_type" />
+            <argument>Core\QuestionBundle\Entity\Question</argument>
+        </service>
+        
+        <!-- Contributors form handler -->
+        <service id="question_create.contributor.form.handler" 
+                class="Question\CreateBundle\Form\Handler\QuestionFormHandler" scope="request">
+                <argument type="service" id="question_create.contributor.form" />
+                <argument type="service" id="request" />
+                <argument type="service" id="question_create.question_manager.doctrine" />
+                <argument type="service" id="security.context" />
+                <argument type="service" id="my_mailer" />
+        </service>
+        
+        <!-- Question create doctrine manager -->
+        <service id="question_create.question_manager.doctrine" class="Question\CreateBundle\Doctrine\QuestionManager" public="false">
+            <argument type="service" id="fos_user.entity_manager" />
+            <argument>Core\QuestionBundle\Entity\Question</argument>
+        </service>
+
+        <service id="question_create.question_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false">
+            <argument>question.model_manager_name</argument>
+        </service>
+        
+    </services>
+  
+   
+</container>

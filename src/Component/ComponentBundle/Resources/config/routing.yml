@@ -1,3 +1,0 @@
-component_component_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ComponentComponentBundle:Default:index }
