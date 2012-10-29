@@ -1,0 +1,3 @@
+shop_payment_homepage:
+    pattern:  /
+    defaults: { _controller: ShopPaymentBundle:Default:index }

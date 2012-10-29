@@ -130,7 +130,7 @@ class ChangePasswordControllerTest extends WebTestCase
 
         $crawler = $client->submit($form);
 
-        $this->assertTrue($crawler->filter('html:contains("This value is not valid.")')->count() > 0, $client->getResponse()->getContent());
+        $this->assertTrue($crawler->filter('html:contains("Verification")')->count() > 0, $client->getResponse()->getContent());
         
         $this->assertTrue(true,true);
         

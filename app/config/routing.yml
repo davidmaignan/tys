@@ -1,3 +1,7 @@
+shop_payment:
+    resource: "@ShopPaymentBundle/Resources/config/routing.yml"
+    prefix:   /shop
+
 question_create:
     resource: "@QuestionCreateBundle/Resources/config/routing.yml"
     prefix:   /question

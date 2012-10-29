@@ -32,7 +32,8 @@
         "behat/mink-zombie-driver": "dev-master",
         "liip/functional-test-bundle": "dev-master",
         "jms/security-extra-bundle": "dev-master",
-        "jms/di-extra-bundle": "dev-master"
+        "jms/di-extra-bundle": "dev-master",
+        "jms/payment-core-bundle": "master-dev"
         
     },
     "scripts": {

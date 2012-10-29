@@ -30,11 +30,15 @@ class User extends BaseUser
      */
     protected $confirmed;
     
-    
     /**
      * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="user")
      */
     protected $questions;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Shop\OrderBundle\Entity\Order", mappedBy="user")
+     */
+    protected $orders;
     
 
     public function __construct()
