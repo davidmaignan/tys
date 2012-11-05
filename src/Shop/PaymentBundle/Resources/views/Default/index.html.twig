@@ -7,5 +7,9 @@
 
 
 
+<form action="{{ path('payment_homepage' , {'id': id } ) }}" method="post">
+    {{ form_widget(form) }}
+    <input type="submit" />
+</form>
 
 {% endblock body %}

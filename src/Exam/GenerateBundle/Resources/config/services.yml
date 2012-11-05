@@ -1,0 +1,7 @@
+parameters:
+#    exam_generate.example.class: Exam\GenerateBundle\Example
+
+services:
+#    exam_generate.example:
+#        class: %exam_generate.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

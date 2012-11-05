@@ -1,0 +1,3 @@
+exam_practice_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ExamPracticeBundle:Default:index }

@@ -35,10 +35,12 @@ class User extends BaseUser
      */
     protected $questions;
     
+
     /**
-     * @ORM\OneToMany(targetEntity="Shop\OrderBundle\Entity\Order", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Shop\OrderBundle\Entity\Order2", mappedBy="user")
      */
     protected $orders;
+    
     
 
     public function __construct()
@@ -48,6 +50,7 @@ class User extends BaseUser
         $this->setConfirmed(false);
         
         $this->questions = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     /**
@@ -117,5 +120,40 @@ class User extends BaseUser
     public function getQuestions()
     {
         return $this->questions;
+    }
+
+   
+
+    /**
+     * Add orders
+     *
+     * @param Shop\OrderBundle\Entity\Order $orders
+     * @return User
+     */
+    public function addOrder(\Shop\OrderBundle\Entity\Order2 $orders)
+    {
+        $this->orders[] = $orders;
+    
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param Shop\OrderBundle\Entity\Order $orders
+     */
+    public function removeOrder(\Shop\OrderBundle\Entity\Order2 $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 }

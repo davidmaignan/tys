@@ -6,6 +6,9 @@ namespace Security\AuthenticateBundle\Entity;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Core\QuestionBundle\Entity\Question;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
@@ -27,11 +30,17 @@ class User extends BaseUser
      */
     protected $confirmed;
     
-    
     /**
-     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="Type")
+     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="user")
      */
     protected $questions;
+    
+
+    /**
+     * @ORM\OneToMany(targetEntity="Shop\OrderBundle\Entity\Order", mappedBy="user")
+     */
+    protected $orders;
+    
     
 
     public function __construct()
@@ -41,6 +50,7 @@ class User extends BaseUser
         $this->setConfirmed(false);
         
         $this->questions = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     /**
@@ -111,4 +121,6 @@ class User extends BaseUser
     {
         return $this->questions;
     }
+
+   
 }

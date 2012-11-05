@@ -106,3 +106,9 @@ question_create:
 #JMS payement core
 jms_payment_core:
     secret: hmaatclp242?
+    
+jms_payment_paypal:
+    username: yourmail@domain.com
+    password: 13554848
+    signature: LbGakzdnaokndand
+    debug: true    
