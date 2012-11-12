@@ -33,7 +33,10 @@
         </service>
         
          <!-- Contributors form type -->
-        <service id="question_create.contributor.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+        <service id="question_create.contributor.form" 
+                 factory-method="createNamed" 
+                 factory-service="form.factory" 
+                 class="Symfony\Component\Form\Form">
             <argument>question_create_contributor_form</argument>
             <argument>question_create_contributor_type</argument>
             <argument>null</argument>

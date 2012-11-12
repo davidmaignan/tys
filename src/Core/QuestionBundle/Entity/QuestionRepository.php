@@ -37,7 +37,7 @@ class QuestionRepository extends EntityRepository
             ->createQuery('
                 SELECT p, c FROM CoreQuestionBundle:Question p
                 JOIN p.answers c
-                WHERE p.title = :title'
+                    WHERE p.title = :title'
             )->setParameter('title', $title);
 
         try {

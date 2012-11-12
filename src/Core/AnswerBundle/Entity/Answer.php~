@@ -10,12 +10,14 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\MinLength;
 use Symfony\Component\Validator\Constraints\MaxLength;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 use Core\QuestionBundle\Entity\Question;
 
 /**
  * @ORM\Entity 
  * @ORM\Table(name="answer")
+ * @UniqueEntity({"title"})
  */
 class Answer
 {

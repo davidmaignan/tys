@@ -1,3 +1,3 @@
 exam_generate_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ExamGenerateBundle:Default:index }
+    pattern:  /create
+    defaults: { _controller: ExamGenerateBundle:Create:index }

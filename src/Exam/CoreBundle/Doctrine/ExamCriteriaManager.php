@@ -7,15 +7,14 @@
  *
  */
 
-namespace Question\CreateBundle\Doctrine;
+namespace Exam\CoreBundle\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use FOS\UserBundle\Model\UserInterface;
-use Question\CreateBundle\Model\QuestionManager as BaseQuestionManager;
-use FOS\UserBundle\Util\CanonicalizerInterface;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Exam\CoreBundle\Model\ExamCriteriaManager as BaseExamCriteriaManager;
+use Exam\CoreBundle\Entity\ExamCriteriaInterface;
 
-class QuestionManager extends BaseQuestionManager
+class ExamCriteriaManager extends BaseExamCriteriaManager
 {
     protected $objectManager;
     protected $class;
@@ -41,9 +40,9 @@ class QuestionManager extends BaseQuestionManager
     /**
      * {@inheritDoc}
      */
-    public function deleteQuestion(QuestionInterface $question)
+    public function deleteExamCriteria(ExamCriteriaInterface $examCriteria)
     {
-        $this->objectManager->remove($question);
+        $this->objectManager->remove($examCriteria);
         $this->objectManager->flush();
     }
     
@@ -73,17 +72,17 @@ class QuestionManager extends BaseQuestionManager
 
    
     /**
-     * Updates a user.
+     * Updates an examcriteria.
      *
-     * @param LevelInterface $user
+     * @param ExamCriteriaInterface $examCriteria
      * @param Boolean       $andFlush Whether to flush the changes (default true)
      * 
      */
      
-    public function updateQuestion($question, $andFlush = true)
+    public function updateExamCriteria(ExamCriteriaInterface $examCriteria, $andFlush = true)
     {
 
-        $this->objectManager->persist($question);
+        $this->objectManager->persist($examCriteria);
         if ($andFlush) {
             $this->objectManager->flush();
         }

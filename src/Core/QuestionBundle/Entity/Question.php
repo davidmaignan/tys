@@ -98,10 +98,13 @@ class Question implements QuestionInterface {
 
     /**
      * @ORM\OneToMany(targetEntity="Core\AnswerBundle\Entity\Answer", mappedBy="question", cascade={"persist"} )
-     * 
      */
     private $answers;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\Exam", mappedBy="questions")
+     */
+    private $exams;
     
     /**
      * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User", inversedBy="questions")
@@ -124,6 +127,7 @@ class Question implements QuestionInterface {
     public function __construct() {
         $this->tags = new ArrayCollection();
         $this->answers = new ArrayCollection();
+        $this->exams = new ArrayCollection();
         
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
@@ -411,14 +415,6 @@ class Question implements QuestionInterface {
     {
         return $this->updatedAt;
     }
-    
-    
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        
-        
-    }
-    
 
     /**
      * Set user
@@ -441,5 +437,45 @@ class Question implements QuestionInterface {
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add exams
+     *
+     * @param Exam\CoreBundle\Entity\Exam $exams
+     * @return Question
+     */
+    public function addExam(\Exam\CoreBundle\Entity\Exam $exams)
+    {
+        $this->exams[] = $exams;
+    
+        return $this;
+    }
+
+    /**
+     * Remove exams
+     *
+     * @param Exam\CoreBundle\Entity\Exam $exams
+     */
+    public function removeExam(\Exam\CoreBundle\Entity\Exam $exams)
+    {
+        $this->exams->removeElement($exams);
+    }
+
+    /**
+     * Get exams
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getExams()
+    {
+        return $this->exams;
+    }
+    
+        
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        
+        
     }
 }
