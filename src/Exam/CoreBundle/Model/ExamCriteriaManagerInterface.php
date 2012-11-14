@@ -18,9 +18,9 @@ namespace Exam\CoreBundle\Model;
 interface ExamCriteriaManagerInterface
 {
     /**
-     * Creates an empty question instance.
+     * Creates an empty exam interface instance.
      *
-     * @return UserInterface
+     * @return ExamCriteriaInterface
      */
     public function createExamCriteria();
     

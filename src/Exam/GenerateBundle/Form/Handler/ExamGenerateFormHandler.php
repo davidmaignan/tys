@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 use Exam\CoreBundle\Model\ExamCriteriaManagerInterface;
 use Exam\CoreBundle\Entity\ExamCriteriaInterface;
+use Exam\CoreBundle\Model\ExamManagerInterface;
 
 
 class ExamGenerateFormHandler
@@ -27,17 +28,23 @@ class ExamGenerateFormHandler
     protected $request;
     protected $form;
     protected $examCriteriaManager;
+    protected $examManager;
     protected $mailer;
+    protected $user;
     
     public function __construct(FormInterface $form, 
                                 Request $request, 
                                 ExamCriteriaManagerInterface $examCriteriaManager,
+                                ExamManagerInterface $examManager,
                                 SecurityContext $securityContext)
     {
-        $this->form = $form;
-        $this->request = $request;
-        $this->examCriteriaManager = $examCriteriaManager;
-        $this->securityContext = $securityContext;
+        $this->form                 = $form;
+        $this->request              = $request;
+        $this->examCriteriaManager  = $examCriteriaManager;
+        $this->examManager          = $examManager;
+        $this->securityContext      = $securityContext;
+        
+        $this->user = $this->securityContext->getToken()->getUser();
     }
     
     public function process($confirmation = false)
@@ -72,19 +79,37 @@ class ExamGenerateFormHandler
     /**
      * @param boolean $confirmation
      */
-    protected function onSuccess(ExamCriteriaInterface$examCriteria, $confirmation)
+    protected function onSuccess(ExamCriteriaInterface $examCriteria, $confirmation)
     {
+        $exam = $this->createExam();
+        
+        $exam = new \Exam\CoreBundle\Entity\Exam();
+        $exam->setCriteria($examCriteria);
+        $exam->setOwner($this->user);
+        
         $this->examCriteriaManager->updateExamCriteria($examCriteria);
+        $this->examManager->updateExam($exam);
         
-        echo 'here';
-        exit;
+        //$this->examCriteriaManager->updateExamCriteria($examCriteria);
         
+        if($confirmation){
+            
+        }
+        
+
     }
     
+    /**
+     * @return ExamInterface
+    */
+    protected function createExam()
+    {
+        return $this->examManager->createExam();
+    }
     
-     /**
-     * @return QuestionInterface
-     */
+    /**
+     * @return ExamCriteriaInterface
+    */
     protected function createExamCriteria()
     {
         return $this->examCriteriaManager->createExamCriteria();

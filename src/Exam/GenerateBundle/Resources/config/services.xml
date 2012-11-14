@@ -6,7 +6,7 @@
       
     <services>
         
-         <!-- Contributors form type -->
+         <!-- Exam form type -->
         <service id="exam_generate.form" 
                  factory-method="createNamed" 
                  factory-service="form.factory" 
@@ -21,20 +21,29 @@
             <argument>Exam\CoreBundle\Entity\ExamCriteria</argument>
         </service>
         
-        <!-- Contributors form handler -->
+        <!-- Exam form handler -->
         <service id="exam_generate.form.handler" 
                 class="Exam\GenerateBundle\Form\Handler\ExamGenerateFormHandler" scope="request">
                 <argument type="service" id="exam_generate.form" />
                 <argument type="service" id="request" />
                 <argument type="service" id="exam_generate.exam_criteria_manager.doctrine" />
+                <argument type="service" id="exam_generate.exam_manager.doctrine" />
                 <argument type="service" id="security.context" />
         </service>
         
-        <!-- Question create doctrine manager -->
+        <!-- Exam criteria doctrine manager -->
         <service id="exam_generate.exam_criteria_manager.doctrine" class="Exam\CoreBundle\Doctrine\ExamCriteriaManager" public="false">
             <argument type="service" id="fos_user.entity_manager" />
             <argument>Exam\CoreBundle\Entity\ExamCriteria</argument>
         </service>
+        
+        <!-- Exam criteria doctrine manager -->
+        <service id="exam_generate.exam_manager.doctrine" class="Exam\CoreBundle\Doctrine\ExamManager" public="false">
+            <argument type="service" id="fos_user.entity_manager" />
+            <argument>Exam\CoreBundle\Entity\Exam</argument>
+        </service>
+        
+        
         <!--
         <service id="question_create.question_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false">
             <argument>question.model_manager_name</argument>

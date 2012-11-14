@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the QuestionCreateBundle package.
+ * This file is part of the ExamCoreBundle package.
  *
- * (c) Testyrskills.com <http://www.Testyrskills.com/>
+ * (c) Testyrskills.com <http://www.testyrskills.com/>
  *
  */
 
@@ -31,7 +31,7 @@ abstract class ExamCriteriaManager implements ExamCriteriaManagerInterface
     /**
      * Returns an empty question instance
      *
-     * @return QuestionInterface
+     * @return ExamCriteriaInterface
      */
     public function createExamCriteria()
     {
