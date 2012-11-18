@@ -1,0 +1,7 @@
+parameters:
+#    exam_practice.example.class: Exam\PracticeBundle\Example
+
+services:
+#    exam_practice.example:
+#        class: %exam_practice.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -37,7 +37,7 @@ class ChangePasswordControllerTest extends WebTestCase
         $client->followRedirects(true);
         $crawler = $client->request('GET', '/login');
 
-        $form = $crawler->selectButton('_submit')->form();
+        $form = $crawler->selectButton('loginBtn')->form();
         $form['_username'] = 'david';
         $form['_password'] = 'camper';
 
@@ -130,7 +130,7 @@ class ChangePasswordControllerTest extends WebTestCase
 
         $crawler = $client->submit($form);
 
-        $this->assertTrue($crawler->filter('html:contains("This value is not valid.")')->count() > 0, $client->getResponse()->getContent());
+        $this->assertTrue($crawler->filter('html:contains("Verification")')->count() > 0, $client->getResponse()->getContent());
         
         $this->assertTrue(true,true);
         

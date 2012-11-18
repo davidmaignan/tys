@@ -1,0 +1,11 @@
+payment_cancel:
+    pattern:  /
+    defaults: { _controller: ShopPaymentBundle:Default:index }
+
+payment_complete:
+    pattern:  /
+    defaults: { _controller: ShopPaymentBundle:Default:complete }
+
+payment_homepage:
+    pattern:  /
+    defaults: { _controller: ShopPaymentBundle:Default:index }

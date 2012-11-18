@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+
+<h1>Payement homepage</h1>
+
+
+
+<form action="{{ path('payment_homepage' , {'id': id } ) }}" method="post">
+    {{ form_widget(form) }}
+    <input type="submit" />
+</form>
+
+{% endblock body %}

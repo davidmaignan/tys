@@ -15,9 +15,17 @@ class TypeFixtures  extends AbstractFixture implements OrderedFixtureInterface
     {     
         
         $type = new Type();
-        $type->setName('radio');
+        $type->setName('single');
         $manager->persist($type);
         $this->addReference('type', $type);
+        
+        $type = new Type();
+        $type->setName('multiple');
+        $manager->persist($type);
+        
+        $type = new Type();
+        $type->setName('coding');
+        $manager->persist($type);
     
         $manager->flush();
         

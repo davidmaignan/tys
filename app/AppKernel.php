@@ -19,6 +19,8 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
+            new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
             new Dm\QuestionBundle\DmQuestionBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Dm\UserBundle\DmUserBundle(),
@@ -41,6 +43,12 @@ class AppKernel extends Kernel
             new Library\JQueryBundle\LibraryJQueryBundle(),
             new Security\RegistrationBundle\SecurityRegistrationBundle(),
             new Question\CreateBundle\QuestionCreateBundle(),
+            new Shop\PaymentBundle\ShopPaymentBundle(),
+            new Shop\OrderBundle\ShopOrderBundle(),
+            new Exam\PracticeBundle\ExamPracticeBundle(),
+            new Exam\GenerateBundle\ExamGenerateBundle(),
+            new Exam\CoreBundle\ExamCoreBundle(),
+            new Exam\ManageBundle\ExamManageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

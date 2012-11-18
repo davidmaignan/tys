@@ -1,3 +1,19 @@
+exam_manage:
+    resource: "@ExamManageBundle/Resources/config/routing.yml"
+    prefix:   /exam/
+
+exam_generate:
+    resource: "@ExamGenerateBundle/Resources/config/routing.yml"
+    prefix:   /exam/
+
+exam_practice:
+    resource: "@ExamPracticeBundle/Resources/config/routing.yml"
+    prefix:   /exam/
+
+shop_payment:
+    resource: "@ShopPaymentBundle/Resources/config/routing.yml"
+    prefix:   /shop
+
 question_create:
     resource: "@QuestionCreateBundle/Resources/config/routing.yml"
     prefix:   /question

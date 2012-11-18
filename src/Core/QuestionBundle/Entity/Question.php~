@@ -2,7 +2,7 @@
 
 namespace Core\QuestionBundle\Entity;
 
-use Dm\QuestionBundle\Entity\Tag;
+use Core\TagBundle\Entity\Tag;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints\Collection;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\MinLength;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 use Core\AnswerBundle\Entity\Answer;
 
@@ -20,10 +21,11 @@ use Core\AnswerBundle\Entity\Answer;
  * Dm\QuestionBundle\Entity\Question
  *
  * @ORM\Table(name="question")
+ * @UniqueEntity({"title"})
  * @ORM\Entity(repositoryClass="Core\QuestionBundle\Entity\QuestionRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Question {
+class Question implements QuestionInterface {
 
     /**
      * @var integer $id
@@ -96,10 +98,13 @@ class Question {
 
     /**
      * @ORM\OneToMany(targetEntity="Core\AnswerBundle\Entity\Answer", mappedBy="question", cascade={"persist"} )
-     * 
      */
     private $answers;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\Exam", mappedBy="question")
+     */
+    private $exams;
     
     /**
      * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User", inversedBy="questions")
@@ -122,6 +127,7 @@ class Question {
     public function __construct() {
         $this->tags = new ArrayCollection();
         $this->answers = new ArrayCollection();
+        $this->exams = new ArrayCollection();
         
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
@@ -342,14 +348,21 @@ class Question {
         return $this->answers;
     }
     
-    public function setTags(ArrayCollection $tags)
+    
+    /**
+     * Set Answers and question relation
+     * @param ArrayCollection $answers 
+     */
+    public function setAnswers(ArrayCollection $answers)
     {
-        foreach ($tags as $tag) {
-            $tag->addTask($this);
+        foreach ($answers as $answer) {
+            $answer->setQuestion($this);
         }
 
-        $this->tags = $tags;
+        $this->answers = $answers;
     }
+    
+ 
     
     /**
      * @ORM\preUpdate
@@ -402,14 +415,6 @@ class Question {
     {
         return $this->updatedAt;
     }
-    
-    
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        
-        
-    }
-    
 
     /**
      * Set user
@@ -432,5 +437,45 @@ class Question {
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add exams
+     *
+     * @param Exam\CoreBundle\Entity\Exam $exams
+     * @return Question
+     */
+    public function addExam(\Exam\CoreBundle\Entity\Exam $exams)
+    {
+        $this->exams[] = $exams;
+    
+        return $this;
+    }
+
+    /**
+     * Remove exams
+     *
+     * @param Exam\CoreBundle\Entity\Exam $exams
+     */
+    public function removeExam(\Exam\CoreBundle\Entity\Exam $exams)
+    {
+        $this->exams->removeElement($exams);
+    }
+
+    /**
+     * Get exams
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getExams()
+    {
+        return $this->exams;
+    }
+    
+        
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        
+        
     }
 }

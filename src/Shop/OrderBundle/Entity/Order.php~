@@ -1,0 +1,31 @@
+<?php
+
+namespace Shop\OrderBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use JMS\Payment\CoreBundle\Entity\PaymentInstruction;
+use JMS\DiExtraBundle\Annotation as DI;
+    
+use Doctrine\Common\Collections\ArrayCollection;
+
+
+/**
+ * Shop\OrderBundle\Entity\Order
+ *
+ * @ORM\Table(name="order")
+ * @ORM\Entity(repositoryClass="Shop\OrderBundle\Entity\OrderRepository")
+ */
+class Order {
+
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+
+}

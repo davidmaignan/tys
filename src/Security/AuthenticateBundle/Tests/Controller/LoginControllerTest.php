@@ -22,7 +22,7 @@ class LoginControllerTest extends WebTestCase
         $client->followRedirects(true);
         $crawler = $client->request('GET', '/');
 
-        $form = $crawler->selectButton('_submit')->form();
+        $form = $crawler->selectButton('loginBtn')->form();
         $form['_username'] = 'david';
         $form['_password'] = 'camper';
 
@@ -36,15 +36,14 @@ class LoginControllerTest extends WebTestCase
         
         $client->followRedirects(true);
         $crawler = $client->request('GET','/');
-        $form = $crawler->selectButton('_submit')->form();
+        $form = $crawler->selectButton('loginBtn')->form();
         $form['_username'] = 'david';
         $form['_password'] = 'camper242?';
         $crawler = $client->submit($form);
         
-        //var_dump( $client->getResponse()->getContent());
-        //exit;
+        $this->assertTrue($crawler->filter('html:contains("Invalid username or password")')->count() > 0, $client->getResponse()->getContent());
         
-        $this->assertTrue(true,true);
+        
         
     }
 }

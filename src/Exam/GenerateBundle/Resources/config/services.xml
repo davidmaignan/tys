@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+      
+    <services>
+        
+         <!-- Exam form type -->
+        <service id="exam_generate.form" 
+                 factory-method="createNamed" 
+                 factory-service="form.factory" 
+                 class="Symfony\Component\Form\Form">
+            <argument>exam_generate_form</argument>
+            <argument>exam_generate_form_type</argument>
+            <argument>null</argument>
+        </service>
+        
+        <service id="exam_generate.form.type" class="Exam\GenerateBundle\Form\Type\ExamGenerateFormType">
+            <tag name="form.type" alias="exam_generate_form_type" />
+            <argument>Exam\CoreBundle\Entity\ExamCriteria</argument>
+        </service>
+        
+        <!-- Exam form handler -->
+        <service id="exam_generate.form.handler" 
+                class="Exam\GenerateBundle\Form\Handler\ExamGenerateFormHandler" scope="request">
+                <argument type="service" id="exam_generate.form" />
+                <argument type="service" id="request" />
+                <argument type="service" id="exam_generate.exam_criteria_manager.doctrine" />
+                <argument type="service" id="exam_generate.exam_manager.doctrine" />
+                <argument type="service" id="security.context" />
+        </service>
+        
+        <!-- Exam criteria doctrine manager -->
+        <service id="exam_generate.exam_criteria_manager.doctrine" class="Exam\CoreBundle\Doctrine\ExamCriteriaManager" public="false">
+            <argument type="service" id="fos_user.entity_manager" />
+            <argument>Exam\CoreBundle\Entity\ExamCriteria</argument>
+        </service>
+        
+        <!-- Exam criteria doctrine manager -->
+        <service id="exam_generate.exam_manager.doctrine" class="Exam\CoreBundle\Doctrine\ExamManager" public="false">
+            <argument type="service" id="fos_user.entity_manager" />
+            <argument>Exam\CoreBundle\Entity\Exam</argument>
+        </service>
+        
+        
+        <!--
+        <service id="question_create.question_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false">
+            <argument>question.model_manager_name</argument>
+        </service>-->
+        
+        
+        <!-- Question create doctrine manager 
+        <service id="question_create.question_manager.doctrine" class="Question\CreateBundle\Doctrine\QuestionManager" public="false">
+            <argument type="service" id="fos_user.entity_manager" />
+            <argument>Core\QuestionBundle\Entity\Question</argument>
+        </service>
+
+        <service id="question_create.question_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false">
+            <argument>question.model_manager_name</argument>
+        </service>
+        -->
+    </services>
+  
+   
+</container>
