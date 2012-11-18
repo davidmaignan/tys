@@ -37,10 +37,9 @@ class Exam implements ExamInterface {
     private $candidate;
     
     /**
-     * @ORM\OneToOne(targetEntity="ExamCriteria")
-     * @ORM\JoinColumn(name="exam_criteria_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Exam\CoreBundle\Entity\ExamCriteria", mappedBy="exam" )
      */
-    private $criteria;
+    private $examCriteria;
     
     /**
      * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User")
@@ -49,7 +48,7 @@ class Exam implements ExamInterface {
     private $owner;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Core\QuestionBundle\Entity\Question", inversedBy="exams")
+     * @ORM\ManyToMany(targetEntity="Core\QuestionBundle\Entity\Question", inversedBy="exams", cascade={"persist"})
      * @ORM\JoinTable(name="exam_questions")
      */
     private $questions;
@@ -233,5 +232,33 @@ class Exam implements ExamInterface {
     public function getCriteria()
     {
         return $this->criteria;
+    }
+
+    /**
+     * Set examCriteria
+     *
+     * @param Exam\CoreBundle\Entity\ExamCriteria $examCriteria
+     * @return Exam
+     */
+    public function setExamCriteria(\Exam\CoreBundle\Entity\ExamCriteria $examCriteria = null)
+    {
+        $this->examCriteria = $examCriteria;
+    
+        return $this;
+    }
+
+    /**
+     * Get examCriteria
+     *
+     * @return Exam\CoreBundle\Entity\ExamCriteria 
+     */
+    public function getExamCriteria()
+    {
+        return $this->examCriteria;
+    }
+    
+    public function __toString()
+    {
+        return __CLASS__;
     }
 }

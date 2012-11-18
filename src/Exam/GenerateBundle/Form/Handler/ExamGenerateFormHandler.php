@@ -32,6 +32,7 @@ class ExamGenerateFormHandler
     protected $mailer;
     protected $user;
     
+    
     public function __construct(FormInterface $form, 
                                 Request $request, 
                                 ExamCriteriaManagerInterface $examCriteriaManager,
@@ -47,6 +48,7 @@ class ExamGenerateFormHandler
         $this->user = $this->securityContext->getToken()->getUser();
     }
     
+    
     public function process($confirmation = false)
     {
         $examCriteria = $this->createExamCriteria();
@@ -55,25 +57,15 @@ class ExamGenerateFormHandler
         
         if ('POST' === $this->request->getMethod()) {
             
-            //var_dump($examCriteria);
 
             $this->form->bind($this->request);
                      
             if ($this->form->isValid()) {
-                echo 'valid';
                 $this->onSuccess($examCriteria, $confirmation);
-                //return true;
-            }else{
-                echo 'invalid';
+                return true;
             }
-            //exit;
         }
 
-        //return false;
-        
-        
-       
-       
     }
     
     /**
@@ -85,12 +77,12 @@ class ExamGenerateFormHandler
         
         $exam = new \Exam\CoreBundle\Entity\Exam();
         $exam->setCriteria($examCriteria);
+        $examCriteria->setExam($exam);
         $exam->setOwner($this->user);
         
         $this->examCriteriaManager->updateExamCriteria($examCriteria);
         $this->examManager->updateExam($exam);
         
-        //$this->examCriteriaManager->updateExamCriteria($examCriteria);
         
         if($confirmation){
             

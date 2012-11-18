@@ -92,7 +92,7 @@ class CreateControllerTest extends WebTestCase
         $client->followRedirects(true);
         $crawler = $client->request('GET', '/');
 
-        $form = $crawler->selectButton('_submit')->form();
+        $form = $crawler->selectButton('loginBtn')->form();
         $form['_username'] = $this->username;
         $form['_password'] = $this->password;
 

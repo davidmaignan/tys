@@ -41,9 +41,21 @@ class ExamCriteria implements ExamCriteriaInterface
     private $id;
     
     
+    /**  The owning side has 'inversedBy'. Its table will have
+     *   the foreign key.
+     * @ORM\OneToOne(targetEntity="Exam\CoreBundle\Entity\Exam", inversedBy="examCriteria")
+     * @ORM\JoinColumn(name="exam_id", referencedColumnName="id")
+     */
+     private $exam;
+    
+    
     /**
-     * @ORM\ManyToMany(targetEntity="Core\SectionBundle\Entity\Section")
+     * @ORM\ManyToMany(targetEntity="Core\SectionBundle\Entity\Section", inversedBy="examCriterias")
      * @ORM\JoinTable(name="exam_criteria_sections")
+     * @Assert\Count(
+     *      min = "1",
+     *      minMessage = "You must choose at least one test"
+     * )
      */
     private $sections;
     
@@ -77,13 +89,20 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * @ORM\ManyToMany(targetEntity="Core\TypeBundle\Entity\Type")
      * @ORM\JoinTable(name="exam_criteria_types")
+     * @Assert\Count(
+     *      min = "1",
+     *      minMessage = "You must choose at least one type of question"
+     * )
      */
     private $types;
     
     
     /**
-     * @ORM\ManyToMany(targetEntity="Core\TagBundle\Entity\Tag")
+     * @ORM\ManyToMany(targetEntity="Core\TagBundle\Entity\Tag", inversedBy="examCriterias")
      * @ORM\JoinTable(name="exam_criteria_tags")
+     * @Assert\Count(
+     *      min = "5"
+     * )
      */
     private $tags;
     
@@ -92,8 +111,8 @@ class ExamCriteria implements ExamCriteriaInterface
      */
     public function __construct()
     {
-        $this->section = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->type = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sections = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->types = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -212,10 +231,76 @@ class ExamCriteria implements ExamCriteriaInterface
         return $this->tags;
     }
     
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-       
 
+    public function setSections(ArrayCollection $sections)
+    {
+        $this->sections = $sections;
+    }
+
+    /**
+     * Add sections
+     *
+     * @param Core\SectionBundle\Entity\Section $sections
+     * @return ExamCriteria
+     */
+    public function addSection(\Core\SectionBundle\Entity\Section $sections)
+    {
+        $this->sections[] = $sections;
+    
+        return $this;
+    }
+
+    /**
+     * Remove sections
+     *
+     * @param Core\SectionBundle\Entity\Section $sections
+     */
+    public function removeSection(\Core\SectionBundle\Entity\Section $sections)
+    {
+        $this->sections->removeElement($sections);
+    }
+
+    /**
+     * Get sections
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getSections()
+    {
+        return $this->sections;
+    }
+
+    /**
+     * Add types
+     *
+     * @param Core\TypeBundle\Entity\Type $types
+     * @return ExamCriteria
+     */
+    public function addType(\Core\TypeBundle\Entity\Type $types)
+    {
+        $this->types[] = $types;
+    
+        return $this;
+    }
+
+    /**
+     * Remove types
+     *
+     * @param Core\TypeBundle\Entity\Type $types
+     */
+    public function removeType(\Core\TypeBundle\Entity\Type $types)
+    {
+        $this->types->removeElement($types);
+    }
+
+    /**
+     * Get types
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTypes()
+    {
+        return $this->types;
     }
 
    

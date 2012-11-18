@@ -10,7 +10,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Core\TagBundle\Entity\Tag;
 
 
-class GeneralFixtures  extends AbstractFixture implements OrderedFixtureInterface
+class TagFixtures  extends AbstractFixture implements OrderedFixtureInterface
 {
     
     public function load(ObjectManager $manager)

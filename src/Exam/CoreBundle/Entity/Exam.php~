@@ -37,10 +37,9 @@ class Exam implements ExamInterface {
     private $candidate;
     
     /**
-     * @ORM\OneToOne(targetEntity="ExamCriteria")
-     * @ORM\JoinColumn(name="exam_criteria_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Exam\CoreBundle\Entity\ExamCriteria", mappedBy="exam")
      */
-    private $criteria;
+    private $examCriteria;
     
     /**
      * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User")

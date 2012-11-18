@@ -11,16 +11,14 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ExamGenerateFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    {        
         $builder
             ->add('sections', null,  array('expanded'=>true, 'multiple'=>true, 'required' => true))
             ->add('numberCandidates')
             ->add('level', null,  array('expanded'=>true, 'multiple'=>false, 'required' => true))
             ->add('numberQuestions')
             ->add('types', null,  array('expanded'=>true, 'multiple'=>true, 'required' => true))
-            ->add('tags', null,  array('expanded'=>true, 'multiple'=>true, 'required' => true))
-        ;
-        
+            ->add('tags', null,  array('expanded'=>true, 'multiple'=>true, 'required' => true));      
     }
     
     public function setDefaultOptions(OptionsResolverInterface $resolver)

@@ -3,6 +3,7 @@
 namespace Exam\GenerateBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class CreateController extends Controller
 {
@@ -13,12 +14,10 @@ class CreateController extends Controller
         
          if($formHandler->process(true)){
              
-             
+             return new RedirectResponse($this->generateUrl('exam_manage_homepage'));
              
          }
         
-        
         return $this->render('ExamGenerateBundle:Create:index.html.twig',array('form'=>$form->createView()));
-        
     }
 }

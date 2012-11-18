@@ -41,8 +41,16 @@ class ExamCriteria implements ExamCriteriaInterface
     private $id;
     
     
+    /**  The owning side has 'inversedBy'. Its table will have
+     *   the foreign key.
+     * @ORM\OneToOne(targetEntity="Exam\CoreBundle\Entity\Exam", inversedBy="examCriteria", cascade={"persist"})
+     * @ORM\JoinColumn(name="exam_id", referencedColumnName="id")
+     */
+     private $exam;
+    
+    
     /**
-     * @ORM\ManyToMany(targetEntity="Core\SectionBundle\Entity\Section")
+     * @ORM\ManyToMany(targetEntity="Core\SectionBundle\Entity\Section", inversedBy="examCriterias")
      * @ORM\JoinTable(name="exam_criteria_sections")
      * @Assert\Count(
      *      min = "1",
@@ -56,7 +64,7 @@ class ExamCriteria implements ExamCriteriaInterface
      *
      * @ORM\Column(name="number_candidate", type="integer")
      * 
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "You must select a number of questions")
      */
     private $numberCandidates;
     
@@ -64,7 +72,7 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * @ORM\OneToOne(targetEntity="Core\LevelBundle\Entity\Level")
      * @ORM\JoinColumn(name="level_id", referencedColumnName="id")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "You must select a level for this test")
      */
     private $level;
     
@@ -73,7 +81,7 @@ class ExamCriteria implements ExamCriteriaInterface
      *
      * @ORM\Column(name="number_questions", type="integer")
      * 
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "You must select a number of questions")
      */
     private $numberQuestions;
     
@@ -90,10 +98,11 @@ class ExamCriteria implements ExamCriteriaInterface
     
     
     /**
-     * @ORM\ManyToMany(targetEntity="Core\TagBundle\Entity\Tag")
+     * @ORM\ManyToMany(targetEntity="Core\TagBundle\Entity\Tag", inversedBy="examCriterias")
      * @ORM\JoinTable(name="exam_criteria_tags")
      * @Assert\Count(
-     *      min = "5"
+     *      min = "5",
+     *      minMessage = " |You must select at least %count% topics"
      * )
      */
     private $tags;
@@ -296,4 +305,27 @@ class ExamCriteria implements ExamCriteriaInterface
     }
 
    
+
+    /**
+     * Set exam
+     *
+     * @param Exam\CoreBundle\Entity\Exam $exam
+     * @return ExamCriteria
+     */
+    public function setExam(\Exam\CoreBundle\Entity\Exam $exam = null)
+    {
+        $this->exam = $exam;
+    
+        return $this;
+    }
+
+    /**
+     * Get exam
+     *
+     * @return Exam\CoreBundle\Entity\Exam 
+     */
+    public function getExam()
+    {
+        return $this->exam;
+    }
 }

@@ -17,9 +17,5 @@ $DIR/../app/console -e=test doctrine:schema:drop --force
 $DIR/../app/console -e=test doctrine:schema:create
 $DIR/../app/console -e=test doctrine:fixtures:load --no-interaction
 
-$DIR/../app/console -e=dev doctrine:schema:drop --force
-$DIR/../app/console -e=dev doctrine:schema:create
-$DIR/../app/console -e=dev doctrine:fixtures:load --no-interaction
 
 
-sudo nginx restart

@@ -48,6 +48,7 @@ class AppKernel extends Kernel
             new Exam\PracticeBundle\ExamPracticeBundle(),
             new Exam\GenerateBundle\ExamGenerateBundle(),
             new Exam\CoreBundle\ExamCoreBundle(),
+            new Exam\ManageBundle\ExamManageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,6 +1,6 @@
-exam_core:
-    resource: "@ExamCoreBundle/Resources/config/routing.yml"
-    prefix:   /
+exam_manage:
+    resource: "@ExamManageBundle/Resources/config/routing.yml"
+    prefix:   /exam/
 
 exam_generate:
     resource: "@ExamGenerateBundle/Resources/config/routing.yml"
