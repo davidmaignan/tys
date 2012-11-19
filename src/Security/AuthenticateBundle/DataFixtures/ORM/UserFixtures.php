@@ -35,6 +35,21 @@ class UserFixtures extends AbstractFixture implements FixtureInterface, Containe
         
         $this->addReference('user-1', $userAdmin);
         
+        $userAdmin = new User();
+        $userAdmin->setUsername('test');
+        $userAdmin->setEmail('test@gmail.com');
+        $userAdmin->setEnabled(true);
+        $userAdmin->setRoles(array('ROLE_ADMIN'));
+        //$userAdmin->setSalt(md5(time()));
+
+        $encoder = $this->container->get('security.encoder_factory')->getEncoder($userAdmin);
+        $userAdmin->setPassword($encoder->encodePassword('test', $userAdmin->getSalt()));
+
+        $manager->persist($userAdmin);
+        
+        $this->addReference('user-2', $userAdmin);
+        
+        
         $manager->flush();
     }
     
