@@ -31,7 +31,7 @@
         <service id="question_create.level_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false">
             <argument>level.model_manager_name</argument>
         </service>
-        
+      
          <!-- Contributors form type -->
         <service id="question_create.contributor.form" 
                  factory-method="createNamed" 
@@ -66,7 +66,12 @@
             <argument>question.model_manager_name</argument>
         </service>
         
+        <!-- Event 
+        <service id="question_create.listener" class="Question\CreateBundle\Listener\QuestionSaveListener">
+            <argument type="service" id="my_mailer"/>
+            <tag name="doctrine.event_listener" event="postPersist" />
+        </service>
+        -->
     </services>
-  
    
 </container>

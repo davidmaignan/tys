@@ -43,7 +43,7 @@ class Exam implements ExamInterface {
     
     /**
      * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User")
-     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $owner;
     

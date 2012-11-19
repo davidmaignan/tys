@@ -66,6 +66,17 @@ question:
 
             Regards,
             the Team.
+    pending:
+        subject: A question is waiting for your review
+        message: |
+            Hello
+            
+            Please click on the following link and review the question ASAP.
+            
+            %confirmationUrl%
+            
+            Regards,
+            the Team.
 # Password resetting
 resetting:
     password_already_requested: The password for this user has already been requested within the last 24 hours.

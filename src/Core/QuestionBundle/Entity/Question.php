@@ -108,7 +108,7 @@ class Question implements QuestionInterface {
     
     /**
      * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User", inversedBy="questions")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $user;
     

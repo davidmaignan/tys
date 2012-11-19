@@ -9,10 +9,20 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Core\QuestionBundle\Entity\Question;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\Collection;
+use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\MinLength;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
  * @ORM\Entity(repositoryClass="Security\AuthenticateBundle\Entity\UserRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class User extends BaseUser
 {
@@ -31,7 +41,7 @@ class User extends BaseUser
     protected $confirmed;
     
     /**
-     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="user", cascade={"persist"})
      */
     protected $questions;
     
@@ -40,7 +50,6 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Shop\OrderBundle\Entity\Order2", mappedBy="user")
      */
     protected $orders;
-    
     
 
     public function __construct()
@@ -155,5 +164,17 @@ class User extends BaseUser
     public function getOrders()
     {
         return $this->orders;
+    }
+    
+    
+     /**
+     * @ORM\PreRemove
+     */
+    public function preRemove()
+    {       
+        $questions = $this->getQuestions();
+        foreach($questions as $question){
+            $question->setUser(NULL);
+        }
     }
 }

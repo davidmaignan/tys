@@ -1,3 +1,9 @@
+security_delete_user:
+    pattern: /user/delete/{id}
+    defaults: { _controller: SecurityAuthenticateBundle:Delete:index}
+    requirements:
+        _method: GET|POST
+
 security_resetting_reset:
     pattern: /resetting/reset/{token}
     defaults: { _controller: SecurityAuthenticateBundle:Resetting:reset}

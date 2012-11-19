@@ -7,8 +7,10 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Security\AuthenticateBundle\Entity\User;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 
-class UserFixtures implements FixtureInterface, ContainerAwareInterface
+class UserFixtures extends AbstractFixture implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
     private $container;
 
@@ -30,6 +32,15 @@ class UserFixtures implements FixtureInterface, ContainerAwareInterface
         $userAdmin->setPassword($encoder->encodePassword('camper', $userAdmin->getSalt()));
 
         $manager->persist($userAdmin);
+        
+        $this->addReference('user-1', $userAdmin);
+        
         $manager->flush();
     }
+    
+    public function getOrder()
+    {
+        return 5; // the order in which fixtures will be loaded
+    }
+    
 }

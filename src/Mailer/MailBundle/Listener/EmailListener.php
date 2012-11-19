@@ -58,23 +58,6 @@ class EmailListener
         
         $this->emailManager->updateEmail($email);
         
-        /*
-        $message    = $event->getMessage();
-        $activationKey = $event->getActivationKey();
-        $status     = $event->getStatus();
-        
-        $em = $this->container->get('doctrine')->getEntityManager();
-        
-        $email = new RegistrationEmail();
-        $email->setRecipient(key($message->getTo()));
-        $email->setSubject($message->getSubject());
-        $email->setBody($message->getBody());
-        $email->setStatus($status);
-        $email->setActivationkey($activationKey);
-        
-        $em->persist($email);
-        $em->flush();
-        */
     }
     
 }

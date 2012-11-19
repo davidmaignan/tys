@@ -134,6 +134,24 @@ class Mailer implements MailerInterface
         $dispatcher = $this->container->get('event_dispatcher');
         $dispatcher->dispatch('email.message.save', new EmailQuestionSubmissionEvent($message, $status, $question));
         
+
+        //Send email to correcteur
+        $to = 'proofreader@testyrskills.com';
+        $from = 'questions@testyrskills.com';
+        $subject = 'Question submitted';
+        
+        $url = 'to define';
+        $body = $this->container->get('templating')->render('QuestionCreateBundle:Create:questionPending.txt.twig',
+                array(
+                    'question'          =>  $question,
+                    'confirmationUrl'   =>  $url
+        ));
+        
+        $message = $this->createMessage($to, $from, $subject, $body);
+        $status = $this->sendEmailMessage($message);
+        $dispatcher = $this->container->get('event_dispatcher');
+        $dispatcher->dispatch('email.message.save', new EmailQuestionSubmissionEvent($message, $status, $question));
+
     }
     
     /**
