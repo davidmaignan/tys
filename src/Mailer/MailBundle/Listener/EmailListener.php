@@ -12,6 +12,7 @@ use Mailer\MailBundle\Event\EmailEventInterface;
 use Mailer\MailBundle\Event\EmailRegistrationEvent;
 use Mailer\MailBundle\Event\EmailResettingEvent;
 use Mailer\MailBundle\Event\EmailQuestionSubmissionEvent;
+use Mailer\MailBundle\Event\EmailQuestionReviewEvent;
 
 class EmailListener
 {
@@ -27,8 +28,6 @@ class EmailListener
     
     public function onSave(EmailEventInterface $event)
     {   
-        //var_dump($this->emailManager->createEmail());
-        //exit;
         
         //Switch loop to get doctrine service (rewrite to a factory pattern)
         switch(true){
@@ -45,18 +44,23 @@ class EmailListener
                 $this->emailManager = $this->container->get('email_question_submission_doctrine');
                 break;
             
+            case($event instanceof EmailQuestionReviewEvent):
+                $this->emailManager = $this->container->get('email_question_review_doctrine');
+                break;
+            
             default:
                 throw new \Exception('No email event recognized!');
                 break;
                
         }
         
-        
         $email = $this->emailManager->createEmail();
         
         $this->emailManager->bind($email, $event);
-        
+         
         $this->emailManager->updateEmail($email);
+        
+        
         
     }
     

@@ -1,0 +1,11 @@
+{% block subject %}
+{% autoescape false %}
+{{ 'question.review.subject'|trans({'%confirmationUrl%': confirmationUrl}, 'MailerMailBundle') }}
+{% endautoescape %}
+{% endblock %}
+{% block body_text %}
+{% autoescape false %}
+{{ 'question.review.message'|trans({'%title%': question.title ,'%confirmationUrl%': confirmationUrl}, 'MailerMailBundle') }}
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}{% endblock %}

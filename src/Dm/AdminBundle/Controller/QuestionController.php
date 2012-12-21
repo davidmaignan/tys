@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the QuestionReviewBundle package.
+ *
+ * (c) Testyrskills.com <http://www.testyrskills.com/>
+ *
+ */
+
 namespace Dm\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

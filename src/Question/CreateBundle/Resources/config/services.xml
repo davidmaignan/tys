@@ -67,11 +67,41 @@
         </service>
         
         <!-- Event 
-        <service id="question_create.listener" class="Question\CreateBundle\Listener\QuestionSaveListener">
+        <service id="question_create.listener.preUpdate" class="Question\CreateBundle\Listener\QuestionSaveListener">
             <argument type="service" id="my_mailer"/>
-            <tag name="doctrine.event_listener" event="postPersist" />
+            <tag name="doctrine.event_listener" event="preUpdate" />
+        </service>
+        
+        <service id="question_create.listener.onFlush" class="Question\CreateBundle\Listener\QuestionSaveListener">
+            <argument type="service" id="my_mailer"/>
+            <tag name="doctrine.event_listener" event="onFlush" />
         </service>
         -->
+        
+        <!-- Reviewers form type -->
+        <service id="question_review.reviewer.form" 
+                 factory-method="createNamed" 
+                 factory-service="form.factory" 
+                 class="Symfony\Component\Form\Form">
+            <argument>question_review_reviewer_form</argument>
+            <argument>question_review_reviewer_type</argument>
+            <argument>null</argument>
+        </service>
+        <service id="question_review.reviewer.form.type" class="Question\ReviewBundle\Form\Type\QuestionFormType">
+            <tag name="form.type" alias="question_review_reviewer_type" />
+            <argument>Core\QuestionBundle\Entity\Question</argument>
+        </service>
+        
+        <!-- Contributors form handler -->
+        <service id="question_review.reviewer.form.handler" 
+                class="Question\ReviewBundle\Form\Handler\QuestionFormHandler" scope="request">
+                <argument type="service" id="question_review.reviewer.form" />
+                <argument type="service" id="request" />
+                <argument type="service" id="question_create.question_manager.doctrine" />
+                <argument type="service" id="security.context" />
+                <argument type="service" id="my_mailer" />
+        </service>
+        
     </services>
    
 </container>

@@ -10,6 +10,9 @@ parameters:
     
     email_question_submission_doctrine.class: Mailer\EmailBundle\Doctrine\EmailQuestionSubmissionManager
     email_question_submission_doctrine.object: Mailer\EmailBundle\Entity\QuestionSubmissionEmail
+    
+    email_question_review_doctrine.class: Mailer\EmailBundle\Doctrine\EmailQuestionReviewManager
+    email_question_review_doctrine.object: Mailer\EmailBundle\Entity\QuestionReviewEmail
 
 services:
 #    mailer_mail.example:
@@ -38,4 +41,8 @@ services:
         
     email_question_submission_doctrine:
         class: %email_question_submission_doctrine.class%
-        arguments:  ["@fos_user.entity_manager", %email_question_submission_doctrine.object%]  
+        arguments:  ["@fos_user.entity_manager", %email_question_submission_doctrine.object%]
+        
+    email_question_review_doctrine:
+        class: %email_question_review_doctrine.class%
+        arguments:  ["@fos_user.entity_manager", %email_question_review_doctrine.object%]  

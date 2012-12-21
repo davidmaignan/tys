@@ -6,6 +6,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Mailer\MailBundle\Event\EmailRegistrationEvent;
 use Mailer\MailBundle\Event\EmailResettingEvent;
 use Mailer\MailBundle\Event\EmailQuestionSubmissionEvent;
+use Mailer\MailBundle\Event\EmailQuestionReviewEvent;
 
 use Core\QuestionBundle\Entity\QuestionInterface;
 use FOS\UserBundle\Model\UserInterface;
@@ -16,9 +17,25 @@ use Mailer\MailBundle\Mailer\MailerInterface;
  */
 class Mailer implements MailerInterface
 { 
+    /**
+     * @var Symfony\Component\DependencyInjection\Container 
+     */
     protected $container;
     
+    /**
+     * @var Doctrine\ORM\EntityManager 
+     */
+    private $repo;
+    
+    /**
+     * @var Symfony\Bundle\FrameworkBundle\Routing\Router;
+     */
+    private $router;
+    
+    
     protected $message;
+    
+    
     
     public function __construct(ContainerInterface $container)
     {
@@ -71,11 +88,11 @@ class Mailer implements MailerInterface
         $subject = 'Resetting password';
         
 
-        $url = $this->container->get('router')->generate('fos_user_resetting_reset', array('token' => $user->getConfirmationToken()), true);
+        $link = $this->container->get('router')->generate('fos_user_resetting_reset', array('token' => $user->getConfirmationToken()), true);
         $body = $this->container->get('templating')->render('SecurityAuthenticateBundle:Resetting:email.txt.twig',
                 array(
                     'user'              => $user,
-                    'confirmationUrl'   => $url
+                    'confirmationUrl'   => $link
         ));
         
         $message = $this->createMessage($to, $from, $subject, $body);
@@ -87,25 +104,7 @@ class Mailer implements MailerInterface
         $dispatcher->dispatch('email.message.save', new EmailResettingEvent($message, $status));
     }
     
-    /**
-     * Send Email message
-     * @param Swift_Message $message
-     * @return boolean 
-     */
-    public function sendEmailMessage(\Swift_Message $message)
-    {
-        return $this->container->get('mailer')->send($message);
-    }
-
-
-    /**
-     * Generate an ActivationKey - to be place in more appropriate object: User ??
-     * @return integer 
-     */
-    private function generateActivationKey()
-    {
-        return  mt_rand() . mt_rand() . mt_rand() . mt_rand() . mt_rand();
-    }
+   
     
     /**
      * Send email for question submitted
@@ -114,17 +113,16 @@ class Mailer implements MailerInterface
      */
     public function sendQuestionEmailSubmission(QuestionInterface $question, UserInterface $user)
     {
-        
         $to = $user->getEmail();
         $from = ('questions@testyrskills.com');
         $subject = 'Question submitted';
         
-        $url = 'to define';
-        $body = $this->container->get('templating')->render('QuestionCreateBundle:Create:questionSubmitted.txt.twig',
+        $link = $this->container->get('router')->generate('question_review_display', array('id' => $question->getId()), true);
+        $body = $this->container->get('templating')->render('MailerMailBundle:Question:questionSubmitted.txt.twig',
                 array(
                     'user'              =>  $user,
                     'question'          =>  $question,
-                    'confirmationUrl'   =>  $url
+                    'confirmationUrl'   =>  $link
         ));
         
         $message = $this->createMessage($to, $from, $subject, $body);
@@ -134,24 +132,56 @@ class Mailer implements MailerInterface
         $dispatcher = $this->container->get('event_dispatcher');
         $dispatcher->dispatch('email.message.save', new EmailQuestionSubmissionEvent($message, $status, $question));
         
-
-        //Send email to correcteur
-        $to = 'proofreader@testyrskills.com';
+    }
+    
+    /**
+     * Send email for review
+     * @param QuestionInterface $question 
+     */
+    public function sendQuestionReviewEmail(QuestionInterface $question)
+    {
+        
+        $user = $question->getUser();
+        
+        $to = 'reviewers@testyrskills.com';
         $from = 'questions@testyrskills.com';
-        $subject = 'Question submitted';
+        $subject = 'Question to review';
         
-        $url = 'to define';
-        $body = $this->container->get('templating')->render('QuestionCreateBundle:Create:questionPending.txt.twig',
+        $link = $this->container->get('router')->generate('question_review_display', array('id' => $question->getId()), true);
+        $body = $this->container->get('templating')->render('MailerMailBundle:Question:questionReview.txt.twig',
                 array(
+                    'user'              =>  $user,
                     'question'          =>  $question,
-                    'confirmationUrl'   =>  $url
+                    'confirmationUrl'   =>  $link
         ));
         
         $message = $this->createMessage($to, $from, $subject, $body);
+        
         $status = $this->sendEmailMessage($message);
+        
         $dispatcher = $this->container->get('event_dispatcher');
-        $dispatcher->dispatch('email.message.save', new EmailQuestionSubmissionEvent($message, $status, $question));
-
+        $dispatcher->dispatch('email.message.save', new EmailQuestionReviewEvent($message, $status, $question));
+        
+    }
+    
+    public function sendQuestionFeedbackEmail(QuestionInterface $question)
+    {
+        echo 'sendQuestionFeedbackEmail';
+    }
+    
+    public function sendQuestionApprovedEmail(QuestionInterface $question)
+    {
+        echo 'sendQuestionApprovedEmail';
+    }
+    
+    public function sendQuestionRejectedEmail(QuestionInterface $question)
+    {
+        echo 'sendQuestionRejectedEmail';
+    }
+    
+    public function sendQuestionArchivedEmail(QuestionInterface $question)
+    {
+        echo 'sendQuestionArchivedEmail';
     }
     
     /**
@@ -171,6 +201,26 @@ class Mailer implements MailerInterface
                     ->setBody($body);
         
         return $message;
+    }
+    
+     /**
+     * Send Email message
+     * @param Swift_Message $message
+     * @return boolean 
+     */
+    public function sendEmailMessage(\Swift_Message $message)
+    {
+        return $this->container->get('mailer')->send($message);
+    }
+
+
+    /**
+     * Generate an ActivationKey - to be place in more appropriate object: User ??
+     * @return integer 
+     */
+    private function generateActivationKey()
+    {
+        return  mt_rand() . mt_rand() . mt_rand() . mt_rand() . mt_rand();
     }
     
     /**

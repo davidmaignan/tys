@@ -13,10 +13,11 @@ use Doctrine\ORM\Mapping\UniqueConstraint as UniqueConstraint;
  * @ORM\Table(name="email")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap( { "email" = "Email", 
- *                          "registration" = "RegistrationEmail",
- *                          "resetting" = "ResettingEmail",
- *                          "question_submission" = "QuestionSubmissionEmail"} )
+ * @ORM\DiscriminatorMap( { "email"                 = "Email", 
+ *                          "registration"          = "RegistrationEmail",
+ *                          "resetting"             = "ResettingEmail",
+ *                          "question_submission"   = "QuestionSubmissionEmail",
+ *                          "question_review"       = "QuestionReviewEmail" })
  */
 abstract class Email 
 {

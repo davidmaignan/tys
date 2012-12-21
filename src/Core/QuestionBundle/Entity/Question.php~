@@ -102,13 +102,13 @@ class Question implements QuestionInterface {
     private $answers;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\Exam", mappedBy="question")
+     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\Exam", mappedBy="questions")
      */
     private $exams;
     
     /**
      * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User", inversedBy="questions")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $user;
     
@@ -123,6 +123,15 @@ class Question implements QuestionInterface {
      * @ORM\Column(name="updatedAt", type="datetime") 
      */
     private $updatedAt;
+    
+    /**
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
+     * @var int
+     */
+    protected $status = QueueStatus::INITIAL;
+    
+    
 
     public function __construct() {
         $this->tags = new ArrayCollection();

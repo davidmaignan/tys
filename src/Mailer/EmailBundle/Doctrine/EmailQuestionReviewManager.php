@@ -10,12 +10,12 @@
 namespace Mailer\EmailBundle\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Mailer\EmailBundle\Model\EmailQuestionSubmissionManager as BaseEmailQuestionSubmissionManager;
+use Mailer\EmailBundle\Model\EmailQuestionReviewManager as BaseEmailQuestionReviewManager;
 use Mailer\EmailBundle\Entity\EmailInterface;
 use Mailer\MailBundle\Event\EmailEventInterface;
 
 
-class EmailQuestionSubmissionManager extends BaseEmailQuestionSubmissionManager
+class EmailQuestionReviewManager extends BaseEmailQuestionReviewManager
 {
     
     protected $objectManager;

@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+
+<h1>{{ 'question.review.subject'|trans({}, 'QuestionReviewBundle') }}</h1>
+
+
+<div class="row">
+
+    <div class="span12">
+        
+        <form action="{{ path('question_reviewer_edit', {'id': question.id}) }}" {{ form_enctype(form) }} 
+              method="POST" 
+              class="question_reviewer_ form-horizontal"
+              novalidate="novalidate">
+        
+        {{ form_widget(form) }}
+        
+        
+    
+        <div class="form-actions">
+            <a class="btn" id="back-list" href="{{ path('question_review_list') }}">Back to list</a>
+            <button type="submit" class="btn" id="back-list">Submit</a>
+        </div>
+
+        </form>
+    </div>
+    
+</div>
+
+
+
+
+
+{% endblock body %}

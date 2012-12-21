@@ -1,13 +1,13 @@
 <?php
 
 /*
- * This file is part of the QuestionCreateBundle package.
+ * This file is part of the QuestionReviewBundle package.
  *
  * (c) Testyrskills.com <http://www.Testyrskills.com/>
  *
  */
 
-namespace Question\CreateBundle\Form\Handler;
+namespace Question\ReviewBundle\Form\Handler;
 
 //use FOS\UserBundle\Model\UserManagerInterface;
 //use FOS\UserBundle\Model\UserInterface;
@@ -73,9 +73,11 @@ class QuestionFormHandler
 
         
         
-        $this->form->setData($question);
+        
         
         if ('POST' === $this->request->getMethod()) {
+            
+            $this->form->setData($question);
 
             $this->form->bind($this->request);
                      

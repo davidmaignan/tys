@@ -66,10 +66,12 @@ question:
 
             Regards,
             the Team.
-    pending:
+    review:
         subject: A question is waiting for your review
         message: |
             Hello
+            
+            The question %title% is waiting for your review.
             
             Please click on the following link and review the question ASAP.
             

@@ -13,8 +13,7 @@ use Doctrine\ORM\EntityRepository;
 class QuestionRepository extends EntityRepository
 {
     
-    
-    public function getQuestionQueryList(){
+    public function getQuestionQuery(){
         
         $qb = $this->createQueryBuilder('a')
                    ->select('a, c','d', 'e','f')
@@ -23,8 +22,14 @@ class QuestionRepository extends EntityRepository
                    ->leftJoin('a.type', 'e')
                    ->leftJoin('a.tags', 'f');
         
-        //var_dump($qb->getQuery());
-        //exit;
+        return $qb;
+        
+    }
+    
+    
+    public function getQuestionQueryList(){
+        
+        $qb = $this->getQuestionQuery();
                    
         return $qb->getQuery();
         
@@ -51,4 +56,19 @@ class QuestionRepository extends EntityRepository
     public function getLevelColor($levels){
         
     }
+    
+    
+    public function findByReviewerRole(){
+        
+        $qb = $this->getQuestionQuery();
+        
+        $qb->add('where', 'c.name = :name')
+            ->setParameter('name', 'PHP');
+        
+        return $qb;
+        
+    }
+    
+    
+    
 }

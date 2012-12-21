@@ -1,0 +1,11 @@
+question_reviewer_edit:
+    pattern: /review/edit/{id}
+    defaults: { _controller: QuestionReviewBundle:Display:edit }
+
+question_review_display:
+    pattern: /review/show/{id}
+    defaults: { _controller: QuestionReviewBundle:Display:index }
+
+question_review_list:
+    pattern: /review/list
+    defaults: { _controller: QuestionReviewBundle:List:index }

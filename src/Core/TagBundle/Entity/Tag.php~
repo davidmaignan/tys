@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Core\QuestionBundle\Entity\Question;
+use Exam\CoreBundle\Entity\ExamCriteria;
 
 /**
  * Core\TagBundle\Entity\Tag
@@ -35,9 +36,16 @@ class Tag {
      * @ORM\ManyToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="tags")
      */
     private $questions;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\ExamCriteria", mappedBy="tags")
+     */
+    private $examCriterias;
+    
 
     public function __construct() {
         $this->questions = new ArrayCollection();
+        $this->examCriterias = new ArrayCollection();
     }
     
     public function __toString()
@@ -105,5 +113,37 @@ class Tag {
     public function getQuestions()
     {
         return $this->questions;
+    }
+    
+    /**
+     * Add questions
+     *
+     * @param Core\QuestionBundle\Entity\Question $questions
+     * @return Tag
+     */
+    public function addExamCriteria(ExamCriteria $examCriteria)
+    {
+        $this->examCriterias[] = $examCriteria;
+        return $this;
+    }
+
+    /**
+     * Remove questions
+     *
+     * @param $questions
+     */
+    public function removeExamCriteria(ExamCriteria $examCriteria)
+    {
+        $this->examCriterias->removeElement($examCriteria);
+    }
+
+    /**
+     * Get questions
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getExamCriterias()
+    {
+        return $this->examCriterias;
     }
 }

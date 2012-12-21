@@ -1,0 +1,7 @@
+parameters:
+#    question_review.example.class: Question\ReviewBundle\Example
+
+services:
+#    question_review.example:
+#        class: %question_review.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

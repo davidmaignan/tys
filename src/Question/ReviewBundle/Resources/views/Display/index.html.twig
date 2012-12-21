@@ -1,0 +1,87 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+
+<h1>{{ 'question.review.subject'|trans({}, 'QuestionReviewBundle') }}</h1>
+
+
+<div class="row">
+
+    <div class="span12">
+        
+        <table>
+            <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>{{ question.title }}</td>
+                </tr>
+                <tr>
+                    <td>code </td>
+                    <td>{{ question.code }}</td>
+                </tr>
+                <tr>
+                    <td>note</td>
+                    <td>{{ question.note }}</td>
+                </tr>
+                <tr>
+                    <td>points</td>
+                    <td>{{ question.points }}</td>
+                </tr>
+                <tr>
+                    <td>section</td>
+                    <td>{{ question.section }}</td>
+                </tr>
+                <tr>
+                    <td>level</td>
+                    <td>{{ question.level }}</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>{{ question.type }}</td>
+                </tr>
+                <tr>
+                    <td>tags</td>
+                    <td>
+                        {% for tag in question.tags %}
+                            {{ tag }}
+                        {% endfor %}    
+                    
+                    </td>
+                </tr>
+                <tr>
+                    <td>answers</td>
+                    <td>
+                        <ul>
+                        {% for answer in question.answers %}
+                                <li>{{ answer.title }}</li>
+                        {% endfor %}
+                        </ul>        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
+    
+        <div class="form-actions">
+            <div class="span4">
+                <a class="btn btn-info" id="question-edit" href="{{ path('question_reviewer_edit', {'id': question.id}) }}">Edit</a>
+                <a class="btn" id="back-list" href="{{ path('question_review_list') }}">Back to list</a>
+            </div>
+            <div class="span4 pull-right">
+                <a class="btn pull-right" id="question-next" href="#">Next</a> 
+                <a class="btn pull-right" id="question-previous" href="#">Previous</a>
+            </div>  
+        </div>
+
+    
+    </div>
+    
+</div>
+
+
+
+
+
+{% endblock body %}

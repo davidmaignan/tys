@@ -100,23 +100,7 @@ class CreateControllerTest extends WebTestCase
         
         //Retrieve user
         $user = $this->loadUser($this->entityManager, $this->username);
-        
-        /*$user = $this->entityManager->getRepository('SecurityAuthenticateBundle:User')
-                ->findOneByUsername($username);
-        
-        $token = new UsernamePasswordToken();
-        
-        $container->get('security.context')->setToken(
-            new UsernamePasswordToken(
-                'david', 'camper', 'main', $user->getRoles()
-            )
-        );
-        
-        //Login
-        //$this->login(static::createClient(), 'david', 'camper');
-         * 
-         */
-        
+         
         $crawler = $client->request('GET', '/question/create');
         
         $question_title = 'lorem ipsum';
@@ -134,9 +118,9 @@ class CreateControllerTest extends WebTestCase
         $QuestionRepo = $this->entityManager->getRepository('CoreQuestionBundle:Question');
         
         $question = $QuestionRepo->findOneBy(array('title'=>$question_title, 'user'=>$user));
-        
-        
+       
         $this->assertEquals(1, count($question));
+        $this->assertEquals(0, $question->getStatus());
         $this->assertEquals(1, count($question->getAnswers()));
         
         //Check database for answer 
@@ -150,9 +134,14 @@ class CreateControllerTest extends WebTestCase
         $EmailRepo = $this->entityManager->getRepository('MailerEmailBundle:QuestionSubmissionEmail');
         
         $resultEmail = $EmailRepo->findBy(array('question'=>$question->getId(), 'recipient'=>$user->getEmail()));
-        
         $this->assertEquals(1, count($resultEmail));
         
+         //Check database for email saved and status code
+        $EmailRepo = $this->entityManager->getRepository('MailerEmailBundle:QuestionReviewEmail');
+        $emailReview = $EmailRepo->findBy(array('question'=>$question->getId(), 'recipient'=>'reviewers@testyrskills.com'));
+                
+        $this->assertEquals(1, count($emailReview));
+                 
     }
     
     public function testIndex_submit_question_one_answer_missing_question()

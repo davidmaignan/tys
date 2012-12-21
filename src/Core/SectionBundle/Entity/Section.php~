@@ -5,6 +5,8 @@ namespace Core\SectionBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Exam\CoreBundle\Entity\ExamCriteria;
+
 /**
  * Core\SectionBundle\Entity\Section
  *
@@ -36,6 +38,10 @@ class Section
      */
     protected $questions;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\ExamCriteria", mappedBy="sections")
+     */
+    private $examCriterias;
 
     /**
      * Get id
@@ -72,6 +78,7 @@ class Section
     public function __construct()
     {
         $this->questions = new ArrayCollection();
+        $this->examCriterias = new ArrayCollection();
     }
     
     public function __toString()
@@ -88,6 +95,7 @@ class Section
     public function setQuestions($questions)
     {
         $this->questions = $questions;
+        
         return $this;
     }
 
@@ -121,5 +129,37 @@ class Section
     public function removeQuestion(\Core\QuestionBundle\Entity\Question $questions)
     {
         $this->questions->removeElement($questions);
+    }
+    
+    /**
+     * Add examCriterias
+     *
+     * @param Exam\CoreBundle\Entity\ExamCriteria $examCriteria
+     * @return Section
+     */
+    public function addExamCriteria(ExamCriteria $examCriteria)
+    {
+        $this->examCriterias[] = $examCriteria;
+        return $this;
+    }
+
+    /**
+     * Remove examCriterias
+     *
+     * @param $examCriteria
+     */
+    public function removeExamCriteria(ExamCriteria $examCriteria)
+    {
+        $this->examCriterias->removeElement($examCriteria);
+    }
+
+    /**
+     * Get examCriterias
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getExamCriterias()
+    {
+        return $this->examCriterias;
     }
 }
