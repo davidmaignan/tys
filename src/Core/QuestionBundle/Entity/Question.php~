@@ -1,10 +1,15 @@
 <?php
 
+//http://docs.doctrine-project.org/en/2.0.x/reference/change-tracking-policies.html
+//http://symfony.com/doc/current/cookbook/doctrine/event_listeners_subscribers.html
+
+
 namespace Core\QuestionBundle\Entity;
 
 use Core\TagBundle\Entity\Tag;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Event\LifecycleEventArgs;  
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -17,6 +22,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 use Core\AnswerBundle\Entity\Answer;
 
+use Doctrine\Common\NotifyPropertyChanged,
+    Doctrine\Common\PropertyChangedListener;
+
 /**
  * Dm\QuestionBundle\Entity\Question
  *
@@ -24,6 +32,7 @@ use Core\AnswerBundle\Entity\Answer;
  * @UniqueEntity({"title"})
  * @ORM\Entity(repositoryClass="Core\QuestionBundle\Entity\QuestionRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @ORM\ChangeTrackingPolicy("NOTIFY")
  */
 class Question implements QuestionInterface {
 
@@ -85,8 +94,8 @@ class Question implements QuestionInterface {
      *
      * @ORM\Column(name="points", type="integer", nullable=true)
      * @Assert\NotBlank(groups={"Approval"})
-     * @Assert\Min(limit = "1", message = "You need to attribute at least 1 point.")
-     * @Assert\Max(limit = 50, message = "You can attribute a maximum of 50 points.")
+     * @Assert\Min(groups={"Approval"}, limit = "1", message = "You need to attribute at least 1 point.")
+     * @Assert\Max(groups={"Approval"}, limit = 50, message = "You can attribute a maximum of 50 points.")
      */
     private $points;
 
@@ -100,6 +109,11 @@ class Question implements QuestionInterface {
      * @ORM\OneToMany(targetEntity="Core\AnswerBundle\Entity\Answer", mappedBy="question", cascade={"persist"} )
      */
     private $answers;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Core\CommentBundle\Entity\Comment", mappedBy="question", cascade={"persist"} )
+     */
+    private $comments;
     
     /**
      * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\Exam", mappedBy="questions")
@@ -129,10 +143,34 @@ class Question implements QuestionInterface {
      * @Assert\NotBlank()
      * @var int
      */
-    protected $status = QueueStatus::INITIAL;
+    protected $status = QuestionStatus::INITIAL;
     
     
+    
+    private $_listeners = array();
 
+    public function addPropertyChangedListener(PropertyChangedListener $listener)
+    {
+        $this->_listeners[] = $listener;
+    }
+    
+    protected function _onPropertyChanged($propName, $oldValue, $newValue)
+    {
+        if ($this->_listeners) {
+            foreach ($this->_listeners as $listener) {
+                $listener->propertyChanged($this, $propName, $oldValue, $newValue);
+            }
+        }
+    }
+    
+    public function setData($data)
+    {
+        if ($data != $this->data) {
+            $this->_onPropertyChanged('data', $this->data, $data);
+            $this->data = $data;
+        }
+    }
+    
     public function __construct() {
         $this->tags = new ArrayCollection();
         $this->answers = new ArrayCollection();
@@ -480,11 +518,72 @@ class Question implements QuestionInterface {
     {
         return $this->exams;
     }
-    
-        
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Question
+     */
+    public function setStatus($status)
     {
+        $this->status = $status;
+        return $this;
         
-        
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    
+    /**
+     * @ORM\PreUpdate()
+     * @ORM\PrePersist()
+     */
+    public function preUpdate()
+    {
+        //echo 'preUpdate in Question object';
+        //exit;
+    }
+    
+   
+
+    /**
+     * Add comments
+     *
+     * @param Core\CommentBundle\Entity\Comment $comments
+     * @return Question
+     */
+    public function addComment(\Core\CommentBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+    
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param Core\CommentBundle\Entity\Comment $comments
+     */
+    public function removeComment(\Core\CommentBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

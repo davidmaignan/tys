@@ -111,6 +111,12 @@ class Question implements QuestionInterface {
     private $answers;
     
     /**
+     * @ORM\OneToMany(targetEntity="Core\CommentBundle\Entity\Comment", mappedBy="question", cascade={"persist"} )
+     * @ORM\OrderBy({"createdAt" = "DESC"})
+     */
+    private $comments;
+    
+    /**
      * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\Exam", mappedBy="questions")
      */
     private $exams;
@@ -548,4 +554,37 @@ class Question implements QuestionInterface {
     }
     
    
+
+    /**
+     * Add comments
+     *
+     * @param Core\CommentBundle\Entity\Comment $comments
+     * @return Question
+     */
+    public function addComment(\Core\CommentBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+    
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param Core\CommentBundle\Entity\Comment $comments
+     */
+    public function removeComment(\Core\CommentBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
 }

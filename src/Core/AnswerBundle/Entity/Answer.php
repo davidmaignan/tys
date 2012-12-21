@@ -4,12 +4,13 @@ namespace Core\AnswerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\Collection;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\MinLength;
-use Symfony\Component\Validator\Constraints\MaxLength;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 use Core\QuestionBundle\Entity\Question;
@@ -31,9 +32,10 @@ class Answer
     private $id;
     
     /**
-     *  @var text $title
+     * @var text $title
      * 
-     *  @ORM\Column(name="title", type="text") 
+     * @ORM\Column(name="title", type="text") 
+     * @Assert\NotBlank(groups={"Approval"})
      */
     private $title;
     

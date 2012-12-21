@@ -36,14 +36,14 @@ class UserFixtures extends AbstractFixture implements FixtureInterface, Containe
         $this->addReference('user-1', $userAdmin);
         
         $userAdmin = new User();
-        $userAdmin->setUsername('test');
-        $userAdmin->setEmail('test@gmail.com');
+        $userAdmin->setUsername('user');
+        $userAdmin->setEmail('user@test.com');
         $userAdmin->setEnabled(true);
-        $userAdmin->setRoles(array('ROLE_ADMIN'));
+        $userAdmin->setRoles(array('ROLE_USER'));
         //$userAdmin->setSalt(md5(time()));
 
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($userAdmin);
-        $userAdmin->setPassword($encoder->encodePassword('test', $userAdmin->getSalt()));
+        $userAdmin->setPassword($encoder->encodePassword('userpass', $userAdmin->getSalt()));
 
         $manager->persist($userAdmin);
         
@@ -55,7 +55,7 @@ class UserFixtures extends AbstractFixture implements FixtureInterface, Containe
     
     public function getOrder()
     {
-        return 5; // the order in which fixtures will be loaded
+        return 1; // the order in which fixtures will be loaded
     }
     
 }

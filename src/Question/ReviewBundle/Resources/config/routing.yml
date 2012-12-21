@@ -1,3 +1,7 @@
+question_reviewer_comment_create:
+    pattern: /review/comment/create/{id}
+    defaults: { _controller: QuestionReviewBundle:Comment:create }
+
 question_reviewer_edit:
     pattern: /review/edit/{id}
     defaults: { _controller: QuestionReviewBundle:Display:edit }

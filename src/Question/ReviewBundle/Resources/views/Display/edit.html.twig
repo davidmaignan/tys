@@ -5,32 +5,91 @@
 
 <h1>{{ 'question.review.subject'|trans({}, 'QuestionReviewBundle') }}</h1>
 
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#question" data-toggle="tab">Question</a></li>
+    <li><a href="#comments" data-toggle="tab">Comments <span class="badge badge-warning">{{ question.comments | length }}</span></a></li>
+</ul>
 
-<div class="row">
-
-    <div class="span12">
+<div class="tab-content">
+    <div class="tab-pane" id="question">
+        
+        {% if app.session.hasFlash('notice') %}
+            <div class="alert alert-info">
+                {{ app.session.flash('notice') }}
+            </div>
+        {% endif %}
         
         <form action="{{ path('question_reviewer_edit', {'id': question.id}) }}" {{ form_enctype(form) }} 
-              method="POST" 
-              class="question_reviewer_ form-horizontal"
-              novalidate="novalidate">
-        
-        {{ form_widget(form) }}
-        
-        
-    
-        <div class="form-actions">
-            <a class="btn" id="back-list" href="{{ path('question_review_list') }}">Back to list</a>
-            <button type="submit" class="btn" id="back-list">Submit</a>
+                    method="POST" 
+                    class="question_reviewer form-horizontal"
+                    novalidate="novalidate">
+
+        <div class="row">
+            <div class="span7">
+                {{ form_row(form.title) }}
+                {{ form_row(form.code) }} 
+
+                <div class="answers">
+                    {% for answer in form.answers %}
+                        <div class="answer {% if(loop.index == 1) %} well {% endif %}">
+                        {% if(loop.index == 1) %}
+                                <h4>Correct Answer</h4>
+                        {% elseif (loop.index == 2) %}
+                                <h4>Wrong Answer</h4>
+                        {% endif %}         
+                            {{ form_row(answer.title)}}
+                            {{ form_row(answer.code)}}
+                        </div>
+                    {% endfor %}
+                </div>     
+            </div>
+            <div class="span5">
+                {{ form_row(form.note) }}   
+                {{ form_row(form.points) }}
+                {{ form_row(form.section) }}
+                {{ form_row(form.level) }}
+                {{ form_row(form.type) }}
+                {{ form_row(form.tags) }}
+            </div>
+            {{ form_rest(form) }}
         </div>
 
+        <div class="row">     
+            <div class="form-actions">
+                <a class="btn" id="back-list" href="{{ path('question_review_list') }}">Back to list</a>
+                <button type="submit" class="btn" id="back-list">Submit</a>
+            </div>
+        </div>
         </form>
     </div>
-    
-</div>
+        
+        <div class="tab-pane active" id="comments">
+            <div class="row">
 
+                <div class="span7">
+                    {% for comment in question.comments %}
+                    <div class="row">
+                        <div class="span4 well">
+                            <p>{{ comment.user }} - {{ comment.createdAt|date('F jS \\a\\t g:ia') }}</p>
+                            <p>{{ comment.body }}</p>
+                    </div>
+                    </div>
+                    {% endfor %}
+                   
+                </div>
 
+                <div class="span5">
+                    <form action="{{ path('question_reviewer_comment_create', {'id': question.id}) }}" {{ form_enctype(form) }} 
+                    method="POST" 
+                    class="question_comment"
+                    novalidate="novalidate">
+                    {{ form_widget(commentForm) }}
+                        <button class="btn btn-primary">Post</button>
+                    </form>
+                </div>
+            </div>  
 
-
+        </div>
+ </div>   
 
 {% endblock body %}

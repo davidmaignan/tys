@@ -26,6 +26,16 @@ class QuestionRepository extends EntityRepository
         
     }
     
+    public function getComments($qb){
+        
+        $qb->leftJoin('a.comments','g')
+           ->add('orderBy', 'g.createdAt DESC');
+           
+        
+        return $qb;
+        
+    }
+    
     
     public function getQuestionQueryList(){
         
@@ -64,6 +74,8 @@ class QuestionRepository extends EntityRepository
         
         $qb->add('where', 'c.name = :name')
             ->setParameter('name', 'PHP');
+        
+        $qb = $this->getComments($qb);
         
         return $qb;
         

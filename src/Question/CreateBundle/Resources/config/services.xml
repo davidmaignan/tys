@@ -92,7 +92,7 @@
             <argument>Core\QuestionBundle\Entity\Question</argument>
         </service>
         
-        <!-- Contributors form handler -->
+        <!-- Reviewers form handler -->
         <service id="question_review.reviewer.form.handler" 
                 class="Question\ReviewBundle\Form\Handler\QuestionFormHandler" scope="request">
                 <argument type="service" id="question_review.reviewer.form" />
@@ -100,6 +100,35 @@
                 <argument type="service" id="question_create.question_manager.doctrine" />
                 <argument type="service" id="security.context" />
                 <argument type="service" id="my_mailer" />
+        </service>
+        
+        <!-- Comments form type -->
+        <service id="question_review.comment.form" 
+                 factory-method="createNamed" 
+                 factory-service="form.factory" 
+                 class="Symfony\Component\Form\Form">
+            <argument>question_review_comment_form</argument>
+            <argument>question_review_comment_type</argument>
+            <argument>null</argument>
+        </service>
+        <service id="question_review.comment.form.type" class="Question\ReviewBundle\Form\Type\CommentFormType">
+            <tag name="form.type" alias="question_review_comment_type" />
+            <argument>Core\CommentBundle\Entity\Comment</argument>
+        </service>
+        
+        <service id="question_review.comment.form.handler" 
+                class="Question\ReviewBundle\Form\Handler\CommentFormHandler" scope="request">
+                <argument type="service" id="question_review.comment.form" />
+                <argument type="service" id="request" />
+                <argument type="service" id="question_review.comment_manager.doctrine" />
+                <argument type="service" id="security.context" />
+                <argument type="service" id="my_mailer" />
+        </service>
+        
+        <!-- Comment create doctrine manager -->
+        <service id="question_review.comment_manager.doctrine" class="Core\CommentBundle\Doctrine\CommentManager" public="false">
+            <argument type="service" id="fos_user.entity_manager" />
+            <argument>Core\CommentBundle\Entity\Comment</argument>
         </service>
         
     </services>

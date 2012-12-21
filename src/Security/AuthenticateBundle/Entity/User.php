@@ -45,6 +45,10 @@ class User extends BaseUser
      */
     protected $questions;
     
+    /**
+     * @ORM\OneToMany(targetEntity="Core\CommentBundle\Entity\Comment", mappedBy="user", cascade={"persist"})
+     */
+    protected $comments;
 
     /**
      * @ORM\OneToMany(targetEntity="Shop\OrderBundle\Entity\Order2", mappedBy="user")

@@ -1,0 +1,7 @@
+parameters:
+#    core_comment.example.class: Core\CommentBundle\Example
+
+services:
+#    core_comment.example:
+#        class: %core_comment.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

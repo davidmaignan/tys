@@ -13,7 +13,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Question\CreateBundle\Form\Type\AnswerFormType;
+use Question\ReviewBundle\Form\Type\AnswerFormType;
 
 class QuestionFormType extends AbstractType
 {
@@ -22,7 +22,6 @@ class QuestionFormType extends AbstractType
         $builder
             ->add('title', null)
             ->add('code')
-            //->add('user')
             ->add('note')
             ->add('points')
             ->add('section')
