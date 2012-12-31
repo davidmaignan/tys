@@ -106,7 +106,7 @@ class QuestionFormHandler
         }
         
         //Update status to review
-        $question->setStatus(2);
+        //$question->setStatus(2);
         $this->questionManager->updateQuestion($question);
         $this->mailer->sendQuestionReviewEmail($question);
     }

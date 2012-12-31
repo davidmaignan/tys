@@ -1,15 +1,19 @@
-question_reviewer_comment_create:
-    pattern: /review/comment/create/{id}
-    defaults: { _controller: QuestionReviewBundle:Comment:create }
+question_owner_ask_approval:
+    pattern: /review/ask/approval/{id}
+    defaults: { _controller: QuestionReviewBundle:Approval:index }
 
-question_reviewer_edit:
+question_review_edit:
     pattern: /review/edit/{id}
     defaults: { _controller: QuestionReviewBundle:Display:edit }
 
-question_review_display:
+question_review_show:
     pattern: /review/show/{id}
-    defaults: { _controller: QuestionReviewBundle:Display:index }
+    defaults: { _controller: QuestionReviewBundle:Display:show }
 
 question_review_list:
-    pattern: /review/list
+    pattern: /review/list/
+    defaults: { _controller: QuestionReviewBundle:List:index }
+
+question_review:
+    pattern: /review/
     defaults: { _controller: QuestionReviewBundle:List:index }

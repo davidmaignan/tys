@@ -40,10 +40,11 @@ class QuestionFormHandler
         $this->mailer = $mailer;
     }
     
-    public function process($confirmation = false)
+    public function process($confirmation = false, $question = null)
     {
-        
-        $question = $this->createQuestion();
+        if(is_null($question)){
+            $question = $this->createQuestion();
+        }
         
         //If user is fully authenticated 
         if( $this->securityContext->isGranted('IS_AUTHENTICATED_FULLY') || 
@@ -108,7 +109,6 @@ class QuestionFormHandler
         }
         
         //Update status to review
-        $question->setStatus(2);
         $this->questionManager->updateQuestion($question);
         $this->mailer->sendQuestionReviewEmail($question);
     }

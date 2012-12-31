@@ -66,18 +66,6 @@
             <argument>question.model_manager_name</argument>
         </service>
         
-        <!-- Event 
-        <service id="question_create.listener.preUpdate" class="Question\CreateBundle\Listener\QuestionSaveListener">
-            <argument type="service" id="my_mailer"/>
-            <tag name="doctrine.event_listener" event="preUpdate" />
-        </service>
-        
-        <service id="question_create.listener.onFlush" class="Question\CreateBundle\Listener\QuestionSaveListener">
-            <argument type="service" id="my_mailer"/>
-            <tag name="doctrine.event_listener" event="onFlush" />
-        </service>
-        -->
-        
         <!-- Reviewers form type -->
         <service id="question_review.reviewer.form" 
                  factory-method="createNamed" 
@@ -100,7 +88,7 @@
                 <argument type="service" id="question_create.question_manager.doctrine" />
                 <argument type="service" id="security.context" />
                 <argument type="service" id="my_mailer" />
-        </service>
+        </service>  
         
         <!-- Comments form type -->
         <service id="question_review.comment.form" 

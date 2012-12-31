@@ -22,14 +22,14 @@ class UserFixtures extends AbstractFixture implements FixtureInterface, Containe
     public function load(ObjectManager $manager)
     {
         $userAdmin = new User();
-        $userAdmin->setUsername('david');
+        $userAdmin->setUsername('admin');
         $userAdmin->setEmail('davidmaignan@gmail.com');
         $userAdmin->setEnabled(true);
-        $userAdmin->setRoles(array('ROLE_ADMIN'));
+        $userAdmin->setRoles(array('ROLE_ADMIN', 'ROLE_REVIEWER', 'ROLE_REVIEWER_PHP', 'ROLE_REVIEWER_JAVASCRIPT'));
         //$userAdmin->setSalt(md5(time()));
 
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($userAdmin);
-        $userAdmin->setPassword($encoder->encodePassword('camper', $userAdmin->getSalt()));
+        $userAdmin->setPassword($encoder->encodePassword('adminpass', $userAdmin->getSalt()));
 
         $manager->persist($userAdmin);
         
@@ -39,7 +39,7 @@ class UserFixtures extends AbstractFixture implements FixtureInterface, Containe
         $userAdmin->setUsername('user');
         $userAdmin->setEmail('user@test.com');
         $userAdmin->setEnabled(true);
-        $userAdmin->setRoles(array('ROLE_USER'));
+        $userAdmin->setRoles(array('ROLE_USER', 'ROLE_OWNER'));
         //$userAdmin->setSalt(md5(time()));
 
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($userAdmin);

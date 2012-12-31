@@ -1,6 +1,18 @@
-core_comment:
-    resource: "@CoreCommentBundle/Resources/config/routing.yml"
-    prefix:   /
+question_comment:
+    resource: "@QuestionCommentBundle/Resources/config/routing.yml"
+    prefix:   /question
+
+question_owner:
+    resource: "@QuestionOwnerBundle/Resources/config/routing.yml"
+    prefix:   /question
+
+question_approved:
+    resource: "@QuestionApprovedBundle/Resources/config/routing.yml"
+    prefix:   /question
+
+question_feedback:
+    resource: "@QuestionFeedbackBundle/Resources/config/routing.yml"
+    prefix:   /question
 
 exam_manage:
     resource: "@ExamManageBundle/Resources/config/routing.yml"

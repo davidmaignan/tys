@@ -1,0 +1,3 @@
+question_review_approved:
+    pattern:  /approved/{id}
+    defaults: { _controller: QuestionApprovedBundle:Reviewer:approved }

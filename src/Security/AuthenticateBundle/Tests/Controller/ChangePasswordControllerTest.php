@@ -38,18 +38,17 @@ class ChangePasswordControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/login');
 
         $form = $crawler->selectButton('loginBtn')->form();
-        $form['_username'] = 'david';
-        $form['_password'] = 'camper';
+        $form['_username'] = 'user';
+        $form['_password'] = 'userpass';
 
         $crawler = $client->submit($form);
-        
         
         $crawler = $client->request('GET', '/profile/change-password');       
         
         $form = $crawler->selectButton('_submit')->form();
-        $form['fos_user_change_password_form[current_password]'] = 'camper';
-        $form['fos_user_change_password_form[new][first]'] = 'camper2';
-        $form['fos_user_change_password_form[new][second]'] = 'camper2';
+        $form['fos_user_change_password_form[current_password]'] = 'userpass';
+        $form['fos_user_change_password_form[plainPassword][first]'] = 'camper2';
+        $form['fos_user_change_password_form[plainPassword][second]'] = 'camper2';
         //$form['fos_user_change_password_form[_token]'] = 'camper';
         
 
@@ -77,8 +76,8 @@ class ChangePasswordControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/login');
 
         $form = $crawler->selectButton('_submit')->form();
-        $form['_username'] = 'david';
-        $form['_password'] = 'camper';
+        $form['_username'] = 'user';
+        $form['_password'] = 'userpass';
 
         $crawler = $client->submit($form);
         
@@ -87,8 +86,8 @@ class ChangePasswordControllerTest extends WebTestCase
         
         $form = $crawler->selectButton('_submit')->form();
         $form['fos_user_change_password_form[current_password]'] = 'camper2';
-        $form['fos_user_change_password_form[new][first]'] = 'camper';
-        $form['fos_user_change_password_form[new][second]'] = 'camper';
+        $form['fos_user_change_password_form[plainPassword][first]'] = 'camper';
+        $form['fos_user_change_password_form[plainPassword][second]'] = 'camper';
         //$form['fos_user_change_password_form[_token]'] = 'camper';
         
 
@@ -115,8 +114,8 @@ class ChangePasswordControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/login');
 
         $form = $crawler->selectButton('_submit')->form();
-        $form['_username'] = 'david';
-        $form['_password'] = 'camper';
+        $form['_username'] = 'user';
+        $form['_password'] = 'userpass';
 
         $crawler = $client->submit($form);
         
@@ -125,8 +124,8 @@ class ChangePasswordControllerTest extends WebTestCase
         
         $form = $crawler->selectButton('_submit')->form();
         $form['fos_user_change_password_form[current_password]'] = 'camper';
-        $form['fos_user_change_password_form[new][first]'] = 'camper2';
-        $form['fos_user_change_password_form[new][second]'] = 'camper3';        
+        $form['fos_user_change_password_form[plainPassword][first]'] = 'camper2';
+        $form['fos_user_change_password_form[plainPassword][second]'] = 'camper3';        
 
         $crawler = $client->submit($form);
 

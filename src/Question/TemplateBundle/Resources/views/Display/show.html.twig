@@ -1,0 +1,50 @@
+<table>
+    <tbody>
+        <tr>
+            <td>title</td>
+            <td>{{ question.title }}</td>
+        </tr>
+        <tr>
+            <td>code </td>
+            <td>{{ question.code }}</td>
+        </tr>
+        <tr>
+            <td>note</td>
+            <td>{{ question.note }}</td>
+        </tr>
+        <tr>
+            <td>points</td>
+            <td>{{ question.points }}</td>
+        </tr>
+        <tr>
+            <td>section</td>
+            <td>{{ question.section }}</td>
+        </tr>
+        <tr>
+            <td>level</td>
+            <td>{{ question.level }}</td>
+        </tr>
+        <tr>
+            <td>type</td>
+            <td>{{ question.type }}</td>
+        </tr>
+        <tr>
+            <td>tags</td>
+            <td>
+                {% for tag in question.tags %}
+                    {{ tag }}
+                {% endfor %}    
+        </td>
+    </tr>
+    <tr>
+        <td>answers</td>
+        <td>
+            <ul>
+                {% for answer in question.answers %}
+                    <li>{{ answer.title }}</li>
+                {% endfor %}
+                </ul>        
+            </td>
+        </tr>
+    </tbody>
+</table>

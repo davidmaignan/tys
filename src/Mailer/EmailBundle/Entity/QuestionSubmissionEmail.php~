@@ -24,4 +24,27 @@ class QuestionSubmissionEmail extends Email implements EmailInterface
     private $question;
     
     
+
+    /**
+     * Set question
+     *
+     * @param Core\QuestionBundle\Entity\Question $question
+     * @return QuestionSubmissionEmail
+     */
+    public function setQuestion(Question $question = null)
+    {
+        $this->question = $question;
+    
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return Core\QuestionBundle\Entity\Question 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
 }

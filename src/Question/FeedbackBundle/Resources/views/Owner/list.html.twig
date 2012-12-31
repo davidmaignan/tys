@@ -1,0 +1,51 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+
+<h1>{{ 'question.review.subject'|trans({}, 'QuestionReviewBundle') }}</h1>
+
+
+<div class="row">
+
+    <div class="span12">
+    
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Section</th>
+                <th>Status</th>
+                <th>Owner</th>
+                <th>Comments</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for question in questions %}
+            <tr>
+                <td>{{ question.createdAt | date('Y-m-d') }}</td>
+                <td>{{ question.title }}</td>
+                <td>{{ question.section }}</td>
+                <td>{{ question.status }}</td>
+                <td>{{ question.user }}</td>
+                <td><span class="badge badge-warning">{{ question.comments|length }}</span></td>
+                <td>
+                    <a href="{{ path('question_feedback_show',{'id': question.id } ) }}" class="btn btn-info btn-mini">Review</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+    </div>
+    
+</div>
+
+
+
+
+
+{% endblock body %}

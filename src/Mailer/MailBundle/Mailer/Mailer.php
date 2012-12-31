@@ -7,6 +7,8 @@ use Mailer\MailBundle\Event\EmailRegistrationEvent;
 use Mailer\MailBundle\Event\EmailResettingEvent;
 use Mailer\MailBundle\Event\EmailQuestionSubmissionEvent;
 use Mailer\MailBundle\Event\EmailQuestionReviewEvent;
+use Mailer\MailBundle\Event\EmailQuestionFeedbackEvent;
+use Mailer\MailBundle\Event\EmailQuestionApprovedEvent;
 
 use Core\QuestionBundle\Entity\QuestionInterface;
 use FOS\UserBundle\Model\UserInterface;
@@ -117,7 +119,7 @@ class Mailer implements MailerInterface
         $from = ('questions@testyrskills.com');
         $subject = 'Question submitted';
         
-        $link = $this->container->get('router')->generate('question_review_display', array('id' => $question->getId()), true);
+        $link = $this->container->get('router')->generate('question_owner_show', array('id' => $question->getId()), true);
         $body = $this->container->get('templating')->render('MailerMailBundle:Question:questionSubmitted.txt.twig',
                 array(
                     'user'              =>  $user,
@@ -147,7 +149,7 @@ class Mailer implements MailerInterface
         $from = 'questions@testyrskills.com';
         $subject = 'Question to review';
         
-        $link = $this->container->get('router')->generate('question_review_display', array('id' => $question->getId()), true);
+        $link = $this->container->get('router')->generate('question_review_show', array('id' => $question->getId()), true);
         $body = $this->container->get('templating')->render('MailerMailBundle:Question:questionReview.txt.twig',
                 array(
                     'user'              =>  $user,
@@ -161,17 +163,60 @@ class Mailer implements MailerInterface
         
         $dispatcher = $this->container->get('event_dispatcher');
         $dispatcher->dispatch('email.message.save', new EmailQuestionReviewEvent($message, $status, $question));
-        
+
     }
     
     public function sendQuestionFeedbackEmail(QuestionInterface $question)
     {
-        echo 'sendQuestionFeedbackEmail';
+        
+        $user = $question->getUser();
+        
+        $to = $user->getEmail();;
+        $from = 'questions@testyrskills.com';
+        $subject = 'Question waiting for your feedback';
+        
+        $link = $this->container->get('router')->generate('question_feedback_show', array('id' => $question->getId()), true);
+        //$link = 'to define';
+        $body = $this->container->get('templating')->render('MailerMailBundle:Question:questionFeedback.txt.twig',
+                array(
+                    'user'              =>  $user,
+                    'question'          =>  $question,
+                    'confirmationUrl'   =>  $link
+        ));
+        
+        $message = $this->createMessage($to, $from, $subject, $body);
+        
+        $status = $this->sendEmailMessage($message);
+        
+        $dispatcher = $this->container->get('event_dispatcher');
+        $dispatcher->dispatch('email.message.save', new EmailQuestionFeedbackEvent($message, $status, $question));
+        
     }
     
     public function sendQuestionApprovedEmail(QuestionInterface $question)
     {
-        echo 'sendQuestionApprovedEmail';
+        $user = $question->getUser();
+        
+        $to = $user->getEmail();;
+        $from = 'questions@testyrskills.com';
+        $subject = 'Your question has been approved';
+        
+        $link = $this->container->get('router')->generate('question_owner_list', array(), true);
+        //$link = 'to define';
+        $body = $this->container->get('templating')->render('MailerMailBundle:Question:questionApproved.txt.twig',
+                array(
+                    'user'              =>  $user,
+                    'question'          =>  $question,
+                    'confirmationUrl'   =>  $link
+        ));
+        
+        $message = $this->createMessage($to, $from, $subject, $body);
+        
+        $status = $this->sendEmailMessage($message);
+        
+        $dispatcher = $this->container->get('event_dispatcher');
+        $dispatcher->dispatch('email.message.save', new EmailQuestionApprovedEvent($message, $status, $question));
+
     }
     
     public function sendQuestionRejectedEmail(QuestionInterface $question)

@@ -31,8 +31,8 @@ class DeleteControllerTest extends WebTestCase
     protected $entityManager;
     
     
-    private $username = 'test';
-    private $password = 'test';
+    private $username = 'user';
+    private $password = 'userpass';
     
     
         protected function login($client, $username, $password) {

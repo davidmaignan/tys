@@ -26,9 +26,24 @@ class SectionFixtures extends AbstractFixture implements OrderedFixtureInterface
         $section3->setName('C++');
         $manager->persist($section3);
         
+        $section4 = new Section();
+        $section4->setName('Javascript');
+        $manager->persist($section4);
+        
+        $section5 = new Section();
+        $section5->setName('Ruby');
+        $manager->persist($section5);
+        
+        $section6 = new Section();
+        $section6->setName('Python');
+        $manager->persist($section6);
+        
         $this->addReference('section-1', $section1);
         $this->addReference('section-2', $section2);
         $this->addReference('section-3', $section3);
+        $this->addReference('section-4', $section4);
+        $this->addReference('section-5', $section5);
+        $this->addReference('section-6', $section6);
         
         $manager->flush();
     }

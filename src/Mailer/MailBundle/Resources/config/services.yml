@@ -13,6 +13,12 @@ parameters:
     
     email_question_review_doctrine.class: Mailer\EmailBundle\Doctrine\EmailQuestionReviewManager
     email_question_review_doctrine.object: Mailer\EmailBundle\Entity\QuestionReviewEmail
+    
+    email_question_feedback_doctrine.class: Mailer\EmailBundle\Doctrine\EmailQuestionFeedbackManager
+    email_question_feedback_doctrine.object: Mailer\EmailBundle\Entity\QuestionFeedbackEmail
+    
+    email_question_approved_doctrine.class: Mailer\EmailBundle\Doctrine\EmailQuestionApprovedManager
+    email_question_approved_doctrine.object: Mailer\EmailBundle\Entity\QuestionApprovedEmail
 
 services:
 #    mailer_mail.example:
@@ -45,4 +51,12 @@ services:
         
     email_question_review_doctrine:
         class: %email_question_review_doctrine.class%
-        arguments:  ["@fos_user.entity_manager", %email_question_review_doctrine.object%]  
+        arguments:  ["@fos_user.entity_manager", %email_question_review_doctrine.object%]
+        
+    email_question_feedback_doctrine:
+        class: %email_question_feedback_doctrine.class%
+        arguments:  ["@fos_user.entity_manager", %email_question_feedback_doctrine.object%]
+        
+    email_question_approved_doctrine:
+        class: %email_question_approved_doctrine.class%
+        arguments:  ["@fos_user.entity_manager", %email_question_approved_doctrine.object%]

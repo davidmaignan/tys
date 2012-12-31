@@ -22,9 +22,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 use Core\AnswerBundle\Entity\Answer;
 
-use Doctrine\Common\NotifyPropertyChanged,
-    Doctrine\Common\PropertyChangedListener;
-
 /**
  * Dm\QuestionBundle\Entity\Question
  *
@@ -32,7 +29,6 @@ use Doctrine\Common\NotifyPropertyChanged,
  * @UniqueEntity({"title"})
  * @ORM\Entity(repositoryClass="Core\QuestionBundle\Entity\QuestionRepository")
  * @ORM\HasLifecycleCallbacks()
- * @ORM\ChangeTrackingPolicy("NOTIFY")
  */
 class Question implements QuestionInterface {
 
@@ -50,7 +46,7 @@ class Question implements QuestionInterface {
      *
      * @ORM\Column(name="title", type="text")
      * 
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Default"})
      */
     private $title;
 
@@ -146,31 +142,6 @@ class Question implements QuestionInterface {
      */
     protected $status = QuestionStatus::INITIAL;
     
-    
-    
-    private $_listeners = array();
-
-    public function addPropertyChangedListener(PropertyChangedListener $listener)
-    {
-        $this->_listeners[] = $listener;
-    }
-    
-    protected function _onPropertyChanged($propName, $oldValue, $newValue)
-    {
-        if ($this->_listeners) {
-            foreach ($this->_listeners as $listener) {
-                $listener->propertyChanged($this, $propName, $oldValue, $newValue);
-            }
-        }
-    }
-    
-    public function setData($data)
-    {
-        if ($data != $this->data) {
-            $this->_onPropertyChanged('data', $this->data, $data);
-            $this->data = $data;
-        }
-    }
     
     public function __construct() {
         $this->tags = new ArrayCollection();

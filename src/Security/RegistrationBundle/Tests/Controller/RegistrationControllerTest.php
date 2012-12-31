@@ -59,7 +59,7 @@ class RegistrationControllerTest extends WebTestCase
 
         $crawler = $client->submit($form);
         
-        $this->assertTrue($crawler->filter('html:contains("Congratulations")')->count() > 0, $client->getResponse()->getContent());
+        $this->assertTrue($crawler->filter('html:contains("Congrats")')->count() > 0, $client->getResponse()->getContent());
         
         $this->repo = $this->entityManager->getRepository('MailerEmailBundle:Email');
         

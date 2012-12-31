@@ -181,4 +181,22 @@ class User extends BaseUser
             $question->setUser(NULL);
         }
     }
+    
+    
+    public function getReviewerLangages()
+    {
+        $roles = $this->getRoles();
+        $pattern = '#^ROLE_REVIEWER_#';
+        $languages = array();
+        
+        foreach($roles as $role){
+            if(preg_match($pattern, $role)){
+                $language = explode('_', $role);
+                array_push($languages, end($language));
+            }
+        }
+        
+        return $languages;
+    }
+    
 }

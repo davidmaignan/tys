@@ -1,0 +1,3 @@
+question_comment_create:
+    pattern: /comment/create/{id}
+    defaults: { _controller: QuestionCommentBundle:Comment:create }

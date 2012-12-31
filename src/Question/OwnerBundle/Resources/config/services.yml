@@ -1,0 +1,7 @@
+parameters:
+#    question_owner.example.class: Question\OwnerBundle\Example
+
+services:
+#    question_owner.example:
+#        class: %question_owner.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

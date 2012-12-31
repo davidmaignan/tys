@@ -1,0 +1,15 @@
+question_feedback_edit:
+    pattern: /feedback/edit/{id}
+    defaults: { _controller: QuestionFeedbackBundle:Owner:edit }
+    
+question_feedback_show:
+    pattern: /feedback/show/{id}
+    defaults: { _controller: QuestionFeedbackBundle:Owner:show }
+    
+question_feedback_list: 
+    pattern: /feedback/list
+    defaults: { _controller: QuestionFeedbackBundle:Owner:list }
+    
+question_reviewer_ask_feedback:
+    pattern:  /feedback/request/{id}
+    defaults: { _controller: QuestionFeedbackBundle:Reviewer:feedback }

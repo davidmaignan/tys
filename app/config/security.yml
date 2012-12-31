@@ -54,6 +54,7 @@ security:
     firewalls:
         main:
             pattern: ^/
+            switch_user: true
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
@@ -72,9 +73,11 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/question, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/question, role: ROLE_USER }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/question/review, access: "hasRole('ROLE_REVIEWER')" }
+        - { path: ^/question/feedback, access: "hasRole('ROLE_OWNER')" }
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
+        ROLE_ADMIN:       [ROLE_USER, ROLE_ALLOWED_TO_SWITCH]
         ROLE_SUPER_ADMIN: ROLE_ADMIN

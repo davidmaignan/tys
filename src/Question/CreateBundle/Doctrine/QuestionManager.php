@@ -14,6 +14,7 @@ use FOS\UserBundle\Model\UserInterface;
 use Question\CreateBundle\Model\QuestionManager as BaseQuestionManager;
 use FOS\UserBundle\Util\CanonicalizerInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Core\QuestionBundle\Entity\QuestionInterface;
 
 class QuestionManager extends BaseQuestionManager
 {
@@ -73,14 +74,13 @@ class QuestionManager extends BaseQuestionManager
 
    
     /**
-     * Updates a user.
+     * Updates a question.
      *
-     * @param LevelInterface $user
+     * @param QuestionInterface $question
      * @param Boolean       $andFlush Whether to flush the changes (default true)
      * 
      */
-     
-    public function updateQuestion($question, $andFlush = true)
+    public function updateQuestion(QuestionInterface $question, $andFlush = true)
     {
 
         $this->objectManager->persist($question);

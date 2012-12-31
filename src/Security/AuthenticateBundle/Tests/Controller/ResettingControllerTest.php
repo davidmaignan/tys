@@ -23,7 +23,7 @@ class ResettingControllerTest extends WebTestCase
         
         $form = $crawler->selectButton('_submit_resetting')->form();
         
-        $form['username'] = 'david';
+        $form['username'] = 'user';
         
         $crawler = $client->submit($form);
         
@@ -62,7 +62,7 @@ class ResettingControllerTest extends WebTestCase
         
         $form = $crawler->selectButton('_submit_resetting')->form();
         
-        $form['username'] = 'david';
+        $form['username'] = 'user';
         
         $crawler = $client->submit($form);
         

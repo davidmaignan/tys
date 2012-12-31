@@ -68,12 +68,13 @@ class QuestionRepository extends EntityRepository
     }
     
     
-    public function findByReviewerRole(){
+    public function findByReviewerRole($languages){
         
         $qb = $this->getQuestionQuery();
         
-        $qb->add('where', 'c.name = :name')
-            ->setParameter('name', 'PHP');
+        $qb->add('where', 'c.name IN (:names)')
+           ->andWhere('a.status = :status')
+           ->setParameters(array('names'=> $languages, 'status'=>  QuestionStatus::REVIEW));
         
         $qb = $this->getComments($qb);
         
@@ -81,6 +82,28 @@ class QuestionRepository extends EntityRepository
         
     }
     
+    public function updateStatus($id, $status){
+        
+        $query = $this->getEntityManager()
+                      ->createQuery(
+                          'Update CoreQuestionBundle:Question p
+                           SET p.status = :status
+                           WHERE p.id = :id'
+                      )->setParameters(array('status'=>$status, 'id'=>$id));
+        
+        return $query->getResult();        
+    }
     
+    public function updateStatusApproval($id, $user, $status){
+        
+        $query = $this->getEntityManager()
+                      ->createQuery(
+                          'Update CoreQuestionBundle:Question p
+                           SET p.status = :status
+                           WHERE p.id = :id AND p.user = :user'
+                      )->setParameters(array('status'=>$status, 'id'=>$id, 'user'=>$user));
+        
+        return $query->getResult();        
+    }
     
 }

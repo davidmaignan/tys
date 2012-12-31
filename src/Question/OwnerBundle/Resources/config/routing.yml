@@ -1,0 +1,7 @@
+question_owner_show:
+    pattern:  /owner/show/{id}
+    defaults: { _controller: QuestionOwnerBundle:Display:Show }
+    
+question_owner_list: 
+    pattern:  /owner/list/
+    defaults: { _controller: QuestionOwnerBundle:List:Index }

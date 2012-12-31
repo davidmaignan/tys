@@ -23,8 +23,8 @@ class LoginControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/');
 
         $form = $crawler->selectButton('loginBtn')->form();
-        $form['_username'] = 'david';
-        $form['_password'] = 'camper';
+        $form['_username'] = 'user';
+        $form['_password'] = 'userpass';
 
         $crawler = $client->submit($form);
 
@@ -37,7 +37,7 @@ class LoginControllerTest extends WebTestCase
         $client->followRedirects(true);
         $crawler = $client->request('GET','/');
         $form = $crawler->selectButton('loginBtn')->form();
-        $form['_username'] = 'david';
+        $form['_username'] = 'user';
         $form['_password'] = 'camper242?';
         $crawler = $client->submit($form);
         

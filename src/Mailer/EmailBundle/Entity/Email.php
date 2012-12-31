@@ -17,7 +17,9 @@ use Doctrine\ORM\Mapping\UniqueConstraint as UniqueConstraint;
  *                          "registration"          = "RegistrationEmail",
  *                          "resetting"             = "ResettingEmail",
  *                          "question_submission"   = "QuestionSubmissionEmail",
- *                          "question_review"       = "QuestionReviewEmail" })
+ *                          "question_review"       = "QuestionReviewEmail",
+ *                          "question_feedback"     = "QuestionFeedbackEmail",
+ *                          "question_approved"     = "QuestionApprovedEmail" })
  */
 abstract class Email 
 {

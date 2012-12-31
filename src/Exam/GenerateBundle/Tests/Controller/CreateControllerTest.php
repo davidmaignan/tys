@@ -34,8 +34,8 @@ class CreateControllerTest extends WebTestCase
      */
     protected $user;
     
-    private $username = 'david';
-    private $password = 'camper';
+    private $username = 'user';
+    private $password = 'userpass';
     
     
     /**
