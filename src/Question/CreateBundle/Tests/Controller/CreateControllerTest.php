@@ -82,7 +82,6 @@ class CreateControllerTest extends WebTestCase
         
         $client->followRedirects(true);
         
-        
         //Load data fixtures for login in
         $classes = array(
              'Security\AuthenticateBundle\DataFixtures\ORM\UserFixtures',
@@ -147,17 +146,9 @@ class CreateControllerTest extends WebTestCase
     
     public function testIndex_submit_question_one_answer_missing_question()
     {
-       $client = static::createClient();
-        
-        $client->followRedirects(true);
-        
-        
-        //Load data fixtures for login in
-        $classes = array(
-             'Security\AuthenticateBundle\DataFixtures\ORM\UserFixtures',
-        );
+        $client = static::createClient();
 
-        $this->loadFixtures($classes);
+        $client->followRedirects(true);
 
         $client->followRedirects(true);
         $crawler = $client->request('GET', '/');
@@ -167,33 +158,25 @@ class CreateControllerTest extends WebTestCase
         $form['_password'] = $this->password;
 
         $crawler = $client->submit($form);
-        
-        
         $crawler = $client->request('GET', '/question/create');
-        
+
         $form = $crawler->selectButton('_submit_question')->form(array(
-            'question_create_contributor_form[title]'               => '',
-            'question_create_contributor_form[answers][0][title]'   => 'lorem ipsum'
-        ), 'POST');
-        
+            'question_create_contributor_form[title]' => '',
+            'question_create_contributor_form[answers][0][title]' => 'lorem ipsum'
+                ), 'POST');
+
         $crawler = $client->submit($form);
-        
+
         $this->assertEquals(1, $crawler->filter('html:contains("This value should not be blank.")')->count());
     }
+    
+    
     
     public function testIndex_submit_question_one_answer_missing_answer()
     {
         $client = static::createClient();
         
         $client->followRedirects(true);
-        
-        
-        //Load data fixtures for login in
-        $classes = array(
-             'Security\AuthenticateBundle\DataFixtures\ORM\UserFixtures',
-        );
-
-        $this->loadFixtures($classes);
 
         $client->followRedirects(true);
         $crawler = $client->request('GET', '/');
@@ -222,14 +205,6 @@ class CreateControllerTest extends WebTestCase
         $client = static::createClient();
         
         $client->followRedirects(true);
-        
-        
-        //Load data fixtures for login in
-        $classes = array(
-             'Security\AuthenticateBundle\DataFixtures\ORM\UserFixtures',
-        );
-
-        $this->loadFixtures($classes);
 
         $client->followRedirects(true);
         $crawler = $client->request('GET', '/');
@@ -250,38 +225,7 @@ class CreateControllerTest extends WebTestCase
         
         $crawler = $client->submit($form);
         
-        //$this->assertEquals(1, $crawler->filter('html:contains("This value is already used.")')->count() );
+        $this->assertEquals(1, $crawler->filter('html:contains("This value is already used.")')->count() );
     }
-    
-    /*
-    public function testCreate_question_two_answer()
-    {
-        $client = static::createClient();
-        
-        $client->followRedirects(true);
-        
-        $crawler = $client->request('GET', '/question/create');
-        
-        $add_answer_link = $crawler->selectLink('test');
-        
-        $crawler = $client->click($add_answer_link);
-        
-        $question_title = 'Lorem ipsum dolor sit amet';
-        $answer_title_1 = 'Sed ut perspiciatis unde omnis iste natus error';
-        $answer_title_2 = 'At vero eos et accusamus et iusto odio dignissimos';
-        
-        
-        $form = $crawler->selectButton('_submit_question')->form(array(
-            'question_create_contributor_form[title]'               => $question_title,
-            'question_create_contributor_form[answers][0][title]'   => $answer_title_1,
-            'question_create_contributor_form[answers][1][title]'   => $answer_title_2,
-        ), 'POST');
-        
-        $crawler = $client->submit($form);
-        
-        $this->assertTrue($crawler->filter('html:contains("Your question has been successfully submitted.")')->count() > 0);
-        
-    }
-     * 
-     */
+  
 }

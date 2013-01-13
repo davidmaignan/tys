@@ -7,6 +7,8 @@ use Liip\FunctionalTestBundle\Test\WebTestCase;
 use Core\QuestionBundle\Entity\Question;
 use Core\QuestionBundle\Entity\QuestionStatus;
 
+use Doctrine\ORM\EntityManager;
+
 class ReviewerControllerTest extends WebTestCase
 {
    /**
@@ -23,7 +25,6 @@ class ReviewerControllerTest extends WebTestCase
      * @var Symfony\Component\DependencyInjection\Container 
      */
     protected $container;
-    
     
     /**
      *
@@ -60,12 +61,7 @@ class ReviewerControllerTest extends WebTestCase
         
     }
     
-    private function loadUser($doctrine, $username) {
-        // Don't have to use doctrine if you don't want to, you could use
-        // a service to load your user since you have access to the
-        // container.
-
-        // Assumes User entity implements UserInterface
+    private function loadUser(EntityManager $doctrine, $username) {
         return $doctrine
                 ->getRepository('SecurityAuthenticateBundle:User')
                 ->findOneByUsername($username);
@@ -93,8 +89,8 @@ class ReviewerControllerTest extends WebTestCase
     
     /**
      *
-     * @param type $entity
-     * @param type $parameters
+     * @param string $entity
+     * @param array $parameters
      * @return Email 
      */
     public function getEmail($entity, $parameters)
@@ -124,11 +120,9 @@ class ReviewerControllerTest extends WebTestCase
        $question->setStatus(QuestionStatus::REVIEW);
        $this->entityManager->flush();
        
-      
        $uri = $this->router->generate('question_review_approved', array('id'=>$questionID));
        $crawler = $client->request('GET', $uri);
        $this->assertEquals(403, $client->getResponse()->getStatusCode());
-       
     }
     
     /**
@@ -137,7 +131,6 @@ class ReviewerControllerTest extends WebTestCase
      */
     public function test_reviewer_approved_wrong_status()
     {
-        
        $client = static::createClient(); 
        $client->followRedirects(true);
        $crawler = $client->request('GET', '/');
@@ -191,10 +184,8 @@ class ReviewerControllerTest extends WebTestCase
         //Check status code for question
        $questionUpdated = $this->getQuestionByParameters(array('status'=>  QuestionStatus::APPROVED));
 
-       
        $this->assertEquals(1, count($questionUpdated));
-       $this->assertEquals($questionID, $questionUpdated->getId());
-       
+       $this->assertEquals($questionID, $questionUpdated->getId());       
     }
     
     /**
@@ -203,7 +194,7 @@ class ReviewerControllerTest extends WebTestCase
     public function test_email_sent_to_owner($questionID)
     {
         $question = $this->getQuestionByParameters(array('id'=>$questionID));
-        $email = $this->getEmail('EmailBundle:QuestionApprovedEmail', array('question'=>$question, 'recipient'=>$question->getUser()->getEmail()));
+        $email = $this->getEmail('MailerEmailBundle:QuestionApprovedEmail', array('question'=>$question, 'recipient'=>$question->getUser()->getEmail()));
         $this->assertEquals(1, count($email));
     }
 }

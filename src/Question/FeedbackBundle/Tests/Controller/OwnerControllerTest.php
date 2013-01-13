@@ -111,10 +111,8 @@ class OwnerControllerTest extends WebTestCase
        
        $question = $this->getQuestion();
        $questionID = $question->getId();
-       $this->questionID = $questionID;
        
-       $uri = "/question/feedback/show/$questionID";
-       
+       $uri = $this->router->generate('question_feedback_show', array('id'=>$questionID));
        $crawler = $client->request('GET', $uri);
        
        $this->assertEquals(403, $client->getResponse()->getStatusCode());
@@ -142,10 +140,8 @@ class OwnerControllerTest extends WebTestCase
        
        $question = $this->getQuestion();
        $questionID = $question->getId();
-       $this->questionID = $questionID;
        
-       $uri = "/question/feedback/show/$questionID";
-  
+       $uri = $this->router->generate('question_feedback_show', array('id'=>$questionID));
        $crawler = $client->request('GET', $uri);
        
        $this->assertEquals(404, $client->getResponse()->getStatusCode());

@@ -1,4 +1,4 @@
-<table>
+<table class="table table-bordered table-striped question-show">
     <tbody>
         <tr>
             <td>title</td>
@@ -6,7 +6,9 @@
         </tr>
         <tr>
             <td>code </td>
-            <td>{{ question.code }}</td>
+            <td class="code">
+                {{ question.code | highlight | raw }}
+            </td>
         </tr>
         <tr>
             <td>note</td>

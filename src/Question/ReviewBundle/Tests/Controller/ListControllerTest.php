@@ -102,7 +102,6 @@ class ListControllerTest extends WebTestCase
     
     public function test_list_questions_wrong_credential()
     {
-        
        $client = static::createClient(); 
        $client->followRedirects(true);
        $crawler = $client->request('GET', '/');
@@ -124,7 +123,6 @@ class ListControllerTest extends WebTestCase
        $client->followRedirects(true);
        
        $crawler = $client->request('GET', '/');
-
        $form = $crawler->selectButton('loginBtn')->form();
        $form['_username'] = $this->username;
        $form['_password'] = $this->password;
@@ -134,25 +132,24 @@ class ListControllerTest extends WebTestCase
        $uri = $this->router->generate('question_review_list');
        $crawler = $client->request('GET', $uri);
        
-       $title = $crawler->filterXPath('//table/tbody/tr[1]/td[2]')->text();
+       $title = $crawler->filterXPath('//table[contains(@class, \'question-list\')]/tbody/tr[1]/td[2]')->text();
        
-       $linkUri = $crawler->filterXPath('//table/tbody/tr[1]/td[7]/a')->link()->getUri();
+       $linkUri = $crawler->filterXPath('//table[contains(@class, \'question-list\')]/tbody/tr[1]/td[7]/a')->link()->getUri();
        
        
        $uri = explode('/', $linkUri);
        $questionID = (int)(end($uri));
-       
        
        $user = $this->loadUser($this->entityManager, $this->username);
        $userID = $user->getId();
        
        $crawler = $client->request('GET', $linkUri);
        
-       $titleShow = $crawler->filterXPath('//table/tbody/tr[1]/td[2]')->text();
+       $titleShow = $crawler->filterXPath('//table[contains(@class, \'question-show\')]/tbody/tr[1]/td[2]')->text();
        $this->assertEquals($title, $titleShow);
        
        //Number of answers
-       $answers = $crawler->filterXPath('//table/tbody/tr[9]/td[2]/ul')->children();
+       $answers = $crawler->filterXPath('//table[contains(@class, \'question-show\')]/tbody/tr[9]/td[2]/ul')->children();
        $this->assertEquals(4, count($answers));
        
        

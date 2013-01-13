@@ -16,10 +16,45 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
     public function load(ObjectManager $manager)
     {
         
+        $code = '<?php
+                    class StackTest extends PHPUnit_Framework_TestCase
+                    {
+                        public function testEmpty()
+                        {
+                            $stack = array();
+                            $this->assertEmpty($stack);
+
+                            return $stack;
+                        }
+
+                        /**
+                        * @depends testEmpty
+                        */
+                        public function testPush(array $stack)
+                        {
+                            array_push($stack, \'foo\');
+                            $this->assertEquals(\'foo\', $stack[count($stack)-1]);
+                            $this->assertNotEmpty($stack);
+
+                            return $stack;
+                        }
+
+                        /**
+                        * @depends testPush
+                        */
+                        public function testPop(array $stack)
+                        {
+                            $this->assertEquals(\'foo\', array_pop($stack));
+                            $this->assertEmpty($stack);
+                        }
+                    }
+                  ?>';
+        
         $question1 = new Question();
         $question1->setUser($manager->merge($this->getReference('user-2')));
         $question1->setTitle('What is the result of calling json_encode() on an empty array?');
         $question1->setPoints(1);
+        $question1->setCode($code);
         $question1->setSection($manager->merge($this->getReference('section-1')));
         $question1->setLevel($manager->merge($this->getReference('level-'.rand(1,4))));
         $question1->getTags()->add($manager->merge($this->getReference('tag-21')));

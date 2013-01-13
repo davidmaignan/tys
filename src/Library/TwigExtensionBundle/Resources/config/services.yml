@@ -1,0 +1,27 @@
+parameters:
+#    library_twig_extension.example.class: Library\TwigExtensionBundle\Example
+
+services:
+#    library_twig_extension.example:
+#        class: %library_twig_extension.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+services:
+    code.twig.extension:
+        class: Library\TwigExtensionBundle\Twig\CodeExtension
+        tags:
+            -  { name: twig.extension }
+            
+    twig.extension.text:
+       class: Twig_Extensions_Extension_Text
+       tags:
+           - { name: twig.extension }
+ 
+    twig.extension.intl:
+       class: Twig_Extensions_Extension_Intl
+       tags:
+           - { name: twig.extension }
+ 
+    debug.twig.extension:
+        class: Twig_Extensions_Extension_Debug
+        tags: [{ name: 'twig.extension' }]

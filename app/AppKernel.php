@@ -56,6 +56,7 @@ class AppKernel extends Kernel
             new Question\TemplateBundle\QuestionTemplateBundle(),
             new Question\OwnerBundle\QuestionOwnerBundle(),
             new Question\CommentBundle\QuestionCommentBundle(),
+            new Library\TwigExtensionBundle\LibraryTwigExtensionBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
