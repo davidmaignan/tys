@@ -26,8 +26,11 @@ class CreateController extends Controller
             $user = $this->get('security.context')->getToken()->getUser();
             $user = new Security\AuthenticateBundle\Entity\User();
             
+            $em = $this->getDoctrine()->getEntityManager();
+            
             if(!in_array('ROLE_OWNER', $user->getRoles())){
-                $user->set
+                $user->setRole('ROLE_OWNER');
+                $em->flush();
             }
             
             return new RedirectResponse($this->generateUrl('question_create_success'));
