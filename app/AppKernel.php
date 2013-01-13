@@ -23,11 +23,9 @@ class AppKernel extends Kernel
             new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
             new Dm\QuestionBundle\DmQuestionBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Dm\UserBundle\DmUserBundle(),
             new Dm\AdminBundle\DmAdminBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new Dm\SiteBundle\DmSiteBundle(),
             new Security\AuthenticateBundle\SecurityAuthenticateBundle(),
             new Mailer\MailBundle\MailerMailBundle(),
             new Mailer\EmailBundle\MailerEmailBundle(),
@@ -57,6 +55,8 @@ class AppKernel extends Kernel
             new Question\OwnerBundle\QuestionOwnerBundle(),
             new Question\CommentBundle\QuestionCommentBundle(),
             new Library\TwigExtensionBundle\LibraryTwigExtensionBundle(),
+            new Site\HomepageBundle\SiteHomepageBundle(),
+            new Site\NavigationBundle\SiteNavigationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

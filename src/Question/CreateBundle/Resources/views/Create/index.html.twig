@@ -1,5 +1,4 @@
-{% extends '::base.html.twig' %}
-
+{% extends 'SiteHomepageBundle::layout.html.twig' %}
 
 {% block body %}
 
@@ -32,6 +31,7 @@
                         {% endif %}         
                             {{ form_row(answer.title)}}
                             {{ form_row(answer.code)}}
+                            {{ form_row(answer.correct)}}
                         </div>
                     {% endfor %}
                 </div>

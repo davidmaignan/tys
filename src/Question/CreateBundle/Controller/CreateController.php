@@ -24,12 +24,11 @@ class CreateController extends Controller
             
             //Add role ROLE_OWNER if not already
             $user = $this->get('security.context')->getToken()->getUser();
-            $user = new Security\AuthenticateBundle\Entity\User();
             
             $em = $this->getDoctrine()->getEntityManager();
             
             if(!in_array('ROLE_OWNER', $user->getRoles())){
-                $user->setRole('ROLE_OWNER');
+                $user->addRole('ROLE_OWNER');
                 $em->flush();
             }
             
