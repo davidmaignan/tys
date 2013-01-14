@@ -55,6 +55,11 @@ class User extends BaseUser
      */
     protected $orders;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\Exam", mappedBy="users")
+     */
+    private $exams;
+    
 
     public function __construct()
     {
@@ -64,6 +69,7 @@ class User extends BaseUser
         
         $this->questions = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->exams = new ArrayCollection();
     }
 
     /**
@@ -135,7 +141,38 @@ class User extends BaseUser
         return $this->questions;
     }
 
-   
+     /**
+     * Add exam
+     *
+     * @param Exam\CoreBundle\Entity\Exam $exam
+     * @return Type
+     */
+    public function addExam(Exam $exam)
+    {
+        $this->exams[] = $exam;
+        return $this;
+    }
+
+    /**
+     * Remove exam
+     *
+     * @param $exam
+     */
+    public function removeExam(Exam $exam)
+    {
+        $this->exams->removeElement($exam);
+    }
+
+    /**
+     * Get exams
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getExams()
+    {
+        return $this->exams;
+    }
+    
 
     /**
      * Add orders
