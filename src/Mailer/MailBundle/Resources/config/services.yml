@@ -19,6 +19,9 @@ parameters:
     
     email_question_approved_doctrine.class: Mailer\EmailBundle\Doctrine\EmailQuestionApprovedManager
     email_question_approved_doctrine.object: Mailer\EmailBundle\Entity\QuestionApprovedEmail
+    
+    email_send_invitation_doctrine.class: Mailer\EmailBundle\Doctrine\EmailSendInvitationManager
+    email_send_invitation_doctrine.object: Mailer\EmailBundle\Entity\SendInvitationEmail
 
 services:
 #    mailer_mail.example:
@@ -60,3 +63,7 @@ services:
     email_question_approved_doctrine:
         class: %email_question_approved_doctrine.class%
         arguments:  ["@fos_user.entity_manager", %email_question_approved_doctrine.object%]
+        
+    email_send_invitation_doctrine:
+        class: %email_send_invitation_doctrine.class%
+        arguments:  ["@fos_user.entity_manager", %email_send_invitation_doctrine.object%]

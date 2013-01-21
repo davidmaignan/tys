@@ -18,7 +18,7 @@ class UserRepository extends EntityRepository
         
         
         $user = $this->findOneBy(array('email'=>$email));
-        var_dump($user);
+        //var_dump($user);
         
         
     }

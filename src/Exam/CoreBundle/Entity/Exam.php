@@ -32,6 +32,7 @@ class Exam implements ExamInterface {
     
     /**
      * @ORM\ManyToMany(targetEntity="Security\AuthenticateBundle\Entity\User", inversedBy="exams")
+     * @ORM\JoinTable(name="exam_candidates")
      */
     private $candidates;
     

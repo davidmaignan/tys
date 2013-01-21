@@ -19,7 +19,8 @@ use Doctrine\ORM\Mapping\UniqueConstraint as UniqueConstraint;
  *                          "question_submission"   = "QuestionSubmissionEmail",
  *                          "question_review"       = "QuestionReviewEmail",
  *                          "question_feedback"     = "QuestionFeedbackEmail",
- *                          "question_approved"     = "QuestionApprovedEmail" })
+ *                          "question_approved"     = "QuestionApprovedEmail",
+ * *                        "send_invitation"       = "SendInvitationEmail" })
  */
 abstract class Email 
 {

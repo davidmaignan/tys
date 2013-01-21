@@ -56,7 +56,7 @@ class User extends BaseUser
     protected $orders;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\Exam", mappedBy="users")
+     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\Exam", mappedBy="candidates")
      */
     private $exams;
     

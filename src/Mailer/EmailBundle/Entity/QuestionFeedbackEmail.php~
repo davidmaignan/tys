@@ -10,11 +10,11 @@ use Core\QuestionBundle\Entity\Question;
 
 
 /**
- * Mailer\EmailBundle\Entity\QuestionReviewEmail
+ * Mailer\EmailBundle\Entity\QuestionFeedbackEmail
  * @ORM\Entity
- * @ORM\Table(name="question_review")
+ * @ORM\Table(name="question_feedback")
  */
-class QuestionReviewEmail extends Email implements EmailInterface
+class QuestionFeedbackEmail extends Email implements EmailInterface
 {
     
     /**
@@ -23,13 +23,11 @@ class QuestionReviewEmail extends Email implements EmailInterface
      */
     private $question;
     
-    
-
     /**
      * Set question
      *
      * @param Core\QuestionBundle\Entity\Question $question
-     * @return QuestionSubmissionEmail
+     * @return QuestionFeedbackEmail
      */
     public function setQuestion(Question $question = null)
     {

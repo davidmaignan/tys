@@ -9,6 +9,9 @@ use Mailer\MailBundle\Event\EmailQuestionSubmissionEvent;
 use Mailer\MailBundle\Event\EmailQuestionReviewEvent;
 use Mailer\MailBundle\Event\EmailQuestionFeedbackEvent;
 use Mailer\MailBundle\Event\EmailQuestionApprovedEvent;
+use Mailer\MailBundle\Event\EmailSendInvitationEvent;
+
+use Exam\CoreBundle\Entity\ExamInterface;
 
 use Core\QuestionBundle\Entity\QuestionInterface;
 use FOS\UserBundle\Model\UserInterface;
@@ -228,6 +231,30 @@ class Mailer implements MailerInterface
     {
         echo 'sendQuestionArchivedEmail';
     }
+    
+    
+    public function sendExamInvitation(ExamInterface $exam, UserInterface $user)
+    {
+        $to = $user->getEmail();
+        $from = 'exam@testyrskills.com';
+        $subject = 'Exam invitation';
+        
+        $link = $this->container->get('router')->generate('exam_user_invitation_index', array(), true);
+        
+        $body = $this->container->get('templating')->render('MailerMailBundle:Exam:invitation.txt.twig',
+                array(
+                    'user'            =>  $user,
+                    'invitationUrl'   =>  $link
+        ));
+        
+        $message = $this->createMessage($to, $from, $subject, $body);
+        $status = $this->sendEmailMessage($message);
+        
+        $dispatcher = $this->container->get('event_dispatcher');
+        $dispatcher->dispatch('email.message.save', new EmailSendInvitationEvent($message, $status, $exam, $user));
+    }
+
+
     
     /**
      * Create message to be send

@@ -54,3 +54,15 @@ question:
             
             Regards,
             the Team.
+
+exam:
+    invitation:
+        subject: Invitation to testyrskills
+        message: |
+            Hello %username%!
+
+            You have been invited to test your skills - please visit %invitationUrl%
+
+            Regards,
+            the Team.
+        

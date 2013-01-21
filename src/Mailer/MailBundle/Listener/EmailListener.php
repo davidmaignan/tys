@@ -15,6 +15,7 @@ use Mailer\MailBundle\Event\EmailQuestionSubmissionEvent;
 use Mailer\MailBundle\Event\EmailQuestionReviewEvent;
 use Mailer\MailBundle\Event\EmailQuestionFeedbackEvent;
 use Mailer\MailBundle\Event\EmailQuestionApprovedEvent;
+use Mailer\MailBundle\Event\EmailSendInvitationEvent;
 
 class EmailListener
 {
@@ -58,19 +59,18 @@ class EmailListener
                 $this->emailManager = $this->container->get('email_question_approved_doctrine');
                 break;
             
+            case($event instanceof EmailSendInvitationEvent):
+                $this->emailManager = $this->container->get('email_send_invitation_doctrine');
+                break;
+            
             default:
                 throw new \Exception('No email event recognized!');
-                break;
-               
+                break; 
         }
         
         $email = $this->emailManager->createEmail();
-             
+        
         $this->emailManager->bind($email, $event);
-         
         $this->emailManager->updateEmail($email);
-        
-        
     }
-    
 }
