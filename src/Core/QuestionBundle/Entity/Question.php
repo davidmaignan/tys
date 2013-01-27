@@ -21,6 +21,10 @@ use Symfony\Component\Validator\Constraints\MinLength;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 use Core\AnswerBundle\Entity\Answer;
+use Exam\CoreBundle\Entity\Exam;
+use Security\AuthenticateBundle\Entity\User;
+use Core\CommentBundle\Entity\Comment;
+
 
 /**
  * Dm\QuestionBundle\Entity\Question
@@ -441,7 +445,7 @@ class Question implements QuestionInterface {
      * @param Security\AuthenticateBundle\Entity\User $user
      * @return Question
      */
-    public function setUser(\Security\AuthenticateBundle\Entity\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
     
@@ -464,7 +468,7 @@ class Question implements QuestionInterface {
      * @param Exam\CoreBundle\Entity\Exam $exams
      * @return Question
      */
-    public function addExam(\Exam\CoreBundle\Entity\Exam $exams)
+    public function addExam(Exam $exams)
     {
         $this->exams[] = $exams;
     
@@ -532,7 +536,7 @@ class Question implements QuestionInterface {
      * @param Core\CommentBundle\Entity\Comment $comments
      * @return Question
      */
-    public function addComment(\Core\CommentBundle\Entity\Comment $comments)
+    public function addComment(Comment $comments)
     {
         $this->comments[] = $comments;
     
@@ -544,7 +548,7 @@ class Question implements QuestionInterface {
      *
      * @param Core\CommentBundle\Entity\Comment $comments
      */
-    public function removeComment(\Core\CommentBundle\Entity\Comment $comments)
+    public function removeComment(Comment $comments)
     {
         $this->comments->removeElement($comments);
     }

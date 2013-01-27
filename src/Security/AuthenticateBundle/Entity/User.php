@@ -18,6 +18,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\MinLength;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+use Exam\CoreBundle\Entity\Exam;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")

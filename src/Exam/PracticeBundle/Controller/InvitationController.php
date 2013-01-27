@@ -4,7 +4,7 @@ namespace Exam\PracticeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class InvitationController extends Controller
 {
     public function indexAction($name)
     {

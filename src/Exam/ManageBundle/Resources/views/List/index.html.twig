@@ -7,7 +7,7 @@
 
 
 
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped" id="exam-list">
     <thead>
         <tr>
             <th>id</th>
@@ -22,10 +22,13 @@
     <tbody>
         <tr>
             <td>{{ exam.id }}</td>
-            <td>{{ exam.examCriteria.sections.0 }}</td>
-            <td>{{ exam.examCriteria.numberCandidates }}</td>
-            <td>{{ exam.examCriteria.level }}</td>
-            <td>{{ exam.createdAt |date("d F  Y") }} @ {{ exam.createdAt |date("g:ia") }}</td>
+            <td>{#% for section in exam.examCriteria.sections %#}
+                    {#{ section }#}
+                {#% endfor %#}
+            </td>
+            <td>{#{ exam.examCriteria.numberCandidates }#}</td>
+            <td>{#{ exam.examCriteria.level }#}</td>
+            <td>{#{ exam.createdAt |date("d F  Y") }#} @ {#{ exam.createdAt |date("g:ia") }#}</td>
             <td><a class="btn btn-info btn-mini" href="{{ path('exam_manage_show', { 'id': exam.id }) }}">{{ 'Show' | trans }}</td>
         </tr>
     </tbody>

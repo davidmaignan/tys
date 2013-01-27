@@ -123,7 +123,7 @@ class CreateControllerTest extends WebTestCase
         //Types
         $form['exam_generate_form[types][0]']->tick();
         $form['exam_generate_form[types][1]']->tick();
-        $form['exam_generate_form[types][2]']->tick();
+        //$form['exam_generate_form[types][2]']->tick();
         
        
         
