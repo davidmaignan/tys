@@ -13,7 +13,7 @@ class AnswerFormType extends AbstractType
         $builder
             ->add('title')
             ->add('code')
-            //->add('note')
+            ->add('correct')
         ;
     }
 

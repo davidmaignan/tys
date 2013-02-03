@@ -1,12 +1,12 @@
-{% extends '::base.html.twig' %}
+{% extends 'SiteHomepageBundle::layout.html.twig' %}
 
 
 {% block body %}
 
-<h1>{{ 'question.review.subject'|trans({}, 'QuestionReviewBundle') }}</h1>
+<h1>Question review</h1>
 
 <ul class="nav nav-tabs">
-    <li class="active"><a href="#question" data-toggle="tab">Question</a></li>
+    <li class=""><a href="#question" data-toggle="tab">Question</a></li>
     <li><a href="#comments" data-toggle="tab">Comments <span class="badge badge-warning">{{ question.comments | length }}</span></a></li>
 </ul>
 
@@ -39,6 +39,7 @@
                         {% endif %}         
                             {{ form_row(answer.title)}}
                             {{ form_row(answer.code)}}
+                            {{ form_row(answer.correct) }} 
                         </div>
                     {% endfor %}
                 </div>     
@@ -57,7 +58,7 @@
         <div class="row">     
             <div class="form-actions">
                 <a class="btn" id="back-list" href="{{ path('question_feedback_show',{'id': question.id } ) }}">Cancel</a>
-                <button type="submit" class="btn btn-primary" id="back-list">Submit</a>
+                <button type="submit" class="btn btn-primary">Submit</a>
             </div>
         </div>
         </form>

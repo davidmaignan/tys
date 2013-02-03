@@ -1,7 +1,0 @@
-parameters:
-#    dm_user.example.class: Dm\UserBundle\Example
-
-services:
-#    dm_user.example:
-#        class: %dm_user.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

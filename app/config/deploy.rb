@@ -19,7 +19,7 @@ set   :user, "davidmaignan"
 
 set :shared_files,      ["app/config/parameters.yml"]
 
-set :shared_children,     [app_path + "/logs", web_path + "/uploads", "vendor"]
+set :shared_children,     [app_path + "/logs", "vendor", web_path]
 
 set :use_composer, true
 

@@ -12,6 +12,11 @@ services:
         tags:
             -  { name: twig.extension }
             
+    definition.list.twig.extension:
+        class: Library\TwigExtensionBundle\Twig\dLExtension
+        tags:
+            -  { name: twig.extension }        
+            
     twig.extension.text:
        class: Twig_Extensions_Extension_Text
        tags:

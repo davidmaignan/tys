@@ -14,7 +14,7 @@ use Core\QuestionBundle\Entity\Question;
  * @ORM\Entity
  * @ORM\Table(name="question_review")
  */
-class QuestionFeedbackEmail extends Email implements EmailInterface
+class QuestionReviewEmail extends Email implements EmailInterface
 {
     
     /**

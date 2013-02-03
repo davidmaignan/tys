@@ -31,13 +31,13 @@ class Exam implements ExamInterface {
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User")
-     * @ORM\JoinColumn(name="candidate_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Security\AuthenticateBundle\Entity\User", inversedBy="exams")
+     * @ORM\JoinTable(name="exam_candidates")
      */
-    private $candidate;
+    private $candidates;
     
     /**
-     * @ORM\OneToOne(targetEntity="Exam\CoreBundle\Entity\ExamCriteria", mappedBy="exam" )
+     * @ORM\OneToOne(targetEntity="Exam\CoreBundle\Entity\ExamCriteria", mappedBy="exam", cascade={"persist"} ) )
      */
     private $examCriteria;
     
@@ -70,6 +70,7 @@ class Exam implements ExamInterface {
      */
     public function __construct() {
         $this->questions = new ArrayCollection();
+        $this->candidates = new ArrayCollection();
         
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
@@ -132,6 +133,40 @@ class Exam implements ExamInterface {
     }
 
     /**
+     * Add candidate
+     *
+     * @param Security\AuthenticateBundle\Entity\User $candidate
+     * @return candidates
+     */
+    public function addCandidate(\Security\AuthenticateBundle\Entity\User $candidate)
+    {
+        $this->candidates[] = $candidate;
+    
+        return $this;
+    }
+
+    /**
+     * Remove questions
+     *
+     * @param Core\QuestionBundle\Entity\Question $questions
+     */
+    public function removeCandidate(\Security\AuthenticateBundle\Entity\User $candidate)
+    {
+        $this->candidates->removeElement($candidate);
+    }
+
+    /**
+     * Get candidates
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getCandidates()
+    {
+        return $this->candidates;
+    }
+    
+    
+    /**
      * Add questions
      *
      * @param Core\QuestionBundle\Entity\Question $questions
@@ -163,6 +198,7 @@ class Exam implements ExamInterface {
     {
         return $this->questions;
     }
+
 
     /**
      * Set candidate

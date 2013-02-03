@@ -1,3 +1,15 @@
+exam_send_invitation_confirmed:
+    pattern: /send-invitation-confirmed
+    defaults: { _controller: ExamManageBundle:Invitation:confirmed }
+
+exam_send_invitation:
+    pattern: /send-invitation
+    defaults: { _controller: ExamManageBundle:Invitation:index }
+
+exam_manage_show:
+    pattern:  /show/{id}
+    defaults: { _controller: ExamManageBundle:Show:index }
+
 exam_manage_homepage:
-    pattern:  /list
+    pattern:  /list/
     defaults: { _controller: ExamManageBundle:List:index }

@@ -1,0 +1,89 @@
+{% extends 'SiteHomepageBundle::layout.html.twig' %}
+
+
+{% block body %}
+
+<h1>Your exam</h1>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
+    <li><a href="#questions" data-toggle="tab">Questions</a></li>
+    <li><a href="#candidates" data-toggle="tab">Candidates</a></li>
+</ul>
+
+<div class="tab-content">
+
+    <section class="tab-pane" id="description">
+        
+        <h2>Description</h2>
+
+        <div class="row ">
+
+            <div class="span4">
+                <dl class="dl-horizontal">
+                    <dt>Sections: </dt>
+                    {% if (exam.examCriteria.sections) is defined %}
+                        {{ exam.examCriteria.sections | definitionList | raw }}
+                    {% endif %}
+                    <dt>Level: </dt>
+                    {% if (exam.examCriteria.level) is defined %}
+                        <dd>{{ exam.examCriteria.level }}</dd>
+                    {% endif %} 
+                    <dt>Types: </dt>
+                    {% if (exam.examCriteria.types) is defined %}
+                    <dd>{{ exam.examCriteria.types | definitionList | raw }}</dd>
+                    {% endif %}
+                    {% if (exam.examCriteria.numberCandidates) is defined %}
+                    <dt>Number of candidates: </dt>
+                    <dd>{{ exam.examCriteria.numberCandidates }}</dd>
+                    {% endif %}
+                    {% if (exam.examCriteria.numberQuestions) is defined %}
+                    <dt>Number of questions: </dt>
+                    <dd>{{ exam.examCriteria.numberQuestions }}</dd>
+                    {% endif %}
+                </dl>
+            </div>
+
+
+            <div class="span4">
+                <dl class="dl-horizontal">
+                    <dt>Tags: </dt>
+                    {% if (exam.examCriteria.tags) is defined %}
+                    {{ exam.examCriteria.tags | definitionList | raw }}
+                    {% endif %}
+                </dl>
+            </div>
+
+           
+            
+        </div>
+    </section>
+
+    <section class="tab-pane" id="questions">
+        <h2>Question</h2>
+        <div class="row">
+            {% for question in exam.questions %}
+                {{ question.id }}
+            {% endfor %}  
+        </div>
+    </section>
+
+    <section class="tab-pane active" id="candidates">
+        <h2>Candidates</h2>
+        
+        <section class="row">
+            {% for candidate in exam.candidates %}
+                {{ candidate.id }}
+            {% endfor %}    
+        </section>
+        
+        <section class="">
+            <h2>Send an invitation</h2>
+            {% render 'ExamManageBundle:Invitation:index' with {'examId' : exam.id} %}
+        </section>
+    </section>
+
+</div>    
+{% endblock body %}
+
+

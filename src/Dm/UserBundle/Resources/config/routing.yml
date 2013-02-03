@@ -1,3 +1,0 @@
-DmUserBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: DmUserBundle:Default:index }

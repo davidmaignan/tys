@@ -65,12 +65,12 @@ class ExamManager extends BaseExamManager
     /**
      * {@inheritDoc}
      */
-    public function findExams()
+    public function findExams(\Security\AuthenticateBundle\Entity\User $owner)
     {
-        return $this->repository->findAll();
+        return $this->repository->findBy(array('owner'=>$owner));
     }
-
-   
+    
+    
     /**
      * Updates an examcriteria.
      *

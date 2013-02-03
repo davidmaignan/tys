@@ -1,3 +1,3 @@
-exam_practice_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ExamPracticeBundle:Default:index }
+exam_user_invitation_index:
+    pattern: /practice/invitation
+    defaults: { _controller: ExamPracticeBundle:Invitation:index }

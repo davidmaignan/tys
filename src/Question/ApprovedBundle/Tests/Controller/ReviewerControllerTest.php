@@ -41,11 +41,11 @@ class ReviewerControllerTest extends WebTestCase
     
     private $classes = array(
              'Security\AuthenticateBundle\DataFixtures\ORM\UserFixtures',
-             'Core\QuestionBundle\DataFixtures\ORM\QuestionFixtures',
              'Core\LevelBundle\DataFixtures\ORM\LevelFixtures',
              'Core\SectionBundle\DataFixtures\ORM\SectionFixtures',
              'Core\TypeBundle\DataFixtures\ORM\TypeFixtures',
              'Core\TagBundle\DataFixtures\ORM\TagFixtures',
+             'Core\QuestionBundle\DataFixtures\ORM\QuestionFixtures',
             );
     
     
@@ -140,7 +140,7 @@ class ReviewerControllerTest extends WebTestCase
        $form['_password'] = $this->password;
        $crawler = $client->submit($form);
        
-       $question = $this->getQuestion();
+       $question = $this->getQuestion();      
        $questionID = $question->getId();
        $question->setStatus(QuestionStatus::FEEDBACK);
        $this->entityManager->flush();
