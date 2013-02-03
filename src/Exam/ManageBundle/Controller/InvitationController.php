@@ -16,7 +16,7 @@ class InvitationController extends Controller
         $formModel = new ExamInvitationFormModel();
         $formModel->setExamId($examId);
         
-        $formHandler = $this->get('csr.pit.form_handler.user_status_create');
+        $formHandler = $this->get('send.exam.invitation.form.handler');
         $form = $formHandler->getForm();
         $form->setData($formModel);
            

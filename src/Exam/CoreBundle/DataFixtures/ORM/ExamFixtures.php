@@ -39,9 +39,10 @@ class ExamFixtures extends AbstractFixture implements OrderedFixtureInterface
         $examCriteria->addTag($manager->merge($this->getReference('tag-8')));
         
         $exam->setExamCriteria($examCriteria);
-        
+        $examCriteria->setExam($exam);
         
         $manager->persist($exam);
+        $manager->persist($examCriteria);
         
         $this->addReference('exam-1', $exam);
 

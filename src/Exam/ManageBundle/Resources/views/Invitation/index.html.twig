@@ -1,10 +1,10 @@
 <h3>Form invitation</h3>
 
 <form action="{{ path('exam_send_invitation') }}" method="post" name="exam_invitation" novalidate="novalidate">
-
+    
     {{ form_widget(form) }}
 
     <div class="form-actions">
-        <button name="submit" class="btn btn-primary">Send</button>
+        <button id="sendInvitation" class="btn btn-primary">Send</button>
     </div>
 </form>

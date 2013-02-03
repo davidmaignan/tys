@@ -45,24 +45,24 @@
         
         
         <!-- UserStatus: "new" Form -->
-        <service id="csr.pit.form.user_status_new" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
-            <argument>csr_pit_user_status_new</argument>
-            <argument>ic_csr_pit_user_status_new</argument>
+        <service id="send.exam.invitation.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+            <argument>exam_send_invitation</argument>
+            <argument>exam_send_invitation</argument>
         </service>
 
         <!-- UserStatus: "new" FormType -->
-        <service id="csr.pit.form_type.user_status_new" class="Exam\ManageBundle\Form\Type\ExamInvitationFormType">
-            <tag name="form.type" alias="ic_csr_pit_user_status_new" />
+        <service id="send.exam.invitation.form_type" class="Exam\ManageBundle\Form\Type\ExamInvitationFormType">
+            <tag name="form.type" alias="exam_send_invitation" />
         </service>
 
         <!-- UserStatus: "create" FormHandler -->
-        <service id="csr.pit.form_handler.user_status_create" class="Exam\ManageBundle\Form\Handler\ComponentFormHandler" scope="request">
-            <argument type="service" id="csr.pit.form.user_status_new" />
+        <service id="send.exam.invitation.form.handler" class="Exam\ManageBundle\Form\Handler\ComponentFormHandler" scope="request">
+            <argument type="service" id="send.exam.invitation.form" />
             <argument type="service" id="request" />
-            <argument type="service" id="csr.pit.form_service.user_status_create" />
+            <argument type="service" id="send.exam.invitation.form.service" />
         </service>
         
-        <service id="csr.pit.form_service.user_status_create" class="Exam\ManageBundle\Form\Service\ExamInvitationFormService">
+        <service id="send.exam.invitation.form.service" class="Exam\ManageBundle\Form\Service\ExamInvitationFormService">
             <argument type="service" id="my_mailer"/>
             <argument type="service" id="exam_generate.exam_manager.doctrine"/>
             <argument type="service" id="fos_user.user_manager" />

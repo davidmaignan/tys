@@ -39,7 +39,7 @@ class UserFixtures extends AbstractFixture implements FixtureInterface, Containe
         $userAdmin->setUsername('user');
         $userAdmin->setEmail('user@test.com');
         $userAdmin->setEnabled(true);
-        $userAdmin->setRoles(array('ROLE_USER', 'ROLE_OWNER'));
+        $userAdmin->setRoles(array('ROLE_USER', 'ROLE_OWNER', 'ROLE_EXAM_OWNER'));
         //$userAdmin->setSalt(md5(time()));
 
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($userAdmin);
@@ -49,6 +49,19 @@ class UserFixtures extends AbstractFixture implements FixtureInterface, Containe
         
         $this->addReference('user-2', $userAdmin);
         
+        $userAdmin = new User();
+        $userAdmin->setUsername('david');
+        $userAdmin->setEmail('david@test.com');
+        $userAdmin->setEnabled(true);
+        $userAdmin->setRoles(array('ROLE_USER', 'ROLE_EXAM_OWNER'));
+        //$userAdmin->setSalt(md5(time()));
+
+        $encoder = $this->container->get('security.encoder_factory')->getEncoder($userAdmin);
+        $userAdmin->setPassword($encoder->encodePassword('camper', $userAdmin->getSalt()));
+
+        $manager->persist($userAdmin);
+        
+        $this->addReference('user-3', $userAdmin);
         
         $manager->flush();
     }

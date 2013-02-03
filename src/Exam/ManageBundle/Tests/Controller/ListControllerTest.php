@@ -36,6 +36,16 @@ class ListControllerTest extends WebTestCase
      */
     private $password = 'userpass';
     
+     /**
+     * @var string
+     */
+    private $usernameForbidden = 'david';
+    
+    /**
+     * @var string 
+     */
+    private $passwordForbidden = 'camper';
+    
     /**
      * @var array 
      */
@@ -83,6 +93,7 @@ class ListControllerTest extends WebTestCase
         
         if(!$user) {
             $this->loadFixtures($this->classes);
+            $user = $this->loadUser($this->entityManager, $this->username);
         }
         
         
@@ -103,14 +114,46 @@ class ListControllerTest extends WebTestCase
         $crawler = $client->request('GET',  $url);
         
         $this->assertTrue($crawler->filter('html:contains("Your exams")')->count() > 0);
+        $this->assertEquals(1, $crawler->filterXPath('//*[@id=\'exam-list\']/tbody/tr')->count());
         
-        //$url = $this->router->generate('exam_manage_show', array('id'=>$exam->getId()));
-        //$exams = $this->entityManager->getRepository('ExamCoreBundle:Exam')->findAll();
-        //$exam = reset($exams);
+        $link = $crawler->filterXPath('//*[@id=\'exam-list\']/tbody/tr/td[6]/a')->link();
         
-        //$crawler = $client->request('GET',  $url);
+        $crawler = $client->click($link);
         
+        $this->assertTrue($crawler->filter('html:contains("Your exam")')->count() > 0);
         
     }
+    
+    /**
+     * Test access denied for non ROLE_EXAM_OWNER 
+     */
+    public function test_list_access_forbidden () {
+        
+        $user = $this->loadUser($this->entityManager, $this->username);
+        
+        if(!$user) {
+            $this->loadFixtures($this->classes);
+        }
+        
+        
+        $client = static::createClient();        
+        $client->followRedirects(true);
+        
+        $crawler = $client->request('GET', '/');
+        
+        //Login
+        $form = $crawler->selectButton('loginBtn')->form();
+        $form['_username'] = $this->usernameForbidden;
+        $form['_password'] = $this->passwordForbidden;
+        $crawler = $client->submit($form);
+        
+        $url = $this->router->generate('exam_manage_homepage');
+        
+        //Redirect to exam list page
+        $crawler = $client->request('GET',  $url);
+        
+        $this->assertEquals(403, $client->getResponse()->getStatusCode());
+    }
+    
     
 }

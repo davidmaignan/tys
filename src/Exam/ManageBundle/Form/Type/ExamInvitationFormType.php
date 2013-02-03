@@ -42,7 +42,7 @@ class ExamInvitationFormType extends AbstractType {
     public function getName()
     {
         //return 'exam_invitation';
-        return 'ic_csr_pit_user_status_new';
+        return 'exam_send_invitation';
     }
     
 }

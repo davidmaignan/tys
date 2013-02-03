@@ -22,19 +22,25 @@
             <div class="span4">
                 <dl class="dl-horizontal">
                     <dt>Sections: </dt>
-                    {{ exam.examCriteria.sections | definitionList | raw }}
-
+                    {% if (exam.examCriteria.sections) is defined %}
+                        {{ exam.examCriteria.sections | definitionList | raw }}
+                    {% endif %}
                     <dt>Level: </dt>
-                    <dd>{{ exam.examCriteria.level }}</dd>
-
+                    {% if (exam.examCriteria.level) is defined %}
+                        <dd>{{ exam.examCriteria.level }}</dd>
+                    {% endif %} 
                     <dt>Types: </dt>
+                    {% if (exam.examCriteria.types) is defined %}
                     <dd>{{ exam.examCriteria.types | definitionList | raw }}</dd>
-
+                    {% endif %}
+                    {% if (exam.examCriteria.numberCandidates) is defined %}
                     <dt>Number of candidates: </dt>
                     <dd>{{ exam.examCriteria.numberCandidates }}</dd>
-
+                    {% endif %}
+                    {% if (exam.examCriteria.numberQuestions) is defined %}
                     <dt>Number of questions: </dt>
                     <dd>{{ exam.examCriteria.numberQuestions }}</dd>
+                    {% endif %}
                 </dl>
             </div>
 
@@ -42,16 +48,13 @@
             <div class="span4">
                 <dl class="dl-horizontal">
                     <dt>Tags: </dt>
+                    {% if (exam.examCriteria.tags) is defined %}
                     {{ exam.examCriteria.tags | definitionList | raw }}
+                    {% endif %}
                 </dl>
             </div>
 
-            <div class="span4">
-                <dl class="dl-horizontal">
-                    <dt>Tags: </dt>
-                    {{ exam.examCriteria.tags | definitionList | raw }}
-                </dl>
-            </div>
+           
             
         </div>
     </section>

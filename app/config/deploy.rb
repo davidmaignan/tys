@@ -4,7 +4,7 @@ set   :domain,        "69.165.234.215"
 
 set   :scm,           :git
 set   :repository,    "file:///Users/david/Sites/testonline.com/site/framework-standard-edition"
-set   :deploy_via,    :copy
+set   :deploy_via,    :rsync_with_remote_cache
 
 role  :web,           domain
 role  :app,           domain
@@ -19,7 +19,7 @@ set   :user, "davidmaignan"
 
 set :shared_files,      ["app/config/parameters.yml"]
 
-set :shared_children,     [app_path + "/logs", web_path + "/uploads", "vendor"]
+set :shared_children,     [app_path + "/logs", "vendor", web_path]
 
 set :use_composer, true
 
