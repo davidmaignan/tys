@@ -128,6 +128,18 @@ class Question implements QuestionInterface {
     private $user;
     
     /**
+     * @ORM\OneToOne(targetEntity="Question")
+     * @ORM\JoinColumn(name="head_id", referencedColumnName="id")
+     */
+    private $head;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Question")
+     * @ORM\JoinColumn(name="tail_id", referencedColumnName="id")
+     */
+    private $tail;
+    
+    /**
      * @var datetime $createdAt
      * @ORM\Column(name="createdAt", type="datetime") 
      */
