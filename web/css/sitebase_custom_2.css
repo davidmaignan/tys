@@ -1,0 +1,10 @@
+td.code code{
+    border: none;
+    background: none;
+}
+
+
+textarea {
+    width: 90%;
+    min-height: 40px;
+}

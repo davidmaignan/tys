@@ -17,7 +17,7 @@ use Behat\Gherkin\Node\PyStringNode,
 /**
  * Features context.
  */
-class FeatureContext extends BehatContext
+class FeatureContext extends Behat\MinkExtension\Context\MinkContext
 {
     /**
      * Initializes context.
@@ -28,7 +28,7 @@ class FeatureContext extends BehatContext
     public function __construct(array $parameters)
     {
         // Initialize your context here
-        var_dump($parameters);
+        //var_dump($parameters);
     }
 
 //

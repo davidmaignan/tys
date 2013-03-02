@@ -1,6 +1,13 @@
 default:
-    paths:
-        features: features
-        bootstrap: %behat.paths.features%/bootstrap
     extensions:
-        Behat\Symfony2Extension\Extension: ~
+        Behat\MinkExtension\Extension:
+            base_url: 'http://testyrskills/'
+            goutte: ~
+            selenium2:
+                wd_host: http://127.0.0.1:9999/wd/hub
+
+no_context:
+    paths:
+        bootstrap: 'NON_EXISTING_FOLDER'
+    filters:
+        tags:	'~@javascript'
