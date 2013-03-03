@@ -47,12 +47,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "d80e51fb7338dc05aa4afa3ae20c54cb816c3c18"
+                "reference": "15086016ff7bacd87759da2c2d8e3adf8415ec38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/d80e51fb7338dc05aa4afa3ae20c54cb816c3c18",
-                "reference": "d80e51fb7338dc05aa4afa3ae20c54cb816c3c18",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/15086016ff7bacd87759da2c2d8e3adf8415ec38",
+                "reference": "15086016ff7bacd87759da2c2d8e3adf8415ec38",
                 "shasum": ""
             },
             "require": {
@@ -103,7 +103,7 @@
                 "Behat",
                 "Symfony2"
             ],
-            "time": "2013-03-02 10:48:55"
+            "time": "2013-03-03 10:26:28"
         },
         {
             "name": "behat/gherkin",
@@ -2149,12 +2149,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/php-option.git",
-                "reference": "c899903cbc4cadc2b6fb7ab74a1470d59e4c2d27"
+                "reference": "c8829c3b675f17aa465557f721d909deb67d904f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/c899903cbc4cadc2b6fb7ab74a1470d59e4c2d27",
-                "reference": "c899903cbc4cadc2b6fb7ab74a1470d59e4c2d27",
+                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/c8829c3b675f17aa465557f721d909deb67d904f",
+                "reference": "c8829c3b675f17aa465557f721d909deb67d904f",
                 "shasum": ""
             },
             "require": {
@@ -2179,7 +2179,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -2190,7 +2190,7 @@
                 "php",
                 "type"
             ],
-            "time": "2013-01-21 09:59:49"
+            "time": "2013-03-03 09:30:51"
         },
         {
             "name": "sensio/distribution-bundle",
