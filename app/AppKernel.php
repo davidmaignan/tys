@@ -57,6 +57,7 @@ class AppKernel extends Kernel
             new Library\TwigExtensionBundle\LibraryTwigExtensionBundle(),
             new Site\HomepageBundle\SiteHomepageBundle(),
             new Site\NavigationBundle\SiteNavigationBundle(),
+            new Behat\BehatBundle\BehatBehatBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

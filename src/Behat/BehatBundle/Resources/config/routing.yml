@@ -1,0 +1,3 @@
+behat_behat_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: BehatBehatBundle:Default:index }
