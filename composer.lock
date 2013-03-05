@@ -1,5 +1,5 @@
 {
-    "hash": "e4a979dae9d3aafceb9043d6c691fe35",
+    "hash": "7add310b7ea6193c774bd82a36e55962",
     "packages": [
         {
             "name": "alexandresalome/php-selenium",
@@ -2389,12 +2389,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/AsseticBundle.git",
-                "reference": "6985b26ba44f12a3804af8beb53f6b6e49da5b04"
+                "reference": "80bd53b28804a3b958b6c212c14e15765489884f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/6985b26ba44f12a3804af8beb53f6b6e49da5b04",
-                "reference": "6985b26ba44f12a3804af8beb53f6b6e49da5b04",
+                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/80bd53b28804a3b958b6c212c14e15765489884f",
+                "reference": "80bd53b28804a3b958b6c212c14e15765489884f",
                 "shasum": ""
             },
             "require": {
@@ -2443,7 +2443,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2013-02-24 18:21:16"
+            "time": "2013-03-04 11:58:03"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -2742,6 +2742,56 @@
                 "templating"
             ],
             "time": "2013-02-28 14:08:49"
+        },
+        {
+            "name": "vipsoft/context-initializer-extension",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vipsoft/ContextInitializerExtension.git",
+                "reference": "v1.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vipsoft/ContextInitializerExtension/zipball/v1.1.1",
+                "reference": "v1.1.1",
+                "shasum": ""
+            },
+            "require": {
+                "behat/behat": ">=2.4.0,<2.5.0",
+                "php": ">=5.3.6",
+                "symfony/config": ">=2.0.0,<3.0-dev",
+                "symfony/dependency-injection": ">=2.0.0,<3.0-dev"
+            },
+            "require-dev": {
+                "symfony/symfony": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "VIPSoft\\ContextInitializerExtension": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthon Pang",
+                    "email": "apang@softwaredevelopment.ca",
+                    "role": "developer"
+                }
+            ],
+            "description": "Context initializer extension for Behat",
+            "homepage": "http://github.com/vipsoft/",
+            "keywords": [
+                "BDD",
+                "Behat",
+                "Context",
+                "initializer"
+            ],
+            "time": "2013-01-21 03:18:37"
         }
     ],
     "packages-dev": null,
@@ -2754,9 +2804,15 @@
         "jms/di-extra-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
         "knplabs/knp-paginator-bundle": 20,
+        "behat/symfony2-extension": 20,
+        "behat/mink-extension": 20,
+        "behat/mink-browserkit-driver": 20,
+        "behat/mink-selenium2-driver": 20,
+        "behat/mink-selenium-driver": 20,
         "behat/mink-goutte-driver": 20,
         "behat/mink-sahi-driver": 20,
         "behat/mink-zombie-driver": 20,
+        "vipsoft/context-initializer-extension": 20,
         "liip/functional-test-bundle": 20,
         "jms/payment-core-bundle": 20
     }
