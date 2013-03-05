@@ -5,6 +5,10 @@ default:
             goutte: ~
             selenium2:
                 wd_host: http://127.0.0.1:9999/wd/hub
+                
+        VIPSoft\ContextInitializerExtension\Extension:
+            classes:
+                DateContext: Behat\BehatBundle\Context\DateContext
 
 no_context:
     paths:
