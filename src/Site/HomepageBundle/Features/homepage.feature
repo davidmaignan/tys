@@ -6,5 +6,5 @@ Feature: Homepage
     @javascript
     Scenario: Check the homepage
 
-        Given   I am on "/"
+        Given   I am on "/app_dev.php/"
         Then    I should see "Welcome"
