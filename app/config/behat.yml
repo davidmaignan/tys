@@ -1,4 +1,0 @@
-default:
-    # ...
-    extensions:
-        Behat\Symfony2Extension\Extension: ~

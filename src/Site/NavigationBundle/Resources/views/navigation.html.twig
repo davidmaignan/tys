@@ -26,13 +26,15 @@
                     </li>
                     <li class="dropdown">
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }} {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a>
+                            <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                            <li>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</li> 
+                            
                         {% else %}
                             <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
                                 Login<b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <li>{% render "SecurityAuthenticateBundle:Login:login" %}</li>
+                                <li>{#% render "SecurityAuthenticateBundle:Login:login" %#}</li>
                             </ul>
                         {% endif %}
                     </li>
