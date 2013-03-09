@@ -9,6 +9,8 @@ default:
         VIPSoft\ContextInitializerExtension\Extension:
             classes:
                 DateContext: Behat\BehatBundle\Context\DateContext
+                UiInteractionContext: Behat\BehatBundle\Context\UiInteractionContext
+                CookieContext: Behat\BehatBundle\Context\CookieContext
 
 no_context:
     paths:

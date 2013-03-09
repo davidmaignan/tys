@@ -1,9 +1,9 @@
 <?php
 /**
- * @copyright 2012 Instaclick Inc.
+ * @copyright 2013 testyrskills.
  */
 
-namespace IC\Bundle\Base\BehatBundle\Context;
+namespace Behat\BehatBundle\Context;
 
 use Behat\Behat\Context\Step,
     Behat\Behat\Exception\AmbiguousException;
@@ -15,8 +15,8 @@ use Behat\MinkExtension\Context\RawMinkContext;
 //
 // Require 3rd-party libraries here:
 //
-require_once 'PHPUnit/Autoload.php';
-require_once 'PHPUnit/Framework/Assert/Functions.php';
+// require_once 'PHPUnit/Autoload.php';
+// require_once 'PHPUnit/Framework/Assert/Functions.php';
 
 /**
  * Queue step subcontext

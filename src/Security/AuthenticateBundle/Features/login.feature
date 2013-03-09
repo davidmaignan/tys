@@ -14,11 +14,12 @@ Feature: Login
         # Success
         Then	I fill in "user" for "username"
         And		I fill in "userpass" for "password"
+        And     I wait 2 seconds
         Then	I press "_submit"
         Then	I should see "Logged in as user"
 
         # Logout
-        Then	I press "Logout"
+        Then	I follow "Logout"
         Then 	I am on "/app_dev.php/"
 
         
