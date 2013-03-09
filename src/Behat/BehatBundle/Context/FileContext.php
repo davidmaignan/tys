@@ -3,7 +3,7 @@
  * @copyright 2012 Instaclick Inc.
  */
 
-namespace IC\Bundle\Base\BehatBundle\Context;
+namespace Behat\BehatBundle\Context;
 
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
@@ -13,8 +13,8 @@ use Behat\MinkExtension\Context\RawMinkContext;
 //
 // Require 3rd-party libraries here:
 //
-require_once 'PHPUnit/Autoload.php';
-require_once 'PHPUnit/Framework/Assert/Functions.php';
+// require_once 'PHPUnit/Autoload.php';
+// require_once 'PHPUnit/Framework/Assert/Functions.php';
 
 /**
  * Adapted from Behat test suite context.

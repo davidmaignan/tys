@@ -3,7 +3,7 @@
  * @copyright 2012 Instaclick Inc.
  */
 
-namespace IC\Bundle\Base\BehatBundle\Context;
+namespace Behat\BehatBundle\Context;
 
 use Behat\MinkExtension\Context\MinkContext;
 
