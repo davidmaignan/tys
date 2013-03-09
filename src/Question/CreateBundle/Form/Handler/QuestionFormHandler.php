@@ -53,6 +53,7 @@ class QuestionFormHandler
         }
         
         $answer = new \Core\AnswerBundle\Entity\Answer();
+        $answer->setCorrect(TRUE);
         $answer->setQuestion($question);
         $question->getAnswers()->add($answer);
         
@@ -66,6 +67,11 @@ class QuestionFormHandler
             {
                 $answer = new \Core\AnswerBundle\Entity\Answer();
                 $answer->setQuestion($question);
+                if($i === 0){
+                    $answer->setCorrect(TRUE);
+                }else{
+                    $answer->setCorrect(FALSE);
+                }
                 $question->getAnswers()->add($answer);
             }
             
