@@ -2,68 +2,74 @@
 
 {% block body %}
 
-<div class="row">
+<div id="content">
+    
+    <div class="container">
 
-    <div class="span8">
-        <hgroup>
-        <h1>Add Test Questions</h1>
-        <h2>Be creative! Add one correct answer and up to four wrong answers. </h2>
-        </hgroup>
-        <form action="{{ path('question_create_homepage') }}" {{ form_enctype(form) }} 
-              method="POST" 
-              class="fos_user_registration_register form-horizontal"
-              novalidate="novalidate">
+        <div class="row">
+
+            <div class="span6 question-create">
                 
-                <h3>Question</h3>
-            
-                {{ form_row(form.title)}}
-                
-                {{ form_row(form.code)}} 
-                
-                <h3>Answers</h3>
-                <div class="answers" data-prototype="{{ form_widget(form.answers.vars.prototype)|escape }}">
+                <hgroup>
+                    <h1>Add Test Questions</h1>
+                    <h2>Be creative! Add one correct answer and up to four wrong answers. </h2>
+                </hgroup>
+                    
+                <form action="{{ path('question_create_homepage') }}" {{ form_enctype(form) }} 
+                      method="POST" 
+                      class="fos_user_registration_register"
+                      novalidate="novalidate">
+
+                    {{ form_row(form.title, { 'attr': {'class': 'question'} }) }}
+
+                    <h3>Answers</h3>
+                    <div class="answers" data-prototype="{{ form_widget(form.answers.vars.prototype)|escape }}">
+                    
                     {% for answer in form.answers %}
-                        <div class="answer {% if(loop.index == 1) %} well {% endif %}">
+                    
+                        <div class="answer">
                         {% if(loop.index == 1) %}
-                                <h4>Correct Answer</h4>
+                            {{ form_row(answer.title, { 'attr': {'class': 'correct'} }) }}
                         {% elseif (loop.index == 2) %}
-                                 <h4>Wrong Answer</h4>
+                            {{ form_widget(answer.title)}}
                         {% endif %}         
-                            {{ form_row(answer.title)}}
-                            {{ form_row(answer.code)}}
-                            {{ form_row(answer.correct)}}
-                        </div>
-                    {% endfor %}
-                </div>
-                
-                <h3>Add Comments</h3>
-                 {{ form_row(form.note, {'label' : 'Comments'})}}
-                            
-                 {{ form_rest(form) }}
-                
-                <div class="form-actions">
-                    <input class="btn btn-primary" type="submit" id="_submit_question" value="submit" />
-                </div>
-            </form>
+                    </div>
+                        {% endfor %}
+                    </div>
+
+                    <h3>Add Comments</h3>
+                    {{ form_row(form.note, {'label' : 'Comments'})}}
+
+                    {{ form_rest(form) }}
+
+                    <div class="form-actions">
+                        <input class="btn btn-primary" type="submit" id="_submit_question" value="submit" />
+                    </div>
+                </form>
+            </div>
+
+            <div class="span4 well offset1">
+                <hgroup>
+                    <h1>PHP</h1>
+                    <h2>Guidelines for writing questions</h2>
+                </hgroup>
+                <ul>
+                    <li>Questions should have a clear right answer</li>
+                    <li>Questions should not be subjective</li>
+                    <li>Wrong answer choices should not be obvious</li>
+                    <li>Questions should range in difficulty level</li>
+                    <li>Keep ‘em short! Questions should be less than two sentences</li>
+                    <li>Answers should be less than one sentence</li>
+                    <li>Answers should be similar lengths</li>
+                    <li>Remember, answers may not appear in the order in which you entered them</li>
+                </ul>
+            </div>
+            
         </div>
 
-        <div class="span4">
-            <hgroup>
-                <h1>PHP</h1>
-                <h2>Guidelines for writing questions</h2>
-            </hgroup>
-            <ul>
-                <li>Questions should have a clear right answer</li>
-                <li>Questions should not be subjective</li>
-                <li>Wrong answer choices should not be obvious</li>
-                <li>Questions should range in difficulty level</li>
-                <li>Keep ‘em short! Questions should be less than two sentences</li>
-                <li>Answers should be less than one sentence</li>
-                <li>Answers should be similar lengths</li>
-                <li>Remember, answers may not appear in the order in which you entered them</li>
-            </ul>
-        </div>
     </div>
+
+</div>
 
 {% endblock %}
 
@@ -72,61 +78,61 @@
 
 {{ parent() }}
 
-<script>
+        <script>
     
-    // Get the div that holds the collection of tags
-var collectionHolder = $('div.answers');
+            // Get the div that holds the collection of tags
+        var collectionHolder = $('div.answers');
 
-// setup an "add a tag" link
-var $addAnswerLink = $('<div style="text-align: right;"><a href="#" class="add_answer_link btn btn-success btn-mini">Add another answer</a></div>');
-var $newLinkDiv = $('<div class="answer"></div>').append($addAnswerLink);
+        // setup an "add a tag" link
+        var $addAnswerLink = $('<div style="text-align: right;"><a href="#" class="add_answer_link btn btn-success btn-mini">Add another answer</a></div>');
+        var $newLinkDiv = $('<div class="answer"></div>').append($addAnswerLink);
 
-jQuery(document).ready(function() {
-    // add the "add a tag" anchor and li to the tags ul
-    collectionHolder.append($newLinkDiv);
+        jQuery(document).ready(function() {
+            // add the "add a tag" anchor and li to the tags ul
+            collectionHolder.append($newLinkDiv);
 
-    $addAnswerLink.on('click', function(e) {
-        // prevent the link from creating a "#" on the URL
-        e.preventDefault();
+            $addAnswerLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
 
-        // add a new tag form (see next code block)
-        addAnswerForm(collectionHolder, $newLinkDiv);
-    });
-});
+                // add a new tag form (see next code block)
+                addAnswerForm(collectionHolder, $newLinkDiv);
+            });
+        });
 
-function addAnswerForm(collectionHolder, $newLinkLi) {
-    // Get the data-prototype we explained earlier
-    var prototype = collectionHolder.attr('data-prototype');
+        function addAnswerForm(collectionHolder, $newLinkLi) {
+            // Get the data-prototype we explained earlier
+            var prototype = collectionHolder.attr('data-prototype');
 
-    // Replace '$$name$$' in the prototype's HTML to
-    // instead be a number based on the current collection's length.
-    var newForm = prototype.replace(/__name__/g, collectionHolder.children().length-1);
+            // Replace '$$name$$' in the prototype's HTML to
+            // instead be a number based on the current collection's length.
+            var newForm = prototype.replace(/__name__/g, collectionHolder.children().length-1);
     
-    console.log(collectionHolder.children().length);
+            console.log(collectionHolder.children().length);
 
-    // Display the form in the page in an li, before the "Add a tag" link li
-    var $newFormLi = $('<div class="answer"></div>').append(newForm);
-    $newLinkLi.before($newFormLi);
+            // Display the form in the page in an li, before the "Add a tag" link li
+            var $newFormLi = $('<div class="answer"></div>').append(newForm);
+            $newLinkLi.before($newFormLi);
     
-    //
-    // Add delete link to the new form
-    addAnswerFormDeleteLink($newFormLi);
-}
+            //
+            // Add delete link to the new form
+            addAnswerFormDeleteLink($newFormLi);
+        }
 
-function addAnswerFormDeleteLink($tagFormLi) {
-    var $removeFormA = $('<a href="#" class="btn btn-mini btn-danger">delete this answer</a>');
-    $tagFormLi.append($removeFormA);
+        function addAnswerFormDeleteLink($tagFormLi) {
+            var $removeFormA = $('<a href="#" class="btn btn-mini btn-danger">delete this answer</a>');
+            $tagFormLi.append($removeFormA);
 
-    $removeFormA.on('click', function(e) {
-        // prevent the link from creating a "#" on the URL
-        e.preventDefault();
+            $removeFormA.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
 
-        // remove the li for the tag form
-        $tagFormLi.remove();
-    });
-}
+                // remove the li for the tag form
+                $tagFormLi.remove();
+            });
+        }
     
-</script>
+            </script>
 
 
 {% endblock javascripts %}

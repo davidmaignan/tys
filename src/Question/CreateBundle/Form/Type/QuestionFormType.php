@@ -14,7 +14,7 @@ class QuestionFormType extends AbstractType
     {
         $builder
             ->add('title', null)
-            ->add('code')
+            //->add('code')
             //->add('user')
             ->add('note')
             //->add('points')

@@ -2,39 +2,57 @@
 
 {% block body %}
 
-{% for key, message in app.session.getFlashes() %}
-<div class="{{ key }}">{{ message|trans({}, 'FOSUserBundle') }}</div>
-{% endfor %}
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="well well-form txt-lefty">
 
-{% if error %}
-<div class="alert alert-error">{{ error|trans({}, 'FOSUserBundle') }}</div>
-{% endif %}
+                    {% for key, message in app.session.getFlashes() %}
+                    <div class="{{ key }}">{{ message|trans({}, 'FOSUserBundle') }}</div>
+                    {% endfor %}
 
-<form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal" style="margin-bottom: 0;">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    {% if error %}
+                    <div class="alert alert-error">{{ error|trans({}, 'FOSUserBundle') }}</div>
+                    {% endif %}
 
-    <div class="control-group">
-        <label class="control-label" for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
-        <div class="controls">
-            <input type="text" id="username" name="_username" value="{{ last_username }}" class="input-medium" />
+                    <h3>Sign In</h3>
+
+                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                        <div class="control-group">
+                            <label class="control-label" for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                            <div class="controls">
+                                <input type="text" id="username" name="_username" value="{{ last_username }}" class="span3" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+                            <div class="controls">
+                                <input type="password" id="password" name="_password" class="span3" />
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <label class="checkbox">
+                                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+                            </label>
+                            <button type="submit" class="btn btn-primary" id="_submit" value="" >{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+                        </div> 
+
+
+                        <div class="form-extra">
+                            <button class="btn btn-info"><i class="icon-twitter"></i> Login with Twitter</button>
+                            <button class="btn btn-danger"><i class=" icon-github"></i> Login with Google</button>
+                        </div> 
+                    </form>
+
+                </div>
+            </div>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
-        <div class="controls">
-            <input type="password" id="password" name="_password" class="input-medium" />
-        </div>
-    </div>
-    <div class="control-group">
-        <div class="controls">
-            <label class="checkbox" >
-                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
-            </label>
-
-            <button type="submit" class="btn" id="_submit" value="" >{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
-        </div>
-    </div>
-</form>
+</div>
 
 {% endblock %}

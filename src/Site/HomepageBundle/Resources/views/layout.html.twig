@@ -1,5 +1,20 @@
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+
+{% stylesheets output="css/custom.css" filter=''
+            '@LibraryBootstrapBundle/Resources/public/css/bounce/base.css'
+            '@LibraryBootstrapBundle/Resources/public/css/bounce/blue.css'
+            '@LibraryBootstrapBundle/Resources/public/css/bounce/custom.css'
+            '@LibraryBootstrapBundle/Resources/public/fontAwesome/css/font-awesome.css'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+{% endblock stylesheets %}
+
 {% block header %}
     {% include 'SiteNavigationBundle::navigation.html.twig' %}
 {% endblock header %}

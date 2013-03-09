@@ -1,13 +1,96 @@
 {% extends 'SiteHomepageBundle::layout.html.twig' %}
 
 {% block body %}
-  
-<h1>Welcome</h1>
 
-{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+<div id="landing">
+    <div class="container">  
+        <div class="row">
+            <div class="span5">
+                <h1>Recruit the right candidate starts here!</h1>	
+                <p>You can always browse few hundreds of 'promising' CVs or you can start by testing the knowledge and competence of your future employees</p>
+                <p><a href="#" class="btn btn-primary btn-action">Get Started Now</a></p>  
+            </div>
+            <div class="span7">
+                <img src="http://quickimage.it/670x377" />
+            </div>
+        </div>
+    </div>
+</div>
 
-{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-    <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
-{% endif %}
-    
+<div id="content" class="txt-middle">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h2>Great features of your product or service</h2>
+                <hr class="dashed">				
+            </div>  
+        </div>  
+        <div class="row">
+            <div class="span4 bouncy">
+                <div class="icon_wrapper">
+                    <i class="icon-group icon-large"></i>
+                </div>
+                <h2>Test & Recruit</h2>
+                <p>Evaluate the skills before recruiting new employees  </p>	
+            </div>
+            <div class="span4 bouncy">
+                <div class="icon_wrapper">
+                     <i class="icon-money icon-large"></i>
+                </div>
+                <h2>Make Money</h2>
+                <p>Create questions and get paid when they are used for a test</p>	
+            </div>
+            <div class="span4 bouncy">
+                <div class="icon_wrapper">
+                     <i class="icon-laptop icon-large"></i>
+                </div>
+                <h2>Launch Ready</h2>
+                <p>Bounce comes with several pages and colors, giving you a head start on creating a unique design.</p>	
+            </div>		  
+        </div>
+        <hr class="dashed">					
+    </div>
+</div>
+
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <h3>Quick Links</h3>
+                <ul class="animated">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>			
+            </div>
+            <div class="span3">		
+                <h3>Company</h3>
+                <ul class="animated">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>	
+            </div>
+            <div class="span3">
+                <h3>We're Social</h3>
+                <ul class="animated">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Google &#43;</a></li>
+                </ul>		  
+            </div>
+            <div class="span3">
+                <h3>Subscribe</h3>
+                <p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>			
+                <form>
+                    <input class="span3" type="text" placeholder="Your Email" name="subscribe">
+                    <button class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>		  
+        </div>	  
+    </div>	  
+</div>
+
+
 {% endblock %}
