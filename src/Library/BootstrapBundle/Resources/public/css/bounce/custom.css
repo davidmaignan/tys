@@ -1,0 +1,18 @@
+.question-create h1 { 
+    font-size: 190%;
+    line-height: normal;
+}
+
+.question-create h2 { 
+    font-size: 100%;
+    line-height: normal;
+}
+
+.question-create textarea{
+    width: 100%;
+    font-size: 120%
+}
+
+.question-create textarea.correct{
+    background-color: #dddddd;
+}

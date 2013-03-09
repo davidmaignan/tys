@@ -1,14 +1,37 @@
 {% extends 'SiteHomepageBundle::layout.html.twig' %}
 
 {% block body %}
-<div class="header">
-    <h1>Join now for FREE!</h1>
+
+<div id="content">
+    <div class="container">
+        
+        <div class="row">
+            <div class="span12">
+                
+                <div class="well well-form txt-lefty">
+                    <h3>Sign Up</h3>
+                    
+                    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" novalidate="novalidate">
+                        
+                        <div class="controls">
+                            {{ form_label(form.username) }}
+                            <div class="input-prepend">
+                                <span class="add-on">
+                                    <i class="icon-user"></i>
+                                </span>
+                                {{ form_widget(form.username) }}
+                            </div>
+                        </div>
+                        {{ form_widget(form) }}
+                        
+                        <div class="form-actions">   
+                            <input class="btn btn-primary" type="submit" id="_register" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+                        </div>
+                            
+                    </form>
+                </div>
+            </div>  
+        </div>  	
+    </div>
 </div>
-<br>
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" novalidate="novalidate">
-    {{ form_widget(form) }}
-        <div>
-            <input class="btn" type="submit" id="_register" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
-        </div>
-    </form>
 {% endblock %}
