@@ -91,10 +91,10 @@ class ListControllerTest extends WebTestCase
         
         $user = $this->loadUser($this->entityManager, $this->username);
         
-        if(!$user) {
+        //if(!$user) {
             $this->loadFixtures($this->classes);
             $user = $this->loadUser($this->entityManager, $this->username);
-        }
+        //}
         
         
         $client = static::createClient();        
@@ -116,7 +116,7 @@ class ListControllerTest extends WebTestCase
         $this->assertTrue($crawler->filter('html:contains("Your exams")')->count() > 0);
         $this->assertEquals(1, $crawler->filterXPath('//*[@id=\'exam-list\']/tbody/tr')->count());
         
-        $link = $crawler->filterXPath('//*[@id=\'exam-list\']/tbody/tr/td[6]/a')->link();
+        $link = $crawler->filterXPath('//*[@id=\'exam-list\']/tbody/tr/td[7]/a')->link();
         
         $crawler = $client->click($link);
         

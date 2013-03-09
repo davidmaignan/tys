@@ -40,7 +40,7 @@ class CommentController extends Controller
         if(in_array('ROLE_OWNER', $roles)){
             $route = 'question_feedback_edit';
         }else{
-            $route = 'question_reviewer_edit';
+            $route = 'question_review_edit';
         }
                 
         $url = $this->get('router')->generate($route, array(

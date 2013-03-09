@@ -47,6 +47,16 @@ class ShowControllerTest extends WebTestCase
     private $password2 = 'camper';
     
     /**
+     * @var string
+     */
+    private $usernameAdmin = 'admin';
+    
+    /**
+     * @var string 
+     */
+    private $passwordAdmin = 'adminpass';
+    
+    /**
      * @var array 
      */
     private $classes = array(
@@ -148,8 +158,8 @@ class ShowControllerTest extends WebTestCase
         
         //Login
         $form = $crawler->selectButton('loginBtn')->form();
-        $form['_username'] = $this->username2;
-        $form['_password'] = $this->password2;
+        $form['_username'] = $this->usernameAdmin;
+        $form['_password'] = $this->passwordAdmin;
         $crawler = $client->submit($form);
         
         $exam = $this->entityManager->getRepository('ExamCoreBundle:Exam')->findOneBy(array('owner'=>$user));

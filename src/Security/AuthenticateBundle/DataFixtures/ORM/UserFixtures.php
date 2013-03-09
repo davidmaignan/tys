@@ -25,7 +25,7 @@ class UserFixtures extends AbstractFixture implements FixtureInterface, Containe
         $userAdmin->setUsername('admin');
         $userAdmin->setEmail('davidmaignan@gmail.com');
         $userAdmin->setEnabled(true);
-        $userAdmin->setRoles(array('ROLE_ADMIN', 'ROLE_REVIEWER', 'ROLE_REVIEWER_PHP', 'ROLE_REVIEWER_JAVASCRIPT'));
+        $userAdmin->setRoles(array('ROLE_ADMIN', 'ROLE_REVIEWER', 'ROLE_REVIEWER_PHP', 'ROLE_REVIEWER_JAVASCRIPT','ROLE_EXAM_OWNER'));
         //$userAdmin->setSalt(md5(time()));
 
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($userAdmin);
@@ -53,7 +53,7 @@ class UserFixtures extends AbstractFixture implements FixtureInterface, Containe
         $userAdmin->setUsername('david');
         $userAdmin->setEmail('david@test.com');
         $userAdmin->setEnabled(true);
-        $userAdmin->setRoles(array('ROLE_USER', 'ROLE_EXAM_OWNER'));
+        $userAdmin->setRoles(array('ROLE_USER'));
         //$userAdmin->setSalt(md5(time()));
 
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($userAdmin);

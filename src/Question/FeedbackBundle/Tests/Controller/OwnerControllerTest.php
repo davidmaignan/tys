@@ -124,7 +124,7 @@ class OwnerControllerTest extends WebTestCase
      */
     public function test_feedback_wrong_question_status()
     {
-         $this->loadFixtures($this->classes);
+       $this->loadFixtures($this->classes);
        
        $client = static::createClient(); 
        $client->followRedirects(true);
