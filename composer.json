@@ -21,6 +21,8 @@
         "friendsofsymfony/user-bundle": "*",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "knplabs/knp-paginator-bundle": "dev-master",
+        "instaclick/locale-bundle": "dev-master",
+        "instaclick/translation-editor-bundle": "dev-master",
         "behat/behat": ">=2.4.0",
         "behat/mink": ">=1.4.0",
         "behat/gherkin": ">=2.2.1",
