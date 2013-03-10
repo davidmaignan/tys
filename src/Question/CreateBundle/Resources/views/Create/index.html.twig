@@ -30,8 +30,9 @@
                         <div class="answer">
                         {% if(loop.index == 1) %}
                             {{ form_row(answer.title, { 'attr': {'class': 'correct'} }) }}
-                        {% elseif (loop.index == 2) %}
-                            {{ form_widget(answer.title)}}
+                        {% else %}
+                            {{ form_row(answer.title)}}
+                            <a href="#" class="btn btn-mini btn-danger">delete this answer</a>
                         {% endif %}         
                     </div>
                         {% endfor %}
@@ -131,8 +132,16 @@
                 $tagFormLi.remove();
             });
         }
+        
+        if($('.btn-danger').length > 0){
+            $('.btn-danger').each(function () {
+                $(this).on('click', function (e) {
+                    $(this).closest('.answer').remove();
+                });
+            });
+        }
     
-            </script>
+</script>
 
 
 {% endblock javascripts %}
