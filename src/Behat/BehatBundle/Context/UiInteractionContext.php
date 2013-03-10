@@ -787,4 +787,12 @@ JS;
             '.'
         );
     }
+    
+    /**
+     * @Given /^I should see "([^"]*)" in the element at XPath "([^"]*)"$/
+     */
+    public function iShouldSeeInTheElementAtXpath($arg1, $xPath)
+    {
+        return $this->getSession()->getPage()->find('xpath', $xPath);
+    }
 }

@@ -1,5 +1,5 @@
 {
-    "hash": "7add310b7ea6193c774bd82a36e55962",
+    "hash": "92d6a51e0c5f0a2f1a6c4c44975b1c16",
     "packages": [
         {
             "name": "alexandresalome/php-selenium",
@@ -1076,7 +1076,7 @@
                     "homepage": "http://www.jwage.com/"
                 },
                 {
-                    "name": "Christoph Dorn",
+                    "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@gmail.com",
                     "homepage": "http://www.instaclick.com"
                 },
@@ -1631,6 +1631,46 @@
             "time": "2012-12-19 23:06:35"
         },
         {
+            "name": "instaclick/locale-bundle",
+            "version": "dev-master",
+            "target-dir": "Lunetics/LocaleBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/instaclick/LocaleBundle.git",
+                "reference": "d36faae00082f95012a36435d78953d419426352"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/instaclick/LocaleBundle/zipball/d36faae00082f95012a36435d78953d419426352",
+                "reference": "d36faae00082f95012a36435d78953d419426352",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": "2.*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Lunetics\\LocaleBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Instaclick",
+                    "homepage": "http://www.instaclick.com"
+                }
+            ],
+            "description": "A Bundle for switching Languages",
+            "keywords": [
+                "locale"
+            ],
+            "time": "2012-05-30 22:04:15"
+        },
+        {
             "name": "instaclick/php-webdriver",
             "version": "dev-master",
             "source": {
@@ -1683,6 +1723,59 @@
                 "webtest"
             ],
             "time": "2013-02-21 16:05:33"
+        },
+        {
+            "name": "instaclick/translation-editor-bundle",
+            "version": "dev-master",
+            "target-dir": "ServerGrove/Bundle/TranslationEditorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/instaclick/TranslationEditorBundle.git",
+                "reference": "284abb3aeefdb976ff6593fb36d3d719013fd824"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/instaclick/TranslationEditorBundle/zipball/284abb3aeefdb976ff6593fb36d3d719013fd824",
+                "reference": "284abb3aeefdb976ff6593fb36d3d719013fd824",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": "2.*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "ServerGrove\\Bundle\\TranslationEditorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christoph Dorn",
+                    "email": "guilhermeblanco@gmail.com",
+                    "homepage": "http://www.instaclick.com"
+                }
+            ],
+            "description": "Web editor UI to manage Symfony2 translations (Symfony2 bundle)",
+            "homepage": "http://github.com/instaclick/TranslationEditorBundle",
+            "keywords": [
+                "Symfony2",
+                "editor",
+                "export",
+                "extract",
+                "i18n",
+                "import",
+                "locale",
+                "multilanguage",
+                "translate",
+                "translation",
+                "translations"
+            ],
+            "time": "2013-03-07 17:24:04"
         },
         {
             "name": "jms/aop-bundle",
@@ -2889,12 +2982,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "ee495f8b5847ce22013ee84f7d3b9634b18b9dcc"
+                "reference": "a27f7d8c592530b204f602eba1bf3625d1d33adf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/ee495f8b5847ce22013ee84f7d3b9634b18b9dcc",
-                "reference": "ee495f8b5847ce22013ee84f7d3b9634b18b9dcc",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/a27f7d8c592530b204f602eba1bf3625d1d33adf",
+                "reference": "a27f7d8c592530b204f602eba1bf3625d1d33adf",
                 "shasum": ""
             },
             "require": {
@@ -2969,7 +3062,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-03-08 06:14:55"
+            "time": "2013-03-10 07:25:48"
         },
         {
             "name": "twig/extensions",
@@ -3024,12 +3117,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "b6c2171579b4ab8c193322796ef757a185729cb8"
+                "reference": "ba67e2cf8e2ca6cada1de5a316a724df648c52ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/b6c2171579b4ab8c193322796ef757a185729cb8",
-                "reference": "b6c2171579b4ab8c193322796ef757a185729cb8",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/ba67e2cf8e2ca6cada1de5a316a724df648c52ac",
+                "reference": "ba67e2cf8e2ca6cada1de5a316a724df648c52ac",
                 "shasum": ""
             },
             "require": {
@@ -3065,7 +3158,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-03-07 06:57:14"
+            "time": "2013-03-10 07:23:01"
         },
         {
             "name": "vipsoft/context-initializer-extension",
@@ -3128,6 +3221,8 @@
         "jms/di-extra-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
         "knplabs/knp-paginator-bundle": 20,
+        "instaclick/locale-bundle": 20,
+        "instaclick/translation-editor-bundle": 20,
         "behat/symfony2-extension": 20,
         "behat/mink-extension": 20,
         "behat/mink-browserkit-driver": 20,
