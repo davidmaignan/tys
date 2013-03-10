@@ -1,5 +1,17 @@
 {% extends 'SiteHomepageBundle::layout.html.twig' %}
 
 {% block body %}
-{% include "SecurityAuthenticateBundle:Resetting:reset_content.html.twig" %}
+
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="well well-form txt-lefty">
+					{% include "SecurityAuthenticateBundle:Resetting:reset_content.html.twig" %}	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 {% endblock %}

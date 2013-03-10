@@ -112,3 +112,8 @@ jms_payment_paypal:
     password: 13554848
     signature: LbGakzdnaokndand
     debug: true    
+
+server_grove_translation_editor:
+    storage:
+        type: server_grove_translation_editor.storage.orm
+        manager: doctrine.orm.entity_manager

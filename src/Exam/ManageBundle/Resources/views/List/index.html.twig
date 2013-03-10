@@ -3,40 +3,47 @@
 
 {% block body %}
 
-<h1>Your exams</h1>
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
 
+                <h1>Your exams</h1>
 
+                <table class="table table-bordered table-striped" id="exam-list">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Sections</th>
+                            <th>Number of candidates</th>
+                            <th>Level</th>
+                            <th>Invitations</th>
+                            <th>Created at</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    {% for exam in exams %}
+                    <tbody>
+                        <tr>
+                            <td>{{ exam.id }}</td>
+                            <td>{% for section in exam.examCriteria.sections %}
+                                    {{ section }}, 
+                                {% endfor %}
+                            </td>
+                            <td>{{ exam.examCriteria.numberCandidates }}</td>
+                            <td>{{ exam.examCriteria.level }}</td>
+                            <td>{{ exam.candidates | length }}</td>
+                            <td>{{ exam.createdAt |date("d F  Y") }} @ {{ exam.createdAt |date("g:ia") }}</td>
+                            <td><a class="btn btn-info btn-mini" href="{{ path('exam_manage_show', { 'id': exam.id }) }}">{{ 'Show' | trans }}</td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
 
-<table class="table table-bordered table-striped" id="exam-list">
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>Sections</th>
-            <th>Number of candidates</th>
-            <th>Level</th>
-            <th>Invitations</th>
-            <th>Created at</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    {% for exam in exams %}
-    <tbody>
-        <tr>
-            <td>{{ exam.id }}</td>
-            <td>{% for section in exam.examCriteria.sections %}
-                    {{ section }}, 
-                {% endfor %}
-            </td>
-            <td>{{ exam.examCriteria.numberCandidates }}</td>
-            <td>{{ exam.examCriteria.level }}</td>
-            <td>{{ exam.candidates | length }}</td>
-            <td>{{ exam.createdAt |date("d F  Y") }} @ {{ exam.createdAt |date("g:ia") }}</td>
-            <td><a class="btn btn-info btn-mini" href="{{ path('exam_manage_show', { 'id': exam.id }) }}">{{ 'Show' | trans }}</td>
-        </tr>
-    </tbody>
-    {% endfor %}
-</table>
-
+            </div>
+        </div>
+    </div>
+</div>
 
 
 {% endblock body %}
