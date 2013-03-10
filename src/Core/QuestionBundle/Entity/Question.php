@@ -30,7 +30,6 @@ use Core\CommentBundle\Entity\Comment;
  * Dm\QuestionBundle\Entity\Question
  *
  * @ORM\Table(name="question")
- * @UniqueEntity({"title"})
  * @ORM\Entity(repositoryClass="Core\QuestionBundle\Entity\QuestionRepository")
  * @ORM\HasLifecycleCallbacks()
  */
