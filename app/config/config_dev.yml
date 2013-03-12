@@ -32,8 +32,8 @@ doctrine:
     dbal:
         # add "_test" to the database name you set in parameters.ini:
         dbname:   %database_name%_dev
-        
+                
 server_grove_translation_editor:
-  storage:
-    type: server_grove_translation_editor.storage.orm
-    manager: doctrine.orm.entity_manager
+    storage:
+        type: server_grove_translation_editor.storage.orm
+        manager: doctrine.orm.default_entity_manager

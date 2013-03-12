@@ -1,12 +1,1 @@
-#Exam criteria
-
-exam_criteria:
-    tags:
-        min: There is one apple|There are %count% apples
-
-
-
-
-
-
-
+exam_criteria.tags.min: 'There is one apple|There are %count% apples'

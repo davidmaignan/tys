@@ -58,6 +58,7 @@ class AppKernel extends Kernel
             new Site\HomepageBundle\SiteHomepageBundle(),
             new Site\NavigationBundle\SiteNavigationBundle(),
             new Behat\BehatBundle\BehatBehatBundle(),
+            new Lunetics\LocaleBundle\LuneticsLocaleBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
