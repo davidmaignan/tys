@@ -47,12 +47,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "7bdcac5247cdf4c08bfc796c9add6162e5062033"
+                "reference": "982b5ec101c0f383417e2a3cdbd111fdf81908de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/7bdcac5247cdf4c08bfc796c9add6162e5062033",
-                "reference": "7bdcac5247cdf4c08bfc796c9add6162e5062033",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/982b5ec101c0f383417e2a3cdbd111fdf81908de",
+                "reference": "982b5ec101c0f383417e2a3cdbd111fdf81908de",
                 "shasum": ""
             },
             "require": {
@@ -103,7 +103,7 @@
                 "Behat",
                 "Symfony2"
             ],
-            "time": "2013-03-09 15:42:13"
+            "time": "2013-03-11 22:09:36"
         },
         {
             "name": "behat/gherkin",
@@ -172,12 +172,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Mink.git",
-                "reference": "de7c3f2596837b2135ec49d45dfb5e745d928fbf"
+                "reference": "fb92a89923068cb21811a8830063602e90d83dab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Mink/zipball/de7c3f2596837b2135ec49d45dfb5e745d928fbf",
-                "reference": "de7c3f2596837b2135ec49d45dfb5e745d928fbf",
+                "url": "https://api.github.com/repos/Behat/Mink/zipball/fb92a89923068cb21811a8830063602e90d83dab",
+                "reference": "fb92a89923068cb21811a8830063602e90d83dab",
                 "shasum": ""
             },
             "require": {
@@ -219,7 +219,7 @@
                 "testing",
                 "web"
             ],
-            "time": "2013-03-08 10:24:42"
+            "time": "2013-03-11 19:39:00"
         },
         {
             "name": "behat/mink-browserkit-driver",
@@ -227,12 +227,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkBrowserKitDriver.git",
-                "reference": "v1.0.4"
+                "reference": "2c89051d35f39d80f0f51c72cdc536b32015f278"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkBrowserKitDriver/zipball/v1.0.4",
-                "reference": "v1.0.4",
+                "url": "https://api.github.com/repos/Behat/MinkBrowserKitDriver/zipball/2c89051d35f39d80f0f51c72cdc536b32015f278",
+                "reference": "2c89051d35f39d80f0f51c72cdc536b32015f278",
                 "shasum": ""
             },
             "require": {
@@ -274,7 +274,7 @@
                 "browser",
                 "testing"
             ],
-            "time": "2013-03-08 09:50:41"
+            "time": "2013-03-13 10:34:15"
         },
         {
             "name": "behat/mink-extension",
@@ -282,12 +282,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkExtension.git",
-                "reference": "cf2212350dc66cf78022381da30ff5b7bb12c440"
+                "reference": "07014c6c81ffdb7a2c41681816e513d8c03376e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkExtension/zipball/cf2212350dc66cf78022381da30ff5b7bb12c440",
-                "reference": "cf2212350dc66cf78022381da30ff5b7bb12c440",
+                "url": "https://api.github.com/repos/Behat/MinkExtension/zipball/07014c6c81ffdb7a2c41681816e513d8c03376e2",
+                "reference": "07014c6c81ffdb7a2c41681816e513d8c03376e2",
                 "shasum": ""
             },
             "require": {
@@ -328,7 +328,7 @@
                 "test",
                 "web"
             ],
-            "time": "2013-03-09 12:33:00"
+            "time": "2013-03-12 09:30:49"
         },
         {
             "name": "behat/mink-goutte-driver",
@@ -388,12 +388,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkSahiDriver.git",
-                "reference": "744ba96503f8aed2c691aa92c0abca492aadc603"
+                "reference": "d6214a01ef12fd2109d0d4f7064753a2ca130a6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkSahiDriver/zipball/744ba96503f8aed2c691aa92c0abca492aadc603",
-                "reference": "744ba96503f8aed2c691aa92c0abca492aadc603",
+                "url": "https://api.github.com/repos/Behat/MinkSahiDriver/zipball/d6214a01ef12fd2109d0d4f7064753a2ca130a6b",
+                "reference": "d6214a01ef12fd2109d0d4f7064753a2ca130a6b",
                 "shasum": ""
             },
             "require": {
@@ -432,7 +432,7 @@
                 "sahi",
                 "testing"
             ],
-            "time": "2013-03-08 10:16:59"
+            "time": "2013-03-13 10:35:29"
         },
         {
             "name": "behat/mink-selenium-driver",
@@ -440,12 +440,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkSeleniumDriver.git",
-                "reference": "v1.0.5"
+                "reference": "d6bc5854a45e791173355ab46535b9ffb85cde7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkSeleniumDriver/zipball/v1.0.5",
-                "reference": "v1.0.5",
+                "url": "https://api.github.com/repos/Behat/MinkSeleniumDriver/zipball/d6bc5854a45e791173355ab46535b9ffb85cde7a",
+                "reference": "d6bc5854a45e791173355ab46535b9ffb85cde7a",
                 "shasum": ""
             },
             "require": {
@@ -485,7 +485,7 @@
                 "selenium",
                 "testing"
             ],
-            "time": "2013-03-08 10:15:49"
+            "time": "2013-03-13 10:34:48"
         },
         {
             "name": "behat/mink-selenium2-driver",
@@ -746,7 +746,7 @@
                     "homepage": "http://www.jwage.com/"
                 },
                 {
-                    "name": "Christoph Dorn",
+                    "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@gmail.com",
                     "homepage": "http://www.instaclick.com"
                 },
@@ -759,7 +759,7 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes M. Schmitt",
+                    "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -913,12 +913,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "0dc4fe01f056596697c5a91d7201209e8ccbfd58"
+                "reference": "d7987c96675e153638729383577090feed9854f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/0dc4fe01f056596697c5a91d7201209e8ccbfd58",
-                "reference": "0dc4fe01f056596697c5a91d7201209e8ccbfd58",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/d7987c96675e153638729383577090feed9854f1",
+                "reference": "d7987c96675e153638729383577090feed9854f1",
                 "shasum": ""
             },
             "require": {
@@ -951,7 +951,7 @@
                     "homepage": "http://www.jwage.com/"
                 },
                 {
-                    "name": "Christoph Dorn",
+                    "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@gmail.com",
                     "homepage": "http://www.instaclick.com"
                 },
@@ -964,7 +964,7 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes M. Schmitt",
+                    "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -979,7 +979,7 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2013-03-07 21:30:00"
+            "time": "2013-03-11 00:27:11"
         },
         {
             "name": "doctrine/data-fixtures",
@@ -987,12 +987,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "689bc2ae2a41dff1107d9d50e2daa4c349222869"
+                "reference": "eef10f6b92706bdae2841a8fdeb45ad8999b15b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/689bc2ae2a41dff1107d9d50e2daa4c349222869",
-                "reference": "689bc2ae2a41dff1107d9d50e2daa4c349222869",
+                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/eef10f6b92706bdae2841a8fdeb45ad8999b15b3",
+                "reference": "eef10f6b92706bdae2841a8fdeb45ad8999b15b3",
                 "shasum": ""
             },
             "require": {
@@ -1024,7 +1024,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
+                    "name": "Jonathan H. Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/"
                 }
@@ -1034,7 +1034,7 @@
             "keywords": [
                 "database"
             ],
-            "time": "2013-02-12 02:52:36"
+            "time": "2013-03-11 00:25:48"
         },
         {
             "name": "doctrine/dbal",
@@ -1356,12 +1356,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "304acf0a1af15ebe049231b84a7630c75ecbe62d"
+                "reference": "563fdb953be4f86eeb5b9ab82e82e6a98cf14f6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/304acf0a1af15ebe049231b84a7630c75ecbe62d",
-                "reference": "304acf0a1af15ebe049231b84a7630c75ecbe62d",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/563fdb953be4f86eeb5b9ab82e82e6a98cf14f6b",
+                "reference": "563fdb953be4f86eeb5b9ab82e82e6a98cf14f6b",
                 "shasum": ""
             },
             "require": {
@@ -1418,7 +1418,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2013-02-21 18:03:42"
+            "time": "2013-03-12 21:53:10"
         },
         {
             "name": "fabpot/goutte",
@@ -1544,12 +1544,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "9c395855b48ec4ea50325a94d900ba701433ccb8"
+                "reference": "f2fd4bd43bbdf0bda02f0db6458b7e93fe2d8236"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9c395855b48ec4ea50325a94d900ba701433ccb8",
-                "reference": "9c395855b48ec4ea50325a94d900ba701433ccb8",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f2fd4bd43bbdf0bda02f0db6458b7e93fe2d8236",
+                "reference": "f2fd4bd43bbdf0bda02f0db6458b7e93fe2d8236",
                 "shasum": ""
             },
             "require": {
@@ -1629,7 +1629,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2013-03-10 04:14:16"
+            "time": "2013-03-11 22:42:27"
         },
         {
             "name": "instaclick/locale-bundle",
@@ -1712,7 +1712,7 @@
                 {
                     "name": "Anthon Pang",
                     "email": "apang@softwaredevelopment.ca",
-                    "role": "Fork Maintainer"
+                    "role": "developer"
                 }
             ],
             "description": "PHP WebDriver for Selenium 2",
@@ -1732,12 +1732,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/instaclick/TranslationEditorBundle.git",
-                "reference": "284abb3aeefdb976ff6593fb36d3d719013fd824"
+                "reference": "af863de5fdfd50525cfdd3ca663cb74520a92740"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/instaclick/TranslationEditorBundle/zipball/284abb3aeefdb976ff6593fb36d3d719013fd824",
-                "reference": "284abb3aeefdb976ff6593fb36d3d719013fd824",
+                "url": "https://api.github.com/repos/instaclick/TranslationEditorBundle/zipball/af863de5fdfd50525cfdd3ca663cb74520a92740",
+                "reference": "af863de5fdfd50525cfdd3ca663cb74520a92740",
                 "shasum": ""
             },
             "require": {
@@ -1756,7 +1756,7 @@
             ],
             "authors": [
                 {
-                    "name": "Christoph Dorn",
+                    "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@gmail.com",
                     "homepage": "http://www.instaclick.com"
                 }
@@ -1776,7 +1776,7 @@
                 "translation",
                 "translations"
             ],
-            "time": "2013-03-07 17:24:04"
+            "time": "2013-03-12 21:33:09"
         },
         {
             "name": "jms/aop-bundle",
@@ -1816,7 +1816,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -1863,7 +1863,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -1979,7 +1979,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -2082,7 +2082,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -2983,12 +2983,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "a27f7d8c592530b204f602eba1bf3625d1d33adf"
+                "reference": "940d591dc2a82c4577c7dab4fe97b4955240c109"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/a27f7d8c592530b204f602eba1bf3625d1d33adf",
-                "reference": "a27f7d8c592530b204f602eba1bf3625d1d33adf",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/940d591dc2a82c4577c7dab4fe97b4955240c109",
+                "reference": "940d591dc2a82c4577c7dab4fe97b4955240c109",
                 "shasum": ""
             },
             "require": {
@@ -3063,7 +3063,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-03-10 07:25:48"
+            "time": "2013-03-12 18:25:55"
         },
         {
             "name": "twig/extensions",

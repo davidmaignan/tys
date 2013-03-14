@@ -1,3 +1,7 @@
+LuneticsLocaleBundle:
+    resource: "@LuneticsLocaleBundle/Resources/config/routing.yml"
+    prefix:   /
+
 site_homepage:
     resource: "@SiteHomepageBundle/Resources/config/routing.yml"
     prefix:   /
