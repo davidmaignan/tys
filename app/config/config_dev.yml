@@ -34,8 +34,5 @@ doctrine:
 
         dbname:   %database_name%_dev
                 
-server_grove_translation_editor:
-    storage:
-        type: server_grove_translation_editor.storage.orm
-        manager: doctrine.orm.default_entity_manager
+
 
