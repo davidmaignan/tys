@@ -26,20 +26,32 @@
                     </li>
                     <li class="dropdown">
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
-                            <li>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</li> 
-                            
+                        <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                        <li>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</li> 
+
                         {% else %}
-                            <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
-                                Login<b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <li>{#% render "SecurityAuthenticateBundle:Login:login" %#}</li>
-                            </ul>
+                            <a data-toggle="modal" href="#loginModal" class="btn btn-primary">Login</a>
                         {% endif %}
-                    </li>
-                </ul>
-            </div><!--/.nav-collapse -->
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="modal hide fade txt-middle" id="loginModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+            <h3>Login to Bounce</h3>
+        </div>
+        <div class="modal-body">		  
+            {% render "SecurityAuthenticateBundle:Login:login" %}
+            <hr class="dashed">
+            <button class="btn btn-info"><i class="glyphicons-twitter"></i> Login with Twitter</button>
+            <button class="btn btn-danger"><i class="glyphicons-google_plus"></i> Login with Google</button>		
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning pull-left">Forgot Password?</button>
+            <a href="index.html" class="btn btn-primary">Login</a>
+        </div>
+    </div>
