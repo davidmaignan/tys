@@ -29,19 +29,14 @@
                         <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
                         <li>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</li> 
 
-                        {% else %}
-                            <a data-toggle="modal" href="#loginModal" class="btn btn-primary">Login</a>
-                        {% endif %}
-                        </li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
+                    {% else %}
+                        <a data-toggle="modal" href="#loginModal" class="btn btn-primary">Login</a>
+                    {% endif %}
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
         </div>
     </div>
+</div>
 
-    <div class="modal hide fade txt-middle" id="loginModal">
-          
-            {% render "SecurityAuthenticateBundle:Login:login" %}
-
-          
-    </div>
+{{ render (controller("SecurityAuthenticateBundle:Login:loginModal", { 'template': 'loginModal' })) }}
