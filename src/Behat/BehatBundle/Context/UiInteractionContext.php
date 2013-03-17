@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2012 Instaclick Inc.
+ * @copyright 2013 testyrskills.
  */
 
 namespace Behat\BehatBundle\Context;
@@ -14,7 +14,7 @@ use Behat\MinkExtension\Context\RawMinkContext;
 /**
  * Ui Interaction subcontext
  *
- * @author Yuan Xie <shayx@nationalfibre.net>
+ * @author David Maignan <davidmaignan@gmail.com>
  */
 class UiInteractionContext extends RawMinkContext
 {

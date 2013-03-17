@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2012 Instaclick Inc.
+ * @copyright 2013 testyrskills.com
  */
 
 namespace Behat\BehatBundle\Context;
@@ -14,7 +14,7 @@ use Behat\MinkExtension\Context\RawMinkContext;
 /**
  * Birthdate subcontext
  *
- * @author Anthon Pang <anthonp@nationalfibre.net>
+ * @author David Maignan <davidmaignan@gmail.com>
  */
 class CookieContext extends RawMinkContext
 {

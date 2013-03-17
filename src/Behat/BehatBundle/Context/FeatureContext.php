@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2012 Instaclick Inc.
+ * @copyright 2013 testyrskills.com
  */
 
 namespace Behat\BehatBundle\Context;
@@ -19,8 +19,7 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
  * This class overrides "steps" defined in MinkContext.
  * Application-specific "steps" are defined in subcontexts and loaded via the ContextInitializer extension.
  *
- * @author Yuan Xie <shayx@nationalfibre.net>
- * @author Anthon Pang <anthonp@nationalfibre.net>
+ * @author David Maignan <davidmaignan@gmail.com>
  */
 class FeatureContext extends RawMinkContext
 {

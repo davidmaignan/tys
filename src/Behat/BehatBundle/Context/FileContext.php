@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2012 Instaclick Inc.
+ * @copyright 2013 testyrskills.com
  */
 
 namespace Behat\BehatBundle\Context;
@@ -19,9 +19,7 @@ use Behat\MinkExtension\Context\RawMinkContext;
 /**
  * Adapted from Behat test suite context.
  *
- * @author Konstantin Kudryashov <ever.zet@gmail.com>
- * @author Anthon Pang <anthonp@nationalfibre.net>
- * @author Yuan Xie <shayx@nationalfibre.net>
+ * @author David Maignan <davidmaignan@gmail.com>
  */
 class FileContext extends RawMinkContext
 {

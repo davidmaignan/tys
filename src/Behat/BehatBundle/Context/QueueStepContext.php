@@ -21,7 +21,7 @@ use Behat\MinkExtension\Context\RawMinkContext;
 /**
  * Queue step subcontext
  *
- * @author Anthon Pang <anthonp@nationalfibre.net>
+ * @author David Maignan <davidmaignan@gmail.com>
  */
 class QueueStepContext extends RawMinkContext
 {
