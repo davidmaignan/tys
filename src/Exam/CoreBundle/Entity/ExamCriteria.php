@@ -70,7 +70,7 @@ class ExamCriteria implements ExamCriteriaInterface
     
     
     /**
-     * @ORM\OneToOne(targetEntity="Core\LevelBundle\Entity\Level")
+     * @ORM\ManyToOne(targetEntity="Core\LevelBundle\Entity\Level")
      * @ORM\JoinColumn(name="level_id", referencedColumnName="id")
      * @Assert\NotBlank(message = "You must select a level for this test")
      */
