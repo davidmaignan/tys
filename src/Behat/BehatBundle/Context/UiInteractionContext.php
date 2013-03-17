@@ -795,4 +795,42 @@ JS;
     {
         return $this->getSession()->getPage()->find('xpath', $xPath);
     }
+       
+    
+    /**
+     * Fill element at specified XPath with given value
+     *
+     * @param string $xPath
+     * @param string $value
+     *
+     * @When /^(?:|I )fill in the element at XPath "(?P<xPath>(?:[^"]|\\")*)" with "(?P<value>(?:[^"]|\\")*)"$/
+     * @When /^(?:|I )fill in "(?P<value>(?:[^"]|\\")*)" for the element at XPath "(?P<xPath>(?:[^"]|\\")*)"$/
+     */
+    public function fillElementByXPath($xPath, $value)
+    {
+        $xPath   = $this->fixStepArgument($xPath);
+        $value   = $this->fixStepArgument($value);
+        $element = $this->findElementByXpath($xPath);
+
+        if ( ! $element) {
+            $message = 'Could not find the element by the given XPath: ' . $xPath;
+
+            throw new \Exception($message);
+        }
+
+        $element->setValue($value);
+    }
+    
+        /**
+     * Returns fixed step argument (with \\" replaced back to ").
+     *
+     * @param string $argument
+     *
+     * @return string
+     */
+    protected function fixStepArgument($argument)
+    {
+        return str_replace('\\"', '"', $argument);
+    }
+    
 }

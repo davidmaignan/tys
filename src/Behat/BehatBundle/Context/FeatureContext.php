@@ -22,7 +22,7 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
  * @author Yuan Xie <shayx@nationalfibre.net>
  * @author Anthon Pang <anthonp@nationalfibre.net>
  */
-class FeatureContext extends MinkContext
+class FeatureContext extends RawMinkContext
 {
     /**
      * {@inheritdoc}
