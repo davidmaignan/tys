@@ -1,8 +1,8 @@
-security_register_done:
+SecurityRegistrationBundle_Page_Register_Done:
     pattern: /register/completed
     defaults: { _controller: SecurityRegistrationBundle:Registration:completed }
 
-security_register:
+SecurityRegistrationBundle_Page_Register_Index:
     pattern:  /register/
     defaults: { _controller: SecurityRegistrationBundle:Registration:register }
     

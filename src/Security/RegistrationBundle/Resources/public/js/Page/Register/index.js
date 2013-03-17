@@ -1,5 +1,5 @@
 define(
-    'sitehomepage/js/Page/Index/Index',
+    'securityregistration/js/Page/Register/Index',
     [
         
     ],
@@ -8,7 +8,7 @@ define(
         "use strict";
 
         var Page = function ($document) {
-           console.log('homepage in define');
+           console.log('register login page');
         };
 
         return Page;

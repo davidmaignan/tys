@@ -34,14 +34,14 @@
 
         {% block content %}{% endblock %}
         
-        {% block tmp %} 
+        {#% block tmp %} 
         
         {%- for bundle in get_bundle_list() -%}
             {%- set bundle = bundle|replace({'Bundle': ''}) -%}
             '{{ bundle }}': '{{'bundles/'  ~ bundle|lower }}/js/*'{%- if (loop.last != true) -%}, {% endif -%}
         {%- endfor -%}
         
-        {% endblock tmp %}
+        {% endblock tmp %#}
 
         
         {% javascripts output="js/sitebase.js" filter=''
@@ -75,7 +75,12 @@
             });
 
             $document.ready(function () {
-                var page = '{{ app.request.attributes.get('_route')| replace({'Bundle': '', '_': '/'}) }}';
+                var page = '{{ app.request.attributes.get('_route')| replace({'Bundle': '/js', '_': '/'}) }}';
+                var result = /(\w+)/g.exec(page);
+                var replaceValue = result[0].toLowerCase();
+                
+                page = page.replace(result[0], replaceValue);
+                
 
                 require([page], function (Page) {
                     if (typeof Page === 'function') {

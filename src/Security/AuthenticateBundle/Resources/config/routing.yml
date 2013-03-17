@@ -28,7 +28,7 @@ security_resetting_request:
     requirements:
         _method: GET
 
-security_login:
+SecurityAuthenticateBundle_Page_Login_Index:
     pattern:  /login/
     defaults: { _controller: SecurityAuthenticateBundle:Login:index }
 

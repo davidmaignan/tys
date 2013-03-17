@@ -13,14 +13,14 @@
                     <li class="active"><a href="#">{{ 'site_navigation.top.home' | trans }}</a></li>
                     <li><a href="#about">{{ 'site_navigation.top.about' | trans }}</a></li>
                     <li><a href="#contact">{{ 'site_navigation.top.contact' | trans }}</a></li>
-                    <li><a href="{{ path('security_register') }}">Register</a></li>
+                    <li><a href="{{ path('SecurityRegistrationBundle_Page_Register_Index') }}">Register</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
                             Question
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a href="{{ path('question_create_homepage') }}">Create</a></li>
+                            <li><a href="{{ path('QuestionCreateBundle_Page_Create_Index') }}">Create</a></li>
                             <li><a href="{{ path('question_review_list') }}">Review</a></li>
                         </ul>
                     </li>
