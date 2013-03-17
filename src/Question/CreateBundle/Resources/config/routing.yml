@@ -1,7 +1,7 @@
-question_create_success:
+QuestionCreateBundle_Page_Create_Success:
     pattern:  /created
     defaults: { _controller: QuestionCreateBundle:Create:success }
 
-question_create_homepage:
+QuestionCreateBundle_Page_Create_Index:
     pattern:  /create
     defaults: { _controller: QuestionCreateBundle:Create:index }

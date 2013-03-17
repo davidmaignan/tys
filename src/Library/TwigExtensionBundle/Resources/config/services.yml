@@ -15,7 +15,13 @@ services:
     definition.list.twig.extension:
         class: Library\TwigExtensionBundle\Twig\dLExtension
         tags:
-            -  { name: twig.extension }        
+            -  { name: twig.extension }  
+            
+    component.twig.extension:
+        class: Library\TwigExtensionBundle\Twig\ComponentExtension
+        arguments: [@kernel]
+        tags:
+            -  { name: twig.extension } 
             
     twig.extension.text:
        class: Twig_Extensions_Extension_Text

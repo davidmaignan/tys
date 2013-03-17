@@ -1,0 +1,7 @@
+parameters:
+#    library_require.example.class: Library\RequireBundle\Example
+
+services:
+#    library_require.example:
+#        class: %library_require.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

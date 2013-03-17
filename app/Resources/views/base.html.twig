@@ -28,14 +28,24 @@
 
     </head>
     <body>
-
+        
         
         {% block header %}{% endblock header %}
 
         {% block content %}{% endblock %}
+        
+        {#% block tmp %} 
+        
+        {%- for bundle in get_bundle_list() -%}
+            {%- set bundle = bundle|replace({'Bundle': ''}) -%}
+            '{{ bundle }}': '{{'bundles/'  ~ bundle|lower }}/js/*'{%- if (loop.last != true) -%}, {% endif -%}
+        {%- endfor -%}
+        
+        {% endblock tmp %#}
 
         
         {% javascripts output="js/sitebase.js" filter=''
+            '@LibraryRequireBundle/Resources/public/js/require.js'
             '@LibraryJQueryBundle/Resources/public/js/jquery.js'
             '@LibraryBootstrapBundle/Resources/public/js/bootstrap.js'
         %}
@@ -47,6 +57,38 @@
         {% block javascripts %}
            
         {% endblock %}
+    
+    
+        <script type="text/javascript">
+            var $html     = $('html'),
+                $document = $(document);
+
+            require.config({
+                baseUrl: '/bundles',
+                paths: {
+                     {%- for bundle in get_bundle_list() -%}
+                        {%- set bundle = bundle|replace({'Bundle': ''}) -%}
+                        '{{ bundle }}': '/{{bundle|lower }}/js'{%- if (loop.last != true) -%}, {% endif -%}
+                     {%- endfor -%}
+
+                }
+            });
+
+            $document.ready(function () {
+                var page = '{{ app.request.attributes.get('_route')| replace({'Bundle': '/js', '_': '/'}) }}';
+                var result = /(\w+)/g.exec(page);
+                var replaceValue = result[0].toLowerCase();
+                
+                page = page.replace(result[0], replaceValue);
+                
+
+                require([page], function (Page) {
+                    if (typeof Page === 'function') {
+                        new Page($document);
+                    }
+                });
+            });
+        </script>
 
         </body>
     </html>
