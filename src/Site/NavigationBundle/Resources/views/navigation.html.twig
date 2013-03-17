@@ -16,12 +16,12 @@
                     <li><a href="{{ path('SecurityRegistrationBundle_Page_Register_Index') }}">{{ 'site_navigation.top.register' | trans }}</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
-                            Question
+                            {{ 'site_navigation.top.question' | trans }}
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a href="{{ path('QuestionCreateBundle_Page_Create_Index') }}">Create</a></li>
-                            <li><a href="{{ path('question_review_list') }}">Review</a></li>
+                            <li><a href="{{ path('QuestionCreateBundle_Page_Create_Index') }}">{{ 'site_navigation.top.create' | trans }}</a></li>
+                            <li><a href="{{ path('question_review_list') }}">{{ 'site_navigation.top.review' | trans }}</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

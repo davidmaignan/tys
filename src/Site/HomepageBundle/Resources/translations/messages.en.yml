@@ -1,11 +1,3 @@
-site_navigation.top.home: Home
-site_navigation.top.about: About
-site_navigation.top.contact: Contact
-site_navigation.top.register: Register
-site_navigation.top.question: Question
-site_navigation.top.create: Create
-site_navigation.top.review: Review
-site_index.top.heading: 'Recruiting the right candidate starts here!'
 site_index.top.body: 'You can always browse a few hundred ''promising'' CVs or you can start by testing the knowledge and competencies of your prospective employees'
 site_index.top.button: 'Get Started Now'
 site_index.bottom.heading: 'Advantages of Test Your Skills'
