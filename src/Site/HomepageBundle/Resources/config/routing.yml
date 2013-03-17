@@ -2,6 +2,6 @@ site_plan_pricing:
     pattern: /plan-and-pricing
     defaults: { _controller: SiteHomepageBundle:Pricing:index }
 
-homepage:
+SiteHomepageBundle_Page_Index_Index:
     pattern:  /
     defaults: { _controller: SiteHomepageBundle:Default:index }
