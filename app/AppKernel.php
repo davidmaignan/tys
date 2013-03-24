@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
             new Dm\QuestionBundle\DmQuestionBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
             new Dm\AdminBundle\DmAdminBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
@@ -59,6 +60,8 @@ class AppKernel extends Kernel
             new Site\NavigationBundle\SiteNavigationBundle(),
             new Behat\BehatBundle\BehatBehatBundle(),
             new Library\RequireBundle\LibraryRequireBundle(),
+            new Api\OauthBundle\ApiOauthBundle(),
+            new Api\RestBundle\ApiRestBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
