@@ -1,0 +1,14 @@
+{# empty Twig template #}
+
+<form action="{{ path('fos_oauth_server_authorize',
+                 {'client_id'    : app.request.get('client_id'),
+                  'response_type': app.request.get('response_type'),  
+                  'redirect_uri' : app.request.get('redirect_uri'),   
+                 }
+              ) }}" method="POST">
+    
+                 <h4>Grant access to {{ client.name }}</h4>
+    {{ form_widget(form) }}
+
+<input type="submit" value="Authorize" />
+</form>

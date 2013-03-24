@@ -1,0 +1,7 @@
+parameters:
+#    api_oauth.example.class: Api\OauthBundle\Example
+
+services:
+#    api_oauth.example:
+#        class: %api_oauth.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
