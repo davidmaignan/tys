@@ -73,6 +73,17 @@ fos_user:
     firewall_name: main
     user_class: Security\AuthenticateBundle\Entity\User
     
+    
+fos_oauth_server:
+    db_driver:           orm       
+    client_class:        Api\OauthBundle\Entity\Client
+    access_token_class:  Api\OauthBundle\Entity\AccessToken
+    refresh_token_class: Api\OauthBundle\Entity\RefreshToken
+    auth_code_class:     Api\OauthBundle\Entity\AuthCode
+    
+    service:
+        user_provider: fos_user.user_manager
+    
 #JMS security extra
 jms_security_extra:
     # Whether you want to secure all services (true), or only secure specific
