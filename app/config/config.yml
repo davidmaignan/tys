@@ -83,7 +83,18 @@ fos_oauth_server:
     
     service:
         user_provider: fos_user.user_manager
-    
+        
+sensio_framework_extra:
+    view:
+        annotations: false
+
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'
+
 #JMS security extra
 jms_security_extra:
     # Whether you want to secure all services (true), or only secure specific

@@ -1,3 +1,7 @@
+api_rest:
+    resource: "@ApiRestBundle/Resources/config/routing.yml"
+    prefix:   /
+
 fos_oauth_server_token:
     resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
 
@@ -8,9 +12,10 @@ acme_oauth_server_security:
     resource: "@ApiOauthBundle/Resources/config/security.yml"
     prefix:   /
     
-api_rest:
-    resource: "@ApiRestBundle/Resources/config/routing.yml"
-    prefix:   /api
+# Internal routing configuration to handle ESI
+#_internal:
+#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#    prefix:   /_internal
 
 api_oauth:
     resource: "@ApiOauthBundle/Resources/config/routing.yml"
