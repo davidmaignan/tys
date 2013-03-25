@@ -6,9 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction($name)
     {
-        
-        return $this->render('ApiRestBundle:Default:index.html.twig');
+        return $this->render('ApiRestBundle:Default:index.html.twig', array('name' => $name));
     }
 }
