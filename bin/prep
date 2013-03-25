@@ -1,21 +1,24 @@
 #!/bin/bash
 DIR=`dirname $0`
 
-rm -rf $DIR/../app/cache/*
-rm -rf $DIR/../app/logs/*
-rm -rf $DIR/../web/bundles/*
-rm -rf $DIR/../web/css/*
-rm -rf $DIR/../web/js/*
-rm -rf $DIR/../web/uploads_test
-rm -rf $DIR/../web/uploads/*
+sudo rm -rf $DIR/../app/cache/*
+sudo rm -rf $DIR/../app/logs/*
+sudo rm -rf $DIR/../web/bundles/*
+sudo rm -rf $DIR/../web/css/*
+sudo rm -rf $DIR/../web/js/*
+sudo rm -rf $DIR/../web/uploads_test
+sudo rm -rf $DIR/../web/uploads/*
 
-$DIR/../app/console cache:clear
+sudo chmod -R 777 app/cache
+sudo chmod -R 777 app/logs
+
+
 $DIR/../app/console assets:install --symlink $DIR/../web
-$DIR/../app/console assetic:dump --env=test --no-debug
+$DIR/../app/console assetic:dump --env=dev --no-debug
 
-$DIR/../app/console -e=test doctrine:schema:drop --force
-$DIR/../app/console -e=test doctrine:schema:create
-$DIR/../app/console -e=test doctrine:fixtures:load --no-interaction
+$DIR/../app/console -e=dev doctrine:schema:drop --force
+$DIR/../app/console -e=dev doctrine:schema:create
+$DIR/../app/console -e=dev doctrine:fixtures:load --no-interaction
 
 
 

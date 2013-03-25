@@ -1,6 +1,10 @@
 api_rest:
     resource: "@ApiRestBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /api
+
+ConnectContactBundle:
+    resource: "@ConnectContactBundle/Resources/config/routing.yml"
+    prefix:   /contacts
 
 fos_oauth_server_token:
     resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
