@@ -120,7 +120,7 @@ class ListControllerTest extends WebTestCase
         
         $crawler = $client->click($link);
         
-        $this->assertTrue($crawler->filter('html:contains("Your exam")')->count() > 0);
+        $this->assertTrue($crawler->filter('html:contains("Your exams")')->count() > 0);
         
     }
     

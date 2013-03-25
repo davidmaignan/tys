@@ -1,0 +1,9 @@
+ {% for question in questions %}
+    <div class="contact span8">
+        {{ question.title }}
+    </div>
+{% else %}
+    <div class="alert-message block-message info">
+        <p>You have not added any contacts. Click 'New Contact' above to get started.</p>
+    </div>
+{% endfor %}

@@ -17,12 +17,15 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\AopBundle\JMSAopBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
             new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
             new Dm\QuestionBundle\DmQuestionBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
             new Dm\AdminBundle\DmAdminBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
@@ -59,6 +62,9 @@ class AppKernel extends Kernel
             new Site\NavigationBundle\SiteNavigationBundle(),
             new Behat\BehatBundle\BehatBehatBundle(),
             new Library\RequireBundle\LibraryRequireBundle(),
+            new Api\OauthBundle\ApiOauthBundle(),
+            new Api\RestBundle\ApiRestBundle(),
+            new Connect\ContactBundle\ConnectContactBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

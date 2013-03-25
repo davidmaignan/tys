@@ -1,0 +1,25 @@
+<div id="contact-list" class="row">
+    {% for question in questions %}
+        <div class="contact span8">
+            <div class="inner">
+                <h5>
+                    <form action="{{ path('delete_question', { 'id': question.id } ) }}" method="delete">
+                        <input type="hidden" name="_method" value="delete" />
+                        <input type="submit" value="X" class="contact-delete"/>
+                    </form>
+                    <span class="contact-name">{{ question.title }}</span>
+                </h5>
+
+                <div class="details">
+
+                </div>
+
+            </div>
+        </div>
+    {% else %}
+        <div class="alert-message block-message info">
+            <p>You have not added any contacts. Click 'New Contact' above to get started.</p>
+        </div>
+    {% endfor %}
+</div>
+

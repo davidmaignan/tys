@@ -1,3 +1,30 @@
+api_rest:
+    resource: "@ApiRestBundle/Resources/config/routing.yml"
+    prefix:   /api
+
+ConnectContactBundle:
+    resource: "@ConnectContactBundle/Resources/config/routing.yml"
+    prefix:   /contacts
+
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+
+fos_oauth_server_authorize:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
+    
+acme_oauth_server_security:
+    resource: "@ApiOauthBundle/Resources/config/security.yml"
+    prefix:   /
+    
+# Internal routing configuration to handle ESI
+#_internal:
+#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#    prefix:   /_internal
+
+api_oauth:
+    resource: "@ApiOauthBundle/Resources/config/routing.yml"
+    prefix:   /
+
 site_homepage:
     resource: "@SiteHomepageBundle/Resources/config/routing.yml"
     prefix:   /
@@ -80,6 +107,12 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+    
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+
+fos_oauth_server_authorize:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
 
 # Internal routing configuration to handle ESI
 #_internal:

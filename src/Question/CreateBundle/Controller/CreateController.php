@@ -32,7 +32,7 @@ class CreateController extends Controller
                 $em->flush();
             }
             
-            return new RedirectResponse($this->generateUrl('question_create_success'));
+            return new RedirectResponse($this->generateUrl('QuestionCreateBundle_Page_Create_Success'));
             
         }
       

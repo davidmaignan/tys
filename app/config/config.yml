@@ -73,6 +73,56 @@ fos_user:
     firewall_name: main
     user_class: Security\AuthenticateBundle\Entity\User
     
+    
+fos_oauth_server:
+    db_driver:           orm       
+    client_class:        Api\OauthBundle\Entity\Client
+    access_token_class:  Api\OauthBundle\Entity\AccessToken
+    refresh_token_class: Api\OauthBundle\Entity\RefreshToken
+    auth_code_class:     Api\OauthBundle\Entity\AuthCode
+    
+    service:
+        user_provider: fos_user.user_manager
+        
+jms_security_extra:
+    secure_controllers:  true
+    secure_all_services: false
+
+fos_rest:
+    routing_loader:
+        default_format: null
+    view:
+        default_engine: twig
+        force_redirects:
+            html: true
+        formats:
+            json: true
+            xml: true
+        templating_formats:
+            html: true
+        view_response_listener: 'force'
+        failed_validation: HTTP_BAD_REQUEST
+    exception:
+        codes: ~
+        messages: ~
+    body_listener:
+        decoders:
+            json: fos_rest.decoder.json
+            xml: fos_rest.decoder.xml
+    format_listener:
+        default_priorities: [json, html, '*/*']
+        fallback_format: html
+        prefer_extension: true
+    service:
+        router: router
+        templating: templating
+        serializer: serializer
+        view_handler: fos_rest.view_handler.default
+
+sensio_framework_extra:
+    view:
+        annotations: false
+ 
 #JMS security extra
 jms_security_extra:
     # Whether you want to secure all services (true), or only secure specific
@@ -113,8 +163,5 @@ jms_payment_paypal:
     signature: LbGakzdnaokndand
     debug: true    
 
-server_grove_translation_editor:
-    storage:
-        type: server_grove_translation_editor.storage.orm
-        manager: doctrine.orm.entity_manager
+
     

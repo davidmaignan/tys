@@ -199,33 +199,5 @@ class CreateControllerTest extends WebTestCase
         
         $this->assertEquals(1, $crawler->filter('html:contains("This value should not be blank.")')->count());
     }
-    
-    public function testIndex_submit_question_one_answer_duplicate_question()
-    {
-        $client = static::createClient();
-        
-        $client->followRedirects(true);
-
-        $client->followRedirects(true);
-        $crawler = $client->request('GET', '/');
-
-        $form = $crawler->selectButton('loginBtn')->form();
-        $form['_username'] = $this->username;
-        $form['_password'] = $this->password;
-
-        $crawler = $client->submit($form);
-        
-        
-        $crawler = $client->request('GET', '/question/create');
-        
-        $form = $crawler->selectButton('_submit_question')->form(array(
-            'question_create_contributor_form[title]'               => 'lorem ipsum',
-            'question_create_contributor_form[answers][0][title]'   => 'lorem ipsum'
-        ), 'POST');
-        
-        $crawler = $client->submit($form);
-        
-        $this->assertEquals(1, $crawler->filter('html:contains("This value is already used.")')->count() );
-    }
   
 }
