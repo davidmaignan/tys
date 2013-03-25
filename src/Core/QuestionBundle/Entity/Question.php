@@ -19,6 +19,8 @@ use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\MinLength;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 use Core\AnswerBundle\Entity\Answer;
 use Exam\CoreBundle\Entity\Exam;
@@ -32,6 +34,8 @@ use Core\CommentBundle\Entity\Comment;
  * @ORM\Table(name="question")
  * @ORM\Entity(repositoryClass="Core\QuestionBundle\Entity\QuestionRepository")
  * @ORM\HasLifecycleCallbacks()
+ * 
+ * @ExclusionPolicy("all")
  */
 class Question implements QuestionInterface {
 
@@ -50,6 +54,8 @@ class Question implements QuestionInterface {
      * @ORM\Column(name="title", type="text")
      * 
      * @Assert\NotBlank(groups={"Default"})
+     * 
+     * @Expose
      */
     private $title;
 
