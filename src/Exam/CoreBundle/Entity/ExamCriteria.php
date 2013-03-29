@@ -48,7 +48,6 @@ class ExamCriteria implements ExamCriteriaInterface
      */
      private $exam;
     
-    
     /**
      * @ORM\ManyToMany(targetEntity="Core\SectionBundle\Entity\Section", inversedBy="examCriterias")
      * @ORM\JoinTable(name="exam_criteria_sections")
@@ -106,6 +105,11 @@ class ExamCriteria implements ExamCriteriaInterface
      * )
      */
     private $tags;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="ExamQuestion", mappedBy="examCriteria")
+     */
+    private $examQuestion;
     
     /**
      * Constructor
@@ -232,7 +236,9 @@ class ExamCriteria implements ExamCriteriaInterface
         return $this->tags;
     }
     
-
+    /**
+     * @param \Doctrine\Common\Collections\ArrayCollection $sections
+     */
     public function setSections(ArrayCollection $sections)
     {
         $this->sections = $sections;
@@ -304,8 +310,6 @@ class ExamCriteria implements ExamCriteriaInterface
         return $this->types;
     }
 
-   
-
     /**
      * Set exam
      *
@@ -327,5 +331,28 @@ class ExamCriteria implements ExamCriteriaInterface
     public function getExam()
     {
         return $this->exam;
+    }
+
+    /**
+     * Set examQuestion
+     *
+     * @param \Exam\CoreBundle\Entity\ExamQuestion $examQuestion
+     * @return ExamCriteria
+     */
+    public function setExamQuestion(\Exam\CoreBundle\Entity\ExamQuestion $examQuestion = null)
+    {
+        $this->examQuestion = $examQuestion;
+
+        return $this;
+    }
+
+    /**
+     * Get examQuestion
+     *
+     * @return \Exam\CoreBundle\Entity\ExamQuestion 
+     */
+    public function getExamQuestion()
+    {
+        return $this->examQuestion;
     }
 }

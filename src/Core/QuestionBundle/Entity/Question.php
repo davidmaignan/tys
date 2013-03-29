@@ -127,6 +127,11 @@ class Question implements QuestionInterface {
     private $exams;
     
     /**
+     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\ExamQUestion", mappedBy="questions")
+     */
+    private $examQuestions;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User", inversedBy="questions")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="SET NULL")
      */
@@ -165,9 +170,10 @@ class Question implements QuestionInterface {
     
     
     public function __construct() {
-        $this->tags = new ArrayCollection();
-        $this->answers = new ArrayCollection();
-        $this->exams = new ArrayCollection();
+        $this->tags             = new ArrayCollection();
+        $this->answers          = new ArrayCollection();
+        $this->exams            = new ArrayCollection();
+        $this->examQuestions   = new ArrayCollection();
         
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
@@ -544,8 +550,6 @@ class Question implements QuestionInterface {
         //echo 'preUpdate in Question object';
         //exit;
     }
-    
-   
 
     /**
      * Add comments
@@ -578,5 +582,85 @@ class Question implements QuestionInterface {
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set head
+     *
+     * @param \Core\QuestionBundle\Entity\Question $head
+     * @return Question
+     */
+    public function setHead(\Core\QuestionBundle\Entity\Question $head = null)
+    {
+        $this->head = $head;
+
+        return $this;
+    }
+
+    /**
+     * Get head
+     *
+     * @return \Core\QuestionBundle\Entity\Question 
+     */
+    public function getHead()
+    {
+        return $this->head;
+    }
+
+    /**
+     * Set tail
+     *
+     * @param \Core\QuestionBundle\Entity\Question $tail
+     * @return Question
+     */
+    public function setTail(\Core\QuestionBundle\Entity\Question $tail = null)
+    {
+        $this->tail = $tail;
+
+        return $this;
+    }
+
+    /**
+     * Get tail
+     *
+     * @return \Core\QuestionBundle\Entity\Question 
+     */
+    public function getTail()
+    {
+        return $this->tail;
+    }
+
+
+    /**
+     * Add examQuestions
+     *
+     * @param \Exam\CoreBundle\Entity\ExamQUestion $examQuestions
+     * @return Question
+     */
+    public function addExamQuestion(\Exam\CoreBundle\Entity\ExamQUestion $examQuestions)
+    {
+        $this->examQuestions[] = $examQuestions;
+
+        return $this;
+    }
+
+    /**
+     * Remove examQuestions
+     *
+     * @param \Exam\CoreBundle\Entity\ExamQUestion $examQuestions
+     */
+    public function removeExamQuestion(\Exam\CoreBundle\Entity\ExamQUestion $examQuestions)
+    {
+        $this->examQuestions->removeElement($examQuestions);
+    }
+
+    /**
+     * Get examQuestions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getExamQuestions()
+    {
+        return $this->examQuestions;
     }
 }

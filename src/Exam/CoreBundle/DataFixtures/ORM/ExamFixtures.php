@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 use Exam\CoreBundle\Entity\Exam;
 use Exam\CoreBundle\Entity\ExamCriteria;
+use Exam\CoreBundle\Entity\ExamQuestion;
 
 class ExamFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -19,7 +20,7 @@ class ExamFixtures extends AbstractFixture implements OrderedFixtureInterface
         $exam = new Exam();
         
         $exam->setOwner($manager->merge($this->getReference('user-2')));
-        $exam->addCandidate($manager->merge($this->getReference('user-2')));
+        $exam->addCandidate($manager->merge($this->getReference('user-3')));
         
         $examCriteria = new ExamCriteria();
         $examCriteria->setLevel($manager->merge($this->getReference('level-2')));
@@ -41,8 +42,15 @@ class ExamFixtures extends AbstractFixture implements OrderedFixtureInterface
         $exam->setExamCriteria($examCriteria);
         $examCriteria->setExam($exam);
         
+        $examQuestion = new ExamQuestion();
+        
+        for($i = 1;$i< 11; $i++){
+            $examQuestion->addQuestion($this->getReference('question-'.$i));
+        }
+        
         $manager->persist($exam);
         $manager->persist($examCriteria);
+        $manager->persist($examQuestion);
         
         $this->addReference('exam-1', $exam);
 

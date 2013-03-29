@@ -56,13 +56,6 @@ class Comment implements CommentInterface
      */
     private $user;
     
-    /**
-     *
-     * @var boolean $read 
-     * @ORM\Column(name="read", type="boolean", options={"default" = false})
-     */
-    private $read;
-    
     
     /**
      * @var datetime $createdAt
@@ -216,26 +209,4 @@ class Comment implements CommentInterface
         return $this->user;
     }
 
-    /**
-     * Set read
-     *
-     * @param boolean $read
-     * @return Comment
-     */
-    public function setRead($read)
-    {
-        $this->read = $read;
-    
-        return $this;
-    }
-
-    /**
-     * Get read
-     *
-     * @return boolean 
-     */
-    public function getRead()
-    {
-        return $this->read;
-    }
 }
