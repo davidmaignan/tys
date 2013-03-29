@@ -65,6 +65,7 @@ class AppKernel extends Kernel
             new Api\OauthBundle\ApiOauthBundle(),
             new Api\RestBundle\ApiRestBundle(),
             new Connect\ContactBundle\ConnectContactBundle(),
+            new Account\AdminBundle\AccountAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
