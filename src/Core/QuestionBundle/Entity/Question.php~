@@ -19,20 +19,23 @@ use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\MinLength;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 use Core\AnswerBundle\Entity\Answer;
+use Exam\CoreBundle\Entity\Exam;
+use Security\AuthenticateBundle\Entity\User;
+use Core\CommentBundle\Entity\Comment;
 
-use Doctrine\Common\NotifyPropertyChanged,
-    Doctrine\Common\PropertyChangedListener;
 
 /**
  * Dm\QuestionBundle\Entity\Question
  *
  * @ORM\Table(name="question")
- * @UniqueEntity({"title"})
  * @ORM\Entity(repositoryClass="Core\QuestionBundle\Entity\QuestionRepository")
  * @ORM\HasLifecycleCallbacks()
- * @ORM\ChangeTrackingPolicy("NOTIFY")
+ * 
+ * @ExclusionPolicy("all")
  */
 class Question implements QuestionInterface {
 
@@ -50,7 +53,9 @@ class Question implements QuestionInterface {
      *
      * @ORM\Column(name="title", type="text")
      * 
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Default"})
+     * 
+     * @Expose
      */
     private $title;
 
@@ -112,6 +117,7 @@ class Question implements QuestionInterface {
     
     /**
      * @ORM\OneToMany(targetEntity="Core\CommentBundle\Entity\Comment", mappedBy="question", cascade={"persist"} )
+     * @ORM\OrderBy({"createdAt" = "DESC"})
      */
     private $comments;
     
@@ -121,10 +127,27 @@ class Question implements QuestionInterface {
     private $exams;
     
     /**
+     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\ExamQUestion", mappedBy="questions")
+     */
+    private $examQuestions;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User", inversedBy="questions")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $user;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Question")
+     * @ORM\JoinColumn(name="head_id", referencedColumnName="id")
+     */
+    private $head;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Question")
+     * @ORM\JoinColumn(name="tail_id", referencedColumnName="id")
+     */
+    private $tail;
     
     /**
      * @var datetime $createdAt
@@ -146,35 +169,11 @@ class Question implements QuestionInterface {
     protected $status = QuestionStatus::INITIAL;
     
     
-    
-    private $_listeners = array();
-
-    public function addPropertyChangedListener(PropertyChangedListener $listener)
-    {
-        $this->_listeners[] = $listener;
-    }
-    
-    protected function _onPropertyChanged($propName, $oldValue, $newValue)
-    {
-        if ($this->_listeners) {
-            foreach ($this->_listeners as $listener) {
-                $listener->propertyChanged($this, $propName, $oldValue, $newValue);
-            }
-        }
-    }
-    
-    public function setData($data)
-    {
-        if ($data != $this->data) {
-            $this->_onPropertyChanged('data', $this->data, $data);
-            $this->data = $data;
-        }
-    }
-    
     public function __construct() {
-        $this->tags = new ArrayCollection();
-        $this->answers = new ArrayCollection();
-        $this->exams = new ArrayCollection();
+        $this->tags             = new ArrayCollection();
+        $this->answers          = new ArrayCollection();
+        $this->exams            = new ArrayCollection();
+        $this->examQuestions   = new ArrayCollection();
         
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
@@ -469,7 +468,7 @@ class Question implements QuestionInterface {
      * @param Security\AuthenticateBundle\Entity\User $user
      * @return Question
      */
-    public function setUser(\Security\AuthenticateBundle\Entity\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
     
@@ -492,7 +491,7 @@ class Question implements QuestionInterface {
      * @param Exam\CoreBundle\Entity\Exam $exams
      * @return Question
      */
-    public function addExam(\Exam\CoreBundle\Entity\Exam $exams)
+    public function addExam(Exam $exams)
     {
         $this->exams[] = $exams;
     
@@ -551,8 +550,6 @@ class Question implements QuestionInterface {
         //echo 'preUpdate in Question object';
         //exit;
     }
-    
-   
 
     /**
      * Add comments
@@ -560,7 +557,7 @@ class Question implements QuestionInterface {
      * @param Core\CommentBundle\Entity\Comment $comments
      * @return Question
      */
-    public function addComment(\Core\CommentBundle\Entity\Comment $comments)
+    public function addComment(Comment $comments)
     {
         $this->comments[] = $comments;
     
@@ -572,7 +569,7 @@ class Question implements QuestionInterface {
      *
      * @param Core\CommentBundle\Entity\Comment $comments
      */
-    public function removeComment(\Core\CommentBundle\Entity\Comment $comments)
+    public function removeComment(Comment $comments)
     {
         $this->comments->removeElement($comments);
     }
@@ -586,4 +583,51 @@ class Question implements QuestionInterface {
     {
         return $this->comments;
     }
+
+    /**
+     * Set head
+     *
+     * @param \Core\QuestionBundle\Entity\Question $head
+     * @return Question
+     */
+    public function setHead(\Core\QuestionBundle\Entity\Question $head = null)
+    {
+        $this->head = $head;
+
+        return $this;
+    }
+
+    /**
+     * Get head
+     *
+     * @return \Core\QuestionBundle\Entity\Question 
+     */
+    public function getHead()
+    {
+        return $this->head;
+    }
+
+    /**
+     * Set tail
+     *
+     * @param \Core\QuestionBundle\Entity\Question $tail
+     * @return Question
+     */
+    public function setTail(\Core\QuestionBundle\Entity\Question $tail = null)
+    {
+        $this->tail = $tail;
+
+        return $this;
+    }
+
+    /**
+     * Get tail
+     *
+     * @return \Core\QuestionBundle\Entity\Question 
+     */
+    public function getTail()
+    {
+        return $this->tail;
+    }
+
 }

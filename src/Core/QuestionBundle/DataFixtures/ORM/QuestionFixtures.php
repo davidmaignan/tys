@@ -62,6 +62,8 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $question1->setStatus(QuestionStatus::REVIEW);
         $manager->persist($question1);
         
+        $this->addReference('question-1', $question1);
+
         $answers = array("'' - An empty JavaScript string", "{} - An empty JavaScript object", "[] - An empty JavaScript array",
                          "undefined");
         $correct = 1;
@@ -88,6 +90,8 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $question2->setStatus(QuestionStatus::REVIEW);
         $manager->persist($question2);
         
+        $this->addReference('question-2', $question2);
+        
         $answers2 = array("'0755'", "0755", "0x755", "755");
         $correct = 1;
         
@@ -110,6 +114,8 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $question3->setType($manager->merge($this->getReference('type')));
         $question3->setStatus(QuestionStatus::REVIEW);
         $manager->persist($question3);
+        
+        $this->addReference('question-3', $question3);
         
         $answers3 = array("set_cookie()", "get_cookie()", "session_get_cookie_params()", "session_set_cookie_params()");
         $correct = 2;
@@ -134,6 +140,8 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $question4->setStatus(QuestionStatus::REVIEW);
         $manager->persist($question4);
         
+        $this->addReference('question-4', $question4);
+        
         $answers4 = array("E_NOTICE", "E_ERROR", "E_USER_ERROR", "E_WARNING","E_RECOVERABLE_ERROR");
         
         $correct = 1;
@@ -157,6 +165,8 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $question5->setType($manager->merge($this->getReference('type')));
         $question5->setStatus(QuestionStatus::REVIEW);
         $manager->persist($question5);
+        
+        $this->addReference('question-5', $question5);
         
         $answers5 = array("it is not a built-in php function", "check if \$a is of class '\$b' or has this class as one of 
             its parents", "Check if \$a is of type \"\$b\"");
@@ -184,6 +194,8 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $question6->setStatus(QuestionStatus::REVIEW);
         $manager->persist($question6);
         
+        $this->addReference('question-6', $question6);
+        
         $answers6 = array("ksort(\$images);", "asort(\$images);", "natsort(\$images);", "usort(\$images);","arsort(\$images);");
         
         $correct = 2;
@@ -207,6 +219,8 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $question6->setType($manager->merge($this->getReference('type')));
         $question6->setStatus(QuestionStatus::REVIEW);
         $manager->persist($question6);
+        
+        $this->addReference('question-7', $question6);
         
         $answers6 = array("asc( );", "ord( );", "chr( );", "val( );");
         
@@ -232,6 +246,8 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $question6->setStatus(QuestionStatus::REVIEW);
         $manager->persist($question6);
         
+        $this->addReference('question-8', $question6);
+        
         $answers6 = array("%a", "%d", "%c", "%b");
         
         $correct = 0;
@@ -256,6 +272,8 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $question6->setStatus(QuestionStatus::REVIEW);
         $manager->persist($question6);
         
+        $this->addReference('question-9', $question6);
+        
         $answers6 = array("__clone", "__toString", "__toInt", "__callStatic","__sleep");
         
         $correct = 0;
@@ -279,6 +297,8 @@ class QuestionFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $question6->setType($manager->merge($this->getReference('type')));
         $question6->setStatus(QuestionStatus::REVIEW);
         $manager->persist($question6);
+        
+        $this->addReference('question-10', $question6);
         
         $answers6 = array("encode_hex()", "nex2bin()", "pack()", "printf()");
         

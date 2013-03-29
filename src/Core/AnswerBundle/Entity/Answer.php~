@@ -18,7 +18,6 @@ use Core\QuestionBundle\Entity\Question;
 /**
  * @ORM\Entity 
  * @ORM\Table(name="answer")
- * @UniqueEntity({"title"})
  */
 class Answer
 {
@@ -65,7 +64,7 @@ class Answer
     
     /**
      * @var boolean $correct
-     * @ORM\Column(name="correct", type="boolean", nullable=true) 
+     * @ORM\Column(name="correct", type="boolean") 
      */
     private $correct;
     
