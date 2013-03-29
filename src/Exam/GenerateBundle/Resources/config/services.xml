@@ -29,6 +29,7 @@
                 <argument type="service" id="exam_generate.exam_criteria_manager.doctrine" />
                 <argument type="service" id="exam_generate.exam_manager.doctrine" />
                 <argument type="service" id="security.context" />
+                <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
         
         <!-- Exam criteria doctrine manager -->

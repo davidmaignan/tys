@@ -18,7 +18,7 @@
 
                 <div class="tab-content">
 
-                    <section class="tab-pane" id="description">
+                    <section class="tab-pane active" id="description">
 
                         <h2>Description</h2>
 
@@ -63,13 +63,29 @@
                         <section class="tab-pane" id="questions">
                             <h2>Question</h2>
                             <div class="row">
-                                {% for question in exam.questions %}
-                                    {{ question.id }}
-                                {% endfor %}  
+                                <div class="span12">
+                                    <table class="table table-bordered table-striped">
+                                    {% for question in exam.examCriteria.examQuestion.questions %}
+                                            <tr>
+                                                <td>{{ question.title  }}</td>
+                                                <td>{{ question.level  }}</td>
+                                                <td>{{ question.type  }}</td>
+                                                <td>{{ question.points  }}</td>
+                                                <td>{{ question.points  }}</td> 
+                                                <td>
+                                                    {% for tag in question.tags %}
+                                                        {{ tag.name }}
+                                                    {% endfor %} 
+                                                </td> 
+                                                <td><a href="#" class="btn btn-primary btn-mini">View</a></td>
+                                            </tr>
+                                    {% endfor %}  
+                                    </table>        
+                                </div>
                             </div>
                         </section>
 
-                        <section class="tab-pane active" id="candidates">
+                        <section class="tab-pane" id="candidates">
                             <h2>Candidates</h2>
 
                             <section class="row">
