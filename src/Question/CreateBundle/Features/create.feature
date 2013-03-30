@@ -14,14 +14,14 @@ Feature: Create Question
         And     I wait 1 seconds 
 
         # Login
-        Then    I fill in "user" for "username"
-        And     I fill in "userpass" for "password"
+        Then    I fill in "user" for the element at XPath ".//*[@id='content']/div/div/div/div/form/div[1]/div/input"
+        And     I fill in "userpass" for the element at XPath ".//*[@id='content']/div/div/div/div/form/div[2]/div/input"
         Then    I press "_submit"
-        Then    I am on "/app_dev.php/question/create"
+        Then    I should be on "/app_dev.php/question/create"
         And     I should see "Create a Question"
 
         # Failing
-        And      I press "_submit_question"
+        And     I press "_submit_question"
         Then 	I should be on "/app_dev.php/question/create"
         And	I should see "This value should not be blank"
 
