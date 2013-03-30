@@ -44,6 +44,10 @@ class ExamFixtures extends AbstractFixture implements OrderedFixtureInterface
         
         $examQuestion = new ExamQuestion();
         
+        $examQuestion->setExamCriteria($examCriteria);
+        
+        $examCriteria->setExamQuestion($examQuestion);
+        
         for($i = 1;$i< 11; $i++){
             $examQuestion->addQuestion($this->getReference('question-'.$i));
         }

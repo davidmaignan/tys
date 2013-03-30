@@ -1,3 +1,7 @@
+account_admin:
+    resource: "@AccountAdminBundle/Resources/config/routing.yml"
+    prefix:   /account/
+
 api_rest:
     resource: "@ApiRestBundle/Resources/config/routing.yml"
     prefix:   /api
@@ -55,7 +59,7 @@ exam_generate:
 
 exam_practice:
     resource: "@ExamPracticeBundle/Resources/config/routing.yml"
-    prefix:   /exam/
+    prefix:   /test/
 
 shop_payment:
     resource: "@ShopPaymentBundle/Resources/config/routing.yml"

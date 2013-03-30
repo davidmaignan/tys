@@ -1,0 +1,3 @@
+AccountAdminBundle_Page_Index_Index:
+    pattern:  /
+    defaults: { _controller: AccountAdminBundle:Index:index }
