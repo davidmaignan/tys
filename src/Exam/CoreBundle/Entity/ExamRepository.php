@@ -20,14 +20,12 @@ class ExamRepository extends EntityRepository
         $repository = $this->getEntityManager()->getRepository('ExamCoreBundle:Exam');
 
         $query = $repository->createQueryBuilder('p')
+                            ->select('p.id')
                             ->where('p.id = :id')
                             ->setParameter('id', 1)
                             ->getQuery();
 
-        $exam = $query->getResult();
-        
-        
-        
+        $exam = $query->getSingleResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
         
         return $exam;
         

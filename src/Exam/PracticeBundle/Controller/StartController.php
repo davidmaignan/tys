@@ -13,9 +13,8 @@ class StartController extends Controller
         //Retreive exam
         $em = $this->getDoctrine()->getEntityManager();
         $exam = $em->getRepository('ExamCoreBundle:Exam')->findByUser($user);
-        
+                
         $session = $this->getRequest()->getSession();
-        
         $session->set('exam', $exam);
         
         return $this->render('ExamPracticeBundle:Start:index.html.twig');
