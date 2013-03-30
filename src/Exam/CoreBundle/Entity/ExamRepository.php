@@ -3,6 +3,7 @@
 namespace Exam\CoreBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * ExamRepository
@@ -12,4 +13,38 @@ use Doctrine\ORM\EntityRepository;
  */
 class ExamRepository extends EntityRepository
 {
+    public function findByUser($user)
+    {
+      
+        
+        $repository = $this->getEntityManager()->getRepository('ExamCoreBundle:Exam');
+
+        $query = $repository->createQueryBuilder('p')
+                            ->where('p.id = :id')
+                            ->setParameter('id', 1)
+                            ->getQuery();
+
+        $exam = $query->getResult();
+        
+        
+        
+        
+        return $exam;
+        
+        /*
+        $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT p, c FROM CoreQuestionBundle:Question p
+                JOIN p.answers c
+                    WHERE p.title = :title'
+            )->setParameter('title', $title);
+
+        try {
+            return $query->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+         * 
+         */
+    }
 }

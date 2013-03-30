@@ -1,0 +1,52 @@
+{% extends 'SiteHomepageBundle::layout.html.twig' %}
+
+
+{% block body %}
+
+<div id="header">
+    <div class="container">  
+        <div class="row">
+            <div class="span12">
+                <h1>Start test</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="content" class="txt-middle">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h2><i class=" icon-warning-sign"></i> Rules for the test</h2>
+                <hr class="dashed">				
+            </div>  
+        </div>  
+        <div class="row">
+            {% for i in 1..3 %}
+                <div class="span4">
+                    <div class="product-plan">
+                        <ul class="unstyled plans">
+                            <li>
+                                <div class="feature">
+                                    <h3>Rule {{ loop.index }}</h3>
+                                </div>				
+                            </li>
+                            <li>
+                                <div class="feature" style="padding: 10px;">
+                                    
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                </div>				
+                            </li>						
+                        </ul>
+                    </div>  
+                </div>
+            {% endfor %}    
+        </div>
+        <hr class="dashed">
+        <div class="row">
+            <a href="{{ path('ExamPracticeBundle_Page_Run_Index') }}" class="btn btn-success btn-large"><i class=" icon-pencil"></i> Start test</a>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

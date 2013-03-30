@@ -1,3 +1,11 @@
+ExamPracticeBundle_Page_Run_Index:
+    pattern:  /run
+    defaults: { _controller: ExamPracticeBundle:Run:index }
+
+ExamPracticeBundle_Page_Start_Index:
+    pattern:  /start
+    defaults: { _controller: ExamPracticeBundle:Start:index }
+
 exam_user_invitation_index:
     pattern: /practice/invitation
     defaults: { _controller: ExamPracticeBundle:Invitation:index }
