@@ -1,0 +1,7 @@
+parameters:
+#    library_ember.example.class: Library\EmberBundle\Example
+
+services:
+#    library_ember.example:
+#        class: %library_ember.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
