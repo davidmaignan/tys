@@ -4,16 +4,17 @@ namespace Exam\PracticeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class StartController extends Controller
+class RunController extends Controller
 {
     public function indexAction()
     {
-        $user = $this->get('security.context')->getToken()->getUser();
+        $session = $this->getRequest()->getSession();
         
-        //Retreive exam
-        $em = $this->getDoctrine()->getEntityManager();
-        $exam = $em->getRepository('ExamCoreBundle:Exam')->findByUser($user);
+        $examId = $session->get('exam');
         
-        return $this->render('ExamPracticeBundle:Start:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $exam = $em->getRepository('ExamCoreBundle:Exam')->find($examId);
+        
+        return $this->render('ExamPracticeBundle:Run:index.html.twig', array('exam' => $exam));
     }
 }
