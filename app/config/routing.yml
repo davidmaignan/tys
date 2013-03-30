@@ -59,7 +59,7 @@ exam_generate:
 
 exam_practice:
     resource: "@ExamPracticeBundle/Resources/config/routing.yml"
-    prefix:   /exam/
+    prefix:   /test/
 
 shop_payment:
     resource: "@ShopPaymentBundle/Resources/config/routing.yml"
