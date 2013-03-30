@@ -47,7 +47,6 @@
         {% javascripts output="js/sitebase.js" filter=''
             '@LibraryRequireBundle/Resources/public/js/require.js'
             '@LibraryJQueryBundle/Resources/public/js/jquery.js'
-            '@LibraryBootstrapBundle/Resources/public/js/bootstrap.js'
         %}
             <script src="{{ asset_url }}" /></script>
         {% endjavascripts %}
@@ -66,12 +65,33 @@
             require.config({
                 baseUrl: '/bundles',
                 paths: {
+                    'jquery'        : '/bundles/libraryjquery/js/jquery',
+                    'bootstrap'     : '/bundles/librarybootstrap/js/bootstrap.min',
+                    'ember'         : '/bundles/libraryember/js/ember',
+                    'handlebars'     : '/bundles/libraryember/js/handlebars',
                      {%- for bundle in get_bundle_list() -%}
                         {%- set bundle = bundle|replace({'Bundle': ''}) -%}
                         '{{ bundle }}': '/{{bundle|lower }}/js'{%- if (loop.last != true) -%}, {% endif -%}
                      {%- endfor -%}
 
-                }
+                },
+                shim: {
+                    'jquery' : {
+                      exports: 'jquery'  
+                    },
+                    'bootstrap': {
+                        deps: ['jquery'],
+                        exports: 'bootstrap'
+                    },
+                    'ember': {
+			deps: ['handlebars', 'jquery'],
+			exports: 'Ember'
+                    },
+                    'handlebars': {
+                        exports: 'handlebars'
+                    },
+                }        
+                        
             });
 
             $document.ready(function () {
@@ -82,7 +102,7 @@
                 page = page.replace(result[0], replaceValue);
                 
 
-                require([page], function (Page) {
+                require(['bootstrap', page], function (bootstrap, Page) {
                     if (typeof Page === 'function') {
                         new Page($document);
                     }

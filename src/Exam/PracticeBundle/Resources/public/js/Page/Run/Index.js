@@ -1,14 +1,16 @@
 define(
     'exampractice/js/Page/Run/Index',
     [
-        'ember'
+        'ember',
+        'bootstrap'
     ],
 
-    function (Ember) {
+    function (Ember, bootstrap) {
         "use strict";
 
         var Page = function ($document) {
-           console.log('Exam run js', Ember);
+           window.App = Em.Application.create();
+           console.log('Exam run js');
         };
 
         return Page;
