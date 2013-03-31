@@ -8,6 +8,7 @@
         <div class="row">
             <div class="span6">
                 <h1>Test: {{ exam.examCriteria.sections.1 }}</h1>
+                
             </div>
             <div class="span6">
                 <p>Date: {{ "now"|date("F jS") }}</p>
@@ -17,65 +18,86 @@
     </div>
 </div>
 
-
-
-<div id="content">
-    <div class="container">
+<script type="text/x-handlebars">
+    <div class="container">  
         <div class="row">
-
-            <div id="question">
-                <div class="span6">	
-                    <div class="entry">
-                        <h4>Question: 1</h4> 
-                        <hr>
-                        <p>Which of the following JNDI properties provide security information?</p>
-                        <ul class="response">
-                            <li><a href="#" class="">All of these</a></li>
-                            <li><a href="#" class="">java.naming.security.principal</a></li>
-                            <li><a href="#" class="">java.naming.security.credential</a></li>
-                            <li><a href="#" class="">java.naming.security.authentication</a></li>
-                            
-                        </ul>
-                </div>
+            <div class="span12">
+            {% raw %}
+                {{#linkTo 'question'}}Question {{/linkTo}}
+            {% endraw %}
+            {% raw %}
+                {{ outlet }}
+            {% endraw %}
             </div>
         </div>
     </div>
-</div>
-        
+</script>  
+<script type="text/x-handlebars" id="question">
+
+    <div class="container">
+        {% raw %}
+            {{#each model }}
+                <div class="row">
+                        <div class="span6 question">	
+                            <div class="entry">
+                                <h4>Question: 1</h4> 
+                                <hr>
+                                <p>{{ title }}</p>
+                                {{#if answers.length}}
+                                <ul class="response">
+                                   {{#each answer in answers}}
+                                     <li><a  class="">{{ answer.title }}</a></li>
+                                   {{/each}}
+                                 </ul>
+                                {{/if}}
+                            </div>
+                        </div>
+                    <div class="span6">
+
+                    </div>
+                </div>
+            {{/each}}
+        {% endraw %}
+    </div>
+
+</script>
+
+
+
 <style>
-      
-#question p {
-    font-size: 17px;
-    line-break: auto;
-    margin-bottom: 15px;
- }
- 
- #question ul.response {
-     list-style: none;
-     margin:0;
-     padding:0;
-     overflow: hidden;
-     width: 100%;
-     display: block;
- }
- 
- #question ul li a{
-     border: 1px solid #ddd;
-     background-color: #EEE;
-     padding: 8px 15px;
-     margin-bottom: 6px;
-     display: block;
-     border-radius: 5px;
- }
- 
- #question ul li a:hover{
-     color: #3A87AD;
-     background-color: #D9EDF7;
-     border-color: #BCE8F1;
-     text-decoration: none
- }
-        
-</style>
+
+        .question p {
+            font-size: 17px;
+            line-break: auto;
+            margin-bottom: 15px;
+        }
+
+        .question ul.response {
+            list-style: none;
+            margin:0;
+            padding:0;
+            overflow: hidden;
+            width: 100%;
+            display: block;
+        }
+
+        .question ul li a{
+            border: 1px solid #ddd;
+            background-color: #EEE;
+            padding: 8px 15px;
+            margin-bottom: 6px;
+            display: block;
+            border-radius: 5px;
+        }
+
+        .question ul li a:hover{
+            color: #3A87AD;
+            background-color: #D9EDF7;
+            border-color: #BCE8F1;
+            text-decoration: none
+        }
+
+    </style>
 
 
 
