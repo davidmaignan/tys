@@ -2,38 +2,6 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file source-language="en" datatype="plaintext" original="file.ext">
     <body>
-      <trans-unit id="66ebd63f5bac4c34cb59d88ba1af18e5" resname="site_navigation.top.home">
-        <source>site_navigation.top.home</source>
-        <target>Home</target>
-      </trans-unit>
-      <trans-unit id="ad249a3be8e9c78724c67c1931f9f7fb" resname="site_navigation.top.about">
-        <source>site_navigation.top.about</source>
-        <target>About</target>
-      </trans-unit>
-      <trans-unit id="85bb61ea57f093974b5c96d96371ad24" resname="site_navigation.top.contact">
-        <source>site_navigation.top.contact</source>
-        <target>Contact</target>
-      </trans-unit>
-      <trans-unit id="a5ec5209b8ba8319cf3e9ff56bd92dcc" resname="site_navigation.top.register">
-        <source>site_navigation.top.register</source>
-        <target>Register</target>
-      </trans-unit>
-      <trans-unit id="01865b48611da3679e7aae15abf45ad3" resname="site_navigation.top.question">
-        <source>site_navigation.top.question</source>
-        <target>Question</target>
-      </trans-unit>
-      <trans-unit id="60ec5912fbfbe3713f06f24dac75027b" resname="site_navigation.top.create">
-        <source>site_navigation.top.create</source>
-        <target>Create</target>
-      </trans-unit>
-      <trans-unit id="0df499be69573960b068afc98a9ee6ee" resname="site_navigation.top.review">
-        <source>site_navigation.top.review</source>
-        <target>Review</target>
-      </trans-unit>
-      <trans-unit id="d0e1dc3a32cff85cb5af92f7c39ddbf7" resname="site_index.top.heading">
-        <source>site_index.top.heading</source>
-        <target>Recruiting the right candidate starts here!</target>
-      </trans-unit>
       <trans-unit id="348a5df41156765c3c39a8c9f292dd30" resname="site_index.top.body">
         <source>site_index.top.body</source>
         <target>You can always browse a few hundred 'promising' CVs or you can start by testing the knowledge and competencies of your prospective employees</target>

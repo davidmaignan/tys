@@ -9,50 +9,57 @@
 
             <div class="span7">
 
-                <h1>Create your test</h1>        
+                <h1>{{ 'exam_create.top.heading' | trans }}</h1>  
+                <h2>{{ 'exam_create.language.heading' | trans }}</h2>  
+                <h2>{{ 'exam_create.num_candidates.heading' | trans }}</h2> 
+                <h2>{{ 'exam_create.level.heading' | trans }}</h2>   
+                <h2>{{ 'exam_create.numb_questions.heading' | trans }}</h2>
+                <h2>{{ 'exam_create.type_questions.heading' | trans }}</h2>
+                <h2>{{ 'exam_create.topics.heading' | trans }}</h2>
+                <h2>{{ 'exam_create.more_options.heading' | trans }}</h2>
 
                 <form action="" method="post" {{ form_enctype(form) }} novalidate="novalidate">
                     
                     {{form_widget(form) }}
-                    <!--
-                    <h2>1. Choose a language</h2>
+                    
+                   
 
                     {# form_row(form.section) #}
 
-                    <h2>2. Number of candidates</h2>
+                    
 
                     {# form_row(form.numberCandidates) #}
 
-                    <h2>3. Choose a level</h2>
+                    
 
                     {# form_row(form.level) #}
 
-                    <h2>4. Choose number of questions</h2>
+                    
 
                     {#{ form_row(form.numberQuestions) }#}
 
-                    <h2>5. Select the type of questions</h2>
+                    
 
                     {#{ form_row(form.type) }#}
 
 
-                    <h2>6. Select some topics (optional) </h2>
+                    
 
                     {#{ form_row(form.tags) }#}
 
-                    <h2>7. Select more options</h2>
+                    
 
-                    {#{ form_row(form.options) }#}-->
+                    {#{ form_row(form.options) }#}
 
                     {{ form_rest(form) }}
                     
-                    <input class="btn btn-success" type="submit" id="generateExam" value="{{ 'Create test' | trans }}" />
+                    <input class="btn btn-success" type="submit" id="generateExam" value="{{ 'exam_create.create.button' | trans }}" />
                 </form>
 
             </div>
 
             <div class="span4 well">
-                Help
+                {{ 'exam_create.help.heading' | trans }}
             </div>
 
         </div>

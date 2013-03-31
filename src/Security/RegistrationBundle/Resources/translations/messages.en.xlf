@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="54f2d59f2c2ca4868669d1272544d76e" resname="security_registration.top.heading">
+        <source>security_registration.top.heading</source>
+        <target>Sign up</target>
+      </trans-unit>
+      <trans-unit id="8db46f7ec4ca304a97f56ed944fe943c" resname="security_registration.confirmation.heading">
+        <source>security_registration.confirmation.heading</source>
+        <target>Confirmation of registration</target>
+      </trans-unit>
+      <trans-unit id="18e987d2cb0ac55f437c75961eef1920" resname="security_registration.confirmation.body">
+        <source>security_registration.confirmation.body</source>
+        <target>Thank you for registering with Test Your Skills. An email has been sent to your email account confirming your registration. You can now start using our site to test your own skills or the skills of potential candidates. </target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

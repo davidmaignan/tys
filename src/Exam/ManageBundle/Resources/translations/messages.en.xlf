@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="72581d36f8a560bf80094a2419d9d652" resname="exam_manage.top.heading">
+        <source>exam_manage.top.heading</source>
+        <target>Your Exams</target>
+      </trans-unit>
+      <trans-unit id="da3fd6ba9a5f72d86d86ccf547a9c977" resname="exam_manage.table.heading.1">
+        <source>exam_manage.table.heading.1</source>
+        <target>Number</target>
+      </trans-unit>
+      <trans-unit id="d248d36a5cddb56b793f871990089214" resname="exam_manage.table.heading.2">
+        <source>exam_manage.table.heading.2</source>
+        <target>Lanaguage(s)</target>
+      </trans-unit>
+      <trans-unit id="eef87ec0acef682e807cd6708c294c52" resname="exam_manage.table.heading.3">
+        <source>exam_manage.table.heading.3</source>
+        <target>Number of Candidates</target>
+      </trans-unit>
+      <trans-unit id="307e90dcfd0f07fcf1a2897fc6633f3b" resname="exam_manage.table.heading.4">
+        <source>exam_manage.table.heading.4</source>
+        <target>Level</target>
+      </trans-unit>
+      <trans-unit id="b59cb250175266710b7dbbad251b04ed" resname="exam_manage.table.heading.5">
+        <source>exam_manage.table.heading.5</source>
+        <target>Invitations</target>
+      </trans-unit>
+      <trans-unit id="cefb0c806eb899ca7e7f00c5ce60a88d" resname="exam_manage.table.heading.6">
+        <source>exam_manage.table.heading.6</source>
+        <target>Created at</target>
+      </trans-unit>
+      <trans-unit id="99dff5d5c5d89e89136e2f50d2a8a451" resname="exam_manage.table.heading.7">
+        <source>exam_manage.table.heading.7</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="82d56da683304c09af0361c9ed2f38ad" resname="exam_manage.button.show">
+        <source>exam_manage.button.show</source>
+        <target>View</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
