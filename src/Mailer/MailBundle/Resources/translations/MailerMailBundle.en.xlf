@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="4f715b2c5b18ecc4aa024b579a8a6653" resname="question.submission.subject">
+        <source>question.submission.subject</source>
+        <target>Your question has been submitted</target>
+      </trans-unit>
+      <trans-unit id="bf50cc2be6e0dba7bbc4026e8315a49f" resname="question.submission.message">
+        <source>question.submission.message</source>
+        <target>Hello %username%!
+
+To check the status of your question - please visit %confirmationUrl%
+
+Regards,
+the Team.
+</target>
+      </trans-unit>
+      <trans-unit id="5a2a88684cc1036c1400d06ccc16d19a" resname="question.review.subject">
+        <source>question.review.subject</source>
+        <target>A question is waiting for your review</target>
+      </trans-unit>
+      <trans-unit id="6ccc7b0f1cd304d8b5b8aac5a8ea9410" resname="question.review.message">
+        <source>question.review.message</source>
+        <target>Hello
+
+The question %title% is waiting for your review.
+
+Please click on the following link and review the question ASAP.
+
+%confirmationUrl%
+
+Regards,
+the Team.
+</target>
+      </trans-unit>
+      <trans-unit id="9c8f6f2c29ec8fabaeb700cdacbe264a" resname="question.feedback.subject">
+        <source>question.feedback.subject</source>
+        <target>A question is waiting for your feedback</target>
+      </trans-unit>
+      <trans-unit id="e8e46029a38442015f95e88eeeffc074" resname="question.feedback.message">
+        <source>question.feedback.message</source>
+        <target>Hello
+
+Your question %title% has been reviewed. To be approved and use in one of our test some feedback is required from you.
+
+Please click on the following link and modify the question.
+
+Thank you.
+
+%confirmationUrl%
+
+Regards,
+the Team.
+</target>
+      </trans-unit>
+      <trans-unit id="81554999e02e2e2a1709ee557e5c190b" resname="question.approved.subject">
+        <source>question.approved.subject</source>
+        <target>Congrats. Your question has been approved</target>
+      </trans-unit>
+      <trans-unit id="cb414c37c3badab7bbd2b981411d032a" resname="question.approved.message">
+        <source>question.approved.message</source>
+        <target>Hello
+
+Your question %title% has been approved. You can check how many tests have used it and how it performs.
+
+Please click on the following link to check your questions performance.
+
+Thank you.
+
+%confirmationUrl%
+
+Regards,
+the Team.
+</target>
+      </trans-unit>
+      <trans-unit id="0531b0f9622200928637cc79a5702631" resname="exam.invitation.subject">
+        <source>exam.invitation.subject</source>
+        <target>Invitation to testyrskills</target>
+      </trans-unit>
+      <trans-unit id="d37a5694780373a98813c60f044d0a4f" resname="exam.invitation.message">
+        <source>exam.invitation.message</source>
+        <target>Hello %username%!
+
+You have been invited to test your skills - please visit %invitationUrl%
+
+Regards,
+the Team.
+</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
