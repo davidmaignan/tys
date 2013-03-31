@@ -68,7 +68,8 @@
                     'jquery'        : '/bundles/libraryjquery/js/jquery',
                     'bootstrap'     : '/bundles/librarybootstrap/js/bootstrap.min',
                     'ember'         : '/bundles/libraryember/js/ember',
-                    'handlebars'     : '/bundles/libraryember/js/handlebars',
+                    'handlebars'    : '/bundles/libraryember/js/handlebars',
+                    'emberData'    : '/bundles/libraryember/js/ember-data-latest',
                      {%- for bundle in get_bundle_list() -%}
                         {%- set bundle = bundle|replace({'Bundle': ''}) -%}
                         '{{ bundle }}': '/{{bundle|lower }}/js'{%- if (loop.last != true) -%}, {% endif -%}
@@ -89,6 +90,10 @@
                     },
                     'handlebars': {
                         exports: 'handlebars'
+                    },
+                     'emberData': {
+                        deps: ['ember'],
+                        exports: 'emberData'
                     },
                 }        
                         
