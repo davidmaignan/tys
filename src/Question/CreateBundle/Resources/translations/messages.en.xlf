@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="c7ffef4cfb251ce9ac2f8712a20d5980" resname="question_create.top.heading">
+        <source>question_create.top.heading</source>
+        <target>Create a Question</target>
+      </trans-unit>
+      <trans-unit id="e066060360819e88b1cb2d857bb8c530" resname="question_create.top.sub_heading">
+        <source>question_create.top.sub_heading</source>
+        <target>Be creative! Add one correct and up to four wrong answers. </target>
+      </trans-unit>
+      <trans-unit id="869847201ed83e7fb9853205830e289c" resname="question_create.answers.heading">
+        <source>question_create.answers.heading</source>
+        <target>Answers</target>
+      </trans-unit>
+      <trans-unit id="3f641539b1c870cc94394945684dc4d7" resname="question_create.comments.heading">
+        <source>question_create.comments.heading</source>
+        <target>Comments</target>
+      </trans-unit>
+      <trans-unit id="a8c5ab779e6a8ae2099cd90c740ca35f" resname="question_create.help.heading">
+        <source>question_create.help.heading</source>
+        <target>Guidelines</target>
+      </trans-unit>
+      <trans-unit id="802a1ce2c09d958a9658025c56c480f6" resname="question_create.help.sub_heading">
+        <source>question_create.help.sub_heading</source>
+        <target>Some tips for helping you write questions</target>
+      </trans-unit>
+      <trans-unit id="2f9d40f97b523299a7428b2546cfd03f" resname="question_create.help.body.1">
+        <source>question_create.help.body.1</source>
+        <target>Questions should have a clear correct answer</target>
+      </trans-unit>
+      <trans-unit id="2741044522a9f86bd7c28a013379485f" resname="question_create.help.body.2">
+        <source>question_create.help.body.2</source>
+        <target>Questions should not be subjective</target>
+      </trans-unit>
+      <trans-unit id="62c21c1d8b6c217d8237f16e177543c1" resname="question_create.help.body.3">
+        <source>question_create.help.body.3</source>
+        <target>Wrong answers should not be obvious</target>
+      </trans-unit>
+      <trans-unit id="b1e425082959681fd3588118ce8d3e25" resname="question_create.help.body.4">
+        <source>question_create.help.body.4</source>
+        <target>Questions should be written at a difficult level</target>
+      </trans-unit>
+      <trans-unit id="21192473fdce4499973063470996443e" resname="question_create.help.body.5">
+        <source>question_create.help.body.5</source>
+        <target>Keep ‘em short! Questions should be less than two sentences</target>
+      </trans-unit>
+      <trans-unit id="09b8fcf47fc3d98637fcd43cc91d8846" resname="question_create.help.body.6">
+        <source>question_create.help.body.6</source>
+        <target>Answers should be less than one sentence</target>
+      </trans-unit>
+      <trans-unit id="692cb5e7555c8942a53dbf589de475c5" resname="question_create.help.body.7">
+        <source>question_create.help.body.7</source>
+        <target>Answers should be of a similar length</target>
+      </trans-unit>
+      <trans-unit id="d88238e72721071db9bb7592ba0e6f21" resname="question_create.help.body.8">
+        <source>question_create.help.body.8</source>
+        <target>Remember that answers may not appear in the order that you entered them!</target>
+      </trans-unit>
+      <trans-unit id="904a7bd3f3b7960916add03e8ea197da" resname="question_create.button.submit_question">
+        <source>question_create.button.submit_question</source>
+        <target>Submit</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

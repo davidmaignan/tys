@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="b2c7935022e367c689e5925eb7860427" resname="exam_criteria.tags.min">
+        <source>exam_criteria.tags.min</source>
+        <target>There is one apple|There are %count% apples</target>
+      </trans-unit>
+      <trans-unit id="6ea7228d32bec6616f9fb9a915095f9c" resname="exam_create.top.heading">
+        <source>exam_create.top.heading</source>
+        <target>Create your test</target>
+      </trans-unit>
+      <trans-unit id="51b8730a9e7f3b6ffcec524aff5ee7cf" resname="exam_create.language.heading">
+        <source>exam_create.language.heading</source>
+        <target>1. Choose a language</target>
+      </trans-unit>
+      <trans-unit id="d5b9b28062b9bb0a88ea7af035a2d92d" resname="exam_create.num_candidates.heading">
+        <source>exam_create.num_candidates.heading</source>
+        <target>2. Number of Candidates</target>
+      </trans-unit>
+      <trans-unit id="ea1fa4790144bbab654e0b4bc60a72ed" resname="exam_create.level.heading">
+        <source>exam_create.level.heading</source>
+        <target>3. Choose a level</target>
+      </trans-unit>
+      <trans-unit id="315b7a1f4d9628451ad777cd7d9539c1" resname="exam_create.numb_questions.heading">
+        <source>exam_create.numb_questions.heading</source>
+        <target>4. Number of questions</target>
+      </trans-unit>
+      <trans-unit id="d3fd309c6e920b8814ab7c389a630c36" resname="exam_create.type_questions.heading">
+        <source>exam_create.type_questions.heading</source>
+        <target>5. Select type of questions</target>
+      </trans-unit>
+      <trans-unit id="a5aeee22db739404c8747b29352be907" resname="exam_create.topics.heading">
+        <source>exam_create.topics.heading</source>
+        <target>6. Select some test topics (optional)</target>
+      </trans-unit>
+      <trans-unit id="b2305814c1de9be6ac5e894313a2f0c1" resname="exam_create.more_options.heading">
+        <source>exam_create.more_options.heading</source>
+        <target>7. Select more options</target>
+      </trans-unit>
+      <trans-unit id="ad163b1c0f19070933c6c690b7a668ed" resname="exam_create.create.button">
+        <source>exam_create.create.button</source>
+        <target>Create Test</target>
+      </trans-unit>
+      <trans-unit id="d55b34ef872e6b542943a72d427f9b40" resname="exam_create.help.heading">
+        <source>exam_create.help.heading</source>
+        <target>Help</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

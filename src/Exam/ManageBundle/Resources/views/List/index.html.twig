@@ -8,18 +8,18 @@
         <div class="row">
             <div class="span12">
 
-                <h1>Your exams</h1>
+                <h1>{{ 'exam_manage.top.heading' | trans }}</h1>
 
                 <table class="table table-bordered table-striped" id="exam-list">
                     <thead>
                         <tr>
-                            <th>id</th>
-                            <th>Sections</th>
-                            <th>Number of candidates</th>
-                            <th>Level</th>
-                            <th>Invitations</th>
-                            <th>Created at</th>
-                            <th>Actions</th>
+                            <th>{{ 'exam_manage.table.heading.1' | trans }}</th>
+                            <th>{{ 'exam_manage.table.heading.2' | trans }}</th>
+                            <th>{{ 'exam_manage.table.heading.3' | trans }}</th>
+                            <th>{{ 'exam_manage.table.heading.4' | trans }}</th>
+                            <th>{{ 'exam_manage.table.heading.5' | trans }}</th>
+                            <th>{{ 'exam_manage.table.heading.6' | trans }}</th>
+                            <th>{{ 'exam_manage.table.heading.7' | trans }}</th>
                         </tr>
                     </thead>
                     {% for exam in exams %}
@@ -34,7 +34,7 @@
                             <td>{{ exam.examCriteria.level }}</td>
                             <td>{{ exam.candidates | length }}</td>
                             <td>{{ exam.createdAt |date("d F  Y") }} @ {{ exam.createdAt |date("g:ia") }}</td>
-                            <td><a class="btn btn-info btn-mini" href="{{ path('exam_manage_show', { 'id': exam.id }) }}">{{ 'Show' | trans }}</td>
+                            <td><a class="btn btn-info btn-mini" href="{{ path('exam_manage_show', { 'id': exam.id }) }}">{{ 'exam_manage.button.show' | trans }}</td>
                         </tr>
                     </tbody>
                     {% endfor %}

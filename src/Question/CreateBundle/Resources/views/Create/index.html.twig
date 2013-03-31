@@ -11,8 +11,8 @@
             <div class="span6 question-create">
                 
                 <hgroup>
-                    <h1>Create a Question</h1>
-                    <h2>Be creative! Add one correct answer and up to four wrong answers. </h2>
+                    <h1>{{ 'question_create.top.heading' | trans }}</h1>
+                    <h2>{{ 'question_create.top.sub_heading' | trans }}</h2>
                 </hgroup>
                     
                 <form action="{{ path('QuestionCreateBundle_Page_Create_Index') }}" {{ form_enctype(form) }} 
@@ -22,7 +22,7 @@
 
                     {{ form_row(form.title, { 'attr': {'class': 'question'} }) }}
 
-                    <h3>Answers</h3>
+                    <h3>{{ 'question_create.answers.heading' | trans }}</h3>
                     <div class="answers" data-prototype="{{ form_widget(form.answers.vars.prototype)|escape }}">
                     
                     {% for answer in form.answers %}
@@ -38,31 +38,31 @@
                         {% endfor %}
                     </div>
 
-                    <h3>Add Comments</h3>
+                    <h3>{{ 'question_create.comments.heading' | trans }}</h3>
                     {{ form_row(form.note, {'label' : 'Comments'})}}
 
                     {{ form_rest(form) }}
 
                     <div class="form-actions">
-                        <input class="btn btn-primary" type="submit" id="_submit_question" value="submit" />
+                        <input class="btn btn-primary" type="submit" id="_submit_question" value="{{ 'question_create.button.submit_question' | trans }}" />
                     </div>
                 </form>
             </div>
 
             <div class="span4 well offset1">
                 <hgroup>
-                    <h1>PHP</h1>
-                    <h2>Guidelines for writing questions</h2>
+                    <h1>{{ 'question_create.help.heading' | trans }}</h1>
+                    <h2>{{ 'question_create.help.sub_heading' | trans }}</h2>
                 </hgroup>
                 <ul>
-                    <li>Questions should have a clear right answer</li>
-                    <li>Questions should not be subjective</li>
-                    <li>Wrong answer choices should not be obvious</li>
-                    <li>Questions should range in difficulty level</li>
-                    <li>Keep ‘em short! Questions should be less than two sentences</li>
-                    <li>Answers should be less than one sentence</li>
-                    <li>Answers should be similar lengths</li>
-                    <li>Remember, answers may not appear in the order in which you entered them</li>
+                    <li>{{ 'question_create.help.body.1' | trans }}</li>
+                    <li>{{ 'question_create.help.body.2' | trans }}</li>
+                    <li>{{ 'question_create.help.body.3' | trans }}</li>
+                    <li>{{ 'question_create.help.body.4' | trans }}</li>
+                    <li>{{ 'question_create.help.body.5' | trans }}</li>
+                    <li>{{ 'question_create.help.body.6' | trans }}</li>
+                    <li>{{ 'question_create.help.body.7' | trans }}</li>
+                    <li>{{ 'question_create.help.body.8' | trans }}</li>
                 </ul>
             </div>
             
