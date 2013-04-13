@@ -100,4 +100,37 @@ class ExamQuestion implements ExamQuestionInterface
     }
 
 
+
+    /**
+     * Add questions
+     *
+     * @param \Core\QuestionBundle\Entity\Question $questions
+     * @return ExamQuestion
+     */
+    public function addQuestion(\Core\QuestionBundle\Entity\Question $questions)
+    {
+        $this->questions[] = $questions;
+
+        return $this;
+    }
+
+    /**
+     * Remove questions
+     *
+     * @param \Core\QuestionBundle\Entity\Question $questions
+     */
+    public function removeQuestion(\Core\QuestionBundle\Entity\Question $questions)
+    {
+        $this->questions->removeElement($questions);
+    }
+
+    /**
+     * Get questions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
 }
