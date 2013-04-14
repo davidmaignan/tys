@@ -1,21 +1,18 @@
 <?php
 
 /*
- * This file is part of the QuestionCreateBundle package.
+ * This file is part of the CoreAnswerBundle package.
  *
  * (c) Testyrskills.com <http://www.Testyrskills.com/>
  *
  */
 
-namespace Exam\CoreBundle\Doctrine;
+namespace Core\AnswerBundle\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Exam\CoreBundle\Model\ExamAnswerManager as BaseExamAnswerManager;
-use Exam\CoreBundle\Model\ExamAnswerManagerInterface;
-use Exam\CoreBundle\Entity\ExamAnswerInterface;
+use Core\AnswerBundle\Model\AnswerManager as BaseAnswerManager;
 
-
-class ExamAnswerManager extends BaseExamAnswerManager
+class AnswerManager extends BaseAnswerManager
 {
     protected $objectManager;
     protected $class;
@@ -41,9 +38,9 @@ class ExamAnswerManager extends BaseExamAnswerManager
     /**
      * {@inheritDoc}
      */
-    public function deleteExamANswer(ExamAnswerInterface $exam)
+    public function deleteAnswer(AnswerInterface $answer)
     {
-        $this->objectManager->remove($exam);
+        $this->objectManager->remove($answer);
         $this->objectManager->flush();
     }
     
@@ -58,7 +55,7 @@ class ExamAnswerManager extends BaseExamAnswerManager
     /**
      * {@inheritDoc}
      */
-    public function findExamAnswerBy(array $criteria)
+    public function findAnswerBy(array $criteria)
     {
         return $this->repository->findOneBy($criteria);
     }
@@ -66,23 +63,22 @@ class ExamAnswerManager extends BaseExamAnswerManager
     /**
      * {@inheritDoc}
      */
-    public function findExamAnswers(\Security\AuthenticateBundle\Entity\User $owner)
+    public function findAnswers()
     {
-        return $this->repository->findBy(array('owner'=>$owner));
+        return $this->repository->findAll();
     }
-    
-    
+
     /**
-     * Updates an examcriteria.
+     * Updates an answer
      *
-     * @param ExamAnswerInterface $examAnswer
-     * @param Boolean             $andFlush Whether to flush the changes (default true)
+     * @param AnswerInterface $answer
+     * @param Boolean         $andFlush Whether to flush the changes (default true)
      * 
      */
-    public function updateExamAnswer(ExamAnswerInterface $examAnswer, $andFlush = true)
+    public function updateAnswer(AnswerInterface $answer, $andFlush = true)
     {
 
-        $this->objectManager->persist($examAnswer);
+        $this->objectManager->persist($answer);
         if ($andFlush) {
             $this->objectManager->flush();
         }

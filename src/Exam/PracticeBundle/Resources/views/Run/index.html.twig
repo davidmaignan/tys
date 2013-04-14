@@ -27,7 +27,7 @@
                 <p>{{ question }}</p>
                 <ul class="response">
                    {%for answer in question.answers %}
-                     <li><a  class="">{{ answer.title }}</a></li>
+                     <li><a  class="">{{ answer.id ~ ' - ' ~ answer.title }}</a></li>
                    {% endfor %}
                  </ul>
             </div>

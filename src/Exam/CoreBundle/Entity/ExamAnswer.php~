@@ -50,16 +50,6 @@ class ExamAnswer implements ExamAnswerInterface
      * @Assert\NotBlank()
      */
     private $answer;
-    
-    /**
-     * @var text $title
-     *
-     * @ORM\Column(name="title", type="text")
-     * 
-     * @Assert\NotBlank(groups={"Default"})
-     * 
-     */
-    private $title;
 
     /**
      * Get id
@@ -162,4 +152,5 @@ class ExamAnswer implements ExamAnswerInterface
     {
         return $this->answer;
     }
+
 }

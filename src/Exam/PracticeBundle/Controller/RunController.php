@@ -11,48 +11,30 @@ class RunController extends Controller
 {
     public function indexAction()
     {
-        $form        = $this->container->get('question_create.contributor.form2');
-        $formHandler = $this->container->get('question_create.contributor.form.handler2');
-        
-        $formHandler->process(false);
-        
-        //var_dump($formHandler);
-        //exit;
-        
-        //var_dump($form);
-        //exit;
-        
         $session = $this->getRequest()->getSession();
         $request = $this->getRequest();
         
+        $form        = $this->container->get('question_create.contributor.form2');
+        $formHandler = $this->container->get('question_create.contributor.form.handler2');
+        
+        $formHandler->process();
+        
+        if(null == $session->get('question')) {
+            return $this->redirect($this->generateUrl('ExamPracticeBundle_Page_End_Index'));
+        }
+        
+        //Retrieve Exam
         $examId = $session->get('exam');
         
         $em = $this->getDoctrine()->getManager();
         $exam = $em->getRepository('ExamCoreBundle:Exam')->find($examId);
         
-        $questions = $exam->getExamCriteria()->getExamQuestion()->getQuestions();
-        $question = $questions[0];
         
-        $examAnswer = new ExamAnswer();
+        //Retrieve question        
+        $questionId      = $session->get('question');
+        $questionManager = $this->get('question_create.question_manager.doctrine');
+        $question        = $questionManager->findQuestionBy($questionId);
         
-        $examAnswer->setUser($this->get('security.context')->getToken()->getUser());
-        $examAnswer->setExam($exam);
-        $examAnswer->setQuestion($question);
-        
-        /*
-        if('POST' === $request->getMethod()) {
-            
-            $form->bind($request);
-
-            if ($form->isValid()) {
-                // perform some action, such as saving the task to the database
-                echo 'valid';
-                
-            }else{
-                echo 'form invalid';
-            }
-        }
-        */
         
         return $this->render('ExamPracticeBundle:Run:index.html.twig', 
                 array('exam' => $exam, 'form' => $form->createView(), 'question'=> $question));

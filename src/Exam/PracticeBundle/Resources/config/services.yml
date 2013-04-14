@@ -18,14 +18,14 @@ services:
         class: Symfony\Component\Form\Form
         factory_service: form.factory
         factory_method: createNamed
-        arguments: ["question_create_contributor_form", "exam_answer_form_type", null]
+        arguments: ["exam_answer_form", "exam_answer_form_type", null]
         
     question_create.contributor.form.handler2:
         class: Exam\PracticeBundle\Form\Handler\ExamAnswerFormHandler
-        arguments: ["@question_create.contributor.form2", "@request", "@question_review.comment_manager.doctrine2"]
+        arguments: ["@question_create.contributor.form2", "@request", "@security.context" , "@question_review.comment_manager.doctrine2", "@exam_generate.exam_manager.doctrine", "@question_create.question_manager.doctrine", "@answer_manager"]
         scope: request
         
     question_review.comment_manager.doctrine2:
         class: Exam\CoreBundle\Doctrine\ExamAnswerManager
         public: false
-        arguments: ["@fos_user.entity_manager", Exam\CoreBundle\Entity\ExamAnswer]
+        arguments: ["@fos_user.entity_manager", Exam\CoreBundle\Entity\ExamAnswer]     

@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 /**
  * Exam\CoreBundle\Entity\ExamAnser
  *
- * @ORM\Table(name="exam_anser")
+ * @ORM\Table(name="exam_answer")
  * @ORM\Entity(repositoryClass="Exam\CoreBundle\Entity\ExamAnswerRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -27,39 +27,32 @@ class ExamAnswer implements ExamAnswerInterface
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Exam\CoreBundle\Entity\Exam", mappedBy="exam", cascade={"persist"} )
+     * @ORM\ManyToOne(targetEntity="Exam\CoreBundle\Entity\Exam" )
+     * @ORM\JoinColumn(name="exam_id", referencedColumnName="id")
      * @Assert\NotBlank()
      */
     private $exam;
-
+    
     /**
-     * @ORM\OneToOne(targetEntity="Security\AuthenticateBundle\Entity\User", mappedBy="user", cascade={"persist"} )
+     * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * @Assert\NotBlank()
      */
     private $user;
     
     /**
-     * @ORM\OneToOne(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="question", cascade={"persist"} )
+     * @ORM\ManyToOne(targetEntity="Core\QuestionBundle\Entity\Question")
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
      * @Assert\NotBlank()
      */
     private $question;
     
-    
     /**
-     * @ORM\OneToOne(targetEntity="Core\AnswerBundle\Entity\Answer", mappedBy="answer", cascade={"persist"} )
+     * @ORM\ManyToOne(targetEntity="Core\AnswerBundle\Entity\Answer")
+     * @ORM\JoinColumn(name="answer_id", referencedColumnName="id")
      * @Assert\NotBlank()
      */
     private $answer;
-    
-    /**
-     * @var text $title
-     *
-     * @ORM\Column(name="title", type="text")
-     * 
-     * @Assert\NotBlank(groups={"Default"})
-     * 
-     */
-    private $title;
 
     /**
      * Get id
@@ -143,10 +136,10 @@ class ExamAnswer implements ExamAnswerInterface
     /**
      * Set answer
      *
-     * @param \Core\QuestionBundle\Entity\Question $answer
+     * @param \Core\AnswerBundle\Entity\Answer $answer
      * @return ExamAnswer
      */
-    public function setAnswer(\Core\QuestionBundle\Entity\Question $answer = null)
+    public function setAnswer(\Core\AnswerBundle\Entity\Answer $answer = null)
     {
         $this->answer = $answer;
 
@@ -156,33 +149,11 @@ class ExamAnswer implements ExamAnswerInterface
     /**
      * Get answer
      *
-     * @return \Core\QuestionBundle\Entity\Question 
+     * @return \Core\AnswerBundle\Entity\Answer
      */
     public function getAnswer()
     {
         return $this->answer;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return ExamAnswer
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string 
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
 }
