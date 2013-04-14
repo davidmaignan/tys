@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the CoreAnswerBundle package.
+ *
+ * (c) Testyrskills.com <http://www.testyrskills.com/>
+ *
+ */
+
 namespace Core\AnswerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -19,7 +26,7 @@ use Core\QuestionBundle\Entity\Question;
  * @ORM\Entity 
  * @ORM\Table(name="answer")
  */
-class Answer
+class Answer implements AnswerInterface
 {
     /**
      * @var integer $id
@@ -67,8 +74,6 @@ class Answer
      * @ORM\Column(name="correct", type="boolean") 
      */
     private $correct;
-    
-
     
 
     /**

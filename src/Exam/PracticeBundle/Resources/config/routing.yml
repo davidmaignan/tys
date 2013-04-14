@@ -1,3 +1,7 @@
+ExamPracticeBundle_Page_End_Index:
+    pattern:  /end
+    defaults: { _controller: ExamPracticeBundle:End:index }
+
 ExamPracticeBundle_Page_Run_Index:
     pattern:  /run
     defaults: { _controller: ExamPracticeBundle:Run:index }
