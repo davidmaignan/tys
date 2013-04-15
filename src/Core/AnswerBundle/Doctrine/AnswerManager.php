@@ -11,8 +11,9 @@ namespace Core\AnswerBundle\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Core\AnswerBundle\Model\AnswerManager as BaseAnswerManager;
+use Core\AnswerBundle\Entity\AnswerInterface;
 
-class AnswerManager extends BaseAnswerManager
+class AnswerManager extends BaseAnswerManager implements AnswerManagerInterface
 {
     protected $objectManager;
     protected $class;

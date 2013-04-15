@@ -13,13 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Symfony\Component\Validator\Constraints\Collection;
-use Symfony\Component\Validator\Constraints\NotNull;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\MinLength;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
 use Core\QuestionBundle\Entity\Question;
 
 /**
@@ -201,11 +194,4 @@ class Answer implements AnswerInterface
         return 'answer';
     }
     
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addPropertyConstraint('title', new NotBlank());
-
-        
-    }
-
 }

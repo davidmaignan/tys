@@ -11,13 +11,12 @@ namespace Core\AnswerBundle\Model;
 
 use Core\AnswerBundle\Doctrine\AnswerManagerInterface;
 
-
 /**
  * Abstract Answer Manager implementation
  *
  * @author David Maignan <davidmaignan@gmail.com>
  */
-abstract class AnswerManager implements AnswerManagerInterface
+abstract class AnswerManager
 {
 
     /**
