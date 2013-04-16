@@ -9,7 +9,8 @@
 
 namespace Core\AnswerBundle\Entity;
 
-use Core\QuestionBundle\Entity\QuestionInterface;
+use Core\QuestionBundle\Entity\Question;
+
 /**
  * @author David Maignan <davidmaignan@gmail.com>
  */
@@ -33,10 +34,10 @@ interface AnswerInterface {
     /**
      * @param \Core\QuestionBundle\Entity\QuestionInterface $question
      */
-    public function setQuestion(QuestionInterface$question);
+    public function setQuestion(Question $question);
     
     /**
-     * @return \Core\QuestionBundle\Entity\QuestionInterface
+     * @return \Core\QuestionBundle\Entity\Question
      */
     public function getQuestion();
     

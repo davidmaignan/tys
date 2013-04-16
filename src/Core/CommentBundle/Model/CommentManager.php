@@ -1,22 +1,21 @@
 <?php
 
 /*
- * This file is part of the QuestionCreateBundle package.
+ * This file is part of the CoreCommentBundle package.
  *
- * (c) Testyrskills.com <http://www.Testyrskills.com/>
+ * 2013 (c) Testyrskills.com <http://www.Testyrskills.com/>
  *
  */
 
 namespace Core\CommentBundle\Model;
 
-
 /**
- * Abstract Question Manager implementation which can be used as base class for your
+ * Abstract Comment Manager implementation which can be used as base class for your
  * concrete manager.
  *
  * @author David Maignan <davidmaignan@gmail.com>
  */
-abstract class CommentManager implements CommentManagerInterface
+abstract class CommentManager
 {
 
     /**

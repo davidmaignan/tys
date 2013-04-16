@@ -1,139 +1,67 @@
 <?php
 
 /*
- * This file is part of the FOSUserBundle package.
+ * This file is part of the CoreAnswerBundle package.
  *
- * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+ * 2013 (c) Testyrskills.com <http://www.testyrskills.com/>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
  */
 
-namespace Core\LevelBundle\Model;
+namespace Core\LevelBundle\Doctrine;
+
+use Core\LevelBundle\Entity\LevelInterface;
 
 /**
- * Interface to be implemented by user managers. This adds an additional level
- * of abstraction between your application, and the actual repository.
+ * Level Manager Interface
+ * 
+ * All changes to levels should happen through this interface.
  *
- * All changes to users should happen through this interface.
- *
- * The class also contains ACL annotations which will only work if you have the
- * SecurityExtraBundle installed, otherwise they will simply be ignored.
- *
- * @author Gordon Franke <info@nevalon.de>
- * @author Thibault Duplessis <thibault.duplessis@gmail.com>
- * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+ * @author David Maignan <davidmaignan@gmail.com>
  */
+
 interface LevelManagerInterface
 {
     /**
-     * Creates an empty user instance.
+     * Creates an empty level instance.
      *
-     * @return UserInterface
+     * @return Core\LevelBundle\Entity\LevelInterface
      */
     public function createLevel();
-
+    
     /**
-     * Deletes a user.
-     *
-     * @param UserInterface $user
-     *
-     * @return void
+     * @param string $class
      */
-    //public function deleteUser(LevelInterface $user);
-
+    public function supportsClass($class);
+    
     /**
-     * Finds one user by the given criteria.
-     *
-     * @param array $criteria
-     *
-     * @return UserInterface
-     */
-    //public function findUserBy(array $criteria);
-
-    /**
-     * Find a user by its username.
-     *
-     * @param string $username
-     *
-     * @return UserInterface or null if user does not exist
-     */
-    //public function findUserByUsername($username);
-
-    /**
-     * Finds a user by its email.
-     *
-     * @param string $email
-     *
-     * @return UserInterface or null if user does not exist
-     */
-    //public function findUserByEmail($email);
-
-    /**
-     * Finds a user by its username or email.
-     *
-     * @param string $usernameOrEmail
-     *
-     * @return UserInterface or null if user does not exist
-     */
-    //public function findUserByUsernameOrEmail($usernameOrEmail);
-
-    /**
-     * Finds a user by its confirmationToken.
-     *
-     * @param string $token
-     *
-     * @return UserInterface or null if user does not exist
-     */
-    //public function findUserByConfirmationToken($token);
-
-    /**
-     * Returns a collection with all user instances.
-     *
-     * @return \Traversable
-     */
-    //public function findUsers();
-
-    /**
-     * Returns the user's fully qualified class name.
+     * Returns the level's fully qualified class name.
      *
      * @return string
      */
     public function getClass();
 
     /**
-     * Reloads a user.
+     * Deletes a level.
      *
-     * @param UserInterface $user
+     * @param Core\LevelBundle\Entity\LevelInterface $level
      *
      * @return void
      */
-    //public function reloadUser(UserInterface $user);
+    public function deleteLevel(LevelInterface $level);
 
     /**
-     * Updates a user.
+     * Finds one level by the given criteria.
      *
-     * @param UserInterface $user
+     * @param array $criteria
      *
-     * @return void
+     * @return Core\LevelBundle\Entity\LevelInterface
      */
-    //public function updateUser(UserInterface $user);
+    public function findLevelBy(array $criteria);
 
     /**
-     * Updates the canonical username and email fields for a user.
+     * Returns a collection with all levels instances.
      *
-     * @param UserInterface $user
-     *
-     * @return void
+     * @return \Traversable
      */
-    //public function updateCanonicalFields(UserInterface $user);
-
-    /**
-     * Updates a user password if a plain password is set.
-     *
-     * @param UserInterface $user
-     *
-     * @return void
-     */
-    //public function updatePassword(UserInterface $user);
+    public function findLevels();
 }

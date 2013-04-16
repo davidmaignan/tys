@@ -1,20 +1,18 @@
 <?php
 
+/*
+ * This file is part of the CoreCommentBundle package.
+ *
+ * 2013 (c) Testyrskills.com <http://www.testyrskills.com/>
+ *
+ */
+
+
 namespace Core\CommentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\Validator\Constraints as Assert;
-
-use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Symfony\Component\Validator\Constraints\Collection;
-use Symfony\Component\Validator\Constraints\NotNull;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\MinLength;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
-use Core\QuestionBundle\Entity\Question;
-use Security\AuthenticateBundle\Entity\User;
 
 /**
  * @ORM\Entity 
@@ -75,14 +73,7 @@ class Comment implements CommentInterface
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
     }
-    
-    /**
-     * @ORM\preUpdate
-     */
-    public function setUpdatedAtValue()
-    {
-       $this->setUpdatedAt(new \DateTime());
-    }
+  
 
     /**
      * Get id
@@ -138,6 +129,15 @@ class Comment implements CommentInterface
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+    
+      
+    /**
+     * @ORM\preUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+       $this->setUpdatedAt(new \DateTime());
     }
 
     /**

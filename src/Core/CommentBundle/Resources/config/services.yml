@@ -1,7 +1,9 @@
 parameters:
-#    core_comment.example.class: Core\CommentBundle\Example
+    comment_manager.class:  Core\CommentBundle\Doctrine\CommentManager
+    comment_manager.entity: Core\CommentBundle\Entity\Comment
 
 services:
-#    core_comment.example:
-#        class: %core_comment.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    comment_manager:
+        class: %comment_manager.class%
+        public: false
+        arguments: ["@fos_user.entity_manager", %comment_manager.entity%]
