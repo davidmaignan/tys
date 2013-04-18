@@ -1,3 +1,0 @@
-core_question_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: CoreQuestionBundle:Default:index }
