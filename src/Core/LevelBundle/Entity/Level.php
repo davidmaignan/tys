@@ -1,17 +1,23 @@
 <?php
 
+/*
+ * This file is part of the CoreLevelBundle package.
+ *
+ * 2013 (c) Testyrskills.com <http://www.testyrskills.com/>
+ *
+ */
 namespace Core\LevelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Validator\Constraints\MinLength;
-use Symfony\Component\Validator\Constraints\MaxLength;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+use Core\QuestionBundle\Entity\QuestionInterface;
+
+/**
+ * @author David Maignan <davidmaignan@gmail.com>
+ */
 
 /**
  * Core\LevelBundle\Entity\Level
@@ -35,6 +41,7 @@ class Level implements LevelInterface {
      * @var string $name
      *
      * @ORM\Column(name="name", type="string", length=255, unique = true)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -42,6 +49,22 @@ class Level implements LevelInterface {
      * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="level")
      */
     protected $questions;
+    
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->questions = new ArrayCollection();
+    }
+    
+    /**
+     * toString
+     * 
+     * @return string
+     */
+    public function __toString() {
+        return $this->getName();
+    }
 
     /**
      * Get id
@@ -71,25 +94,16 @@ class Level implements LevelInterface {
     public function getName() {
         return $this->name;
     }
-
-    public function __construct() {
-        $this->questions = new ArrayCollection();
-    }
-
-    public function __toString() {
-        return $this->getName();
-    }
-
-
+    
     /**
      * Add questions
      *
      * @param Core\QuestionBundle\Entity\Question $questions
      * @return Level
      */
-    public function addQuestion(\Core\QuestionBundle\Entity\Question $questions)
+    public function addQuestion(QuestionInterface $question)
     {
-        $this->questions[] = $questions;
+        $this->questions[] = $question;
         return $this;
     }
 
@@ -98,7 +112,7 @@ class Level implements LevelInterface {
      *
      * @param $questions
      */
-    public function removeQuestion(\Core\QuestionBundle\Entity\Question $questions)
+    public function removeQuestion(QuestionInterface $questions)
     {
         $this->questions->removeElement($questions);
     }
@@ -111,11 +125,5 @@ class Level implements LevelInterface {
     public function getQuestions()
     {
         return $this->questions;
-    }
-    
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addPropertyConstraint('name', new NotBlank());
-  
     }
 }

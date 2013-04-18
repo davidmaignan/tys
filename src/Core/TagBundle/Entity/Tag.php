@@ -14,7 +14,7 @@ use Exam\CoreBundle\Entity\ExamCriteria;
  * @ORM\Table(name="tag")
  * @ORM\Entity(repositoryClass="Core\TagBundle\Entity\TagRepository")
  */
-class Tag {
+class Tag implements TagInterface {
 
     /**
      * @var integer $id

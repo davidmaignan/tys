@@ -3,17 +3,19 @@
 /*
  * This file is part of the CoreAnswerBundle package.
  *
- * (c) Testyrskills.com <http://www.testyrskills.com/>
+ * 2013 (c) Testyrskills.com <http://www.testyrskills.com/>
  *
  */
 
 namespace Core\AnswerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 use Symfony\Component\Validator\Constraints as Assert;
-
 use Core\QuestionBundle\Entity\Question;
+
+/**
+ * @author David Maignan <davidmaignan@gmail.com>
+ */
 
 /**
  * @ORM\Entity 

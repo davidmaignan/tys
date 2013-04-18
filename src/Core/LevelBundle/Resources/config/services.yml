@@ -1,8 +1,9 @@
 parameters:
-#    core_level.example.class: Core\LevelBundle\Example
+    level_manager.class:  Core\LevelBundle\Doctrine\LevelManager
+    level_manager.entity: Core\LevelBundle\Entity\Level
 
 services:
-#    core_level.example:
-#        class: %core_level.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
-        
+    level_manager:
+        class: %level_manager.class%
+        public: false
+        arguments: ["@fos_user.entity_manager", %level_manager.entity%]

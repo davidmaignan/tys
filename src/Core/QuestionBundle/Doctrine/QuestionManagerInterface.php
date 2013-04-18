@@ -11,10 +11,14 @@ namespace Question\CreateBundle\Model;
 
 /**
  * Interface to be implemented by question manager. This adds an additional level
- * of abstraction between your application, and the actual repository.
+ * of abstraction between the application, and the actual repository.
  *
  * @author David Maignan <davidmaignan@gmail.com>
  */
+
+use Doctrine\Common\Persistence\ObjectManager;
+use Core\QuestionBundle\Entity\QuestionInterface;
+
 interface QuestionManagerInterface
 {
     /**
@@ -24,109 +28,56 @@ interface QuestionManagerInterface
      */
     public function createQuestion();
     
-    
-
     /**
-     * Deletes a user.
-     *
-     * @param UserInterface $user
-     *
-     * @return void
+     * 
+     * @param type $class
      */
-    //public function deleteUser(LevelInterface $user);
+    public function supportsClass($class);
+    
+    /**
+     * 
+     * @param Doctrine\Common\Persistence\ObjectManager $om
+     * @param type                                      $class
+     */
+    public function __construct(ObjectManager $om, $class);
+    
+    /**
+     * Delete a question
+     * 
+     * @param QuestionInterface $question
+     */
+    public function deleteQuestion(QuestionInterface $question);
 
     /**
-     * Finds one user by the given criteria.
+     * Finds one question by the given criteria.
      *
      * @param array $criteria
      *
-     * @return UserInterface
+     * @return QuestionInterface
      */
-    //public function findUserBy(array $criteria);
+    public function findQuestionBy(array $criteria);
 
     /**
-     * Find a user by its username.
-     *
-     * @param string $username
-     *
-     * @return UserInterface or null if user does not exist
-     */
-    //public function findUserByUsername($username);
-
-    /**
-     * Finds a user by its email.
-     *
-     * @param string $email
-     *
-     * @return UserInterface or null if user does not exist
-     */
-    //public function findUserByEmail($email);
-
-    /**
-     * Finds a user by its username or email.
-     *
-     * @param string $usernameOrEmail
-     *
-     * @return UserInterface or null if user does not exist
-     */
-    //public function findUserByUsernameOrEmail($usernameOrEmail);
-
-    /**
-     * Finds a user by its confirmationToken.
-     *
-     * @param string $token
-     *
-     * @return UserInterface or null if user does not exist
-     */
-    //public function findUserByConfirmationToken($token);
-
-    /**
-     * Returns a collection with all user instances.
+     * Returns a collection with all question instances.
      *
      * @return \Traversable
      */
-    //public function findUsers();
+    public function findQuestions();
 
     /**
-     * Returns the user's fully qualified class name.
+     * Returns the question's fully qualified class name.
      *
      * @return string
      */
     public function getClass();
 
     /**
-     * Reloads a user.
+     * Updates a question.
      *
-     * @param UserInterface $user
-     *
-     * @return void
+     * @param QuestionInterface $question
+     * @param Boolean       $andFlush Whether to flush the changes (default true)
+     * 
      */
-    //public function reloadUser(UserInterface $user);
+    public function updateQuestion(UserInterface $question, $andFlush = true);
 
-    /**
-     * Updates a user.
-     *
-     * @param UserInterface $user
-     *
-     * @return void
-     */
-    //public function updateUser(UserInterface $user);
-
-    /**
-     * Updates the canonical username and email fields for a user.
-     *
-     * @param UserInterface $user
-     *
-     * @return void
-     */
-    //public function updateCanonicalFields(UserInterface $user);
-
-    /**
-     * Updates a user password if a plain password is set.
-     *
-     * @param UserInterface $user
-     *
-     * @return void
-     */
-    //public function updatePassword(UserInterface $user);
 }

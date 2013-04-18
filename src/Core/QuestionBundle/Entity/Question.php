@@ -6,7 +6,7 @@
 
 namespace Core\QuestionBundle\Entity;
 
-use Core\TagBundle\Entity\Tag;
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;  
@@ -22,10 +22,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
 
-use Core\AnswerBundle\Entity\Answer;
-use Exam\CoreBundle\Entity\Exam;
+use Core\AnswerBundle\Entity\AnswerInterface;
+use Exam\CoreBundle\Entity\ExamInterface;
 use Security\AuthenticateBundle\Entity\User;
-use Core\CommentBundle\Entity\Comment;
+use Core\CommentBundle\Entity\CommentInterface;
+use Core\TagBundle\Entity\TagInterface;
+use Exam\CoreBundle\Entity\ExamQuestionInterface;
 
 
 /**
@@ -338,8 +340,8 @@ class Question implements QuestionInterface {
      * @param Core\TagBundle\Entity\Tag $tags
      * @return Question
      */
-    public function addTag(Tag $tags) {
-        $this->tags[] = $tags;
+    public function addTag(TagInterface $tag) {
+        $this->tags[] = $tag;
         return $this;
     }
 
@@ -348,8 +350,8 @@ class Question implements QuestionInterface {
      *
      * @param $tags
      */
-    public function removeTag(Tag $tags) {
-        $this->tags->removeElement($tags);
+    public function removeTag(TagInterface $tag) {
+        $this->tags->removeElement($tag);
     }
 
     /**
@@ -368,9 +370,9 @@ class Question implements QuestionInterface {
      * @param Core\AnswerBundle\Entity\answer $answers
      * @return Question
      */
-    public function addAnswer(Answer $answers)
+    public function addAnswer(AnswerInterface $answer)
     {
-        $this->answers[] = $answers;
+        $this->answers[] = $answer;
         return $this;
     }
 
@@ -379,7 +381,7 @@ class Question implements QuestionInterface {
      *
      * @param $answers
      */
-    public function removeAnswer(Answer $answers)
+    public function removeAnswer(AnswerInterface $answers)
     {
         $this->answers->removeElement($answers);
     }
@@ -394,7 +396,6 @@ class Question implements QuestionInterface {
         return $this->answers;
     }
     
-    
     /**
      * Set Answers and question relation
      * @param ArrayCollection $answers 
@@ -407,8 +408,6 @@ class Question implements QuestionInterface {
 
         $this->answers = $answers;
     }
-    
- 
     
     /**
      * @ORM\preUpdate
@@ -491,9 +490,9 @@ class Question implements QuestionInterface {
      * @param Exam\CoreBundle\Entity\Exam $exams
      * @return Question
      */
-    public function addExam(Exam $exams)
+    public function addExam(ExamInterface $exam)
     {
-        $this->exams[] = $exams;
+        $this->exams[] = $exam;
     
         return $this;
     }
@@ -503,9 +502,9 @@ class Question implements QuestionInterface {
      *
      * @param Exam\CoreBundle\Entity\Exam $exams
      */
-    public function removeExam(\Exam\CoreBundle\Entity\Exam $exams)
+    public function removeExam(ExamInterface $exam)
     {
-        $this->exams->removeElement($exams);
+        $this->exams->removeElement($exam);
     }
 
     /**
@@ -554,10 +553,10 @@ class Question implements QuestionInterface {
     /**
      * Add comments
      *
-     * @param Core\CommentBundle\Entity\Comment $comments
+     * @param Core\CommentBundle\Entity\CommentInterface $comments
      * @return Question
      */
-    public function addComment(Comment $comments)
+    public function addComment(CommentInterface $comments)
     {
         $this->comments[] = $comments;
     
@@ -567,11 +566,11 @@ class Question implements QuestionInterface {
     /**
      * Remove comments
      *
-     * @param Core\CommentBundle\Entity\Comment $comments
+     * @param Core\CommentBundle\Entity\CommentInterface $comment
      */
-    public function removeComment(Comment $comments)
+    public function removeComment(CommentInterface $comment)
     {
-        $this->comments->removeElement($comments);
+        $this->comments->removeElement($comment);
     }
 
     /**
@@ -587,10 +586,10 @@ class Question implements QuestionInterface {
     /**
      * Set head
      *
-     * @param \Core\QuestionBundle\Entity\Question $head
+     * @param \Core\QuestionBundle\Entity\QuestionInterface $head
      * @return Question
      */
-    public function setHead(\Core\QuestionBundle\Entity\Question $head = null)
+    public function setHead(QuestionInterface $head = null)
     {
         $this->head = $head;
 
@@ -600,7 +599,7 @@ class Question implements QuestionInterface {
     /**
      * Get head
      *
-     * @return \Core\QuestionBundle\Entity\Question 
+     * @return \Core\QuestionBundle\Entity\QuestionInterface 
      */
     public function getHead()
     {
@@ -610,10 +609,10 @@ class Question implements QuestionInterface {
     /**
      * Set tail
      *
-     * @param \Core\QuestionBundle\Entity\Question $tail
+     * @param \Core\QuestionBundle\Entity\QuestionInterface $tail
      * @return Question
      */
-    public function setTail(\Core\QuestionBundle\Entity\Question $tail = null)
+    public function setTail(QuestionInterface $tail = null)
     {
         $this->tail = $tail;
 
@@ -623,7 +622,7 @@ class Question implements QuestionInterface {
     /**
      * Get tail
      *
-     * @return \Core\QuestionBundle\Entity\Question 
+     * @return \Core\QuestionBundle\Entity\QuestionInterface 
      */
     public function getTail()
     {
@@ -634,12 +633,12 @@ class Question implements QuestionInterface {
     /**
      * Add examQuestions
      *
-     * @param \Exam\CoreBundle\Entity\ExamQUestion $examQuestions
+     * @param \Exam\CoreBundle\Entity\ExamQuestionInterface $examQuestion
      * @return Question
      */
-    public function addExamQuestion(\Exam\CoreBundle\Entity\ExamQUestion $examQuestions)
+    public function addExamQuestion(ExamQuestionInterface $examQuestion)
     {
-        $this->examQuestions[] = $examQuestions;
+        $this->examQuestions[] = $examQuestion;
 
         return $this;
     }
@@ -647,11 +646,11 @@ class Question implements QuestionInterface {
     /**
      * Remove examQuestions
      *
-     * @param \Exam\CoreBundle\Entity\ExamQUestion $examQuestions
+     * @param \Exam\CoreBundle\Entity\ExamQUestionInterface $examQuestions
      */
-    public function removeExamQuestion(\Exam\CoreBundle\Entity\ExamQUestion $examQuestions)
+    public function removeExamQuestion(ExamQuestionInterface $examQuestion)
     {
-        $this->examQuestions->removeElement($examQuestions);
+        $this->examQuestions->removeElement($examQuestion);
     }
 
     /**

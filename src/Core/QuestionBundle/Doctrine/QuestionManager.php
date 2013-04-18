@@ -16,7 +16,7 @@ use FOS\UserBundle\Util\CanonicalizerInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Core\QuestionBundle\Entity\QuestionInterface;
 
-class QuestionManager extends BaseQuestionManager
+class QuestionManager extends BaseQuestionManager implements QuestionManagerInterface
 {
     protected $objectManager;
     protected $class;
@@ -72,7 +72,6 @@ class QuestionManager extends BaseQuestionManager
         return $this->repository->findAll();
     }
 
-   
     /**
      * Updates a question.
      *

@@ -1,14 +1,14 @@
 <?php
 /**
- * @copyright 2012 Testyrskills.com
+ * @copyright 2013 Testyrskills.com
  */
 
 namespace Core\QuestionBundle\Entity;
 
 /**
- * QueueStatus Entity
+ * QuestionStatus Entity
  *
- * @author Paul Munson <pmunson@nationalfibre.net>
+ * @author David Maignan <davidmaignan@gmail.com>
  */
 class QuestionStatus
 {

@@ -16,7 +16,7 @@ namespace Question\CreateBundle\Model;
  *
  * @author David Maignan <davidmaignan@gmail.com>
  */
-abstract class QuestionManager implements QuestionManagerInterface
+abstract class QuestionManager
 {
 
     /**

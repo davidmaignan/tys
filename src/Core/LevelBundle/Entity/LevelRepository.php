@@ -23,12 +23,3 @@ class LevelRepository extends EntityRepository
     }
     
 }
-
-/*
-<span class="label">Default</span>
-Success 	<span class="label label-success">Success</span>
-Warning 	<span class="label label-warning">Warning</span>
-Important 	<span class="label label-important">Important</span>
-Info            <span class="label label-info">Info</span>
-Inverse 	<span class="label label-inverse">Inverse</span>
- */
