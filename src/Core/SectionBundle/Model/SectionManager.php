@@ -7,16 +7,16 @@
  *
  */
 
-namespace Core\QuestionBundle\Model;
+namespace Core\SectionBundle\Model;
 
 
 /**
- * Abstract Question Manager implementation which can be used as base class for your
+ * Abstract Section Manager implementation which can be used as base class for your
  * concrete manager.
  *
  * @author David Maignan <davidmaignan@gmail.com>
  */
-abstract class QuestionManager
+abstract class SectionManager
 {
 
     /**
@@ -29,11 +29,11 @@ abstract class QuestionManager
     }
 
     /**
-     * Returns an empty question instance
+     * Returns an empty section instance
      *
      * @return QuestionInterface
      */
-    public function createQuestion()
+    public function createSection()
     {
         $class = $this->getClass();
         $question = new $class;

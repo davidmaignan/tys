@@ -1,22 +1,21 @@
 <?php
 
 /*
- * This file is part of the QuestionCreateBundle package.
+ * This file is part of the SectionCreateBundle package.
  *
  * (c) Testyrskills.com <http://www.Testyrskills.com/>
  *
  */
 
-namespace Core\QuestionBundle\Doctrine;
+namespace Core\SectionBundle\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use FOS\UserBundle\Model\UserInterface;
-use Question\CreateBundle\Model\QuestionManager as BaseQuestionManager;
-use FOS\UserBundle\Util\CanonicalizerInterface;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
-use Core\QuestionBundle\Entity\QuestionInterface;
 
-class QuestionManager extends BaseQuestionManager implements QuestionManagerInterface
+use Core\SectionBundle\Model\SectionManager as BaseSectionManager;
+
+use Core\SectionBundle\Entity\SectionInterface;
+
+class SectionManager extends BaseSectionManager implements SectionManagerInterface
 {
     protected $objectManager;
     protected $class;
@@ -42,9 +41,9 @@ class QuestionManager extends BaseQuestionManager implements QuestionManagerInte
     /**
      * {@inheritDoc}
      */
-    public function deleteQuestion(QuestionInterface $question)
+    public function deleteSection(SectionInterface $section)
     {
-        $this->objectManager->remove($question);
+        $this->objectManager->remove($section);
         $this->objectManager->flush();
     }
     
@@ -59,7 +58,7 @@ class QuestionManager extends BaseQuestionManager implements QuestionManagerInte
     /**
      * {@inheritDoc}
      */
-    public function findQuestionBy(array $criteria)
+    public function findSectionBy(array $criteria)
     {
         return $this->repository->findOneBy($criteria);
     }
@@ -67,22 +66,22 @@ class QuestionManager extends BaseQuestionManager implements QuestionManagerInte
     /**
      * {@inheritDoc}
      */
-    public function findQuestions()
+    public function findSections()
     {
         return $this->repository->findAll();
     }
 
     /**
-     * Updates a question.
+     * Updates a section.
      *
-     * @param QuestionInterface $question
+     * @param SectionInterface $section
      * @param Boolean       $andFlush Whether to flush the changes (default true)
      * 
      */
-    public function updateQuestion(QuestionInterface $question, $andFlush = true)
+    public function updateSection(SectionInterface $section, $andFlush = true)
     {
 
-        $this->objectManager->persist($question);
+        $this->objectManager->persist($section);
         if ($andFlush) {
             $this->objectManager->flush();
         }

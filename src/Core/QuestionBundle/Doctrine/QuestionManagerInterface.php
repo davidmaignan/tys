@@ -1,13 +1,13 @@
 <?php
 
 /*
- * This file is part of the QuestionCreateBundle package.
+ * This file is part of the CoreQuestionBundle package.
  *
  * (c) Testyrskills.com <http://www.Testyrskills.com/>
  *
  */
 
-namespace Question\CreateBundle\Model;
+namespace Core\QuestionBundle\Model;
 
 /**
  * Interface to be implemented by question manager. This adds an additional level
@@ -44,7 +44,7 @@ interface QuestionManagerInterface
     /**
      * Delete a question
      * 
-     * @param QuestionInterface $question
+     * @param Core\QuestionBundle\Entity\QuestionInterface $question
      */
     public function deleteQuestion(QuestionInterface $question);
 
@@ -53,7 +53,7 @@ interface QuestionManagerInterface
      *
      * @param array $criteria
      *
-     * @return QuestionInterface
+     * @return Core\QuestionBundle\Entity\QuestionInterface
      */
     public function findQuestionBy(array $criteria);
 
@@ -74,10 +74,9 @@ interface QuestionManagerInterface
     /**
      * Updates a question.
      *
-     * @param QuestionInterface $question
-     * @param Boolean       $andFlush Whether to flush the changes (default true)
+     * @param Core\QuestionBundle\Entity\QuestionInterface $question
+     * @param Boolean                                      $andFlush Whether to flush the changes (default true)
      * 
      */
-    public function updateQuestion(UserInterface $question, $andFlush = true);
-
+    public function updateQuestion(QuestionInterface $question, $andFlush = true);
 }

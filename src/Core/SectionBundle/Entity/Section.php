@@ -1,11 +1,23 @@
 <?php
+/*
+ * This file is part of the CoreAnswerBundle package.
+ *
+ * 2013 (c) Testyrskills.com <http://www.testyrskills.com/>
+ *
+ */
 
 namespace Core\SectionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Exam\CoreBundle\Entity\ExamCriteria;
+use Exam\CoreBundle\Entity\ExamCriteriaInterface;
+use Core\QuestionBundle\Entity\QuestionInterface;
+
+
+/**
+ * @author David Maignan <davidmaignan@gmail.com>
+ */
 
 /**
  * Core\SectionBundle\Entity\Section
@@ -13,7 +25,7 @@ use Exam\CoreBundle\Entity\ExamCriteria;
  * @ORM\Table(name="section")
  * @ORM\Entity(repositoryClass="Core\SectionBundle\Entity\SectionRepository")
  */
-class Section
+class Section implements SectionInterface
 {
     /**
      * @var integer $id
@@ -30,7 +42,6 @@ class Section
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-    
     
     
     /**
@@ -87,19 +98,6 @@ class Section
     }
 
     /**
-     * Set questions
-     *
-     * @param string $questions
-     * @return Section
-     */
-    public function setQuestions($questions)
-    {
-        $this->questions = $questions;
-        
-        return $this;
-    }
-
-    /**
      * Get questions
      *
      * @return string 
@@ -112,12 +110,12 @@ class Section
     /**
      * Add questions
      *
-     * @param Dm\QuestionBundle\Entity\Question $questions
+     * @param Core\QuestionBundle\Entity\Question $question
      * @return Section
      */
-    public function addQuestion(\Core\QuestionBundle\Entity\Question $questions)
+    public function addQuestion(\Core\QuestionBundle\Entity\Question $question)
     {
-        $this->questions[] = $questions;
+        $this->questions[] = $question;
         return $this;
     }
 
@@ -134,7 +132,7 @@ class Section
     /**
      * Add examCriterias
      *
-     * @param Exam\CoreBundle\Entity\ExamCriteria $examCriteria
+     * @param Exam\CoreBundle\Entity\ExamCriteriaInterface $examCriteria
      * @return Section
      */
     public function addExamCriteria(ExamCriteria $examCriteria)
@@ -146,9 +144,9 @@ class Section
     /**
      * Remove examCriterias
      *
-     * @param $examCriteria
+     * @param Exam\CoreBundle\Entity\ExamCriteriaInterface $examCriteria
      */
-    public function removeExamCriteria(ExamCriteria $examCriteria)
+    public function removeExamCriteria(ExamCriteriaInterface $examCriteria)
     {
         $this->examCriterias->removeElement($examCriteria);
     }
