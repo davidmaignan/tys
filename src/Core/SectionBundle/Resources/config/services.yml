@@ -1,7 +1,9 @@
 parameters:
-#    core_section.example.class: Core\SectionBundle\Example
+    section_manager.class:  Core\SectionBundle\Doctrine\SectionManager
+    section_manager.entity: Core\SectionBundle\Entity\Section
 
 services:
-#    core_section.example:
-#        class: %core_section.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    section_manager:
+        class: %section_manager.class%
+        public: false
+        arguments: ["@fos_user.entity_manager", %section_manager.entity%]

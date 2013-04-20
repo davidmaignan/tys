@@ -4,7 +4,7 @@ namespace Core\TypeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Core\QuestionBundle\Entity\Question;
+use Core\QuestionBundle\Entity\QuestionInterface;
 
 /**
  * Core\TypeBundle\Entity\Type
@@ -77,10 +77,10 @@ class Type
     /**
      * Add questions
      *
-     * @param Core\QuestionBundle\Entity\Question $questions
+     * @param Core\QuestionBundle\Entity\QuestionInterface $questions
      * @return Type
      */
-    public function addQuestion(Question $questions)
+    public function addQuestion(QuestionInterface $questions)
     {
         $this->questions[] = $questions;
         return $this;
@@ -91,7 +91,7 @@ class Type
      *
      * @param $questions
      */
-    public function removeQuestion(Question $questions)
+    public function removeQuestion(QuestionInterface $questions)
     {
         $this->questions->removeElement($questions);
     }

@@ -113,7 +113,7 @@ class Section implements SectionInterface
      * @param Core\QuestionBundle\Entity\Question $question
      * @return Section
      */
-    public function addQuestion(\Core\QuestionBundle\Entity\Question $question)
+    public function addQuestion(QuestionInterface $question)
     {
         $this->questions[] = $question;
         return $this;
@@ -124,7 +124,7 @@ class Section implements SectionInterface
      *
      * @param $questions
      */
-    public function removeQuestion(\Core\QuestionBundle\Entity\Question $questions)
+    public function removeQuestion(QuestionInterface $questions)
     {
         $this->questions->removeElement($questions);
     }
@@ -135,7 +135,7 @@ class Section implements SectionInterface
      * @param Exam\CoreBundle\Entity\ExamCriteriaInterface $examCriteria
      * @return Section
      */
-    public function addExamCriteria(ExamCriteria $examCriteria)
+    public function addExamCriteria(ExamCriteriaInterface $examCriteria)
     {
         $this->examCriterias[] = $examCriteria;
         return $this;

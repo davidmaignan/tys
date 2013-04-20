@@ -7,16 +7,16 @@
  *
  */
 
-namespace Core\SectionBundle\Model;
+namespace Core\TagBundle\Model;
 
 
 /**
- * Abstract Section Manager implementation which can be used as base class for your
+ * Abstract Tag Manager implementation which can be used as base class for your
  * concrete manager.
  *
  * @author David Maignan <davidmaignan@gmail.com>
  */
-abstract class SectionManager
+abstract class TagManager
 {
 
     /**
@@ -33,7 +33,7 @@ abstract class SectionManager
      *
      * @return QuestionInterface
      */
-    public function createSection()
+    public function createTag()
     {
         $class = $this->getClass();
         $question = new $class;

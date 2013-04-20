@@ -1,21 +1,23 @@
 <?php
 
 /*
- * This file is part of the SectionCreateBundle package.
+ * This file is part of the TagCreateBundle package.
  *
  * (c) Testyrskills.com <http://www.Testyrskills.com/>
  *
  */
 
-namespace Core\SectionBundle\Doctrine;
+namespace Core\TagBundle\Doctrine;
+
+/**
+ * @author David Maignan <davidmaignan@gmail.com>
+ */
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Core\TagBundle\Model\TagManager as BaseTagManager;
+use Core\TagBundle\Entity\TagInterface;
 
-use Core\SectionBundle\Model\SectionManager as BaseSectionManager;
-
-use Core\SectionBundle\Entity\SectionInterface;
-
-class SectionManager extends BaseSectionManager implements SectionManagerInterface
+class TagManager extends BaseTagManager implements TagManagerInterface
 {
     protected $objectManager;
     protected $class;
@@ -41,9 +43,9 @@ class SectionManager extends BaseSectionManager implements SectionManagerInterfa
     /**
      * {@inheritDoc}
      */
-    public function deleteSection(SectionInterface $section)
+    public function deleteTag(TagInterface $tag)
     {
-        $this->objectManager->remove($section);
+        $this->objectManager->remove($tag);
         $this->objectManager->flush();
     }
     
@@ -58,7 +60,7 @@ class SectionManager extends BaseSectionManager implements SectionManagerInterfa
     /**
      * {@inheritDoc}
      */
-    public function findSectionBy(array $criteria)
+    public function findTagBy(array $criteria)
     {
         return $this->repository->findOneBy($criteria);
     }
@@ -66,22 +68,22 @@ class SectionManager extends BaseSectionManager implements SectionManagerInterfa
     /**
      * {@inheritDoc}
      */
-    public function findSections()
+    public function findTags()
     {
         return $this->repository->findAll();
     }
 
     /**
-     * Updates a section.
+     * Updates a tag.
      *
-     * @param SectionInterface $section
-     * @param Boolean       $andFlush Whether to flush the changes (default true)
+     * @param TagInterface $tag
+     * @param Boolean      $andFlush Whether to flush the changes (default true)
      * 
      */
-    public function updateSection(SectionInterface $section, $andFlush = true)
+    public function updateTag(TagInterface $tag, $andFlush = true)
     {
 
-        $this->objectManager->persist($section);
+        $this->objectManager->persist($tag);
         if ($andFlush) {
             $this->objectManager->flush();
         }

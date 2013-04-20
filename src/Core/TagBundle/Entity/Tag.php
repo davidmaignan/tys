@@ -138,7 +138,7 @@ class Tag implements TagInterface {
      *
      * @param \Exam\CoreBundle\Entity\ExamCriteriaInterface $examCriteria
      */
-    public function removeExamCriteria(ExamCriteria $examCriteria)
+    public function removeExamCriteria(ExamCriteriaInterface $examCriteria)
     {
         $this->examCriterias->removeElement($examCriteria);
     }

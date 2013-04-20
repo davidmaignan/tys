@@ -8,6 +8,7 @@
 namespace Core\SectionBundle\Entity;
 
 use Core\QuestionBundle\Entity\QuestionInterface;
+use Exam\CoreBundle\Entity\ExamCriteriaInterface;
 
 /**
  * @author David Maignan <davidmaignan@gmail.com>

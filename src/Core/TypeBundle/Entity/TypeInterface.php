@@ -5,14 +5,14 @@
  * 2013 (c) Testyrskills.com <http://www.testyrskills.com/>
  *
  */
-namespace Core\SectionBundle\Entity;
+namespace Core\TypeBundle\Entity;
 
 use Core\QuestionBundle\Entity\QuestionInterface;
 
 /**
  * @author David Maignan <davidmaignan@gmail.com>
  */
-interface SectionInterface {
+interface TypeInterface {
     
     /**
      * @return integer
@@ -53,19 +53,4 @@ interface SectionInterface {
      * @param \Core\QuestionBundle\Entity\QuestionInterface $question
      */
     public function removeQuestion(QuestionInterface $question);
-    
-    /**
-     * @param Exam\CoreBundle\Entity\ExamCriteriaInterface $examCriteria
-     */
-    public function addExamCriteria(ExamCriteriaInterface $examCriteria);
-    
-    /**
-     * @param \Core\SectionBundle\Entity\ExamCriteriaInterface $examCriteria
-     */
-    public function removeExamCriteria(ExamCriteriaInterface $examCriteria);
-    
-    /**
-     * @return Doctrine\Common\Collections\Collection
-     */
-    public function getExamCriterias();
 }

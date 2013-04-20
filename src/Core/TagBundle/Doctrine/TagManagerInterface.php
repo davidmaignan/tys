@@ -1,32 +1,32 @@
 <?php
 
 /*
- * This file is part of the SectionCreateBundle package.
+ * This file is part of the TagCreateBundle package.
  *
  * (c) Testyrskills.com <http://www.Testyrskills.com/>
  *
  */
 
-namespace Core\SectionBundle\Doctrine;
+namespace Core\TagBundle\Doctrine;
 
 /**
- * Interface to be implemented by section manager. This adds an additional level
+ * Interface to be implemented by tag manager. This adds an additional level
  * of abstraction between the application, and the actual repository.
  *
  * @author David Maignan <davidmaignan@gmail.com>
  */
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Core\SectionBundle\Entity\SectionInterface;
+use Core\TagBundle\Entity\TagInterface;
 
-interface SectionManagerInterface
+interface TagManagerInterface
 {
     /**
-     * Creates an empty section instance.
+     * Creates an empty tag instance.
      *
      * @return UserInterface
      */
-    public function createSection();
+    public function createTag();
     
     /**
      * 
@@ -42,42 +42,41 @@ interface SectionManagerInterface
     public function __construct(ObjectManager $om, $class);
     
     /**
-     * Delete a section
+     * Delete a tag
      * 
-     * @param Core\SectionBundle\Entity\SectionInterface $section
+     * @param Core\TagBundle\Entity\TagInterface $tag
      */
-    public function deleteSection(SectionInterface $section);
+    public function deleteTag(TagInterface $tag);
 
     /**
-     * Finds one section by the given criteria.
+     * Finds one tag by the given criteria.
      *
      * @param array $criteria
      *
-     * @return Core\SectionBundle\Entity\SectionInterface
+     * @return Core\TagBundle\Entity\TagInterface
      */
-    public function findSectionBy(array $criteria);
+    public function findTagBy(array $criteria);
 
     /**
-     * Returns a collection with all section instances.
+     * Returns a collection with all tag instances.
      *
      * @return \Traversable
      */
-    public function findSections();
+    public function findTags();
 
     /**
-     * Returns the section's fully qualified class name.
+     * Returns the tag's fully qualified class name.
      *
      * @return string
      */
     public function getClass();
 
     /**
-     * Updates a section.
+     * Updates a tag.
      *
-     * @param Core\SectionBundle\Entity\SectionInterface $section
-     * @param Boolean                                    $andFlush Whether to flush the changes (default true)
+     * @param Core\TagBundle\Entity\TagInterface $tag
+     * @param Boolean                            $andFlush Whether to flush the changes (default true)
      * 
      */
-    public function updateSection(UserInterface $section, $andFlush = true);
-
+    public function updateTag(TagInterface $tag, $andFlush = true);
 }
