@@ -1,3 +1,0 @@
-core_section_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: CoreSectionBundle:Default:index }
