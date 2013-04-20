@@ -1,3 +1,0 @@
-core_type_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: CoreTypeBundle:Default:index }
