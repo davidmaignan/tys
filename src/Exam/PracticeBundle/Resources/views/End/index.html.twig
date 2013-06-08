@@ -1,0 +1,38 @@
+{% extends 'SiteHomepageBundle::layout.html.twig' %}
+
+
+{% block body %}
+
+<div id="header">
+    <div class="container">  
+        <div class="row">
+            <div class="span6">
+                <h1>End of the test</h1>
+                
+            </div>
+            <div class="span6">
+                <p>Date: {{ "now"|date("F jS") }}</p>
+                <h3>End time: {{ "now"|date("H:i:s") }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="content" class="txt-middle">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h2><i class=" icon-warning-sign"></i> End of the test</h2>
+                <hr class="dashed">				
+            </div>  
+        </div>  
+        
+        <hr class="dashed">
+        <div class="row">
+            
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

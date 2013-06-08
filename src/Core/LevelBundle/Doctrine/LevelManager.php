@@ -1,23 +1,25 @@
 <?php
 
 /*
- * This file is part of the FOSUserBundle package.
+ * This file is part of the CoreAnswerBundle package.
  *
- * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+ * 2013 (c) Testyrskills.com <http://www.testyrskills.com/>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
  */
 
 namespace Core\LevelBundle\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use FOS\UserBundle\Model\UserInterface;
 use Core\LevelBundle\Model\LevelManager as BaseLevelManager;
-use FOS\UserBundle\Util\CanonicalizerInterface;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Core\LevelBundle\Entity\LevelInterface;
 
-class LevelManager extends BaseLevelManager
+/**
+ * Level Manager
+ *
+ * @author David Maignan <davidmaignan@gmail.com>
+ */
+
+class LevelManager extends BaseLevelManager implements LevelManagerInterface
 {
     protected $objectManager;
     protected $class;
@@ -26,9 +28,6 @@ class LevelManager extends BaseLevelManager
     /**
      * Constructor.
      *
-     * @param EncoderFactoryInterface $encoderFactory
-     * @param CanonicalizerInterface  $usernameCanonicalizer
-     * @param CanonicalizerInterface  $emailCanonicalizer
      * @param ObjectManager           $om
      * @param string                  $class
      */
@@ -71,11 +70,10 @@ class LevelManager extends BaseLevelManager
     /**
      * {@inheritDoc}
      */
-    public function findLevelss()
+    public function findLevels()
     {
         return $this->repository->findAll();
     }
-
    
     /**
      * Updates a user.
@@ -84,12 +82,8 @@ class LevelManager extends BaseLevelManager
      * @param Boolean       $andFlush Whether to flush the changes (default true)
      * 
      */
-     
-    public function updateLevel($level, $andFlush = true)
+    public function updateLevel(LevelInterface $level, $andFlush = true)
     {
-        //$this->updateCanonicalFields($user);
-        //$this->updatePassword($user);
-
         $this->objectManager->persist($level);
         if ($andFlush) {
             $this->objectManager->flush();

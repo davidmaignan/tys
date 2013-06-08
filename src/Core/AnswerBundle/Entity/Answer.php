@@ -1,25 +1,27 @@
 <?php
 
+/*
+ * This file is part of the CoreAnswerBundle package.
+ *
+ * 2013 (c) Testyrskills.com <http://www.testyrskills.com/>
+ *
+ */
+
 namespace Core\AnswerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 use Symfony\Component\Validator\Constraints as Assert;
-
-use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Symfony\Component\Validator\Constraints\Collection;
-use Symfony\Component\Validator\Constraints\NotNull;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\MinLength;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
 use Core\QuestionBundle\Entity\Question;
+
+/**
+ * @author David Maignan <davidmaignan@gmail.com>
+ */
 
 /**
  * @ORM\Entity 
  * @ORM\Table(name="answer")
  */
-class Answer
+class Answer implements AnswerInterface
 {
     /**
      * @var integer $id
@@ -67,8 +69,6 @@ class Answer
      * @ORM\Column(name="correct", type="boolean") 
      */
     private $correct;
-    
-
     
 
     /**
@@ -196,11 +196,4 @@ class Answer
         return 'answer';
     }
     
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addPropertyConstraint('title', new NotBlank());
-
-        
-    }
-
 }

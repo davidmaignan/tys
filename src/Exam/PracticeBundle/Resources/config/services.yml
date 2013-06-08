@@ -5,3 +5,27 @@ services:
 #    exam_practice.example:
 #        class: %exam_practice.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+
+services:
+    question_create.contributor.form.type2:
+        class: Exam\PracticeBundle\Form\Type\ExamAnswerFormType
+        arguments: ["Exam\CoreBundle\Entity\ExamAnswer"]
+        tags:
+            - { name: form.type, alias: exam_answer_form_type } # The alias is what is used to
+
+    question_create.contributor.form2:
+        class: Symfony\Component\Form\Form
+        factory_service: form.factory
+        factory_method: createNamed
+        arguments: ["exam_answer_form", "exam_answer_form_type", null]
+        
+    question_create.contributor.form.handler2:
+        class: Exam\PracticeBundle\Form\Handler\ExamAnswerFormHandler
+        arguments: ["@question_create.contributor.form2", "@request", "@security.context" , "@question_review.comment_manager.doctrine2", "@exam_generate.exam_manager.doctrine", "@question_create.question_manager.doctrine", "@answer_manager"]
+        scope: request
+        
+    question_review.comment_manager.doctrine2:
+        class: Exam\CoreBundle\Doctrine\ExamAnswerManager
+        public: false
+        arguments: ["@fos_user.entity_manager", Exam\CoreBundle\Entity\ExamAnswer]     

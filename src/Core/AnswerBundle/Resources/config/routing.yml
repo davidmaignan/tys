@@ -1,3 +1,0 @@
-core_answer_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: CoreAnswerBundle:Default:index }

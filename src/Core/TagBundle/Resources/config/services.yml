@@ -1,7 +1,9 @@
 parameters:
-#    core_tag.example.class: Core\TagBundle\Example
+    tag_manager.class:  Core\TagBundle\Doctrine\TagManager
+    tag_manager.entity: Core\TagBundle\Entity\Tag
 
 services:
-#    core_tag.example:
-#        class: %core_tag.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    tag_manager:
+        class: %tag_manager.class%
+        public: false
+        arguments: ["@fos_user.entity_manager", %tag_manager.entity%]

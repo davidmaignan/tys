@@ -45,6 +45,6 @@ class QuestionFormType extends AbstractType
     
     public function getName()
     {
-        return 'question_create_contributor_type';
+        return 'question_create_contributor_type2';
     }
 }

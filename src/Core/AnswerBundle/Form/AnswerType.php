@@ -15,7 +15,6 @@ class AnswerType extends AbstractType
             ->add('code')
             ->add('note')
             ->add('correct')
-            //->add('question')
         ;
     }
 

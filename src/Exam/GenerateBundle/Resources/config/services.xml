@@ -43,7 +43,7 @@
             <argument type="service" id="fos_user.entity_manager" />
             <argument>Exam\CoreBundle\Entity\Exam</argument>
         </service>
-        
+
         
         <!-- UserStatus: "new" Form -->
         <service id="send.exam.invitation.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">

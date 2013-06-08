@@ -1,7 +1,9 @@
 parameters:
-#    core_question.example.class: Core\QuestionBundle\Example
+    question_manager.class:  Core\QuestionBundle\Doctrine\QuestionManager
+    question_manager.entity: Core\QuestionBundle\Entity\Question
 
 services:
-#    core_question.example:
-#        class: %core_question.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    question_manager:
+        class: %question_manager.class%
+        public: false
+        arguments: ["@fos_user.entity_manager", %question_manager.entity%]

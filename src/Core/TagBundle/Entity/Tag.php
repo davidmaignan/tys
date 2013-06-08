@@ -5,8 +5,8 @@ namespace Core\TagBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Core\QuestionBundle\Entity\Question;
-use Exam\CoreBundle\Entity\ExamCriteria;
+use Core\QuestionBundle\Entity\QuestionInterface;
+use Exam\CoreBundle\Entity\ExamCriteriaInterface;
 
 /**
  * Core\TagBundle\Entity\Tag
@@ -14,7 +14,7 @@ use Exam\CoreBundle\Entity\ExamCriteria;
  * @ORM\Table(name="tag")
  * @ORM\Entity(repositoryClass="Core\TagBundle\Entity\TagRepository")
  */
-class Tag {
+class Tag implements TagInterface {
 
     /**
      * @var integer $id
@@ -42,12 +42,18 @@ class Tag {
      */
     private $examCriterias;
     
-
+    /**
+     * Constructor
+     */
     public function __construct() {
         $this->questions = new ArrayCollection();
         $this->examCriterias = new ArrayCollection();
     }
-    
+    /**
+     * __toString
+     * 
+     * @return string
+     */
     public function __toString()
     {
         return $this->name;
@@ -84,25 +90,25 @@ class Tag {
 
 
     /**
-     * Add questions
+     * Add question
      *
-     * @param Core\QuestionBundle\Entity\Question $questions
+     * @param Core\QuestionBundle\Entity\QuestionInterface $question
      * @return Tag
      */
-    public function addQuestion(Question $questions)
+    public function addQuestion(QuestionInterface $question)
     {
-        $this->questions[] = $questions;
+        $this->questions[] = $question;
         return $this;
     }
 
     /**
-     * Remove questions
+     * Remove question
      *
-     * @param $questions
+     * @param Core\QuestionBundle\Entity\QuestionInterface $question
      */
-    public function removeQuestion(Question $questions)
+    public function removeQuestion(QuestionInterface $question)
     {
-        $this->questions->removeElement($questions);
+        $this->questions->removeElement($question);
     }
 
     /**
@@ -116,29 +122,29 @@ class Tag {
     }
     
     /**
-     * Add questions
+     * Add examCriteria
      *
-     * @param Core\QuestionBundle\Entity\Question $questions
+     * @param \Exam\CoreBundle\Entity\ExamCriteriaInterface $examCriteria
      * @return Tag
      */
-    public function addExamCriteria(ExamCriteria $examCriteria)
+    public function addExamCriteria(ExamCriteriaInterface $examCriteria)
     {
         $this->examCriterias[] = $examCriteria;
         return $this;
     }
 
     /**
-     * Remove questions
+     * Remove examCriteria
      *
-     * @param $questions
+     * @param \Exam\CoreBundle\Entity\ExamCriteriaInterface $examCriteria
      */
-    public function removeExamCriteria(ExamCriteria $examCriteria)
+    public function removeExamCriteria(ExamCriteriaInterface $examCriteria)
     {
         $this->examCriterias->removeElement($examCriteria);
     }
 
     /**
-     * Get questions
+     * Get examCriterias
      *
      * @return Doctrine\Common\Collections\Collection 
      */
