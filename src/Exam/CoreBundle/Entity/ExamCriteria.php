@@ -8,17 +8,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use Symfony\Component\Validator\Mapping\ClassMetadata;// for overriding function loadValidatorMetadata()
-
 use Symfony\Component\Validator\Constraints\NotBlank;// for notblank constrain
-
 use Symfony\Component\Validator\Constraints\Email;//for email constrain
-
 use Symfony\Component\Validator\Constraints\MinLength;// for minimum length
-
 use Symfony\Component\Validator\Constraints\MaxLength; // for maximum length
-
 use Symfony\Component\Validator\Constraints\Choice; // for choice fields
-
 use Symfony\Component\Validator\Constraints\Regex; // for regular expression
 
 
@@ -93,8 +87,7 @@ class ExamCriteria implements ExamCriteriaInterface
      *      minMessage = "You must choose at least one type of question"
      * )
      */
-    private $types;
-    
+    private $types;  
     
     /**
      * @ORM\ManyToMany(targetEntity="Core\TagBundle\Entity\Tag", inversedBy="examCriterias")

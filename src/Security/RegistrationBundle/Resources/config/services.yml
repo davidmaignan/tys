@@ -1,5 +1,6 @@
 parameters:
-#    security_bundle.listener.registration_confirmed: Security\RegistrationBundle\Listener\RegistrationListener
+    registration_manager.class:  Security\RegistrationBundle\Doctrine\RegistrationManager
+    registration_manager.entity: Security\AuthenticateBundle\Entity\User
 
 services:
 #    security_registration.example:
@@ -12,3 +13,8 @@ services:
             - "@service_container"
         tags:
             - { name: kernel.event_listener, event: user.email.confirmed, method: onConfirmed }
+            
+            
+    security.registration_manager:
+        class: %registration_manager.class%
+        arguments: ["@fos_user.entity_manager", %registration_manager.entity%]

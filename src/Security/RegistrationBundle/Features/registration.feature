@@ -5,9 +5,9 @@ Feature: Registration
     Scenario: Check the registration functionality
 
         # Failing
-        Given   I am on "/app_dev.php/"
+        Given   I am on "/app_test.php/"
         Then    I follow "Register"
-        Then 	I should be on "/app_dev.php/register/"
+        Then 	I should be on "/app_test.php/register/"
         And     I should see "Sign Up"
         And		I press "_register"
         Then 	I should be on "/app_dev.php/register/"
@@ -26,6 +26,6 @@ Feature: Registration
 
         # Logout
         Then	I follow "Logout"
-        Then 	I am on "/app_dev.php/"
+        Then 	I am on "/app_test.php/"
 
      

@@ -5,13 +5,13 @@
 
 namespace Behat\BehatBundle\Context;
 
-use Behat\MinkExtension\Context\MinkContext;
+use Behat\MinkExtension\Context\RawMinkContext;
 
 //
 // Require 3rd-party libraries here:
 //
-require_once 'PHPUnit/Autoload.php';
-require_once 'PHPUnit/Framework/Assert/Functions.php';
+//require_once 'PHPUnit/Autoload.php';
+//require_once 'PHPUnit/Framework/Assert/Functions.php';
 
 /**
  * Main Feature Context

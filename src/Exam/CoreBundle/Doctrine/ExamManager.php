@@ -70,6 +70,19 @@ class ExamManager extends BaseExamManager
         return $this->repository->findBy(array('owner'=>$owner));
     }
     
+    /**
+     * {@inheritDoc}
+     */
+    public function findExamsByCandidates(\Security\AuthenticateBundle\Entity\User $candidate)
+    {
+        return $this->repository->createQueryBuilder('a')
+                   ->leftJoin('a.candidates', 'c')
+                   ->where('c.id = :candidate')
+                   ->setParameter('candidate', $candidate)
+                   ->getQuery()
+                   ->getResult();
+    }
+    
     
     /**
      * Updates an examcriteria.

@@ -36,7 +36,7 @@ class Answer implements AnswerInterface
      * @var text $title
      * 
      * @ORM\Column(name="title", type="text") 
-     * @Assert\NotBlank(groups={"Approval"})
+     * @Assert\NotBlank(groups={"Default"})
      */
     private $title;
     

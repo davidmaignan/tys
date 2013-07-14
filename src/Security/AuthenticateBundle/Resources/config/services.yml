@@ -5,3 +5,12 @@ services:
 #    security_authenticate.example:
 #        class: %security_authenticate.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+
+    security.service.authenticate:
+        class: Security\AuthenticateBundle\Service\AuthenticateService
+        calls:
+            - [setSecurityContext, ["@security.context"]]
+            - [setSession, ["@session"]]
+            - [setEventDispatcher, ["@event_dispatcher"]]
+            - [setContextKey, ["@security.context"]]

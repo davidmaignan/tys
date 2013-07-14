@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class TagRepository extends EntityRepository
 {
+    public function getTagsByName($names)
+    {
+        $names = array_map('trim', $names);
+        
+        $qb = $this->createQueryBuilder('a')
+                    ->where('a.name IN (:names)')
+                    ->setParameters(array('names'=> $names));
+        
+        return $qb->getQuery();
+    }
 }

@@ -78,6 +78,6 @@ interface SectionManagerInterface
      * @param Boolean                                    $andFlush Whether to flush the changes (default true)
      * 
      */
-    public function updateSection(UserInterface $section, $andFlush = true);
+    public function updateSection(SectionInterface $section, $andFlush = true);
 
 }

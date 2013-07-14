@@ -5,5 +5,4 @@ parameters:
 services:
     tag_manager:
         class: %tag_manager.class%
-        public: false
         arguments: ["@fos_user.entity_manager", %tag_manager.entity%]

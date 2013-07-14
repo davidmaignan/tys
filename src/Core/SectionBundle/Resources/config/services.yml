@@ -5,5 +5,5 @@ parameters:
 services:
     section_manager:
         class: %section_manager.class%
-        public: false
+        public: true
         arguments: ["@fos_user.entity_manager", %section_manager.entity%]

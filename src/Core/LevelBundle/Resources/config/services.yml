@@ -5,5 +5,4 @@ parameters:
 services:
     level_manager:
         class: %level_manager.class%
-        public: false
         arguments: ["@fos_user.entity_manager", %level_manager.entity%]

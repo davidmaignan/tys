@@ -64,6 +64,14 @@ class TagManager extends BaseTagManager implements TagManagerInterface
     {
         return $this->repository->findOneBy($criteria);
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function findTagsByName(array $criteria)
+    {
+        return $this->repository->getTagsByName($criteria)->getResult();
+    }
 
     /**
      * {@inheritDoc}

@@ -1,0 +1,52 @@
+{% extends 'SiteHomepageBundle::layout.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+
+<h1>List of exams waiting for you</h1>
+
+<div class="row">
+
+    <div class="span12">
+    
+    <table class="table table-bordered table-striped question-list">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Owner</th>
+                <th>Language</th>
+                <th>Level</th>
+                <th>Number of questions</th>
+                <th>Percentage of completion</th>
+                <th>Started At</th>
+                <th>Deadline</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exam in exams %}
+            <tr>
+                <td>{{ exam.createdAt | date('Y-m-d') }}</td>
+                <td>{{ exam.owner }}</td>
+                <td>{{ exam.examCriteria.sections | definitionList | raw }}</td>
+                <td>{{ exam.examCriteria.level }}</td>
+                <td>{{ exam.examCriteria.numberQuestions }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a href="{{ path('ExamPracticeBundle_Page_Start_Index',{'id': exam.id } ) }}" class="btn btn-info btn-mini">Review</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    </div>
+    
+</div>
+
+</div>
+
+{% endblock body %}

@@ -1,20 +1,32 @@
+# behat.yml
 default:
-    extensions:
-        Behat\MinkExtension\Extension:
-            base_url: 'http://testyrskills/'
-            goutte: ~
-            selenium2:
-                wd_host: http://127.0.0.1:9999/wd/hub
-                
-        VIPSoft\ContextInitializerExtension\Extension:
-            classes:
-                DateContext: Behat\BehatBundle\Context\DateContext
-                UiInteractionContext: Behat\BehatBundle\Context\UiInteractionContext
-                CookieContext: Behat\BehatBundle\Context\CookieContext
-                #FeatureContext: Behat\BehatBundle\Context\FeatureContext
+  paths:
+    features:  /Users/davidmaignan/Sites/tys/src/
+    bootstrap: /Users/davidmaignan/Sites/tys/Behat/BehatBundle/Context
 
-no_context:
-    paths:
-        bootstrap: 'NON_EXISTING_FOLDER'
-    filters:
-        tags:	'~@javascript'
+  extensions:
+    Behat\Symfony2Extension\Extension:
+      mink_driver:     true
+
+    Behat\MinkExtension\Extension:
+      base_url:           'http://testyrskills/'
+      goutte:             ~
+      selenium2:
+        capabilities:
+          proxy:
+            proxyType:    autodetect
+        wd_host:          http://127.0.0.1:9999/wd/hub
+      default_session:    goutte
+      javascript_session: selenium2
+
+    VIPSoft\ContextInitializerExtension\Extension:
+      classes:
+        DateContext: Behat\BehatBundle\Context\DateContext
+        UiInteractionContext: Behat\BehatBundle\Context\UiInteractionContext
+        CookieContext: Behat\BehatBundle\Context\CookieContext
+        RegistrationContext: Security\RegistrationBundle\Context\RegistrationContext
+        GenerateContext: Exam\GenerateBundle\Context\GenerateContext
+        #AuthenticateContext: Security\AuthenticateBundle\Context\AuthenticateContext
+
+  context:
+    class: Behat\BehatBundle\Context\FeatureContext
