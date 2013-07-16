@@ -7,8 +7,11 @@ ExamPracticeBundle_Page_Run_Index:
     defaults: { _controller: ExamPracticeBundle:Run:index }
 
 ExamPracticeBundle_Page_Start_Index:
-    pattern:  /start
+    pattern:  /start/{examId}
     defaults: { _controller: ExamPracticeBundle:Start:index }
+    methods:  [GET]
+    requirements:
+        id:  \d+
     
 ExamPracticeBundle_Page_List_Index:
     pattern:  /list
