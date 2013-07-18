@@ -18,10 +18,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Core\TagBundle\Entity\TagInterface;
 use Core\AnswerBundle\Entity\AnswerInterface;
 use Security\AuthenticateBundle\Entity\User;
-use Exam\CoreBundle\Entity\ExamInterface;
 use Core\CommentBundle\Entity\CommentInterface;
-use Exam\CoreBundle\Entity\ExamQuestionInterface;
-
+use Exam\CoreBundle\Entity\CriteriaQuestionInterface;
 
 interface QuestionInterface {
     
@@ -176,21 +174,6 @@ interface QuestionInterface {
     public function getUser();
     
     /**
-     * @param \Core\QuestionBundle\Entity\ExamInterface $exam
-     */
-    public function addExam(ExamInterface $exam);
-    
-    /**
-     * @param \Core\QuestionBundle\Entity\ExamInterface $exam
-     */
-    public function removeExam(ExamInterface $exam);
-    
-    /**
-     * @return \Core\QuestionBundle\Entity\ArrayCollection
-     */
-    public function getExams();
-    
-    /**
      * @param integer
      */
     public function setStatus($status);
@@ -236,17 +219,17 @@ interface QuestionInterface {
     public function getTail();
     
     /**
-     * @param \Core\QuestionBundle\Entity\ExamQuestionInterface
+     * @param \Core\QuestionBundle\Entity\CriteriaQuestionInterface
      */
-    public function addExamQuestion(ExamQuestionInterface $examQuestion);
+    public function addCriteriaQuestion(CriteriaQuestionInterface $criteriaQuestion);
     
     /**
-     * @param \Core\QuestionBundle\Entity\ExamQuestionInterface
+     * @param \Core\QuestionBundle\Entity\CriteriaQuestionInterface
      */
-    public function removeExamQuestion(ExamQuestionInterface $examQuestion);
+    public function removeCriteriaQuestion(CriteriaQuestionInterface $criteriaQuestion);
     
     /**
      * @return \Core\QuestionBundle\Entity\ArrayCollection
      */
-    public function getExamQUestions();
+    public function getCriteriaQuestions();
 }

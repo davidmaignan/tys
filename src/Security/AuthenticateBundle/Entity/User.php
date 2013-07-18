@@ -58,7 +58,7 @@ class User extends BaseUser
     protected $orders;   
     
     /**
-     * @ORM\OneToMany(targetEntity="Exam\CoreBundle\Entity\ExamCandidate", mappedBy="exam")
+     * @ORM\OneToMany(targetEntity="Exam\CoreBundle\Entity\ExamCandidate", mappedBy="candidate")
      */
     private $examCandidates;
 
