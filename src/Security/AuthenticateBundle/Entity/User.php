@@ -55,13 +55,12 @@ class User extends BaseUser
     /**
      * @ORM\OneToMany(targetEntity="Shop\OrderBundle\Entity\Order2", mappedBy="user")
      */
-    protected $orders;
+    protected $orders;   
     
     /**
-     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\Exam", mappedBy="candidates")
+     * @ORM\OneToMany(targetEntity="Exam\CoreBundle\Entity\ExamCandidate", mappedBy="exam")
      */
-    private $exams;
-    
+    private $examCandidates;
 
     public function __construct()
     {
@@ -69,9 +68,9 @@ class User extends BaseUser
         // your own logic
         $this->setConfirmed(false);
         
-        $this->questions = new ArrayCollection();
-        $this->orders = new ArrayCollection();
-        $this->exams = new ArrayCollection();
+        $this->questions      = new ArrayCollection();
+        $this->orders         = new ArrayCollection();
+        $this->examCandidates = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -83,10 +82,6 @@ class User extends BaseUser
     {
         return $this->id;
     }
-    
-    /**
-     *  
-     */
 
     /**
      * Set confirmed
@@ -141,40 +136,7 @@ class User extends BaseUser
     public function getQuestions()
     {
         return $this->questions;
-    }
-
-     /**
-     * Add exam
-     *
-     * @param Exam\CoreBundle\Entity\Exam $exam
-     * @return Type
-     */
-    public function addExam(Exam $exam)
-    {
-        $this->exams[] = $exam;
-        return $this;
-    }
-
-    /**
-     * Remove exam
-     *
-     * @param $exam
-     */
-    public function removeExam(Exam $exam)
-    {
-        $this->exams->removeElement($exam);
-    }
-
-    /**
-     * Get exams
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getExams()
-    {
-        return $this->exams;
-    }
-    
+    }    
 
     /**
      * Add orders
@@ -207,6 +169,39 @@ class User extends BaseUser
     public function getOrders()
     {
         return $this->orders;
+    }
+    
+    /**
+     * Add examCandidate
+     *
+     * @param \Exam\CoreBundle\Entity\ExamCandidate $examCandidate
+     * @return ArrayCollection
+     */
+    public function addExamCandidate(\Exam\CoreBundle\Entity\ExamCandidate $examCandidate)
+    {
+        $this->examCandidates[] = $examCandidate;
+    
+        return $this;
+    }
+
+    /**
+     * Remove examCandidate
+     *
+     * @param \Exam\CoreBundle\Entity\ExamCandidate $examCandidate
+     */
+    public function removeExamCandidate(\Exam\CoreBundle\Entity\ExamCandidate $examCandidate)
+    {
+        $this->examCandidates->removeElement($examCandidate);
+    }
+    
+    /**
+     * Get examCandidates
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getExamCandidates()
+    {
+        return $this->examCandidates;
     }
     
     

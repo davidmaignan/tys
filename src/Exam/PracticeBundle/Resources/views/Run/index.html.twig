@@ -7,7 +7,7 @@
     <div class="container">  
         <div class="row">
             <div class="span6">
-                <h1>Test: {{ exam.examCriteria.sections.1 }}</h1>
+                <h1>Test: {{ exam.examCriteria.sections.0 }}</h1>
                 
             </div>
             <div class="span6">
@@ -22,7 +22,7 @@
     <div class="row">
         <div class="span6 question">	
             <div class="entry">
-                <h4>Question: 1</h4> 
+                <h4>Question: {{ app.session.get('questionCounter') }}</h4> 
                 <hr>
                 <p>{{ question }}</p>
                 <ul class="response">

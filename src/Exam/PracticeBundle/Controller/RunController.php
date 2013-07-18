@@ -35,6 +35,9 @@ class RunController extends Controller
         $questionManager = $this->get('question_create.question_manager.doctrine');
         $question        = $questionManager->findQuestionBy($questionId);
         
+        //Update question counter
+        $counter = $session->get('questionCounter');
+        $session->set('questionCounter', ++$counter);
         
         return $this->render('ExamPracticeBundle:Run:index.html.twig', 
                 array('exam' => $exam, 'form' => $form->createView(), 'question'=> $question));

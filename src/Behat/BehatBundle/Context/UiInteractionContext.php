@@ -821,7 +821,7 @@ JS;
         $element->setValue($value);
     }
     
-        /**
+    /**
      * Returns fixed step argument (with \\" replaced back to ").
      *
      * @param string $argument
@@ -831,6 +831,23 @@ JS;
     protected function fixStepArgument($argument)
     {
         return str_replace('\\"', '"', $argument);
+    }
+    
+    /**
+     * Click element at xpath
+     * 
+     * @Given /^I follow on the element at XPath "([^"]*)"$/
+     */
+    public function iFollowOnTheElementAtXpath($xPath)
+    {
+        $element = $this->findElementByXpath($xPath);
+        
+        if ( ! $element) {
+            $message = 'Could not find the element by the given XPath: ' . $xPath;
+            throw new \Exception($message);
+        }
+
+        $element->click();
     }
     
 }

@@ -31,10 +31,9 @@ class Exam implements ExamInterface {
     private $id;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Security\AuthenticateBundle\Entity\User", inversedBy="exams")
-     * @ORM\JoinTable(name="exam_candidates")
+     * @ORM\OneToMany(targetEntity="Exam\CoreBundle\Entity\ExamCriteria", mappedBy="exam")
      */
-    private $candidates;
+    private $examCandidates;
     
     /**
      * @ORM\OneToOne(targetEntity="Exam\CoreBundle\Entity\ExamCriteria", mappedBy="exam", cascade={"persist"} ) )
@@ -69,8 +68,8 @@ class Exam implements ExamInterface {
      * Constructor 
      */
     public function __construct() {
-        $this->questions = new ArrayCollection();
-        $this->candidates = new ArrayCollection();
+        $this->questions      = new ArrayCollection();
+        $this->examCandidates = new \Doctrine\Common\Collections\ArrayCollection();
         
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
@@ -131,40 +130,39 @@ class Exam implements ExamInterface {
     {
         return $this->updatedAt;
     }
-
-    /**
-     * Add candidate
+    
+   /**
+     * Add examCandidate
      *
-     * @param Security\AuthenticateBundle\Entity\User $candidate
-     * @return candidates
+     * @param \Exam\CoreBundle\Entity\ExamCandidate $examCandidate
+     * @return ArrayCollection
      */
-    public function addCandidate(\Security\AuthenticateBundle\Entity\User $candidate)
+    public function addExamCandidate(\Exam\CoreBundle\Entity\ExamCandidate $examCandidate)
     {
-        $this->candidates[] = $candidate;
+        $this->examCandidates[] = $examCandidate;
     
         return $this;
     }
 
     /**
-     * Remove questions
+     * Remove examCandidate
      *
-     * @param Core\QuestionBundle\Entity\Question $questions
+     * @param \Exam\CoreBundle\Entity\ExamCandidate $examCandidate
      */
-    public function removeCandidate(\Security\AuthenticateBundle\Entity\User $candidate)
+    public function removeExamCandidate(\Exam\CoreBundle\Entity\ExamCandidate $examCandidate)
     {
-        $this->candidates->removeElement($candidate);
+        $this->examCandidates->removeElement($examCandidate);
     }
-
+    
     /**
-     * Get candidates
+     * Get examCandidates
      *
      * @return Doctrine\Common\Collections\Collection 
      */
-    public function getCandidates()
+    public function getExamCandidates()
     {
-        return $this->candidates;
+        return $this->examCandidates;
     }
-    
     
     /**
      * Add questions
@@ -199,31 +197,6 @@ class Exam implements ExamInterface {
         return $this->questions;
     }
 
-
-    /**
-     * Set candidate
-     *
-     * @param Security\AuthenticateBundle\Entity\User $candidate
-     * @return Exam
-     */
-    public function setCandidate(\Security\AuthenticateBundle\Entity\User $candidate = null)
-    {
-        $this->candidate = $candidate;
-    
-        return $this;
-    }
-
-    /**
-     * Get candidate
-     *
-     * @return Security\AuthenticateBundle\Entity\User 
-     */
-    public function getCandidate()
-    {
-        return $this->candidate;
-    }
-
-
     /**
      * Set owner
      *
@@ -245,29 +218,6 @@ class Exam implements ExamInterface {
     public function getOwner()
     {
         return $this->owner;
-    }
-
-    /**
-     * Set criteria
-     *
-     * @param Exam\CoreBundle\Entity\ExamCriteria $criteria
-     * @return Exam
-     */
-    public function setCriteria(\Exam\CoreBundle\Entity\ExamCriteria $criteria = null)
-    {
-        $this->criteria = $criteria;
-    
-        return $this;
-    }
-
-    /**
-     * Get criteria
-     *
-     * @return Exam\CoreBundle\Entity\ExamCriteria 
-     */
-    public function getCriteria()
-    {
-        return $this->criteria;
     }
 
     /**
