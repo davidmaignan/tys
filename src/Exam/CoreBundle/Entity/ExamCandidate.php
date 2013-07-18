@@ -49,11 +49,6 @@ class ExamCandidate {
     private $completion;
     
     /**
-     * @ORM\OneToMany(targetEntity="Core\QuestionBundle\Entity\Question", mappedBy="ExamCandidate")
-     */
-    private $questionsAnswered;
-    
-    /**
      * @var datetime $updatedAt
      * @ORM\Column(name="updatedAt", type="datetime") 
      */
@@ -69,8 +64,131 @@ class ExamCandidate {
     
     public function __construct()
     {
-        $this->questionsAnswered = new \Doctrine\Common\Collections\ArrayCollection();
+        
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set completion
+     *
+     * @param integer $completion
+     * @return ExamCandidate
+     */
+    public function setCompletion($completion)
+    {
+        $this->completion = $completion;
+
+        return $this;
+    }
+
+    /**
+     * Get completion
+     *
+     * @return integer 
+     */
+    public function getCompletion()
+    {
+        return $this->completion;
+    }
+
+    /**
+     * Set startedAt
+     *
+     * @param \DateTime $startedAt
+     * @return ExamCandidate
+     */
+    public function setStartedAt($startedAt)
+    {
+        $this->startedAt = $startedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get startedAt
+     *
+     * @return \DateTime 
+     */
+    public function getStartedAt()
+    {
+        return $this->startedAt;
+    }
+
+    /**
+     * Set completed
+     *
+     * @param boolean $completed
+     * @return ExamCandidate
+     */
+    public function setCompleted($completed)
+    {
+        $this->completed = $completed;
+
+        return $this;
+    }
+
+    /**
+     * Get completed
+     *
+     * @return boolean 
+     */
+    public function getCompleted()
+    {
+        return $this->completed;
+    }
+
+    /**
+     * Set exam
+     *
+     * @param \Exam\CoreBundle\Entity\Exam $exam
+     * @return ExamCandidate
+     */
+    public function setExam(\Exam\CoreBundle\Entity\Exam $exam = null)
+    {
+        $this->exam = $exam;
+
+        return $this;
+    }
+
+    /**
+     * Get exam
+     *
+     * @return \Exam\CoreBundle\Entity\Exam 
+     */
+    public function getExam()
+    {
+        return $this->exam;
+    }
+
+    /**
+     * Set candidate
+     *
+     * @param \Security\AuthenticateBundle\Entity\User $candidate
+     * @return ExamCandidate
+     */
+    public function setCandidate(\Security\AuthenticateBundle\Entity\User $candidate = null)
+    {
+        $this->candidate = $candidate;
+
+        return $this;
+    }
+
+    /**
+     * Get candidate
+     *
+     * @return \Security\AuthenticateBundle\Entity\User 
+     */
+    public function getCandidate()
+    {
+        return $this->candidate;
     }
 }
-
-?>

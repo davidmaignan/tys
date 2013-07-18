@@ -27,7 +27,7 @@ use Exam\CoreBundle\Entity\ExamInterface;
 use Security\AuthenticateBundle\Entity\User;
 use Core\CommentBundle\Entity\CommentInterface;
 use Core\TagBundle\Entity\TagInterface;
-use Exam\CoreBundle\Entity\ExamQuestionInterface;
+use Exam\CoreBundle\Entity\CriteriaQuestionInterface;
 
 
 /**
@@ -124,14 +124,9 @@ class Question implements QuestionInterface {
     private $comments;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\Exam", mappedBy="questions")
+     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\CriteriaQuestion", mappedBy="questions")
      */
-    private $exams;
-    
-    /**
-     * @ORM\ManyToMany(targetEntity="Exam\CoreBundle\Entity\ExamQUestion", mappedBy="questions")
-     */
-    private $examQuestions;
+    private $criteriaQuestions;
     
     /**
      * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User", inversedBy="questions")
@@ -174,8 +169,7 @@ class Question implements QuestionInterface {
     public function __construct() {
         $this->tags             = new ArrayCollection();
         $this->answers          = new ArrayCollection();
-        $this->exams            = new ArrayCollection();
-        $this->examQuestions   = new ArrayCollection();
+        $this->criteriaQuestions   = new ArrayCollection();
         
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
@@ -485,39 +479,6 @@ class Question implements QuestionInterface {
     }
 
     /**
-     * Add exams
-     *
-     * @param Exam\CoreBundle\Entity\Exam $exams
-     * @return Question
-     */
-    public function addExam(ExamInterface $exam)
-    {
-        $this->exams[] = $exam;
-    
-        return $this;
-    }
-
-    /**
-     * Remove exams
-     *
-     * @param Exam\CoreBundle\Entity\Exam $exams
-     */
-    public function removeExam(ExamInterface $exam)
-    {
-        $this->exams->removeElement($exam);
-    }
-
-    /**
-     * Get exams
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getExams()
-    {
-        return $this->exams;
-    }
-
-    /**
      * Set status
      *
      * @param integer $status
@@ -631,35 +592,35 @@ class Question implements QuestionInterface {
 
 
     /**
-     * Add examQuestions
+     * Add criteriaQuestions
      *
-     * @param \Exam\CoreBundle\Entity\ExamQuestionInterface $examQuestion
+     * @param \Exam\CoreBundle\Entity\CriteriaQuestionInterface $criteriaQuestion
      * @return Question
      */
-    public function addExamQuestion(ExamQuestionInterface $examQuestion)
+    public function addCriteriaQuestion(CriteriaQuestionInterface $criteriaQuestion)
     {
-        $this->examQuestions[] = $examQuestion;
+        $this->criteriaQuestions[] = $criteriaQuestion;
 
         return $this;
     }
 
     /**
-     * Remove examQuestions
+     * Remove criteriaQuestions
      *
-     * @param \Exam\CoreBundle\Entity\ExamQUestionInterface $examQuestions
+     * @param \Exam\CoreBundle\Entity\CriteriaQuestionInterface $criteriaQuestions
      */
-    public function removeExamQuestion(ExamQuestionInterface $examQuestion)
+    public function removeCriteriaQuestion(CriteriaQuestionInterface $criteriaQuestion)
     {
-        $this->examQuestions->removeElement($examQuestion);
+        $this->criteriaQuestions->removeElement($criteriaQuestion);
     }
 
     /**
-     * Get examQuestions
+     * Get criteriaQuestions
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getExamQuestions()
+    public function getCriteriaQuestions()
     {
-        return $this->examQuestions;
+        return $this->criteriaQuestions;
     }
 }

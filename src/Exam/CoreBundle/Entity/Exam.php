@@ -47,12 +47,6 @@ class Exam implements ExamInterface {
     private $owner;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Core\QuestionBundle\Entity\Question", inversedBy="exams", cascade={"persist"})
-     * @ORM\JoinTable(name="exam_questions")
-     */
-    private $questions;
-    
-    /**
      * @var datetime $createdAt
      * @ORM\Column(name="createdAt", type="datetime") 
      */
@@ -68,7 +62,6 @@ class Exam implements ExamInterface {
      * Constructor 
      */
     public function __construct() {
-        $this->questions      = new ArrayCollection();
         $this->examCandidates = new \Doctrine\Common\Collections\ArrayCollection();
         
         $this->setCreatedAt(new \DateTime());
@@ -162,39 +155,6 @@ class Exam implements ExamInterface {
     public function getExamCandidates()
     {
         return $this->examCandidates;
-    }
-    
-    /**
-     * Add questions
-     *
-     * @param Core\QuestionBundle\Entity\Question $questions
-     * @return Exam
-     */
-    public function addQuestion(\Core\QuestionBundle\Entity\Question $questions)
-    {
-        $this->questions[] = $questions;
-    
-        return $this;
-    }
-
-    /**
-     * Remove questions
-     *
-     * @param Core\QuestionBundle\Entity\Question $questions
-     */
-    public function removeQuestion(\Core\QuestionBundle\Entity\Question $questions)
-    {
-        $this->questions->removeElement($questions);
-    }
-
-    /**
-     * Get questions
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getQuestions()
-    {
-        return $this->questions;
     }
 
     /**
