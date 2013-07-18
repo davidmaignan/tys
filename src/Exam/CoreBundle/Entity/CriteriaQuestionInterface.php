@@ -2,6 +2,6 @@
 
 namespace Exam\CoreBundle\Entity;
 
-interface ExamQuestionInterface {
+interface CriteriaQuestionInterface {
     
 }

@@ -92,9 +92,9 @@ class ExamCriteria implements ExamCriteriaInterface
     private $tags;
     
     /**
-     * @ORM\OneToOne(targetEntity="ExamQuestion", mappedBy="examCriteria")
+     * @ORM\OneToOne(targetEntity="CriteriaQuestion", mappedBy="examCriteria")
      */
-    private $examQuestion;
+    private $criteriaQuestion;
     
     /**
      * Constructor
@@ -102,8 +102,8 @@ class ExamCriteria implements ExamCriteriaInterface
     public function __construct()
     {
         $this->sections = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->types = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->types    = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tags     = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -319,25 +319,25 @@ class ExamCriteria implements ExamCriteriaInterface
     }
 
     /**
-     * Set examQuestion
+     * Set criteriaQuestion
      *
-     * @param \Exam\CoreBundle\Entity\ExamQuestion $examQuestion
-     * @return ExamCriteria
+     * @param \Exam\CoreBundle\Entity\CriteriaQuestion $examQuestion
+     * @return CriteriaQuestion
      */
-    public function setExamQuestion(\Exam\CoreBundle\Entity\ExamQuestion $examQuestion = null)
+    public function setCriteriaQuestion(\Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestion = null)
     {
-        $this->examQuestion = $examQuestion;
+        $this->criteriaQuestion = $criteriaQuestion;
 
         return $this;
     }
 
     /**
-     * Get examQuestion
+     * Get criteriaQuestion
      *
-     * @return \Exam\CoreBundle\Entity\ExamQuestion 
+     * @return \Exam\CoreBundle\Entity\CriteriaQuestion 
      */
-    public function getExamQuestion()
+    public function getCriteriaQuestion()
     {
-        return $this->examQuestion;
+        return $this->criteriaQuestion;
     }
 }

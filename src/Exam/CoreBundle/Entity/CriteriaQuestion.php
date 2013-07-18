@@ -4,34 +4,18 @@ namespace Exam\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Symfony\Component\Validator\Constraints as Assert;
-
-use Symfony\Component\Validator\Mapping\ClassMetadata;// for overriding function loadValidatorMetadata()
-
-use Symfony\Component\Validator\Constraints\NotBlank;// for notblank constrain
-
-use Symfony\Component\Validator\Constraints\Email;//for email constrain
-
-use Symfony\Component\Validator\Constraints\MinLength;// for minimum length
-
-use Symfony\Component\Validator\Constraints\MaxLength; // for maximum length
-
-use Symfony\Component\Validator\Constraints\Choice; // for choice fields
-
-use Symfony\Component\Validator\Constraints\Regex; // for regular expression
-
 use Core\QuestionBundle\Entity\Question;
 
 
 /**
  * Exam\CoreBundle\Entity\ExamQuestion
  *
- * @ORM\Table(name="exam_question")
- * @ORM\Entity(repositoryClass="Exam\CoreBundle\Entity\ExamQuestion")
+ * @ORM\Table(name="criteria_question")
+ * @ORM\Entity(repositoryClass="Exam\CoreBundle\Entity\CriteriaQuestion")
  * @ORM\HasLifecycleCallbacks()
  */
-class ExamQuestion implements ExamQuestionInterface
+class CriteriaQuestion implements CriteriaQuestionInterface
 {
     /**
      * @var integer $id
@@ -51,7 +35,7 @@ class ExamQuestion implements ExamQuestionInterface
     
     
     /**
-     * @ORM\ManyToMany(targetEntity="Core\QuestionBundle\Entity\Question", inversedBy="examQuestions")
+     * @ORM\ManyToMany(targetEntity="Core\QuestionBundle\Entity\Question", inversedBy="criteriaQuestions")
      * @ORM\JoinTable(name="exam_question_questions")
      */
     private $questions;
