@@ -10,7 +10,7 @@
 
     <div class="span12">
     
-    <table class="table table-bordered table-striped question-list">
+    <table class="table table-bordered table-striped exam-list" id="exam-list">
         <thead>
             <tr>
                 <th>Date</th>
@@ -36,7 +36,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <a href="{{ path('ExamPracticeBundle_Page_Start_Index',{'id': exam.id } ) }}" class="btn btn-info btn-mini">Review</a>
+                    <a href="{{ path('ExamPracticeBundle_Page_Start_Index',{'examId': exam.id } ) }}" title="Start" class="btn btn-info btn-mini">Start</a>
                 </td>
             </tr>
             {% endfor %}

@@ -23,9 +23,9 @@ Feature: Login
         Then    I follow "Login"
         Then    I wait 2 seconds
         Then 	I should see "Remember me"
-        And		I press "loginBtn"
+        And     I press "loginBtn"
         Then 	I should be on "/app_dev.php/login/"
-        And		I should see "Invalid username or password"
+        And	I should see "Invalid username or password"
 
         # Failing without username
         Given   I am on "/app_dev.php"
