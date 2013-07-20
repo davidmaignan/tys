@@ -9,7 +9,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 use Exam\CoreBundle\Entity\Exam;
 use Exam\CoreBundle\Entity\ExamCriteria;
-use Exam\CoreBundle\Entity\ExamQuestion;
+use Exam\CoreBundle\Entity\CriteriaQuestion;
+use Exam\CoreBundle\Entity\ExamCandidate;
 
 class ExamFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -18,9 +19,14 @@ class ExamFixtures extends AbstractFixture implements OrderedFixtureInterface
     {
         //Exam
         $exam = new Exam();
-        
         $exam->setOwner($manager->merge($this->getReference('user-2')));
-        $exam->addCandidate($manager->merge($this->getReference('user-3')));
+        
+        //Set candiates
+        $examCandidate = new ExamCandidate();
+        $examCandidate->setCandidate($manager->merge($this->getReference('user-3')));
+        
+        $examCandidate->setExam($exam);
+        $exam->addExamCandidate($examCandidate);
         
         $examCriteria = new ExamCriteria();
         $examCriteria->setLevel($manager->merge($this->getReference('level-2')));
@@ -42,19 +48,20 @@ class ExamFixtures extends AbstractFixture implements OrderedFixtureInterface
         $exam->setExamCriteria($examCriteria);
         $examCriteria->setExam($exam);
         
-        $examQuestion = new ExamQuestion();
+        $criteriaQuestion = new CriteriaQuestion();
         
-        $examQuestion->setExamCriteria($examCriteria);
+        $criteriaQuestion->setExamCriteria($examCriteria);
         
-        $examCriteria->setExamQuestion($examQuestion);
+        $examCriteria->setCriteriaQuestion($criteriaQuestion);
         
         for($i = 1;$i< 11; $i++){
-            $examQuestion->addQuestion($this->getReference('question-'.$i));
+            $criteriaQuestion->addQuestion($this->getReference('question-'.$i));
         }
         
         $manager->persist($exam);
+        $manager->persist($examCandidate);
         $manager->persist($examCriteria);
-        $manager->persist($examQuestion);
+        $manager->persist($criteriaQuestion);
         
         $this->addReference('exam-1', $exam);
 

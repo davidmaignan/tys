@@ -31,7 +31,7 @@ class Exam implements ExamInterface {
     private $id;
     
     /**
-     * @ORM\OneToMany(targetEntity="Exam\CoreBundle\Entity\ExamCriteria", mappedBy="exam")
+     * @ORM\OneToMany(targetEntity="Exam\CoreBundle\Entity\ExamCandidate", mappedBy="exam", cascade={"persist"})
      */
     private $examCandidates;
     

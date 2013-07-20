@@ -17,8 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Exam\CoreBundle\Entity\ExamCandidate
  *
  * @ORM\Table(name="exam_candidate")
- * @ORM\Entity(repositoryClass="Exam\CoreBundle\Entity\ExamCandidate")
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\Entity(repositoryClass="Exam\CoreBundle\Entity\ExamCandidateRepository")
  */
 class ExamCandidate {
     
@@ -37,7 +36,7 @@ class ExamCandidate {
     private $exam;
     
     /**
-     * @ORM\ManyToOne(targetEntity="\Security\AuthenticateBundle\Entity\User", inversedBy="examCandidates")
+     * @ORM\ManyToOne(targetEntity="\Security\AuthenticateBundle\Entity\User", inversedBy="examCandidates", cascade={"persist"})
      */
     private $candidate;
     
@@ -50,7 +49,7 @@ class ExamCandidate {
     
     /**
      * @var datetime $updatedAt
-     * @ORM\Column(name="updatedAt", type="datetime") 
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=true) 
      */
     private $startedAt;
     
@@ -61,11 +60,6 @@ class ExamCandidate {
      *
      */
     private $completed = false;
-    
-    public function __construct()
-    {
-        
-    }
 
     /**
      * Get id

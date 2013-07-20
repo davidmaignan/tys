@@ -76,8 +76,8 @@ class ExamManager extends BaseExamManager
     public function findExamsByCandidates(\Security\AuthenticateBundle\Entity\User $candidate)
     {
         return $this->repository->createQueryBuilder('a')
-                   ->leftJoin('a.candidates', 'c')
-                   ->where('c.id = :candidate')
+                   ->leftJoin('a.examCandidates', 'c')
+                   ->where('c.candidate = :candidate')
                    ->setParameter('candidate', $candidate)
                    ->getQuery()
                    ->getResult();

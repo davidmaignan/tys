@@ -32,7 +32,7 @@
                             </td>
                             <td>{{ exam.examCriteria.numberCandidates }}</td>
                             <td>{{ exam.examCriteria.level }}</td>
-                            <td>{{ exam.candidates | length }}</td>
+                            <td>{{ exam.examCandidates | length }}</td>
                             <td>{{ exam.createdAt |date("d F  Y") }} @ {{ exam.createdAt |date("g:ia") }}</td>
                             <td><a class="btn btn-info btn-mini" href="{{ path('exam_manage_show', { 'id': exam.id }) }}">{{ 'exam_manage.button.show' | trans }}</td>
                         </tr>

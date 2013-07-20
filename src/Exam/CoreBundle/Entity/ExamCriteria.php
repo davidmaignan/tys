@@ -92,18 +92,19 @@ class ExamCriteria implements ExamCriteriaInterface
     private $tags;
     
     /**
-     * @ORM\OneToOne(targetEntity="CriteriaQuestion", mappedBy="examCriteria")
+     * @ORM\OneToMany(targetEntity="CriteriaQuestion", mappedBy="examCriteria")
      */
-    private $criteriaQuestion;
+    private $criteriaQuestions;
     
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->sections = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->types    = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->tags     = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sections         = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->types            = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tags             = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->criteriaQuestion = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -339,5 +340,38 @@ class ExamCriteria implements ExamCriteriaInterface
     public function getCriteriaQuestion()
     {
         return $this->criteriaQuestion;
+    }
+
+    /**
+     * Add criteriaQuestions
+     *
+     * @param \Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestions
+     * @return ExamCriteria
+     */
+    public function addCriteriaQuestion(\Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestions)
+    {
+        $this->criteriaQuestions[] = $criteriaQuestions;
+
+        return $this;
+    }
+
+    /**
+     * Remove criteriaQuestions
+     *
+     * @param \Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestions
+     */
+    public function removeCriteriaQuestion(\Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestions)
+    {
+        $this->criteriaQuestions->removeElement($criteriaQuestions);
+    }
+
+    /**
+     * Get criteriaQuestions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCriteriaQuestions()
+    {
+        return $this->criteriaQuestions;
     }
 }

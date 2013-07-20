@@ -18,7 +18,7 @@
 
                 <div class="tab-content">
 
-                    <section class="tab-pane active" id="description">
+                    <section class="tab-pane" id="description">
 
                         <h2>Description</h2>
 
@@ -61,11 +61,12 @@
                     </section>
 
                         <section class="tab-pane" id="questions">
-                            <h2>Question</h2>
+                            <h2>Criteria question</h2>
+                            {% for criteriaQuestion in exam.examCriteria.criteriaQuestions %}
                             <div class="row">
                                 <div class="span12">
                                     <table class="table table-bordered table-striped">
-                                    {% for question in exam.examCriteria.examQuestion.questions %}
+                                        {% for question in criteriaQuestion.questions %}
                                             <tr>
                                                 <td>{{ question.title  }}</td>
                                                 <td>{{ question.level  }}</td>
@@ -79,24 +80,41 @@
                                                 </td> 
                                                 <td><a href="#" class="btn btn-primary btn-mini">View</a></td>
                                             </tr>
-                                    {% endfor %}  
+                                      {% endfor %}
                                     </table>        
                                 </div>
                             </div>
+                            {% endfor %}
                         </section>
 
-                        <section class="tab-pane" id="candidates">
+                        <section class="tab-pane active" id="candidates">
                             <h2>Candidates</h2>
 
                             <section class="row">
-                                {% for candidate in exam.candidates %}
-                                    {{ candidate.id }}
-                                {% endfor %}    
-                            </section>
-
-                            <section class="">
-                                <h2>Send an invitation</h2>
-                                {% render(controller('ExamManageBundle:Invitation:index', {'examId' : exam.id} ))    %}
+                                <div class="span7">
+                                    <table class="table table-bordered table-striped table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Started</th>
+                                                <th>Completion</th>
+                                            </tr>
+                                        </thead>
+                                    {% for examCandidate in exam.examCandidates %}
+                                        <tr>
+                                            <td>{{ examCandidate.candidate.username }}</td>
+                                            <td>{{ examCandidate.candidate.email }}</td>
+                                            <td>{{ examCandidate.startedAt | date('d-m-Y')  }}</td>
+                                            <td>{{ examCandidate.completion }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </table>
+                                </div>
+                                <div class="span4 well pull-right">
+                                    <h2>Send an invitation</h2>
+                                    {% render(controller('ExamManageBundle:Invitation:index', {'examId' : exam.id} ))    %} 
+                                </div>
                             </section>
                         </section>
 
