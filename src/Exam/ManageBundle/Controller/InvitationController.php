@@ -15,7 +15,7 @@ class InvitationController extends Controller
     {
         $formModel = new ExamInvitationFormModel();
         $formModel->setExamId($examId);
-        
+            
         $formHandler = $this->get('send.exam.invitation.form.handler');
         $form = $formHandler->getForm();
         $form->setData($formModel);

@@ -24,11 +24,10 @@ class RunController extends Controller
         }
         
         //Retrieve Exam
-        $examId = $session->get('exam');
+        $criteriaQuestionId = $session->get('criteriaQuestion');
         
-        $em = $this->getDoctrine()->getManager();
-        $exam = $em->getRepository('ExamCoreBundle:Exam')->find($examId);
-        
+        $em               = $this->getDoctrine()->getManager();
+        $criteriaQuestion = $em->getRepository('ExamCoreBundle:CriteriaQuestion')->find($criteriaQuestionId); 
         
         //Retrieve question        
         $questionId      = $session->get('question');
@@ -40,6 +39,9 @@ class RunController extends Controller
         $session->set('questionCounter', ++$counter);
         
         return $this->render('ExamPracticeBundle:Run:index.html.twig', 
-                array('exam' => $exam, 'form' => $form->createView(), 'question'=> $question));
+                array('criteriaQuesiton' => $criteriaQuestion, 
+                      'form' => $form->createView(), 
+                      'question'=> $question
+                ));
     }
 }

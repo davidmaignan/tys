@@ -6,6 +6,7 @@
 namespace Exam\ManageBundle\Form\Service;
 
 use Exam\ManageBundle\Form\Model\ExamInvitationFormModel;
+use Exam\CoreBundle\Entity\ExamCandidate;
 
 
 /**
@@ -13,6 +14,11 @@ use Exam\ManageBundle\Form\Model\ExamInvitationFormModel;
  */
 class ExamInvitationFormService
 {
+    
+    /**
+     * @var \Symfony\Component\HttpFoundation\Session\Session
+     */
+    private $session;
     
     /**
      * @var \Mailer\MailBundle\Mailer\Mailer
@@ -25,6 +31,11 @@ class ExamInvitationFormService
     private $examManager;
     
     /**
+     * @var \Exam\CoreBundle\Doctrine\ExamCandidateManager
+     */
+    private $examCandidateManager;
+    
+    /**
      * @var \FOS\UserBundle\Doctrine\UserManager
      */
     private $userManager;
@@ -35,11 +46,13 @@ class ExamInvitationFormService
      * @param type $examManager
      * @param type $userManager 
      */
-    public function __construct($mailer, $examManager, $userManager){
+    public function __construct($session, $mailer, $examManager, $examCandidateManager, $userManager){
         
-        $this->mailer      = $mailer;
-        $this->examManager = $examManager;
-        $this->userManager = $userManager;
+        $this->session              = $session;
+        $this->mailer               = $mailer;
+        $this->examManager          = $examManager;
+        $this->examCandidateManager = $examCandidateManager;
+        $this->userManager          = $userManager;
     }
     
     /**
@@ -63,16 +76,29 @@ class ExamInvitationFormService
         $exam = $this->examManager->findExamBy(array('id'=>$examInvitationFormModel->getExamId()));
         
         if(!$exam){
+            $this->session->setFlash('exam_candidate_error', 'No exam exists');
             return false;
         }
         
-        $exam = new \Exam\CoreBundle\Entity\Exam();
-        $exam->addCandidate($user);
+        //Already exists
+        $examCandidate = $this->examCandidateManager->findExamCandidateBy(array(
+            'candidate' => $user,
+            'exam'      => $exam
+        ));
+        
+        if($examCandidate){
+            $this->session->setFlash('exam_candidate_error', 'This candidate is already registered for this exam');
+            return false;
+        }
+        
+        $examCandidate = $this->examCandidateManager->createExamCandidate();
+        $examCandidate->setCandidate($user);
+        $examCandidate->setExam($exam);
+        $exam->addExamCandidate($examCandidate);
         $this->examManager->updateExam($exam);
         
         $mailer = $this->mailer->sendExamInvitation($exam, $user);
         
         return true;
-        
     }
 }

@@ -1,7 +1,8 @@
 parameters:
-#    exam_core.example.class: Exam\CoreBundle\Example
+#    exam_candidate_manager.class:  Exam\CoreBundle\Doctrine\ExamCandidateManager
+#    exam_candidate_manager.entity: Exam\CoreBundle\Entity\ExamCandidate
 
 services:
-#    exam_core.example:
-#        class: %exam_core.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+#    exam_candidate.manager:
+#        class: %exam_candidate_manager.class%
+#        arguments: ["@fos_user.entity_manager", %exam_candidate_manager.entity%]

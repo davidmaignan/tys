@@ -28,18 +28,16 @@ class CriteriaQuestion implements CriteriaQuestionInterface
     
     /**  The owning side has 'inversedBy'. Its table will have
      *   the foreign key.
-     * @ORM\OneToOne(targetEntity="ExamCriteria", inversedBy="examQuestion")
+     * @ORM\ManyToOne(targetEntity="Exam\CoreBundle\Entity\ExamCriteria", inversedBy="criteriaQuestions")
      * @ORM\JoinColumn(name="examCriteria_id", referencedColumnName="id")
      */
     private $examCriteria;
     
-    
     /**
      * @ORM\ManyToMany(targetEntity="Core\QuestionBundle\Entity\Question", inversedBy="criteriaQuestions")
-     * @ORM\JoinTable(name="exam_question_questions")
+     * @ORM\JoinTable(name="criteria_question_questions")
      */
     private $questions;
-    
     
      /**
      * Constructor
@@ -58,7 +56,6 @@ class CriteriaQuestion implements CriteriaQuestionInterface
     {
         return $this->id;
     }
-
 
     /**
      * Set examCriteria
@@ -82,8 +79,6 @@ class CriteriaQuestion implements CriteriaQuestionInterface
     {
         return $this->examCriteria;
     }
-
-
 
     /**
      * Add questions

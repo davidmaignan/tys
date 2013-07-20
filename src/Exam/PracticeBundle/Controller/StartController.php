@@ -13,21 +13,21 @@ class StartController extends Controller
         //Retrieve examId
         $examManager = $this->get('exam_generate.exam_manager.doctrine');
         $exam = $examManager->findExamBy(array('id'=>$examId));
-        //$examId = $em->getRepository('ExamCoreBundle:Exam')->findByUser($user);
                         
         //Retrieve first question
-        $questions = $exam->getExamCriteria()->getExamQuestion()->getQuestions();
-        $question = $questions[0];
-        
+        $criteriaQuestions = $exam->getExamCriteria()->getCriteriaQuestions();    
+        $criteriaQuestion = $criteriaQuestions->first();
+        $questions = $criteriaQuestions->first()->getQuestions();
         
         //Save Exam and first question ids in session
         $session = $this->getRequest()->getSession();
-        $session->set('exam', array('id'=>$exam->getId()));
         
-        $session->set('question', array('id'=> $question->getId()));
-        
+        $session->set('criteriaQuestion', array('criteriaQuestionId'=>$criteriaQuestion->getId()));
+        $session->set('question', array('id'=> $questions->first()->getId()));
         $session->set('questionCounter', 1);
         
-        return $this->render('ExamPracticeBundle:Start:index.html.twig');
+        return $this->render('ExamPracticeBundle:Start:index.html.twig', array(
+            'criteriaQuestion' => $criteriaQuestions
+        ));
     }
 }
