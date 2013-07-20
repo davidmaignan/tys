@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 /**
  * Exam\CoreBundle\Entity\ExamAnser
  *
- * @ORM\Table(name="exam_answer")
+ * @ORM\Table(name="criteria_question_answer")
  * @ORM\Entity(repositoryClass="Exam\CoreBundle\Entity\ExamAnswerRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -27,11 +27,10 @@ class ExamAnswer implements ExamAnswerInterface
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Exam\CoreBundle\Entity\Exam" )
-     * @ORM\JoinColumn(name="exam_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Exam\CoreBundle\Entity\CriteriaQuestion" )
      * @Assert\NotBlank()
      */
-    private $exam;
+    private $criteriaQuestion;
     
     /**
      * @ORM\ManyToOne(targetEntity="Security\AuthenticateBundle\Entity\User")
@@ -62,29 +61,6 @@ class ExamAnswer implements ExamAnswerInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set exam
-     *
-     * @param \Exam\CoreBundle\Entity\Exam $exam
-     * @return ExamAnswer
-     */
-    public function setExam(\Exam\CoreBundle\Entity\Exam $exam = null)
-    {
-        $this->exam = $exam;
-
-        return $this;
-    }
-
-    /**
-     * Get exam
-     *
-     * @return \Exam\CoreBundle\Entity\Exam 
-     */
-    public function getExam()
-    {
-        return $this->exam;
     }
 
     /**
@@ -156,4 +132,27 @@ class ExamAnswer implements ExamAnswerInterface
         return $this->answer;
     }
 
+
+    /**
+     * Set criteriaQuestion
+     *
+     * @param \Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestion
+     * @return ExamAnswer
+     */
+    public function setCriteriaQuestion(\Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestion = null)
+    {
+        $this->criteriaQuestion = $criteriaQuestion;
+
+        return $this;
+    }
+
+    /**
+     * Get criteriaQuestion
+     *
+     * @return \Exam\CoreBundle\Entity\CriteriaQuestion 
+     */
+    public function getCriteriaQuestion()
+    {
+        return $this->criteriaQuestion;
+    }
 }

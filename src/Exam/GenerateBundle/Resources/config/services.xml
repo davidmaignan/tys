@@ -33,6 +33,12 @@
         </service>
         
         <!-- Exam criteria doctrine manager -->
+        <service id="exam_candidate_manager.doctrine" class="Exam\CoreBundle\Doctrine\ExamCandidateManager" public="false">
+            <argument type="service" id="fos_user.entity_manager" />
+            <argument>Exam\CoreBundle\Entity\ExamCandidate</argument>
+        </service>
+        
+        <!-- Exam criteria doctrine manager -->
         <service id="exam_generate.exam_criteria_manager.doctrine" class="Exam\CoreBundle\Doctrine\ExamCriteriaManager" public="false">
             <argument type="service" id="fos_user.entity_manager" />
             <argument>Exam\CoreBundle\Entity\ExamCriteria</argument>
@@ -64,8 +70,10 @@
         </service>
         
         <service id="send.exam.invitation.form.service" class="Exam\ManageBundle\Form\Service\ExamInvitationFormService">
+            <argument type="service" id="session"/>
             <argument type="service" id="my_mailer"/>
             <argument type="service" id="exam_generate.exam_manager.doctrine"/>
+            <argument type="service" id="exam_candidate_manager.doctrine"/>
             <argument type="service" id="fos_user.user_manager" />
         </service>
         
