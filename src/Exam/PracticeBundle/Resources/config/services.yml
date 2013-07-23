@@ -22,7 +22,7 @@ services:
         
     question_create.contributor.form.handler2:
         class: Exam\PracticeBundle\Form\Handler\ExamAnswerFormHandler
-        arguments: ["@question_create.contributor.form2", "@request", "@security.context" , "@question_review.comment_manager.doctrine2", "@exam_generate.exam_manager.doctrine", "@question_create.question_manager.doctrine", "@answer_manager"]
+        arguments: ["@question_create.contributor.form2", "@request", "@security.context" , "@question_review.comment_manager.doctrine2", "@exam_criteria_question_manager.doctrine", "@question_create.question_manager.doctrine", "@answer_manager"]
         scope: request
         
     question_review.comment_manager.doctrine2:

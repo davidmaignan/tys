@@ -81,7 +81,7 @@ class ExamAnswerManager extends BaseExamAnswerManager
      */
     public function updateExamAnswer(ExamAnswerInterface $examAnswer, $andFlush = true)
     {
-
+        
         $this->objectManager->persist($examAnswer);
         if ($andFlush) {
             $this->objectManager->flush();

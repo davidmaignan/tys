@@ -9,10 +9,10 @@ use Core\QuestionBundle\Entity\Question;
 
 
 /**
- * Exam\CoreBundle\Entity\ExamQuestion
+ * Exam\CoreBundle\Entity\CriteriaQuestion
  *
  * @ORM\Table(name="criteria_question")
- * @ORM\Entity(repositoryClass="Exam\CoreBundle\Entity\CriteriaQuestion")
+ * @ORM\Entity(repositoryClass="Exam\CoreBundle\Entity\CriteriaQuestionRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class CriteriaQuestion implements CriteriaQuestionInterface
