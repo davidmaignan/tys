@@ -77,8 +77,9 @@ class GenerateContext extends RawMinkContext implements KernelAwareInterface
     {
         $hash = $table->getHash();
         
-        $examCriteria = new ExamCriteria();
-        $exam         = new Exam();
+        $examCriteria     = new ExamCriteria();
+        $exam             = new Exam();
+        $examCandidate    = new \Exam\CoreBundle\Entity\ExamCandidate();
         
         $sectionManager = $this->getService('section_manager');
         $levelManager   = $this->getService('level_manager');
@@ -98,6 +99,9 @@ class GenerateContext extends RawMinkContext implements KernelAwareInterface
             $examCriteria->setNumberCandidates($row['number_candidates']);
             $examCriteria->setNumberQuestions($row['number_questions']);
             
+            $examCandidate->setCandidate($candidate);
+            $examCandidate->setExam($exam);
+            
             foreach($tags as $tag)
             {
                 $examCriteria->addTag($tag);
@@ -105,7 +109,7 @@ class GenerateContext extends RawMinkContext implements KernelAwareInterface
             }
             
             $exam->setOwner($owner);
-            $exam->addCandidate($candidate);
+            $exam->addExamCandidate($examCandidate);
             $exam->setExamCriteria($examCriteria);  
             $examCriteria->setExam($exam);
         }
@@ -118,19 +122,23 @@ class GenerateContext extends RawMinkContext implements KernelAwareInterface
         
         $listQuestionsKeys = array_rand($questions, 10);
         
-        $examQuestion = new ExamQuestion();
-        $examQuestion->setExamCriteria($examCriteria);
+        $criteriaQuestionManager = $this->getService('exam_criteria_question_manager.doctrine');
+        $criteriaQuestion        = $criteriaQuestionManager->createCriteriaQuestion();
+        
+        
+        $criteriaQuestion->setExamCriteria($examCriteria);
+        $examCriteria->setCriteriaQuestion($criteriaQuestion);
         
         foreach ($listQuestionsKeys as $value) {
-            $examQuestion->addQuestion($questions[$value]);
+            $criteriaQuestion->addQuestion($questions[$value]);
             
-            $questions[$value]->addExamQuestion($examQuestion);
+            $questions[$value]->addCriteriaQuestion($criteriaQuestion);
             $em->persist($questions[$value]);
         }
           
         $em->persist($exam);
         $em->persist($examCriteria);
-        $em->persist($examQuestion);
+        $em->persist($criteriaQuestion);
         $em->flush();
         
     }

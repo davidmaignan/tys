@@ -5,9 +5,9 @@ Feature: Practice an exam
 
     Background:
         Given the following activated user exists:
-            | login                          | password  | screenName          | role                |
-            | testexamowner1@testmail.com    | qwe123    | testexamowner1      | ROLE_EXAM_OWNER     |
-            | testexampractice1@testmail.com | qwe123    | testexampractice1   | ROLE_EXAM_CANDIDATE |
+            | login                          | password  | screenName          | role                                        |
+            | testexamowner1@testmail.com    | qwe123    | testexamowner1      | ROLE_EXAM_OWNER, ROLE_ALLOWED_TO_SWITCH     |
+            | testexampractice1@testmail.com | qwe123    | testexampractice1   | ROLE_EXAM_CANDIDATE                         |
     
         Given the following exam exists:
             | language  | number_candidates | level         | number_questions   | type          | tags                                                    | owner          | candidate         |
@@ -33,6 +33,7 @@ Feature: Practice an exam
         Then    I follow on the element at XPath ".//*[@id='exam-list']/tbody/tr[1]/td[9]/a"
         Then    I should see "Start test"
         Then    I follow "Start test"
+        Given   I am on "app_test.php/test/run"
         Then    I fill in "2" for "exam_answer_form_answer"
         And     I press "Submit"
         Then    I fill in "2" for "exam_answer_form_answer"

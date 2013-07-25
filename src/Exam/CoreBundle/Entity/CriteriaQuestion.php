@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the ExamCoreBundle package.
+ *
+ * (c) Testyrskills.com <http://www.Testyrskills.com/>
+ *
+ */
+
 namespace Exam\CoreBundle\Entity;
+
+/**
+ * @author David Maignan <davidmaignan@gmail.com>
+ */
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -81,26 +92,26 @@ class CriteriaQuestion implements CriteriaQuestionInterface
     }
 
     /**
-     * Add questions
+     * Add question
      *
-     * @param \Core\QuestionBundle\Entity\Question $questions
+     * @param \Core\QuestionBundle\Entity\QuestionInterface $question
      * @return ExamQuestion
      */
-    public function addQuestion(\Core\QuestionBundle\Entity\Question $questions)
+    public function addQuestion(\Core\QuestionBundle\Entity\QuestionInterface $question)
     {
-        $this->questions[] = $questions;
+        $this->questions[] = $question;
 
         return $this;
     }
 
     /**
-     * Remove questions
+     * Remove question
      *
-     * @param \Core\QuestionBundle\Entity\Question $questions
+     * @param \Core\QuestionBundle\Entity\QuestionInterface $question
      */
-    public function removeQuestion(\Core\QuestionBundle\Entity\Question $questions)
+    public function removeQuestion(\Core\QuestionBundle\Entity\QuestionInterface $question)
     {
-        $this->questions->removeElement($questions);
+        $this->questions->removeElement($question);
     }
 
     /**

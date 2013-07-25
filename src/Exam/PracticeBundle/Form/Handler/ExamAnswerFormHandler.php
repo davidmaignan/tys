@@ -26,43 +26,36 @@ use Core\AnswerBundle\Doctrine\AnswerManagerInterface;
 class ExamAnswerFormHandler
 {
     /**
-     *
      * @var type Symfony\Component\HttpFoundation\Request 
      */
     protected $request;
     
     /**
-     *
      * @var type Symfony\Component\Security\Core\SecurityContext
      */
     protected $security;
     
     /**
-     *
      * @var type Symfony\Component\Form\FormInterface
      */
     protected $form;
     
     /**
-     *
      * @var type Exam\CoreBundle\Model\CriteriaQuestionManagerInterface;
      */
     protected $criteriaQuestionManager;
     
     /**
-     *
      * @var type Exam\CoreBundle\Doctrine\ExamAnswerManager
      */
     protected $examAnswerManager;
     
     /**
-     *
      * @var type Question\CreateBundle\Model\QuestionManager
      */
     protected $questionManager;
     
     /**
-     *
      * @var type Core\AnswerBundle\Doctrine\AnswerManager
      */
     protected $answerManager;
@@ -94,7 +87,6 @@ class ExamAnswerFormHandler
         if ('POST' === $this->request->getMethod()) {
             
             $examAnswer = $this->createExamAnswer();
-            $examAnswer = new \Exam\CoreBundle\Entity\ExamAnswer();
             $examAnswer->setUser($this->getUser());
             $examAnswer->setQuestion($this->getQuestion());
             $examAnswer->setCriteriaQuestion($this->getCriteriaQuestion());
@@ -119,7 +111,7 @@ class ExamAnswerFormHandler
     }
     
     /**
-     * @return ExamCriteriaInterface
+     * @return \Exam\Core\Entity\ExamCriteriaInterface
     */
     protected function createExamAnswer()
     {
@@ -127,7 +119,6 @@ class ExamAnswerFormHandler
     }
     
     /**
-     * 
      * @return type Secutiry\AuthenticateBundle\Entity\User
      */
     private function getUser() {
@@ -137,7 +128,7 @@ class ExamAnswerFormHandler
     /**
      * Return Exam entity
      * 
-     * @return type Exam\CoreBundle\Entity\CriteriaQuestion
+     * @return type Exam\CoreBundle\Entity\CriteriaQuestionInterface
      */
     private function getCriteriaQuestion() {
         $criteriaQuestonId = $this->request->getSession()->get('criteriaQuestion');
@@ -145,12 +136,22 @@ class ExamAnswerFormHandler
         return $this->criteriaQuestionManager->findCriteriaQuestionBy(array('id'=>$criteriaQuestonId));
     }
     
+    /**
+     * @return \Core\QuestionBundle\Entity\QuestionInterface
+     */
     private function getQuestion() {
         $questionId = $this->request->getSession()->get('question');
         
         return $this->questionManager->findQuestionBy($questionId);
     }
     
+    /**
+     * Retrieve an answer
+     * 
+     * @param type $answerId
+     * 
+     * @return \Core\AnswerBundle\Entity\AnswerInterface
+     */
     private function getAnswer($answerId) {
         $criteria = $this->request->getSession()->get('question');
         

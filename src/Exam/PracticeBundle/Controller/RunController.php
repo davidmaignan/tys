@@ -1,14 +1,26 @@
 <?php
-
+/*
+ * This file is part of the ExamPracticeBundle package.
+ *
+ * 2013 (c) Testyrskills.com <http://www.Testyrskills.com/>
+ *
+ */
 namespace Exam\PracticeBundle\Controller;
+
+/**
+ * Exam practice run controller
+ *
+ * @author davidmaignan
+ */
+
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Exam\CoreBundle\Entity\ExamAnswer;
-use Exam\PracticeBundle\Form\Type\ExamAnswerFormType;
-
 class RunController extends Controller
 {
+    /**
+     * 
+     */
     public function indexAction()
     {
         $session = $this->getRequest()->getSession();

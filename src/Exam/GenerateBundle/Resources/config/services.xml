@@ -26,9 +26,9 @@
                 class="Exam\GenerateBundle\Form\Handler\ExamGenerateFormHandler" scope="request">
                 <argument type="service" id="exam_generate.form" />
                 <argument type="service" id="request" />
+                <argument type="service" id="security.context" />
                 <argument type="service" id="exam_generate.exam_criteria_manager.doctrine" />
                 <argument type="service" id="exam_generate.exam_manager.doctrine" />
-                <argument type="service" id="security.context" />
                 <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
         
