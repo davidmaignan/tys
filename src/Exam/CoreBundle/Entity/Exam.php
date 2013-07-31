@@ -8,9 +8,8 @@ namespace Exam\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Exam\CoreBundle\Entity\ExamCandidateInterface;
 
 /**
  * Exam\CoreBundle\Entity\Exam
@@ -84,7 +83,7 @@ class Exam implements ExamInterface {
      * @param \DateTime $createdAt
      * @return Exam
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
     
@@ -107,7 +106,7 @@ class Exam implements ExamInterface {
      * @param \DateTime $updatedAt
      * @return Exam
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
     
@@ -127,10 +126,10 @@ class Exam implements ExamInterface {
    /**
      * Add examCandidate
      *
-     * @param \Exam\CoreBundle\Entity\ExamCandidate $examCandidate
+     * @param \Exam\CoreBundle\Entity\ExamCandidateInterface $examCandidate
      * @return ArrayCollection
      */
-    public function addExamCandidate(\Exam\CoreBundle\Entity\ExamCandidate $examCandidate)
+    public function addExamCandidate(\Exam\CoreBundle\Entity\ExamCandidateInterface $examCandidate)
     {
         $this->examCandidates[] = $examCandidate;
     
@@ -140,9 +139,9 @@ class Exam implements ExamInterface {
     /**
      * Remove examCandidate
      *
-     * @param \Exam\CoreBundle\Entity\ExamCandidate $examCandidate
+     * @param \Exam\CoreBundle\Entity\ExamCandidateInterface $examCandidate
      */
-    public function removeExamCandidate(\Exam\CoreBundle\Entity\ExamCandidate $examCandidate)
+    public function removeExamCandidate(\Exam\CoreBundle\Entity\ExamCandidateInterface $examCandidate)
     {
         $this->examCandidates->removeElement($examCandidate);
     }
@@ -150,7 +149,7 @@ class Exam implements ExamInterface {
     /**
      * Get examCandidates
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\ArrayCollection 
      */
     public function getExamCandidates()
     {
@@ -183,10 +182,10 @@ class Exam implements ExamInterface {
     /**
      * Set examCriteria
      *
-     * @param Exam\CoreBundle\Entity\ExamCriteria $examCriteria
+     * @param Exam\CoreBundle\Entity\ExamCriteriaInterface $examCriteria
      * @return Exam
      */
-    public function setExamCriteria(\Exam\CoreBundle\Entity\ExamCriteria $examCriteria = null)
+    public function setExamCriteria(\Exam\CoreBundle\Entity\ExamCriteriaInterface $examCriteria = null)
     {
         $this->examCriteria = $examCriteria;
     
@@ -196,15 +195,10 @@ class Exam implements ExamInterface {
     /**
      * Get examCriteria
      *
-     * @return Exam\CoreBundle\Entity\ExamCriteria 
+     * @return Exam\CoreBundle\Entity\ExamCriteriaInterface 
      */
     public function getExamCriteria()
     {
         return $this->examCriteria;
-    }
-    
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

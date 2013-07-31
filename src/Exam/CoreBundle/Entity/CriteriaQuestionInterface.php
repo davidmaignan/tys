@@ -14,9 +14,9 @@ namespace Exam\CoreBundle\Entity;
 
 interface CriteriaQuestionInterface {
     /**
-     * @param Exam\CoreBundle\Entity\ExamCriteria
+     * @param Exam\CoreBundle\Entity\ExamCriteriaInterface
      */
-    public function setExamCriteria(\Exam\CoreBundle\Entity\ExamCriteria $examCriteria = null);
+    public function setExamCriteria(\Exam\CoreBundle\Entity\ExamCriteriaInterface $examCriteria = null);
     
     /**
      * @return \Exam\CoreBundle\Enityt\ExamCriteriaInterface

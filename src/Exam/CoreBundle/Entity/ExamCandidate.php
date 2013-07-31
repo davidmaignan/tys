@@ -100,7 +100,7 @@ class ExamCandidate {
      * @param \DateTime $startedAt
      * @return ExamCandidate
      */
-    public function setStartedAt($startedAt)
+    public function setStartedAt(\DateTime $startedAt)
     {
         $this->startedAt = $startedAt;
 
@@ -143,10 +143,10 @@ class ExamCandidate {
     /**
      * Set exam
      *
-     * @param \Exam\CoreBundle\Entity\Exam $exam
+     * @param \Exam\CoreBundle\Entity\ExamInterface $exam
      * @return ExamCandidate
      */
-    public function setExam(\Exam\CoreBundle\Entity\Exam $exam = null)
+    public function setExam(\Exam\CoreBundle\Entity\ExamInterface $exam = null)
     {
         $this->exam = $exam;
 
@@ -156,7 +156,7 @@ class ExamCandidate {
     /**
      * Get exam
      *
-     * @return \Exam\CoreBundle\Entity\Exam 
+     * @return \Exam\CoreBundle\Entity\ExamInterface 
      */
     public function getExam()
     {

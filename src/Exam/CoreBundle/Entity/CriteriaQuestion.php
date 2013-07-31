@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Core\QuestionBundle\Entity\Question;
-
+use Exam\CoreBundle\Entity\ExamCriteriaInterface;
 
 /**
  * Exam\CoreBundle\Entity\CriteriaQuestion
@@ -71,10 +71,10 @@ class CriteriaQuestion implements CriteriaQuestionInterface
     /**
      * Set examCriteria
      *
-     * @param \Exam\CoreBundle\Entity\ExamCriteria $examCriteria
+     * @param \Exam\CoreBundle\Entity\ExamCriteriaInterface $examCriteria
      * @return ExamQuestion
      */
-    public function setExamCriteria(\Exam\CoreBundle\Entity\ExamCriteria $examCriteria = null)
+    public function setExamCriteria(\Exam\CoreBundle\Entity\ExamCriteriaInterface $examCriteria = null)
     {
         $this->examCriteria = $examCriteria;
 
