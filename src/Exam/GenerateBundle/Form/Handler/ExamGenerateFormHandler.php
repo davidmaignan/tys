@@ -23,7 +23,7 @@ use Exam\CoreBundle\Model\ExamManagerInterface;
 use Doctrine\ORM\EntityManager;
 
 use Exam\CoreBundle\Entity\Exam;
-use Exam\CoreBundle\Entity\ExamQuestion;
+use Exam\CoreBundle\Entity\CriteriaQuestion;
 
 
 class ExamGenerateFormHandler
@@ -84,11 +84,11 @@ class ExamGenerateFormHandler
         
         $listQuestionsKeys = array_rand($questions, 10);
         
-        $examQuestion = new ExamQuestion();
+        $criteriaQuestion = new CriteriaQuestion();
         
         foreach ($listQuestionsKeys as $value) {
-            $examQuestion->addQuestion($questions[$value]);
-            $questions[$value]->addExamQuestion($examQuestion);
+            $criteriaQuestion->addQuestion($questions[$value]);
+            $questions[$value]->addCriteriaQuestion($criteriaQuestion);
             $this->em->persist($questions[$value]);
         }
         
@@ -96,13 +96,13 @@ class ExamGenerateFormHandler
         
         $exam = new Exam();
         $exam->setOwner($this->user);
-        $exam->setCriteria($examCriteria);
+        $exam->setExamCriteria($examCriteria);
         
         $examCriteria->setExam($exam);
-        $examCriteria->setExamQuestion($examQuestion);
-        $examQuestion->setExamCriteria($examCriteria);
+        $examCriteria->setCriteriaQuestion($criteriaQuestion);
+        $criteriaQuestion->setExamCriteria($examCriteria);
         
-        $this->em->persist($examQuestion);
+        $this->em->persist($criteriaQuestion);
         
         
         $this->examCriteriaManager->updateExamCriteria($examCriteria);

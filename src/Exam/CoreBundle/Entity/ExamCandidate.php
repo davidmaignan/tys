@@ -19,7 +19,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="exam_candidate")
  * @ORM\Entity(repositoryClass="Exam\CoreBundle\Entity\ExamCandidateRepository")
  */
-class ExamCandidate {
+class ExamCandidate implements ExamCandidateInterface 
+{
     
     /**
      * @var integer $id
