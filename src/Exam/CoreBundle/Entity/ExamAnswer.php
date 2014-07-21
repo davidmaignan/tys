@@ -89,10 +89,10 @@ class ExamAnswer implements ExamAnswerInterface
     /**
      * Set question
      *
-     * @param \Core\QuestionBundle\Entity\Question $question
+     * @param \Core\QuestionBundle\Entity\QuestionInterface $question
      * @return ExamAnswer
      */
-    public function setQuestion(\Core\QuestionBundle\Entity\Question $question = null)
+    public function setQuestion(\Core\QuestionBundle\Entity\QuestionInterface $question = null)
     {
         $this->question = $question;
 
@@ -102,7 +102,7 @@ class ExamAnswer implements ExamAnswerInterface
     /**
      * Get question
      *
-     * @return \Core\QuestionBundle\Entity\Question 
+     * @return \Core\QuestionBundle\Entity\QuestionInterface 
      */
     public function getQuestion()
     {
@@ -112,10 +112,10 @@ class ExamAnswer implements ExamAnswerInterface
     /**
      * Set answer
      *
-     * @param \Core\AnswerBundle\Entity\Answer $answer
+     * @param \Core\AnswerBundle\Entity\AnswerInterface $answer
      * @return ExamAnswer
      */
-    public function setAnswer(\Core\AnswerBundle\Entity\Answer $answer = null)
+    public function setAnswer(\Core\AnswerBundle\Entity\AnswerInterface $answer = null)
     {
         $this->answer = $answer;
 
@@ -125,7 +125,7 @@ class ExamAnswer implements ExamAnswerInterface
     /**
      * Get answer
      *
-     * @return \Core\AnswerBundle\Entity\Answer
+     * @return \Core\AnswerBundle\Entity\AnswerInterface
      */
     public function getAnswer()
     {
@@ -136,10 +136,10 @@ class ExamAnswer implements ExamAnswerInterface
     /**
      * Set criteriaQuestion
      *
-     * @param \Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestion
+     * @param \Exam\CoreBundle\Entity\CriteriaQuestionInterface $criteriaQuestion
      * @return ExamAnswer
      */
-    public function setCriteriaQuestion(\Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestion = null)
+    public function setCriteriaQuestion(\Exam\CoreBundle\Entity\CriteriaQuestionInterface $criteriaQuestion = null)
     {
         $this->criteriaQuestion = $criteriaQuestion;
 
@@ -149,7 +149,7 @@ class ExamAnswer implements ExamAnswerInterface
     /**
      * Get criteriaQuestion
      *
-     * @return \Exam\CoreBundle\Entity\CriteriaQuestion 
+     * @return \Exam\CoreBundle\Entity\CriteriaQuestionInterface 
      */
     public function getCriteriaQuestion()
     {

@@ -168,10 +168,10 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * Set level
      *
-     * @param Core\LevelBundle\Entity\Level $level
+     * @param Core\LevelBundle\Entity\LevelInterface $level
      * @return ExamCriteria
      */
-    public function setLevel(\Core\LevelBundle\Entity\Level $level = null)
+    public function setLevel(\Core\LevelBundle\Entity\LevelInterface $level = null)
     {
         $this->level = $level;
     
@@ -181,7 +181,7 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * Get level
      *
-     * @return Core\LevelBundle\Entity\Level 
+     * @return Core\LevelBundle\Entity\LevelInterface 
      */
     public function getLevel()
     {
@@ -192,12 +192,12 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * Add tags
      *
-     * @param Core\TagBundle\Entity\Tag $tags
+     * @param Core\TagBundle\Entity\TagInterface $tag
      * @return ExamCriteria
      */
-    public function addTag(\Core\TagBundle\Entity\Tag $tags)
+    public function addTag(\Core\TagBundle\Entity\TagInterface $tag)
     {
-        $this->tags[] = $tags;
+        $this->tags[] = $tag;
     
         return $this;
     }
@@ -205,40 +205,32 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * Remove tags
      *
-     * @param Core\TagBundle\Entity\Tag $tags
+     * @param Core\TagBundle\Entity\Tag $tag
      */
-    public function removeTag(\Core\TagBundle\Entity\Tag $tags)
+    public function removeTag(\Core\TagBundle\Entity\Tag $tag)
     {
-        $this->tags->removeElement($tags);
+        $this->tags->removeElement($tag);
     }
 
     /**
      * Get tags
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\ArrayCollection 
      */
     public function getTags()
     {
         return $this->tags;
     }
-    
-    /**
-     * @param \Doctrine\Common\Collections\ArrayCollection $sections
-     */
-    public function setSections(ArrayCollection $sections)
-    {
-        $this->sections = $sections;
-    }
 
     /**
      * Add sections
      *
-     * @param Core\SectionBundle\Entity\Section $sections
+     * @param Core\SectionBundle\Entity\Section $section
      * @return ExamCriteria
      */
-    public function addSection(\Core\SectionBundle\Entity\Section $sections)
+    public function addSection(\Core\SectionBundle\Entity\Section $section)
     {
-        $this->sections[] = $sections;
+        $this->sections[] = $section;
     
         return $this;
     }
@@ -246,11 +238,11 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * Remove sections
      *
-     * @param Core\SectionBundle\Entity\Section $sections
+     * @param Core\SectionBundle\Entity\Section $section
      */
-    public function removeSection(\Core\SectionBundle\Entity\Section $sections)
+    public function removeSection(\Core\SectionBundle\Entity\Section $section)
     {
-        $this->sections->removeElement($sections);
+        $this->sections->removeElement($section);
     }
 
     /**
@@ -266,12 +258,12 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * Add types
      *
-     * @param Core\TypeBundle\Entity\Type $types
+     * @param Core\TypeBundle\Entity\Type $type
      * @return ExamCriteria
      */
-    public function addType(\Core\TypeBundle\Entity\Type $types)
+    public function addType(\Core\TypeBundle\Entity\Type $type)
     {
-        $this->types[] = $types;
+        $this->types[] = $type;
     
         return $this;
     }
@@ -279,11 +271,11 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * Remove types
      *
-     * @param Core\TypeBundle\Entity\Type $types
+     * @param Core\TypeBundle\Entity\Type $type
      */
-    public function removeType(\Core\TypeBundle\Entity\Type $types)
+    public function removeType(\Core\TypeBundle\Entity\Type $type)
     {
-        $this->types->removeElement($types);
+        $this->types->removeElement($type);
     }
 
     /**
@@ -299,10 +291,10 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * Set exam
      *
-     * @param Exam\CoreBundle\Entity\Exam $exam
+     * @param Exam\CoreBundle\Entity\ExamInterface $exam
      * @return ExamCriteria
      */
-    public function setExam(\Exam\CoreBundle\Entity\Exam $exam = null)
+    public function setExam(\Exam\CoreBundle\Entity\ExamInterface $exam = null)
     {
         $this->exam = $exam;
     
@@ -312,7 +304,7 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * Get exam
      *
-     * @return Exam\CoreBundle\Entity\Exam 
+     * @return Exam\CoreBundle\Entity\ExamInterface
      */
     public function getExam()
     {
@@ -322,10 +314,10 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * Set criteriaQuestion
      *
-     * @param \Exam\CoreBundle\Entity\CriteriaQuestion $examQuestion
+     * @param \Exam\CoreBundle\Entity\CriteriaQuestionInterface $examQuestion
      * @return CriteriaQuestion
      */
-    public function setCriteriaQuestion(\Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestion = null)
+    public function setCriteriaQuestion(\Exam\CoreBundle\Entity\CriteriaQuestionInterface $criteriaQuestion = null)
     {
         $this->criteriaQuestion = $criteriaQuestion;
 
@@ -345,12 +337,12 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * Add criteriaQuestions
      *
-     * @param \Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestions
+     * @param \Exam\CoreBundle\Entity\CriteriaQuestionInterface $criteriaQuestion
      * @return ExamCriteria
      */
-    public function addCriteriaQuestion(\Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestions)
+    public function addCriteriaQuestion(\Exam\CoreBundle\Entity\CriteriaQuestionInterface $criteriaQuestion)
     {
-        $this->criteriaQuestions[] = $criteriaQuestions;
+        $this->criteriaQuestions[] = $criteriaQuestion;
 
         return $this;
     }
@@ -358,11 +350,11 @@ class ExamCriteria implements ExamCriteriaInterface
     /**
      * Remove criteriaQuestions
      *
-     * @param \Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestions
+     * @param \Exam\CoreBundle\Entity\CriteriaQuestionInterface $criteriaQuestion
      */
-    public function removeCriteriaQuestion(\Exam\CoreBundle\Entity\CriteriaQuestion $criteriaQuestions)
+    public function removeCriteriaQuestion(\Exam\CoreBundle\Entity\CriteriaQuestionInterface $criteriaQuestion)
     {
-        $this->criteriaQuestions->removeElement($criteriaQuestions);
+        $this->criteriaQuestions->removeElement($criteriaQuestion);
     }
 
     /**

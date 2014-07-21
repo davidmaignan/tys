@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the QuestionCreateBundle package.
+ * This file is part of the ExamCoreBundle package.
  *
- * (c) Testyrskills.com <http://www.Testyrskills.com/>
+ * 2013 (c) Testyrskills.com <http://www.Testyrskills.com/>
  *
  */
 

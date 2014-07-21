@@ -18,7 +18,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 use Exam\CoreBundle\Model\ExamAnswerManagerInterface;
-use Exam\CoreBundle\Model\ExamManagerInterface;
+use Exam\CoreBundle\Model\CriteriaQuestionManagerInterface;
 use Question\CreateBundle\Model\QuestionManagerInterface;
 use Core\AnswerBundle\Doctrine\AnswerManagerInterface;
 
@@ -26,43 +26,36 @@ use Core\AnswerBundle\Doctrine\AnswerManagerInterface;
 class ExamAnswerFormHandler
 {
     /**
-     *
      * @var type Symfony\Component\HttpFoundation\Request 
      */
     protected $request;
     
     /**
-     *
      * @var type Symfony\Component\Security\Core\SecurityContext
      */
     protected $security;
     
     /**
-     *
      * @var type Symfony\Component\Form\FormInterface
      */
     protected $form;
     
     /**
-     *
-     * @var type Exam\CoreBundle\Model\ExamManagerInterface;
+     * @var type Exam\CoreBundle\Model\CriteriaQuestionManagerInterface;
      */
-    protected $examManager;
+    protected $criteriaQuestionManager;
     
     /**
-     *
      * @var type Exam\CoreBundle\Doctrine\ExamAnswerManager
      */
     protected $examAnswerManager;
     
     /**
-     *
      * @var type Question\CreateBundle\Model\QuestionManager
      */
     protected $questionManager;
     
     /**
-     *
      * @var type Core\AnswerBundle\Doctrine\AnswerManager
      */
     protected $answerManager;
@@ -72,17 +65,17 @@ class ExamAnswerFormHandler
                                 Request $request, 
                                 SecurityContext $securityContext,
                                 ExamAnswerManagerInterface $examAnswerManager,
-                                ExamManagerInterface $examManager,
+                                CriteriaQuestionManagerInterface $criteriaQuestionManager,
                                 QuestionManagerInterface $questionManager,
-                                AnswerManagerInterface$answerManager)
+                                AnswerManagerInterface $answerManager)
     {
-        $this->form              = $form;
-        $this->request           = $request;  
-        $this->security          = $securityContext;
-        $this->examManager       = $examManager;
-        $this->examAnswerManager = $examAnswerManager;
-        $this->questionManager   = $questionManager;
-        $this->answerManager     = $answerManager;
+        $this->form                     = $form;
+        $this->request                  = $request;  
+        $this->security                 = $securityContext;
+        $this->criteriaQuestionManager  = $criteriaQuestionManager;
+        $this->examAnswerManager        = $examAnswerManager;
+        $this->questionManager          = $questionManager;
+        $this->answerManager            = $answerManager;
     }
     
     /**
@@ -94,15 +87,14 @@ class ExamAnswerFormHandler
         if ('POST' === $this->request->getMethod()) {
             
             $examAnswer = $this->createExamAnswer();
-            
             $examAnswer->setUser($this->getUser());
             $examAnswer->setQuestion($this->getQuestion());
-            $examAnswer->setExam($this->getExam());
+            $examAnswer->setCriteriaQuestion($this->getCriteriaQuestion());
             
             $this->form->bind($this->request);
             
             if ($this->form->isValid()) {
-                
+                        
                 $values = $this->request->get('exam_answer_form');
                 $answerId = $values['answer'];
                 
@@ -110,8 +102,8 @@ class ExamAnswerFormHandler
                 
                 $examAnswer->setAnswer($answer);
                 
-                $this->examAnswerManager->updateExamAnswer($examAnswer);  
-                 
+                $this->examAnswerManager->updateExamAnswer($examAnswer); 
+                                 
                 //Get the next question
                 $this->getNextQuestion();
             }
@@ -119,7 +111,7 @@ class ExamAnswerFormHandler
     }
     
     /**
-     * @return ExamCriteriaInterface
+     * @return \Exam\Core\Entity\ExamCriteriaInterface
     */
     protected function createExamAnswer()
     {
@@ -127,7 +119,6 @@ class ExamAnswerFormHandler
     }
     
     /**
-     * 
      * @return type Secutiry\AuthenticateBundle\Entity\User
      */
     private function getUser() {
@@ -137,20 +128,30 @@ class ExamAnswerFormHandler
     /**
      * Return Exam entity
      * 
-     * @return type Exam\CoreBundle\Entity\Exam
+     * @return type Exam\CoreBundle\Entity\CriteriaQuestionInterface
      */
-    private function getExam() {
-        $criteria = $this->request->getSession()->get('exam');
+    private function getCriteriaQuestion() {
+        $criteriaQuestonId = $this->request->getSession()->get('criteriaQuestion');
         
-        return $this->examManager->findExamBy($criteria);
+        return $this->criteriaQuestionManager->findCriteriaQuestionBy(array('id'=>$criteriaQuestonId));
     }
     
+    /**
+     * @return \Core\QuestionBundle\Entity\QuestionInterface
+     */
     private function getQuestion() {
-        $criteria = $this->request->getSession()->get('question');
+        $questionId = $this->request->getSession()->get('question');
         
-        return $this->questionManager->findQuestionBy($criteria);
+        return $this->questionManager->findQuestionBy($questionId);
     }
     
+    /**
+     * Retrieve an answer
+     * 
+     * @param type $answerId
+     * 
+     * @return \Core\AnswerBundle\Entity\AnswerInterface
+     */
     private function getAnswer($answerId) {
         $criteria = $this->request->getSession()->get('question');
         
@@ -159,12 +160,12 @@ class ExamAnswerFormHandler
     
     private function getNextQuestion() {
         
-        $exam = $this->getExam();
+        $criteriaQuestion = $this->getCriteriaQuestion();
         
         $criteria = $this->request->getSession()->get('question');
         $questionId = $criteria['id'];
         
-        $questions = $exam->getExamCriteria()->getExamQuestion()->getQuestions();
+        $questions = $criteriaQuestion->getQuestions();
         
         foreach ($questions as $key => $value) {
             

@@ -1,14 +1,26 @@
 <?php
-
+/*
+ * This file is part of the ExamPracticeBundle package.
+ *
+ * 2013 (c) Testyrskills.com <http://www.Testyrskills.com/>
+ *
+ */
 namespace Exam\PracticeBundle\Controller;
+
+/**
+ * Exam practice run controller
+ *
+ * @author davidmaignan
+ */
+
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Exam\CoreBundle\Entity\ExamAnswer;
-use Exam\PracticeBundle\Form\Type\ExamAnswerFormType;
-
 class RunController extends Controller
 {
+    /**
+     * 
+     */
     public function indexAction()
     {
         $session = $this->getRequest()->getSession();
@@ -23,11 +35,11 @@ class RunController extends Controller
             return $this->redirect($this->generateUrl('ExamPracticeBundle_Page_End_Index'));
         }
         
-        //Retrieve Exam
+        //Retrieve criteria question
         $criteriaQuestionId = $session->get('criteriaQuestion');
         
         $em               = $this->getDoctrine()->getManager();
-        $criteriaQuestion = $em->getRepository('ExamCoreBundle:CriteriaQuestion')->find($criteriaQuestionId); 
+        $criteriaQuestion = $em->getRepository('ExamCoreBundle:CriteriaQuestion')->findOneBy(array('id'=>$criteriaQuestionId)); 
         
         //Retrieve question        
         $questionId      = $session->get('question');
@@ -39,7 +51,7 @@ class RunController extends Controller
         $session->set('questionCounter', ++$counter);
         
         return $this->render('ExamPracticeBundle:Run:index.html.twig', 
-                array('criteriaQuesiton' => $criteriaQuestion, 
+                array('criteriaQuestion' => $criteriaQuestion, 
                       'form' => $form->createView(), 
                       'question'=> $question
                 ));

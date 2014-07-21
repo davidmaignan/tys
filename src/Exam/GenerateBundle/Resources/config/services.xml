@@ -32,7 +32,13 @@
                 <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
         
-        <!-- Exam criteria doctrine manager -->
+        <!-- Criteria question doctrine manager -->
+        <service id="exam_criteria_question_manager.doctrine" class="Exam\CoreBundle\Doctrine\CriteriaQuestionManager" public="false">
+            <argument type="service" id="fos_user.entity_manager" />
+            <argument>Exam\CoreBundle\Entity\CriteriaQuestion</argument>
+        </service>
+        
+        <!-- Exam candidate doctrine manager -->
         <service id="exam_candidate_manager.doctrine" class="Exam\CoreBundle\Doctrine\ExamCandidateManager" public="false">
             <argument type="service" id="fos_user.entity_manager" />
             <argument>Exam\CoreBundle\Entity\ExamCandidate</argument>
@@ -44,7 +50,7 @@
             <argument>Exam\CoreBundle\Entity\ExamCriteria</argument>
         </service>
         
-        <!-- Exam criteria doctrine manager -->
+        <!-- Exam doctrine manager -->
         <service id="exam_generate.exam_manager.doctrine" class="Exam\CoreBundle\Doctrine\ExamManager" public="false">
             <argument type="service" id="fos_user.entity_manager" />
             <argument>Exam\CoreBundle\Entity\Exam</argument>
